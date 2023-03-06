@@ -13,3 +13,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  background-color: #e7eaf2;
+  font-family: 'Poppins', sans-serif;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(./images/bg_tablet.png);
+  }
+}
+@media screen and (min-width: 1280px) {
+  body {
+    background-image: url(./images/bg_desktop.png);
+  }
+}
