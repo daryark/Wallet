@@ -1,4 +1,4 @@
-import { TransactionsList, TransactionsListMobile } from 'components';
+import {TransactionsList, TransactionsListMobile} from 'components';
 import React from 'react';
 
 export default function HomePage() {
