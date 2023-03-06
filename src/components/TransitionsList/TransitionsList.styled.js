@@ -62,3 +62,37 @@ export const StyledEditBtn = styled.button`
   padding: 0;
   border: none;
 `;
+
+// ====================================== styled for tablet and desktop
+export const StyledTable = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  /* text-align: center; */
+`;
+
+export const StyledThead = styled.thead`
+  /* width: 100%;
+  position: sticky;
+  z-index: 100; */
+  font-size: ${p => p.theme.fontSizes.m};
+  font-weight: ${p => p.theme.fontWeights.bold};
+  background-color: ${p => p.theme.color.bg_white};
+  border-radius: ${p => p.theme.radii.large};
+  padding: 16px 20px;
+`;
+
+export const StyledTbody = styled.tbody`
+  /* width: 100%; */
+  font-size: ${p => p.theme.fontSizes.s};
+`;
+
+export const StyledRow = styled.tr`
+  width: 100%;
+  display: inline-block;
+  padding: 14px 20px;
+  border-bottom: ${p => p.theme.borders.normal} #dcdcdf;
+  &:last-of-type {
+    border-bottom: none;
+  }
+`;

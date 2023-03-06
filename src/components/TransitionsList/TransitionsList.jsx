@@ -3,6 +3,12 @@ import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
 import { deleteTransaction } from 'redux/transactions/trans-operations';
 import { setEditTransaction } from 'redux/transactions/transSlice';
 import transitions from './transitionsData.json';
+import {
+  StyledRow,
+  StyledTable,
+  StyledTbody,
+  StyledThead,
+} from './TransitionsList.styled';
 
 export const TransactionsList = () => {
   const dispatch = useDispatch();
@@ -15,8 +21,8 @@ export const TransactionsList = () => {
     dispatch(deleteTransaction(transitionId));
   };
   return (
-    <table>
-      <thead>
+    <StyledTable>
+      <StyledThead>
         <tr>
           <th>Date</th>
           <th>Type</th>
@@ -24,11 +30,11 @@ export const TransactionsList = () => {
           <th>Comment</th>
           <th>Sum</th>
         </tr>
-      </thead>
-      <tbody>
+      </StyledThead>
+      <StyledTbody>
         {transitions.map(
           ({ id, transactionDate, type, categoryId, comment, amount }) => (
-            <tr key={id}>
+            <StyledRow key={id}>
               <td>{transactionDate}</td>
               <td>{type}</td>
               <td>{categoryId}</td>
@@ -55,10 +61,10 @@ export const TransactionsList = () => {
                   Delete
                 </button>
               </td>
-            </tr>
+            </StyledRow>
           )
         )}
-      </tbody>
-    </table>
+      </StyledTbody>
+    </StyledTable>
   );
 };
