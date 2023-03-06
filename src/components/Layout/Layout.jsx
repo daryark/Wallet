@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
 // import { useSelector } from 'react-redux';
+import { Header } from 'components/Header/Header';
 
 // import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 
@@ -9,6 +10,7 @@ export default function Layout() {
 
   return (
     <>
+      <Header />
       <header>
         <nav>
           <h1>
