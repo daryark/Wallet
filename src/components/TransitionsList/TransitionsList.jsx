@@ -1,8 +1,20 @@
+import { useDispatch } from 'react-redux';
+import {
+  deleteTransaction,
+  editTransaction,
+} from 'redux/transactions/trans-operations';
 import transitions from './transitionsData.json';
 
 export const TransactionsList = () => {
-  const handleEditTransition = transitionId => {};
-  const handleDeleteTransition = transitionId => {};
+  const dispatch = useDispatch();
+
+  const handleEditTransition = contactUser => {
+    dispatch(editTransaction(contactUser));
+    dispatch(isModalAddTransactionOpen());
+  };
+  const handleDeleteTransition = transitionId => {
+    dispatch(deleteTransaction(transitionId));
+  };
   return (
     <table>
       <tr>
@@ -21,7 +33,20 @@ export const TransactionsList = () => {
             <td>{comment}</td>
             <td>{amount}</td>
             <td>
-              <button onClick={() => handleEditTransition(id)}>Edit</button>
+              <button
+                onClick={() =>
+                  handleEditTransition({
+                    id,
+                    transactionDate,
+                    type,
+                    categoryId,
+                    comment,
+                    amount,
+                  })
+                }
+              >
+                Edit
+              </button>
             </td>
             <td>
               <button onClick={() => handleDeleteTransition(id)}>Delete</button>
