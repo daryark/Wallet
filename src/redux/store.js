@@ -1,11 +1,13 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import { userReducer } from 'redux/auth/authSlice';
-import { transactionsReducer } from 'redux/transactions/transSlice';
+import { userReducer } from './auth/authSlice';
+import { globalReducer } from './global/globalSlice';
+import { transactionsReducer } from './transations/transSlice';
 
 const rootReducer = combineReducers({
   userData: userReducer,
   transactionsData: transactionsReducer,
+  globalData: globalReducer,
 });
 
 export const store = configureStore({
