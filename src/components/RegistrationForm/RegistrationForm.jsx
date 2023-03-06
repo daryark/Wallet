@@ -15,15 +15,15 @@ const initialValues = {
   email: '',
   password: '',
   confirmPass: '',
-  username: '',
+  name: '',
 };
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit = ({ username, email, password }, { resetForm }) => {
-    dispatch(registerRequest({ email, password, username }));
+  const handleSubmit = ({ name, email, password }, { resetForm }) => {
+    dispatch(registerRequest({ email, password, username: name }));
     resetForm();
   };
 
@@ -48,7 +48,7 @@ const RegistrationForm = () => {
             placeholder="Confirm password"
           />
 
-          <AuthField type="text" name="username" placeholder="First name" />
+          <AuthField type="text" name="name" placeholder="First name" />
 
           <AuthButtonActive text="Register" />
           <AuthButton text="Log in" onClick={changeRoute} />
