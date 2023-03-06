@@ -1,15 +1,14 @@
 import { useDispatch } from 'react-redux';
-import {
-  deleteTransaction,
-  editTransaction,
-} from 'redux/transactions/trans-operations';
+import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
+import { deleteTransaction } from 'redux/transactions/trans-operations';
+import { setEditTransaction } from 'redux/transactions/transSlice';
 import transitions from './transitionsData.json';
 
 export const TransactionsList = () => {
   const dispatch = useDispatch();
 
   const handleEditTransition = contactUser => {
-    dispatch(editTransaction(contactUser));
+    dispatch(setEditTransaction(contactUser));
     dispatch(isModalAddTransactionOpen());
   };
   const handleDeleteTransition = transitionId => {
