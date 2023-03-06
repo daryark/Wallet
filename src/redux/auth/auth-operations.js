@@ -4,7 +4,7 @@ import { AuthAPI, UsersAPI } from 'services/api';
 
 export const registerRequest = createAsyncThunk(
   'user/registerRequest',
-  async (formData, thunkAPI) => {
+  async (formData, { rejectWithValue }) => {
     // formData = { username, email, password }
 
     try {
@@ -17,14 +17,14 @@ export const registerRequest = createAsyncThunk(
 
       return user;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
 export const loginRequest = createAsyncThunk(
   'user/loginRequest',
-  async (formData, thunkAPI) => {
+  async (formData, { rejectWithValue }) => {
     // formData = { email, password }
 
     try {
@@ -37,14 +37,14 @@ export const loginRequest = createAsyncThunk(
 
       return user;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
 export const logOutRequest = createAsyncThunk(
   'user/logOutRequest',
-  async (_, thunkAPI) => {
+  async (_, { rejectWithValue }) => {
     try {
       const response = await AuthAPI.signOut();
 
@@ -52,14 +52,14 @@ export const logOutRequest = createAsyncThunk(
 
       return response;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
 export const getUserInfoRequest = createAsyncThunk(
   'user/getUserInfoRequest',
-  async (_, thunkAPI) => {
+  async (_, { rejectWithValue }) => {
     try {
       const response = await UsersAPI.getUserInfo();
 
@@ -67,7 +67,7 @@ export const getUserInfoRequest = createAsyncThunk(
 
       return response;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
