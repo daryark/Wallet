@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = process.env.REACT_APP_API_DOMAIN;
-
+const API_BASE_URL = 'https://wallet.goit.ua';
+// const API_BASE_URL = process.env.REACT_APP_API_DOMAIN;
 const $publicHost = axios.create({
   baseURL: API_BASE_URL,
   headers: {
