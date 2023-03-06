@@ -1,5 +1,6 @@
 import { MediaContext } from 'context/MediaContext';
 import { useMediaQuery } from 'react-responsive';
+import { MediaContext } from 'context/MediaContext';
 
 export const Media = ({ children }) => {
   const isMobile = useMediaQuery({ maxWidth: 768 });

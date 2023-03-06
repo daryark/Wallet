@@ -45,7 +45,9 @@ img {
 }
 svg {
 	fill: currentColor;
-}#root {
+}
+
+#root {
     min-height: 100vh;
     margin: 0 auto;
     display: grid;
