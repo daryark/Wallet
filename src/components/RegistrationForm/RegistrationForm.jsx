@@ -1,9 +1,14 @@
+import AuthButton from 'components/AuthButton/AuthButton';
+import AuthButtonActive from 'components/AuthButtonActive/AuthButtonActive';
+
 import { Formik, Form, Field } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import { useNavigate } from 'react-router-dom';
 import { registerRequest } from 'redux/auth/auth-operations';
+
 import registerSchema from './registerSchema';
+import { RegisterBox } from './RegistrationForm.styled';
 
 const initialValues = {
   email: '',
@@ -16,8 +21,8 @@ const RegistrationForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit = ({ email, password, name }, { resetForm }) => {
-    dispatch(registerRequest({ email, password, name }));
+  const handleSubmit = ({ username, email, password }, { resetForm }) => {
+    dispatch(registerRequest({ email, password, username }));
     resetForm();
   };
 
@@ -27,7 +32,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div>
+    <RegisterBox>
       <Formik
         initialValues={initialValues}
         validationSchema={registerSchema}
@@ -42,13 +47,13 @@ const RegistrationForm = () => {
             placeholder="Confirm password"
           />
 
-          <Field type="text" name="name" placeholder="First name" />
+          <Field type="text" name="username" placeholder="First name" />
 
-          <button text="Register"></button>
-          <button text="Log in" onClick={changeRoute}></button>
+          <AuthButtonActive text="Register" />
+          <AuthButton text="Log in" onClick={changeRoute} />
         </Form>
       </Formik>
-    </div>
+    </RegisterBox>
   );
 };
 

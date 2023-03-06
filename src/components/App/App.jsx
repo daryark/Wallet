@@ -1,5 +1,4 @@
 import Layout from 'components/Layout/Layout';
-import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 import { routes } from 'helpers/routes';
 import React, { lazy } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
@@ -21,8 +20,6 @@ export function App() {
           <Route path="*" element={<Navigate to={routes.HOME} />} />
         </Route>
       </Routes>
-
-      <RegistrationForm />
     </>
   );
 }

@@ -37,13 +37,13 @@ const registerSchema = Yup.object().shape({
   name: Yup.string()
     .min(1)
     .max(12, 'Name must contain 12 characters or less')
-    .matches(
-      /^[ЙЦУКНГШЩЗХЇЄЖДЛОРПАВІФЮБЬТИМСЧЯйцукенгшщзхїєждлорпавіфячсмитьбю A-Za-z-]+$/,
-      {
-        message:
-          'Name must contain only latin, cyrillic (ukrainian), space or hyphen',
-      }
-    )
+    // .matches(
+    //   /^[ЙЦУКНГШЩЗХЇЄЖДЛОРПАВІФЮБЬТИМСЧЯйцукенгшщзхїєждлорпавіфячсмитьбю A-Za-z-]+$/,
+    //   {
+    //     message:
+    //       'Name must contain only latin, cyrillic (ukrainian), space or hyphen',
+    //   }
+    // )
     .required('Name is required'),
 });
 
