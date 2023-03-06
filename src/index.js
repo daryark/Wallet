@@ -8,7 +8,7 @@ import { App } from 'components/App/App';
 import { Media } from 'components/Media/Media';
 import { store } from 'redux/store';
 
-import GlobalStyles from 'styles/GlobalStyles';
+import GlobalStyles from 'styles/GlobalStyles/GlobalStyles';
 import { theme } from 'styles/theme';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
