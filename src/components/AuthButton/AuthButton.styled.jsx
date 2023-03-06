@@ -7,15 +7,15 @@ export const StyledAuthButton = styled.button`
   margin: 0 auto;
   padding: 13px 0px;
 
-  border: 1px solid $color-accent;
+  border: 1px solid black;
   border-radius: 20px;
 
-  @include font-circe-light-medium;
+ 
   text-align: center;
   text-transform: uppercase;
 
   background-color: transparent;
-  color: $color-accent;
+  color: green;
 
   cursor: pointer;
 

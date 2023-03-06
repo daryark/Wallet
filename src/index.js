@@ -6,12 +6,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from 'redux/store';
 
-import { store } from 'redux/store';
-
 // import GlobalStyles from 'styles/GlobalStyles';
 import { theme } from 'styles/theme';
 import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

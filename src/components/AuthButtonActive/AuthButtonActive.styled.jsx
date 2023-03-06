@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledAuthButtonActive = styled.button`
   display: block;
@@ -13,7 +13,6 @@ export const StyledAuthButtonActive = styled.button`
   background-color: green;
   color: white;
 
-  /* @include font-circe-light-medium; */
   text-align: center;
   text-transform: uppercase;
 
@@ -25,14 +24,4 @@ export const StyledAuthButtonActive = styled.button`
   &:not(:last-child) {
     margin-bottom: 20px;
   }
-
-  /* @include media-tablet {
-    width: 300px;
-  }
-
-  @include media-desktop {
-    &:hover {
-      transform: scale(1.02);
-    }
-  } */
 `;

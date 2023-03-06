@@ -1,7 +1,8 @@
 import AuthButton from 'components/AuthButton/AuthButton';
 import AuthButtonActive from 'components/AuthButtonActive/AuthButtonActive';
+import AuthField from 'components/AuthField/AuthField';
 
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import { useNavigate } from 'react-router-dom';
@@ -14,7 +15,7 @@ const initialValues = {
   email: '',
   password: '',
   confirmPass: '',
-  name: '',
+  username: '',
 };
 
 const RegistrationForm = () => {
@@ -39,15 +40,15 @@ const RegistrationForm = () => {
         onSubmit={handleSubmit}
       >
         <Form>
-          <Field type="email" name="email" placeholder="E-mail" />
-          <Field type="password" name="password" placeholder="Password" />
-          <Field
+          <AuthField type="email" name="email" placeholder="E-mail" />
+          <AuthField type="password" name="password" placeholder="Password" />
+          <AuthField
             type="password"
             name="confirmPass"
             placeholder="Confirm password"
           />
 
-          <Field type="text" name="username" placeholder="First name" />
+          <AuthField type="text" name="username" placeholder="First name" />
 
           <AuthButtonActive text="Register" />
           <AuthButton text="Log in" onClick={changeRoute} />
