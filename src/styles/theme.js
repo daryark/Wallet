@@ -1,5 +1,5 @@
 export const theme = {
-  colors: {
+  color: {
     accent: '#24CCA7', //mint-green
     text_dark: '#000000',
     text_light: '#FFFFFF',

@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import { App } from 'components/App/App';
-import { Media } from 'components/Media/Media';
+// import { Media } from 'components/Media/Media';
 import { store } from 'redux/store';
 
 import GlobalStyles from 'styles/GlobalStyles/GlobalStyles';
@@ -17,9 +17,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <GlobalStyles />
       <Provider store={store}>
         <BrowserRouter>
-          <Media>
-            <App />
-          </Media>
+          {/* <Media> */}
+          <App />
+          {/* </Media> */}
         </BrowserRouter>
       </Provider>
     </ThemeProvider>

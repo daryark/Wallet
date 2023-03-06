@@ -7,7 +7,7 @@ const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const CurrencyPage = lazy(() => import('pages/CurrencyPage/CurrencyPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
-console.log(window.innerWidth);
+// console.log(window.innerWidth);
 export function App() {
   return (
     <>
