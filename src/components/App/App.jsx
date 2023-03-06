@@ -1,5 +1,5 @@
 import Layout from 'components/Layout/Layout';
-import { routes } from 'helpers/routes';
+import { routes } from 'routes';
 import React, { lazy } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 

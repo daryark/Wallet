@@ -4,10 +4,22 @@ import { App } from 'components/App/App';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 
+import { store } from 'redux/store';
+
+// import GlobalStyles from 'styles/GlobalStyles';
+import { theme } from 'styles/theme';
+import { ThemeProvider } from 'styled-components';
+import { Provider } from 'react-redux';
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      {/* <GlobalStyles /> */}
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    </ThemeProvider>
   </React.StrictMode>
 );
