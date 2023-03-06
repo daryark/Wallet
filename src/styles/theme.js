@@ -40,4 +40,10 @@ export const theme = {
     round: '50%',
   },
   transition: '200ms ease-in-out',
+  breakpoints: {
+    sm: '480px',
+    md: '768px',
+    lg: '1280px',
+    xl: '1920px',
+  },
 };
