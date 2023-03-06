@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import { userReducer } from './auth/authSlice';
 import { globalReducer } from './global/globalSlice';
-import { transactionsReducer } from './transations/transSlice';
+import { transactionsReducer } from './transactions/transSlice';
 
 const rootReducer = combineReducers({
   userData: userReducer,

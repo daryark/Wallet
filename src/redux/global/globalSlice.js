@@ -15,7 +15,7 @@ import {
   editTransaction,
   getTransactionCategories,
   getTransactionSummary,
-} from 'redux/transations/trans-operations';
+} from 'redux/transactions/trans-operations';
 
 const extraActions = [
   loginRequest,
