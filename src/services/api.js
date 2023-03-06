@@ -55,35 +55,23 @@ export const UsersAPI = {
 };
 
 export const TransactionsAPI = {
-  async createTransaction() {
-    const { data } = await $privateHost.post(`/api/transactions`);
-    return data;
-  },
-
   async getUserTransactions() {
     const { data } = await $privateHost.get(`/api/transactions`);
     return data;
   },
 
-  async updateTransaction({ transactionId, params }) {
-    // params = {
-    // transactionDate: "string",
-    // type: "INCOME",
-    // categoryId: "string",
-    // comment: "string",
-    // amount: 0}
-
-    const { data } = await $privateHost.patch(
-      `/api/transactions/${transactionId}`,
-      params
-    );
+  async createTransaction({ user }) {
+    const { data } = await $privateHost.post(`/api/transactions`, user);
     return data;
   },
 
-  async removeTransaction({ transactionId }) {
-    const { data } = await $privateHost.delete(
-      `/api/transactions/${transactionId}`
-    );
+  async updateTransaction({ id, ...user }) {
+    const { data } = await $privateHost.patch(`/api/transactions/${id}`, user);
+    return data;
+  },
+
+  async removeTransaction({ id }) {
+    const { data } = await $privateHost.delete(`/api/transactions/${id}`);
     return data;
   },
 };
@@ -96,10 +84,8 @@ export const TransactionCategoriesAPI = {
 };
 
 export const TransactionSummaryAPI = {
-  async getTransactionSummary({ query }) {
-    // query = {month, year} as numbers!
-
-    const { month, year } = query;
+  async getTransactionSummary({ month, year }) {
+    //  {month, year} must be numbers!
 
     const { data } = await $privateHost.get(
       `/api/transactions-summary?month=${month}&year=${year}`
