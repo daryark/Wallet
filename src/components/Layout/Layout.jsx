@@ -1,17 +1,17 @@
 import React, { Suspense } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Header } from 'components/Header/Header';
 import StatisticsPage from "../../pages/StatisticsPage/StatisticsPage";
 
-// import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
+import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 
 export default function Layout() {
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <>
-      <Header />
+      {isLoggedIn && <Header />}
       <header>
         <nav>
           <h1>
