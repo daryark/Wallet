@@ -13,19 +13,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 } */
-
-body {
-  background-color: grey;
-  backdrop-filter: blur(25px);
-}
-
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-p {
-  padding: 0;
-  margin: 0;
-}
