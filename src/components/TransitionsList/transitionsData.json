@@ -1,0 +1,32 @@
+[
+  {
+    "id": "01",
+    "transactionDate": "01.02.23",
+    "type": "EXPENSE",
+    "categoryId": "category.name",
+    "userId": "string",
+    "comment": "Gift for my wife",
+    "amount": 1000,
+    "balanceAfter": 1500
+  },
+  {
+    "id": "02",
+    "transactionDate": "01.03.23",
+    "type": "INCOME",
+    "categoryId": "category.name",
+    "userId": "string",
+    "comment": "January bonus",
+    "amount": 500,
+    "balanceAfter": 2000
+  },
+  {
+    "id": "03",
+    "transactionDate": "01.05.23",
+    "type": "INCOME",
+    "categoryId": "category.name",
+    "userId": "string",
+    "comment": "Gift",
+    "amount": 650,
+    "balanceAfter": 2650
+  }
+]
