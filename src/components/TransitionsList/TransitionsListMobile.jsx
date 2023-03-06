@@ -4,7 +4,7 @@ import { deleteTransaction } from 'redux/transactions/trans-operations';
 import { setEditTransaction } from 'redux/transactions/transSlice';
 import transitions from './transitionsData.json';
 
-export const TransactionsList = () => {
+export const TransactionsListMobile = () => {
   const dispatch = useDispatch();
 
   const handleEditTransition = contactUser => {
@@ -15,23 +15,17 @@ export const TransactionsList = () => {
     dispatch(deleteTransaction(transitionId));
   };
   return (
-    <table>
-      <tr>
-        <th>Date</th>
-        <th>Type</th>
-        <th>Category</th>
-        <th>Comment</th>
-        <th>Sum</th>
-      </tr>
+    <section>
       {transitions.map(
         ({ id, transactionDate, type, categoryId, comment, amount }) => (
-          <tr key={id}>
-            <td>{transactionDate}</td>
-            <td>{type}</td>
-            <td>{categoryId}</td>
-            <td>{comment}</td>
-            <td>{amount}</td>
-            <td>
+          <ul key={id}>
+            <li>Date: {transactionDate}</li>
+            <li>Type: {type}</li>
+            <li>Category: {categoryId}</li>
+            <li>Comment: {comment}</li>
+            <li>Sum: {amount}</li>
+            <li>
+              <button onClick={() => handleDeleteTransition(id)}>Delete</button>
               <button
                 onClick={() =>
                   handleEditTransition({
@@ -46,13 +40,20 @@ export const TransactionsList = () => {
               >
                 Edit
               </button>
-            </td>
-            <td>
-              <button onClick={() => handleDeleteTransition(id)}>Delete</button>
-            </td>
-          </tr>
+            </li>
+          </ul>
         )
       )}
-    </table>
+    </section>
+    // <table>
+    //   <tr>
+    //     <th>Date</th>
+    //     <th>Type</th>
+    //     <th>Category</th>
+    //     <th>Comment</th>
+    //     <th>Sum</th>
+    //   </tr>
+    //
+    // </table>
   );
 };

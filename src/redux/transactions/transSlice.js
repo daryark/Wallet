@@ -13,11 +13,17 @@ const initialState = {
   transactions: [],
   categories: [],
   summary: null,
+  editTransaction: null,
 };
 
 const transactionsSlice = createSlice({
   name: 'transition',
   initialState,
+  reducers: {
+    setEditTransaction(state, { payload }) {
+      state.editContact = payload;
+    },
+  },
   extraReducers: builder => {
     builder
       // -------- fetchTransactions ---------
@@ -53,5 +59,5 @@ const transactionsSlice = createSlice({
       });
   },
 });
-
+export const { setEditTransaction } = transactionsSlice.actions;
 export const transactionsReducer = transactionsSlice.reducer;
