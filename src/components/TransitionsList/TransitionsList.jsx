@@ -33,7 +33,7 @@ export const TransactionsList = () => {
               <td>{type}</td>
               <td>{categoryId}</td>
               <td>{comment}</td>
-              <td>{amount}</td>
+              <td>{parseFloat(amount).toFixed(2)}</td>
               <td>
                 <button
                   onClick={() =>

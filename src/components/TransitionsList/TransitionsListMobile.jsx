@@ -1,8 +1,20 @@
 import { useDispatch } from 'react-redux';
 import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
+import { RiEdit2Line } from 'react-icons/ri';
+
 import { deleteTransaction } from 'redux/transactions/trans-operations';
 import { setEditTransaction } from 'redux/transactions/transSlice';
 import transitions from './transitionsData.json';
+
+import { Container } from 'components/common/common.styled';
+import {
+  StyledList,
+  StyledItem,
+  StyledSpan,
+  StyledDeleteBtn,
+  StyledEditBtn,
+  StyledSum,
+} from './TransitionsList.styled';
 
 export const TransactionsListMobile = () => {
   const dispatch = useDispatch();
@@ -15,18 +27,35 @@ export const TransactionsListMobile = () => {
     dispatch(deleteTransaction(transitionId));
   };
   return (
-    <section>
+    <Container>
       {transitions.map(
         ({ id, transactionDate, type, categoryId, comment, amount }) => (
-          <ul key={id}>
-            <li>Date: {transactionDate}</li>
-            <li>Type: {type}</li>
-            <li>Category: {categoryId}</li>
-            <li>Comment: {comment}</li>
-            <li>Sum: {amount}</li>
-            <li>
-              <button onClick={() => handleDeleteTransition(id)}>Delete</button>
-              <button
+          <StyledList key={id}>
+            <StyledItem>
+              <StyledSpan>Date</StyledSpan>
+              {transactionDate}
+            </StyledItem>
+            <StyledItem>
+              <StyledSpan>Type</StyledSpan>
+              {type}
+            </StyledItem>
+            <StyledItem>
+              <StyledSpan>Category</StyledSpan>
+              {categoryId}
+            </StyledItem>
+            <StyledItem>
+              <StyledSpan>Comment</StyledSpan>
+              {comment}
+            </StyledItem>
+            <StyledItem>
+              <StyledSpan>Sum</StyledSpan>
+              <StyledSum>{parseFloat(amount).toFixed(2)}</StyledSum>
+            </StyledItem>
+            <StyledItem>
+              <StyledDeleteBtn onClick={() => handleDeleteTransition(id)}>
+                Delete
+              </StyledDeleteBtn>
+              <StyledEditBtn
                 onClick={() =>
                   handleEditTransition({
                     id,
@@ -38,22 +67,13 @@ export const TransactionsListMobile = () => {
                   })
                 }
               >
+                <RiEdit2Line size={14} />
                 Edit
-              </button>
-            </li>
-          </ul>
+              </StyledEditBtn>
+            </StyledItem>
+          </StyledList>
         )
       )}
-    </section>
-    // <table>
-    //   <tr>
-    //     <th>Date</th>
-    //     <th>Type</th>
-    //     <th>Category</th>
-    //     <th>Comment</th>
-    //     <th>Sum</th>
-    //   </tr>
-    //
-    // </table>
+    </Container>
   );
 };
