@@ -15,7 +15,6 @@ import { useState } from 'react';
 
 export const Header = ({ normalizedTheme }) => {
   const [modalOpen, setModalOpen] = useState(false);
-
   const { username } = useSelector(selectUser);
   const { isMobile } = useWindowSize();
 

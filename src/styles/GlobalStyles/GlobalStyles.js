@@ -10,6 +10,7 @@ html {
 
 body {
   margin: 0;
+  /* background-color: ${p => p.theme.color.bg_grey_main}; */
 }
 
 p,
@@ -55,6 +56,7 @@ svg {
     grid-template-rows: auto 1fr auto;
     grid-template-areas:
       'header header'
+      'sidebar sidebar'
       'main main'
       'footer footer';
     @media (min-width: ${theme.breakpoints.md}) {
