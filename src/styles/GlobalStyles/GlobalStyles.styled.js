@@ -10,7 +10,8 @@ html {
 
 body {
   margin: 0;
-  color: ${({ theme }) => theme.color.text_pink}
+  color: ${({ theme }) => theme.colors.color.text_dark};
+  background-color: ${({ theme }) => theme.colors.color.text_white};
 }
 
 p,

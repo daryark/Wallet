@@ -9,7 +9,7 @@ import { getUserInfoRequest } from 'redux/auth/auth-operations';
 
 import { colors } from 'styles/colors/index';
 import { theme } from 'styles/theme';
-import GlobalStyles from 'styles/GlobalStyles/GlobalStyles';
+import GlobalStyles from 'styles/GlobalStyles/GlobalStyles.styled';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const CurrencyPage = lazy(() => import('pages/CurrencyPage/CurrencyPage'));

@@ -12,6 +12,7 @@ import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 
 import { theme } from 'styles/theme';
 import { colors } from 'styles/colors';
+import GlobalStyles from 'styles/GlobalStyles/GlobalStyles.styled';
 
 export default function Layout() {
   const themeTitle = useSelector(selectTheme);
@@ -25,6 +26,7 @@ export default function Layout() {
 
   return (
     <ThemeProvider theme={normalizedTheme}>
+      <GlobalStyles />
       {isLoggedIn && (
         <>
           <Header />
