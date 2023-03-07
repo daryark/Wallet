@@ -36,7 +36,7 @@ export const TransactionsList = () => {
           ({ id, transactionDate, type, categoryId, comment, amount }) => (
             <StyledRow key={id}>
               <td>{transactionDate}</td>
-              <td>{type}</td>
+              <td>{type === 'INCOME' ? '-' : '+'}</td>
               <td>{categoryId}</td>
               <td>{comment}</td>
               <td>{parseFloat(amount).toFixed(2)}</td>
