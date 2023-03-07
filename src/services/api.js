@@ -1,4 +1,3 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const API_BASE_URL = 'https://wallet.goit.ua';
@@ -71,8 +70,8 @@ export const TransactionsAPI = {
     return data;
   },
 
-  async removeTransaction({ id }) {
-    const { data } = await $privateHost.delete(`/api/transactions/${id}`);
+  async removeTransaction({ key }) {
+    const { data } = await $privateHost.delete(`/api/transactions/${key}`);
     return data;
   },
 };

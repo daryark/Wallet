@@ -1,4 +1,4 @@
-import { StyledLoader, StyledBG } from './styles';
+import { StyledLoader, StyledBG } from './Loader.styled';
 
 export const Loader = () => {
   return (
