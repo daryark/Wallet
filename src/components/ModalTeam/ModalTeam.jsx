@@ -3,14 +3,14 @@ import { useEffect } from 'react';
 import { ModalCloseBtn } from 'reusable';
 import { Modal } from './ModalTeam.styled';
 import { creators } from './teamMembers';
-import { selectIsModalOpen } from 'redux/modal/modalSelector';
+import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
 
 function ModalTeam() {
   const dispatch = useDispatch();
   useEffect(() => {
     const onEscClose = e => {
       if (e.code === 'Escape') {
-        dispatch(selectIsModalOpen());
+        dispatch(isModalAddTransactionOpen());
       }
     };
     document.addEventListener('keydown', onEscClose);

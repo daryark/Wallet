@@ -1,13 +1,13 @@
 import { TfiClose } from 'react-icons/tfi';
 import { useDispatch } from 'react-redux';
-import { toggleModal } from 'redux/modal/modalSlice';
+import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
 import { ButtonClose } from './ModalCloseBtn.styled';
 
 function ModalCloseBtn() {
   const dispatch = useDispatch();
 
   function handleModalClose() {
-    dispatch(toggleModal());
+    dispatch(isModalAddTransactionOpen());
   }
 
   return (
