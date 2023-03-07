@@ -1,4 +1,4 @@
-import { StyledBackdrop, StyledModal, StyledBtn } from './styles';
+import { StyledBackdrop, StyledModal, StyledBtn } from './LogoutModal.styled';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/auth-selectors';
 import { useEffect } from 'react';

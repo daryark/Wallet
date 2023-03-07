@@ -70,8 +70,8 @@ export const TransactionsAPI = {
     return data;
   },
 
-  async removeTransaction({ id }) {
-    const { data } = await $privateHost.delete(`/api/transactions/${id}`);
+  async removeTransaction({ key }) {
+    const { data } = await $privateHost.delete(`/api/transactions/${key}`);
     return data;
   },
 };
@@ -93,3 +93,12 @@ export const TransactionSummaryAPI = {
     return data;
   },
 };
+
+export const CurrencyMonoAPI = {
+  async getCurrencyMonoBank() {
+    const currency = await axios.get('https://api.monobank.ua/bank/currency');
+
+    return currency.data;
+  },
+};
+//freelancer, 112233Qq; lego@gmail.com
