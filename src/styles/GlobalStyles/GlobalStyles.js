@@ -48,6 +48,9 @@ svg {
 }
 
 #root {
+  background-image: url(images/bg_desktop.png);
+}
+/* #root {
     min-height: 100vh;
     margin: 0 auto;
     display: grid;
@@ -71,7 +74,7 @@ svg {
     @media (min-width: ${theme.breakpoints.xl}) {
       max-width: ${theme.breakpoints.xl};
     }
-  }
+  } */
   .isHidden {
     position: absolute;
     width: 1px;
