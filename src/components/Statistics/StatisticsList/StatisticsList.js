@@ -7,10 +7,13 @@ import {
   Cube,
   StatisticsWrapper,
 } from './StatisticsList.styled';
-import { theme } from 'styles/theme';
 import { categories } from './categories';
+import { useTheme } from 'styled-components';
 
 const CategorySum = () => {
+  const theme = useTheme();
+  console.log(theme);
+
   return (
     <>
       <StatisticsListTitle>
@@ -20,7 +23,7 @@ const CategorySum = () => {
 
       <StatisticsList>
         {categories.map(({ title, color }) => (
-          <StatisticsItem>
+          <StatisticsItem key={title}>
             <Cube color={color} />
             <StatisticsWrapper>
               <p>{title}</p> <p>800</p>
@@ -32,11 +35,11 @@ const CategorySum = () => {
       <StatisticsSumList>
         <StatisticsSumItem>
           <p>Expenses</p>
-          <p style={{ color: `${theme.color.text_pink}` }}>22 549.24</p>
+          <p style={{ color: theme.color.text_pink }}>22 549.24</p>
         </StatisticsSumItem>
         <StatisticsSumItem>
           <p>Income</p>
-          <p style={{ color: `${theme.color.accent}` }}>27 350.00</p>
+          <p style={{ color: theme.color.accent }}>27 350.00</p>
         </StatisticsSumItem>
       </StatisticsSumList>
     </>
