@@ -1,5 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+@font-face {
+  font-family: Circe;
+  src: url('./assets/fonts/Circe-Regular.ttf');
+  font-weight: 400;
+}
+@font-face {
+  font-family: Circe;
+  src: url('./assets/fonts/Circe-Bold.ttf');
+  font-weight: 700;
+}
 
+body {
+  font-family: Circe, sans-serif;
+  font-weight: 400;
+}
+
+/* @import-normalize; /* bring in normalize.css styles */
+/* 
 body {
   background-color: #e7eaf2;
   font-family: 'Poppins', sans-serif;
@@ -17,3 +35,7 @@ body {
     background-image: url(./images/bg_desktop.png);
   }
 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+} */

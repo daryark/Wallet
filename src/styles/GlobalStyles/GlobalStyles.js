@@ -56,6 +56,7 @@ svg {
     grid-template-rows: auto 1fr auto;
     grid-template-areas:
       'header header'
+      'sidebar sidebar'
       'main main'
       'footer footer';
     @media (min-width: ${theme.breakpoints.md}) {
