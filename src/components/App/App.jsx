@@ -1,13 +1,15 @@
-import Layout from 'components/Layout/Layout';
-import { routes } from 'routes';
 import React, { lazy, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import { theme } from 'styles/theme';
-import { colors } from 'styles/colors/index';
-import { useDispatch } from 'react-redux';
+import Layout from 'components/Layout/Layout';
+import { routes } from 'routes';
 import { getUserInfoRequest } from 'redux/auth/auth-operations';
+
+import { colors } from 'styles/colors/index';
+import { theme } from 'styles/theme';
+import GlobalStyles from 'styles/GlobalStyles/GlobalStyles';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const CurrencyPage = lazy(() => import('pages/CurrencyPage/CurrencyPage'));
@@ -29,6 +31,7 @@ export function App() {
 
   return (
     <ThemeProvider theme={normalizedTheme}>
+      <GlobalStyles />
       <Routes>
         <Route path={routes.HOME} element={<Layout />}>
           <Route index element={<HomePage />} />
