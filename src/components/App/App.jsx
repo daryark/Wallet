@@ -1,11 +1,13 @@
 import Layout from 'components/Layout/Layout';
 import { routes } from 'routes';
-import React, { lazy } from 'react';
+import React, { lazy, useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import { theme } from 'styles/theme';
 import { colors } from 'styles/colors/index';
+import { useDispatch } from 'react-redux';
+import { getUserInfoRequest } from 'redux/auth/auth-operations';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const CurrencyPage = lazy(() => import('pages/CurrencyPage/CurrencyPage'));
@@ -19,6 +21,11 @@ console.log(window.innerWidth);
 
 export function App() {
   const normalizedTheme = { ...theme, colors: colors['dark'] };
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserInfoRequest());
+  }, [dispatch]);
 
   return (
     <ThemeProvider theme={normalizedTheme}>
