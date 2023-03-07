@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage';
 
 import { userReducer } from './auth/authSlice';
 import { globalReducer } from './global/globalSlice';
+import { currencyReducer } from './monobank/monoSlice';
 import { transactionsReducer } from './transactions/transSlice';
 
 const persistedGlobalReducer = persistReducer(
@@ -38,6 +39,7 @@ const rootReducer = combineReducers({
   userData: userReducer,
   transactionsData: transactionsReducer,
   globalData: persistedGlobalReducer,
+  currencyData: currencyReducer,
 });
 
 export const store = configureStore({
