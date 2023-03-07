@@ -7,7 +7,7 @@ import {
   StyledIcon,
   StyledAside,
 } from './SideBar.styled';
-import { useWindowSize } from 'components/Header/hooks/useWindowSize';
+import { useWindowSize } from 'hooks/useWindowSize';
 import { routes } from 'routes';
 
 export const Sidebar = () => {
