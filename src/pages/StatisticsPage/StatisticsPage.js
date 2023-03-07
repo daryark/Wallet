@@ -1,8 +1,9 @@
 import React from 'react';
 import { Statistics } from '../../components/Statistics/Statistics';
 import CategorySum from 'components/Statistics/StatisticsList/StatisticsList';
+import WithAuthRedirect from 'HOC/WithAuthRedirect';
 
-export default function StatisticsPage() {
+function StatisticsPage() {
   return (
     <div>
       RegisterPage
@@ -11,3 +12,5 @@ export default function StatisticsPage() {
     </div>
   );
 }
+
+export default WithAuthRedirect(StatisticsPage, '/login');

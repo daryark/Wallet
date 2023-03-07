@@ -10,6 +10,7 @@ html {
 
 body {
   margin: 0;
+  color: ${({ theme }) => theme.color.text_pink}
 }
 
 p,
