@@ -46,7 +46,7 @@ const transactionsSlice = createSlice({
 
       // -------- deleteTransaction --------
       .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
-        state.transactions = state.transactions.map(t => t.id !== payload);
+        state.transactions = state.transactions.filter(t => t.id !== payload);
       })
 
       // --- editTransaction ---
