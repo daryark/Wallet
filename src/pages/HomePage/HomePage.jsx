@@ -1,14 +1,16 @@
 import { TransactionsList, TransactionsListMobile } from 'components';
-import CurrencyPage from 'pages/CurrencyPage/CurrencyPage';
+import WithAuthRedirect from 'HOC/WithAuthRedirect';
+// import CurrencyPage from 'pages/CurrencyPage/CurrencyPage';
 import React from 'react';
 
-export default function HomePage() {
+function HomePage() {
   return (
     <>
       <div>HomePage is showing</div>
       <TransactionsListMobile />
       <TransactionsList />
-      <CurrencyPage />
+      {/* <CurrencyPage /> */}
     </>
   );
 }
+export default WithAuthRedirect(HomePage, '/login');

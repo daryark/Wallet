@@ -51,7 +51,7 @@ const RegistrationForm = () => {
           <AuthField type="text" name="name" placeholder="First name" />
 
           <AuthButtonActive text="Register" />
-          <AuthButton text="Log in" onClick={changeRoute} />
+          <AuthButton text="Log in" path={'/login'} onClick={changeRoute} />
         </Form>
       </Formik>
     </RegisterBox>
