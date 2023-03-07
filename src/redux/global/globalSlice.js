@@ -45,6 +45,7 @@ const globalSlice = createSlice({
   reducers: {
     isModalAddTransactionOpen(state) {
       state.isModalOpen = !state.isModalOpen;
+      console.log('isModalAddTransactionOpen', state.isModalOpen);
     },
     // toggleThemeTitle(state) {
     //   state.themeTitle = state.themeTitle === 'light' ? 'dark' : 'light';

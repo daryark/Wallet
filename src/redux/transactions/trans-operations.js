@@ -22,7 +22,8 @@ export const addTransaction = createAsyncThunk(
   'transactions/addTransition',
   async (formData, { rejectWithValue }) => {
     try {
-      const { response } = await TransactionsAPI.createTransaction(formData);
+      const response = await TransactionsAPI.createTransaction(formData);
+      // console.log('response', response);
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -58,7 +59,8 @@ export const getTransactionCategories = createAsyncThunk(
   'transactions/getTransactionCategories',
   async (_, { rejectWithValue }) => {
     try {
-      const { response } = await TransactionCategoriesAPI();
+      const response =
+        await TransactionCategoriesAPI.getTransactionCategories();
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -70,7 +72,9 @@ export const getTransactionSummary = createAsyncThunk(
   'transactions/getTransactionSummary',
   async (formData, { rejectWithValue }) => {
     try {
-      const { response } = await TransactionSummaryAPI(formData);
+      const { response } = await TransactionSummaryAPI.getTransactionSummary(
+        formData
+      );
       return response;
     } catch (error) {
       return rejectWithValue(error.message);

@@ -27,7 +27,7 @@ const transactionsSlice = createSlice({
 
       // ------- addTransaction -------
       .addCase(addTransaction.fulfilled, (state, { payload }) => {
-        state.transactions = [...state.transactions, payload.transaction];
+        state.transactions = [...state.transactions, payload];
       })
 
       // -------- deleteTransaction --------

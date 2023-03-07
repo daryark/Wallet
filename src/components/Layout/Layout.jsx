@@ -20,6 +20,7 @@ export default function Layout() {
             <div>
               <NavLink to={'/home'}>Home</NavLink>
               {/* different content on logged in user and no-logged in */}
+
               <NavLink to={'/diagram'}>Dashboard</NavLink>
               {/* <Logout /> //add logout component
                     //add currency page on media-mobile */}

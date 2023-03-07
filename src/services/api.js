@@ -60,8 +60,8 @@ export const TransactionsAPI = {
     return data;
   },
 
-  async createTransaction({ user }) {
-    const { data } = await $privateHost.post(`/api/transactions`, user);
+  async createTransaction(transaction) {
+    const { data } = await $privateHost.post(`/api/transactions`, transaction);
     return data;
   },
 

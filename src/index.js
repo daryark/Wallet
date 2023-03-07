@@ -9,11 +9,12 @@ import { store } from 'redux/store';
 // import GlobalStyles from 'styles/GlobalStyles';
 import { theme } from 'styles/theme';
 import { ThemeProvider } from 'styled-components';
+import GlobalStyles from 'styles/GlobalStyles';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      {/* <GlobalStyles /> */}
+      <GlobalStyles />
       <Provider store={store}>
         <BrowserRouter>
           <App />
