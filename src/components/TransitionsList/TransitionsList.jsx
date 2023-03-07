@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { RiEdit2Line } from 'react-icons/ri';
 
 import { Table } from 'antd';
 
@@ -6,6 +7,7 @@ import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
 import { deleteTransaction } from 'redux/transactions/trans-operations';
 import { setEditTransaction } from 'redux/transactions/transSlice';
 import transitions from './transitionsData.json';
+import { StyledDeleteBtn, StyledEditBtn } from './TransitionsList.styled';
 // import {
 //   StyledRow,
 //   StyledTable,
@@ -63,10 +65,12 @@ export const TransactionsList = () => {
       render: (_, record) => {
         return (
           <>
-            <button onClick={() => handleEditTransition(record)}>Edit</button>
-            <button onClick={() => handleDeleteTransition(record.key)}>
+            <StyledEditBtn onClick={() => handleEditTransition(record)}>
+              <RiEdit2Line size={14} />
+            </StyledEditBtn>
+            <StyledDeleteBtn onClick={() => handleDeleteTransition(record.key)}>
               Delete
-            </button>
+            </StyledDeleteBtn>
           </>
         );
       },
@@ -82,7 +86,6 @@ export const TransactionsList = () => {
       amount,
     })
   );
-  console.log(dataSource);
 
   return <Table dataSource={dataSource} columns={columns}></Table>;
 };

@@ -9,10 +9,17 @@ import {
   getTransactionSummary,
 } from './trans-operations';
 
+import {
+  loginRequest,
+  logOutRequest,
+  getUserInfoRequest,
+} from 'redux/auth/auth-operations';
+
 const initialState = {
   transactions: [],
   categories: [],
   summary: null,
+  balance: 0,
   editTransaction: null,
 };
 
@@ -56,6 +63,16 @@ const transactionsSlice = createSlice({
       // --- getTransactionSummary ---
       .addCase(getTransactionSummary.fulfilled, (state, { payload }) => {
         state.summary = payload;
+      })
+      // --- logOutRequest ---
+      .addCase(logOutRequest.fulfilled, () => ({ ...initialState }))
+      // --- loginRequest ---
+      .addCase(loginRequest.fulfilled, (state, { payload }) => {
+        state.balance = payload.balance;
+      })
+      // --- getUserInfoRequest ---
+      .addCase(getUserInfoRequest.fulfilled, (state, { payload }) => {
+        state.balance = payload.balance;
       });
   },
 });
