@@ -36,11 +36,13 @@ const transactionsSlice = createSlice({
       // -------- fetchTransactions ---------
       .addCase(fetchTransactions.fulfilled, (state, { payload }) => {
         state.transactions = payload.transaction;
+        state.balance = payload.balanceAfter;
       })
 
       // ------- addTransaction -------
       .addCase(addTransaction.fulfilled, (state, { payload }) => {
         state.transactions = [...state.transactions, payload.transaction];
+        state.balance = payload.balanceAfter;
       })
 
       // -------- deleteTransaction --------
@@ -53,6 +55,7 @@ const transactionsSlice = createSlice({
         state.transactions = state.transactions.map(t =>
           t.id === payload.id ? payload : t
         );
+        state.balance = payload.balanceAfter;
       })
 
       // --- getTransactionCategories ---
