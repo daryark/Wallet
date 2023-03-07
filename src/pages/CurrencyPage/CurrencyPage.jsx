@@ -13,7 +13,16 @@ export default function CurrencyPage() {
     const currencyFromStorage = JSON.parse(
       localStorage.getItem('currencyInTheMoment')
     );
-    const dateFetchCurrency = currencyFromStorage.map(({ date }) => date);
+    const dateLastFetching = Object.values(...currencyFromStorage).find(
+      (el, idx) => {
+        return idx === 2;
+      }
+    );
+
+    const newDate = Number(new Date().getTime());
+
+    const shouldNewFetch = newDate - dateLastFetching;
+    if (shouldNewFetch >= 86400000) return;
 
     dispatch(fetchCurrencyMonoBank());
   }, [dispatch]);
