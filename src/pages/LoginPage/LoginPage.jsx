@@ -1,5 +1,22 @@
-import React from 'react';
+import LoginForm from 'components/LoginForm/LoginForm';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 
 export default function LoginPage() {
-  return <div>LoginPage</div>;
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLoggedIn) return;
+
+    navigate('/');
+  }, [isLoggedIn, navigate]);
+  return (
+    <div>
+      LoginPage
+      <LoginForm />
+    </div>
+  );
 }
