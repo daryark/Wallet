@@ -5,6 +5,7 @@ export const StyledList = styled.ul`
   min-width: 280px;
   max-width: 500px;
   border-radius: 10px;
+  overflow: hidden;
   background-color: ${p => p.theme.color.bg_white};
 
   font-size: ${p => p.theme.fontSizes.s};
@@ -18,9 +19,19 @@ export const StyledItem = styled.li`
   justify-content: space-between;
   padding: 12px 20px 4px 15px;
 
-  border-left: 5px solid
-    ${({ type, theme }) =>
+  position: relative;
+
+  &::before {
+    content: '';
+    width: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: ${({ type, theme }) =>
       type === 'EXPENSE' ? theme.color.accent : theme.color.text_pink};
+  }
+
   border-bottom: ${p => p.theme.borders.normal} #dcdcdf;
   &:first-of-type {
     border-top-left-radius: 10px;
@@ -44,7 +55,7 @@ export const StyledSpan = styled.span`
 `;
 
 export const StyledDeleteBtn = styled.button`
-  width: 90px;
+  width: 67px;
   font-size: ${p => p.theme.fontSizes.xs};
   color: ${p => p.theme.color.text_light};
   background-color: ${p => p.theme.color.accent};
