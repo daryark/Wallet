@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { theme } from 'styles/theme';
 
 export const StatisticsListTitle = styled.div`
   width: 280px;
@@ -7,16 +6,16 @@ export const StatisticsListTitle = styled.div`
   padding: 0 20px;
   margin-bottom: 14px;
 
-  background-color: ${theme.color.bg_white};
-  border-radius: ${theme.radii.large};
+  background-color: ${({ theme }) => theme.color.bg_white};
+  border-radius: ${({ theme }) => theme.radii.large};
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  font-size: ${theme.fontSizes.m};
-  font-weight: ${theme.fontWeights.bold};
-  line-height: ${theme.lineHeights.body};
+  font-size: ${({ theme }) => theme.fontSizes.m};
+  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  line-height: ${({ theme }) => theme.lineHeights.body};
 `;
 
 export const StatisticsList = styled.ul`
@@ -31,9 +30,9 @@ export const StatisticsItem = styled.li`
   display: flex;
   align-items: center;
 
-  font-size: ${theme.fontSizes.s};
-  font-weight: ${theme.fontWeights.normal};
-  line-height: ${theme.space[6]}px;
+  font-size: ${({ theme }) => theme.fontSizes.s};
+  font-weight: ${({ theme }) => theme.fontWeights.normal};
+  line-height: ${({ theme }) => theme.space[6]}px;
 
   position: relative;
 
@@ -63,7 +62,7 @@ export const StatisticsSumList = styled.ul`
 
 export const StatisticsSumItem = styled(StatisticsItem)`
   justify-content: space-between;
-  font-weight: ${theme.fontWeights.bold};
+  font-weight: ${({ theme }) => theme.fontWeights.bold};
   border: none;
   box-shadow: none;
 
