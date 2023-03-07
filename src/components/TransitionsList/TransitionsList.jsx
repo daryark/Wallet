@@ -7,7 +7,15 @@ import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
 import { deleteTransaction } from 'redux/transactions/trans-operations';
 import { setEditTransaction } from 'redux/transactions/transSlice';
 import transitions from './transitionsData.json';
-import { StyledDeleteBtn, StyledEditBtn } from './TransitionsList.styled';
+import {
+  StyledBox,
+  BtnBox,
+  StyledDeleteBtn,
+  StyledEditBtn,
+  StyledAmount,
+} from './TransitionsList.styled';
+// import './styles.css';
+
 // import {
 //   StyledRow,
 //   StyledTable,
@@ -56,7 +64,7 @@ export const TransactionsList = () => {
       key: 'sum',
       render: (_, record) => {
         const amount = parseFloat(record.amount).toFixed(2);
-        return <div>{amount}</div>;
+        return <StyledAmount type={record.type}>{amount}</StyledAmount>;
       },
     },
     {
@@ -64,14 +72,14 @@ export const TransactionsList = () => {
       key: 'action',
       render: (_, record) => {
         return (
-          <>
+          <BtnBox>
             <StyledEditBtn onClick={() => handleEditTransition(record)}>
               <RiEdit2Line size={14} />
             </StyledEditBtn>
             <StyledDeleteBtn onClick={() => handleDeleteTransition(record.key)}>
               Delete
             </StyledDeleteBtn>
-          </>
+          </BtnBox>
         );
       },
     },
@@ -87,5 +95,9 @@ export const TransactionsList = () => {
     })
   );
 
-  return <Table dataSource={dataSource} columns={columns}></Table>;
+  return (
+    <StyledBox>
+      <Table dataSource={dataSource} columns={columns}></Table>
+    </StyledBox>
+  );
 };

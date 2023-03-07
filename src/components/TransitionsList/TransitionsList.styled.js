@@ -78,37 +78,104 @@ export const StyledEditBtn = styled.button`
 `;
 
 // ====================================== styled for tablet and desktop
-export const StyledTable = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  overflow: hidden;
-  text-align: center;
-`;
-
-export const StyledThead = styled.thead`
-  width: 100%;
-  position: sticky;
-  z-index: 100;
-  font-size: ${p => p.theme.fontSizes.m};
-  font-weight: ${p => p.theme.fontWeights.bold};
-  background-color: ${p => p.theme.color.bg_white};
-  border-radius: ${p => p.theme.radii.large};
-  padding: 16px 20px;
-`;
-
-export const StyledTbody = styled.tbody`
-  /* width: 100%; */
+export const StyledAmount = styled.span`
   font-size: ${p => p.theme.fontSizes.s};
+  color: ${({ type, theme }) =>
+    type === '+' ? theme.color.accent : theme.color.text_pink};
+  font-weight: ${p => p.theme.fontWeights.bold};
 `;
 
-export const StyledRow = styled.tr`
-  padding: 14px 20px;
-  border-bottom: ${p => p.theme.borders.normal} #dcdcdf;
-  &:last-of-type {
-    border-bottom: none;
+// export const StyledTable = styled.table`
+//   width: 100%;
+//   border-collapse: collapse;
+//   overflow: hidden;
+//   text-align: center;
+// `;
+
+// export const StyledThead = styled.thead`
+//   width: 100%;
+//   position: sticky;
+//   z-index: 100;
+//   font-size: ${p => p.theme.fontSizes.m};
+//   font-weight: ${p => p.theme.fontWeights.bold};
+//   background-color: ${p => p.theme.color.bg_white};
+//   border-radius: ${p => p.theme.radii.large};
+//   padding: 16px 20px;
+// `;
+
+// export const StyledTbody = styled.tbody`
+//   /* width: 100%; */
+//   font-size: ${p => p.theme.fontSizes.s};
+// `;
+export const BtnBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: ${p => p.theme.space[2]}px;
+`;
+
+export const StyledBox = styled.div`
+  & .ant-table-wrapper {
+    & .ant-table-container table > thead > tr > :first-child {
+      border-start-start-radius: 0px;
+    }
+    & .ant-table-container table > thead > tr > :last-child {
+      border-start-end-radius: 0px;
+    }
+    & .ant-table-tbody > tr > td {
+      padding: 14px 20px;
+    }
+    & .ant-table {
+      border: none;
+      color: ${p => p.theme.color.text_dark};
+      background-color: transparent;
+    }
+    & .ant-table-thead > tr > th {
+      padding: 16px 20px;
+      background-color: ${p => p.theme.color.bg_white};
+      border: none;
+    }
   }
-  /* width: 100%;
-  display: inline-block;
-   
-   */
+
+  & .ant-table-content {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    background-color: transparent;
+  }
+
+  & .ant-table-thead {
+    width: 100%;
+    position: sticky;
+    z-index: 100;
+    font-size: ${p => p.theme.fontSizes.m};
+    font-weight: ${p => p.theme.fontWeights.bold};
+    background-color: ${p => p.theme.color.bg_white};
+    border: none;
+    border-radius: ${p => p.theme.radii.large};
+    & .ant-table-cell {
+      background-color: transparent;
+      border-bottom: none;
+      &::before {
+        background-color: transparent;
+        border: none;
+      }
+    }
+  }
+  & .ant-table-tbody {
+    background-color: transparent;
+  }
+  & .ant-table-row {
+    padding: 14px 20px;
+    border-bottom: ${p => p.theme.borders.normal} #dcdcdf;
+    font-size: ${p => p.theme.fontSizes.s};
+    background-color: transparent;
+    /* &:first-of-type {
+      border-bottom: none;
+    } */
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
 `;
