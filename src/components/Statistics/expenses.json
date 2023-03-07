@@ -1,0 +1,49 @@
+[
+  {
+    "id": 1,
+    "title": "Main expenses",
+    "color": "#FED057",
+    "percent": 8700.00
+  },
+  {
+    "id": 2,
+    "title": "Products",
+    "color": "#FFD8D0",
+    "percent": 3800.74
+  }, {
+    "id": 3,
+    "title": "Car",
+    "color": "#FD9498",
+    "percent": 1500.00
+  }, {
+    "id": 4,
+    "title": "Self care",
+    "color": "#C5BAFF",
+    "percent": 800.00
+  }, {
+    "id": 5,
+    "title": "Child care",
+    "color": "#6E78E8",
+    "percent": 2208.50
+  }, {
+    "id": 6,
+    "title": "Household products",
+    "color": "#4A56E2",
+    "percent": 300.00
+  }, {
+    "id": 7,
+    "title": "Education",
+    "color": "#81E1FF",
+    "percent": 3400.00
+  }, {
+    "id": 8,
+    "title": "Leisure",
+    "color": "#24CCA7",
+    "percent": 1230.00
+  }, {
+    "id": 9,
+    "title": "Other expenses",
+    "color": "#00AD84",
+    "percent": 610.00
+  }
+  ]

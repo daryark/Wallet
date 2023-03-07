@@ -50,7 +50,11 @@ const LoginForm = () => {
           />
 
           <AuthButtonActive text="Log in" />
-          <AuthButton text="Register" onClick={changeRoute} />
+          <AuthButton
+            text="Register"
+            path={'/register'}
+            onClick={changeRoute}
+          />
         </Form>
       </Formik>
     </LoginBox>
