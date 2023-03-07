@@ -2,15 +2,16 @@ import AuthButton from 'components/AuthButton/AuthButton';
 import AuthButtonActive from 'components/AuthButtonActive/AuthButtonActive';
 import AuthField from 'components/AuthField/AuthField';
 
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import { useNavigate } from 'react-router-dom';
 import { registerRequest } from 'redux/auth/auth-operations';
 
 import registerSchema from './registerSchema';
-import { StyledError } from './RegistrationForm.styled';
+
 import { RegisterBox } from './RegistrationForm.styled';
+import { MdEmail, MdLock, MdAccountBox } from 'react-icons/md';
 
 const initialValues = {
   email: '',
@@ -40,27 +41,38 @@ const RegistrationForm = () => {
         validationSchema={registerSchema}
         onSubmit={handleSubmit}
       >
-        {({ errors, touched }) => (
-          <Form>
-            <AuthField type="email" name="email" placeholder="E-mail" />
-            {errors.email && touched.email ? (
-              <StyledError>{errors.email}</StyledError>
-            ) : null}
-            {/* <ErrorMessage name="email" /> */}
-            <AuthField type="password" name="password" placeholder="Password" />
+        <Form>
+          <AuthField
+            icon={MdEmail}
+            type="email"
+            name="email"
+            placeholder="E-mail"
+          />
 
-            <AuthField
-              type="password"
-              name="confirmPass"
-              placeholder="Confirm password"
-            />
+          <AuthField
+            icon={MdLock}
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
 
-            <AuthField type="text" name="name" placeholder="First name" />
+          <AuthField
+            icon={MdLock}
+            type="password"
+            name="confirmPass"
+            placeholder="Confirm password"
+          />
 
-            <AuthButtonActive text="Register" />
-            <AuthButton text="Log in" onClick={changeRoute} />
-          </Form>
-        )}
+          <AuthField
+            icon={MdAccountBox}
+            type="text"
+            name="name"
+            placeholder="First name"
+          />
+
+          <AuthButtonActive text="Register" />
+          <AuthButton text="Log in" onClick={changeRoute} />
+        </Form>
       </Formik>
     </RegisterBox>
   );

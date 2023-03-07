@@ -8,7 +8,8 @@ import * as Yup from 'yup';
 import AuthButtonActive from 'components/AuthButtonActive/AuthButtonActive';
 import AuthButton from 'components/AuthButton/AuthButton';
 import AuthField from 'components/AuthField/AuthField';
-import { StyledIcon } from 'components/AuthField/AuthField.styled';
+
+import { MdEmail, MdLock } from 'react-icons/md';
 
 const initialValues = {
   email: '',
@@ -43,12 +44,13 @@ const LoginForm = () => {
       >
         <Form>
           <AuthField
-            Icon={StyledIcon}
+            icon={MdEmail}
             type="email"
             name="email"
             placeholder="E-mail"
           />
           <AuthField
+            icon={MdLock}
             style={{ marginBottom: '42px' }}
             type="password"
             name="password"
