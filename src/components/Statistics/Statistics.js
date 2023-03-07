@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
-import {ArcElement, Chart as ChartJS, Legend, Tooltip} from 'chart.js';
-import {Doughnut} from 'react-chartjs-2';
+import React, { useState } from 'react';
+import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
 import expenses from './expenses.json';
 import Select from 'react-select';
-import styled from 'styled-components'
-
+import styled from 'styled-components';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -15,24 +14,25 @@ export const data = {
       data: expenses.map(expense => expense.percent),
       backgroundColor: expenses.map(expense => expense.color),
       borderColor: expenses.map(expense => expense.color),
-      borderWidth:1,
+      borderWidth: 1,
     },
   ],
 };
 
-
-const plugins = [{
-  beforeDraw: function({width, height,ctx}) {
-    ctx.restore();
-    ctx.font = 20 + "px sans-serif";
-    ctx.textBaseline = "top";
-    const text = "₴ 24 000.00",
-      textX = Math.round((width - ctx.measureText(text).width) / 2),
-      textY = height / 2;
-    ctx.fillText(text, textX, textY);
-    ctx.save();
-  }
-}]
+const plugins = [
+  {
+    beforeDraw: function ({ width, height, ctx }) {
+      ctx.restore();
+      ctx.font = 20 + 'px sans-serif';
+      ctx.textBaseline = 'top';
+      const text = '₴ 24 000.00',
+        textX = Math.round((width - ctx.measureText(text).width) / 2),
+        textY = height / 2;
+      ctx.fillText(text, textX, textY);
+      ctx.save();
+    },
+  },
+];
 
 const month = [
   { value: 'January', label: 'January' },
@@ -49,23 +49,22 @@ const month = [
   { value: 'December', label: 'December' },
 ];
 
-
 const Container = styled.div`
- display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   width: 380px;
   height: 380px;
-`
+`;
 const Title = styled.h1`
   font-weight: 400;
   font-size: 30px;
   margin-bottom: 8px;
-`
+`;
 
 const customStyles = {
-  control: (provided) => ({
+  control: provided => ({
     ...provided,
     width: '230px',
     height: '40px',
@@ -91,11 +90,11 @@ const customStyles = {
       color: '#333333',
     },
   }),
-  singleValue: (provided) => ({
+  singleValue: provided => ({
     ...provided,
     color: '#333333',
   }),
-  dropdownIndicator: (provided) => ({
+  dropdownIndicator: provided => ({
     ...provided,
     color: '#333333',
     '&:hover': {
@@ -105,21 +104,18 @@ const customStyles = {
   indicatorSeparator: () => ({
     display: 'none',
   }),
-  menu: (provided) => ({
+  menu: provided => ({
     ...provided,
     width: '230px',
     borderRadius: '30px',
     overflow: 'hidden',
-
   }),
 };
 
-
 export const Statistics = () => {
-
   const [selectedOption, setSelectedOption] = useState(null);
 
-  const handleChange = (selectedOption) => {
+  const handleChange = selectedOption => {
     setSelectedOption(selectedOption);
   };
 
@@ -127,7 +123,7 @@ export const Statistics = () => {
     <>
       <Container>
         <Title>Statistics</Title>
-        <Doughnut data={data}  plugins={plugins} type={"doughnut"}/>
+        <Doughnut data={data} plugins={plugins} type={'doughnut'} />
       </Container>
       <Container>
         <Select
@@ -139,7 +135,5 @@ export const Statistics = () => {
         />
       </Container>
     </>
-
-
-  )
-}
+  );
+};
