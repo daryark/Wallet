@@ -10,7 +10,8 @@ export const fetchTransactions = createAsyncThunk(
   'transactions/getTransactions',
   async (_, { rejectWithValue }) => {
     try {
-      const { response } = await TransactionsAPI.getUserTransactions();
+      const response = await TransactionsAPI.getUserTransactions();
+      // console.log(response);
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
