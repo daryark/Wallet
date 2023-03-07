@@ -61,22 +61,14 @@ const yearData = [
 
 
 export const Statistics = () => {
-  console.log((new Date).getMonth())
-  console.log((new Date).getFullYear())
-  // const { response, months } = useSelector(selectSummary);
-  // console.log(response, months )
-  //
-  // const options = months.map(month => ({
-  //   value: month,
-  //   label: month
-  // }));
-
   const [month, setMonth] = useState((new Date).getMonth());
   const [year, setYear] = useState((new Date).getFullYear());
+  const summary = useSelector(selectSummary)
+  const dispatch = useDispatch();
 
   useEffect(()=>{
-
-  }, [])
+  dispatch(getTransactionSummary({month, year}))
+  }, [month, year])
 
   const handleMonthChange = ({value}) => {
     setMonth(value);

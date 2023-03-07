@@ -1,10 +1,6 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import {createAsyncThunk} from '@reduxjs/toolkit';
 
-import {
-  TransactionsAPI,
-  TransactionCategoriesAPI,
-  TransactionSummaryAPI,
-} from 'services/api';
+import {TransactionCategoriesAPI, TransactionsAPI, TransactionSummaryAPI,} from 'services/api';
 
 export const fetchTransactions = createAsyncThunk(
   'transactions/getTransactions',
@@ -70,8 +66,7 @@ export const getTransactionSummary = createAsyncThunk(
   'transactions/getTransactionSummary',
   async (formData, { rejectWithValue }) => {
     try {
-      const { response } = await TransactionSummaryAPI(formData);
-      return response;
+      return await TransactionSummaryAPI.getTransactionSummary(formData);
     } catch (error) {
       return rejectWithValue(error.message);
     }
