@@ -1,4 +1,5 @@
 import { Field } from 'formik';
+import { FaBeer } from 'react-icons/fa';
 import styled from 'styled-components';
 
 export const StyledField = styled(Field)`
@@ -22,4 +23,10 @@ export const InputBox = styled.div`
   @media (min-width: 768px) {
     width: 410px;
   }
+`;
+export const StyledIcon = styled(FaBeer)`
+  position: absolute;
+  bottom: 25%;
+  left: 10px;
+  color: grey;
 `;

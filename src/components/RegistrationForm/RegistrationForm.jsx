@@ -2,13 +2,14 @@ import AuthButton from 'components/AuthButton/AuthButton';
 import AuthButtonActive from 'components/AuthButtonActive/AuthButtonActive';
 import AuthField from 'components/AuthField/AuthField';
 
-import { Formik, Form } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 
 import { useNavigate } from 'react-router-dom';
 import { registerRequest } from 'redux/auth/auth-operations';
 
 import registerSchema from './registerSchema';
+import { StyledError } from './RegistrationForm.styled';
 import { RegisterBox } from './RegistrationForm.styled';
 
 const initialValues = {
@@ -39,20 +40,27 @@ const RegistrationForm = () => {
         validationSchema={registerSchema}
         onSubmit={handleSubmit}
       >
-        <Form>
-          <AuthField type="email" name="email" placeholder="E-mail" />
-          <AuthField type="password" name="password" placeholder="Password" />
-          <AuthField
-            type="password"
-            name="confirmPass"
-            placeholder="Confirm password"
-          />
+        {({ errors, touched }) => (
+          <Form>
+            <AuthField type="email" name="email" placeholder="E-mail" />
+            {errors.email && touched.email ? (
+              <StyledError>{errors.email}</StyledError>
+            ) : null}
+            {/* <ErrorMessage name="email" /> */}
+            <AuthField type="password" name="password" placeholder="Password" />
 
-          <AuthField type="text" name="name" placeholder="First name" />
+            <AuthField
+              type="password"
+              name="confirmPass"
+              placeholder="Confirm password"
+            />
 
-          <AuthButtonActive text="Register" />
-          <AuthButton text="Log in" onClick={changeRoute} />
-        </Form>
+            <AuthField type="text" name="name" placeholder="First name" />
+
+            <AuthButtonActive text="Register" />
+            <AuthButton text="Log in" onClick={changeRoute} />
+          </Form>
+        )}
       </Formik>
     </RegisterBox>
   );

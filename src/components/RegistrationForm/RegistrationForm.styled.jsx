@@ -16,3 +16,10 @@ export const RegisterBox = styled.div`
     text-transform: lowercase;
   }
 `;
+
+export const StyledError = styled.div`
+  position: absolute;
+  top: 115%;
+  font-size: 10px;
+  color: red;
+`;
