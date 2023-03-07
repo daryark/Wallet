@@ -10,7 +10,6 @@ html {
 
 body {
   margin: 0;
-  /* background-color: ${p => p.theme.color.bg_grey_main}; */
 }
 
 p,

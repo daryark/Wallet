@@ -92,7 +92,7 @@ export const TransactionsList = () => {
     ({ id, transactionDate, type, categoryId, comment, amount }) => ({
       key: id,
       transactionDate,
-      type: type === 'INCOME' ? '-' : '+',
+      type: type === 'INCOME' ? '+' : '-',
       categoryId,
       comment,
       amount,
@@ -111,9 +111,6 @@ export const TransactionsList = () => {
           one!
         </div>
       )}
-      {/* <StyledBox>
-        <Table dataSource={dataSource} columns={columns}></Table>
-      </StyledBox> */}
     </>
   );
 };
