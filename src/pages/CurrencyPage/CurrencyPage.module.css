@@ -1,0 +1,11 @@
+.thumb {
+  width: 393px;
+  height: 331px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.2) -7.46%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}

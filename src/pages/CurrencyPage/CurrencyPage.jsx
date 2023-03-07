@@ -4,6 +4,9 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { fetchCurrencyMonoBank } from 'redux/monobank/mono-operations';
 import { selectCurrency } from 'redux/monobank/mono-selectors';
+import css from '../CurrencyPage/CurrencyPage.module.css';
+import { setCurrencyFromLocalStorage } from 'redux/monobank/monoSlice';
+const oneHour = 3600000;
 
 export default function CurrencyPage() {
   const dispatch = useDispatch();
@@ -13,24 +16,26 @@ export default function CurrencyPage() {
     const currencyFromStorage = JSON.parse(
       localStorage.getItem('currencyInTheMoment')
     );
-    const dateLastFetching = Object.values(...currencyFromStorage).find(
-      (el, idx) => {
+    const dateLastFetching =
+      currencyFromStorage &&
+      Object.values(...currencyFromStorage).find((el, idx) => {
         return idx === 2;
-      }
-    );
+      });
 
     const newDate = Number(new Date().getTime());
 
-    const shouldNewFetch = newDate - dateLastFetching;
-    if (shouldNewFetch >= 86400000) return;
-
-    dispatch(fetchCurrencyMonoBank());
+    const timeAfterLastFetch = newDate - dateLastFetching;
+    if (timeAfterLastFetch >= oneHour) {
+      dispatch(fetchCurrencyMonoBank());
+    } else {
+      setCurrencyFromLocalStorage(currencyFromStorage);
+    }
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={css.thumb}>
       <table>
-        <thead>
+        <thead className={css.thead}>
           <tr>
             <th>Currency</th>
             <th>Purchase</th>

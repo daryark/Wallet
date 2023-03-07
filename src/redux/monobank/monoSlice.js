@@ -10,7 +10,11 @@ const initialState = {
 const currencySlice = createSlice({
   name: 'currency',
   initialState,
-  reducers: {},
+  reducers: {
+    setCurrencyFromLocalStorage(state, { payload }) {
+      state.currency = payload;
+    },
+  },
   extraReducers: builder => {
     builder
 
@@ -25,5 +29,6 @@ const currencySlice = createSlice({
       });
   },
 });
+export const { setCurrencyFromLocalStorage } = currencySlice.actions;
 
 export const currencyReducer = currencySlice.reducer;
