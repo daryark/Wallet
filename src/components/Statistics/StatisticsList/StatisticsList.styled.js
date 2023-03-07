@@ -9,7 +9,7 @@ export const StatisticsCommonWrapper = styled.div`
   gap: 32px;
 
   @media screen and (min-width: 768px) {
-    margin-top: 0;
+    margin-top: 20px;
     margin-bottom: 24px;
 
     flex-direction: row;
@@ -17,6 +17,7 @@ export const StatisticsCommonWrapper = styled.div`
 
   @media screen and (min-width: 1280px) {
     width: 715px;
+    margin-top: 32px;
     margin-bottom: 44px;
   }
 `;
