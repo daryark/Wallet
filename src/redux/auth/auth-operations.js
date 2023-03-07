@@ -62,7 +62,6 @@ export const getUserInfoRequest = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await UsersAPI.getUserInfo();
-      console.log(response);
       // response = {"id": "string", "username": "string", "email": "string", "balance": 0}
 
       return response;
