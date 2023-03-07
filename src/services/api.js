@@ -70,8 +70,8 @@ export const TransactionsAPI = {
     return data;
   },
 
-  async removeTransaction({ id }) {
-    const { data } = await $privateHost.delete(`/api/transactions/${id}`);
+  async removeTransaction({ key }) {
+    const { data } = await $privateHost.delete(`/api/transactions/${key}`);
     return data;
   },
 };
