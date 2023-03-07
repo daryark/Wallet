@@ -1,3 +1,4 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const API_BASE_URL = 'https://wallet.goit.ua';
@@ -93,3 +94,12 @@ export const TransactionSummaryAPI = {
     return data;
   },
 };
+
+export const CurrencyMonoAPI = {
+  async getCurrencyMonoBank() {
+    const currency = await axios.get('https://api.monobank.ua/bank/currency');
+
+    return currency.data;
+  },
+};
+//freelancer, 112233Qq; lego@gmail.com

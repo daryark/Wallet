@@ -2,12 +2,14 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import { userReducer } from './auth/authSlice';
 import { globalReducer } from './global/globalSlice';
+import { currencyReducer } from './monobank/monoSlice';
 import { transactionsReducer } from './transactions/transSlice';
 
 const rootReducer = combineReducers({
   userData: userReducer,
   transactionsData: transactionsReducer,
   globalData: globalReducer,
+  currencyData: currencyReducer,
 });
 
 export const store = configureStore({
