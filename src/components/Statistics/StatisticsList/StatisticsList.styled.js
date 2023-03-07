@@ -1,26 +1,23 @@
 import styled from 'styled-components';
-import { theme } from 'styles/theme';
 
 export const StatisticsCommonWrapper = styled.div`
-  min-width: 280px;
-  padding: 0 20px;
-  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 48px;
 
   display: flex;
   flex-direction: column;
   gap: 32px;
 
   @media screen and (min-width: 768px) {
-    padding: 0 32px;
+    margin-top: 0;
+    margin-bottom: 24px;
 
     flex-direction: row;
-    justify-content: space-between;
   }
 
   @media screen and (min-width: 1280px) {
     width: 715px;
-    padding: 0 18px;
-    margin: 0;
+    margin-bottom: 44px;
   }
 `;
 
@@ -40,16 +37,16 @@ export const StatisticsListTitle = styled.div`
   margin-top: 20px;
   margin-bottom: 14px;
 
-  background-color: ${theme.color.bg_white};
-  border-radius: ${theme.radii.large};
+  background-color: ${({ theme }) => theme.color.bg_white};
+  border-radius: ${({ theme }) => theme.radii.large};
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  font-size: ${theme.fontSizes.m};
-  font-weight: ${theme.fontWeights.bold};
-  line-height: ${theme.lineHeights.body};
+  font-size: ${({ theme }) => theme.fontSizes.m};
+  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  line-height: ${({ theme }) => theme.lineHeights.body};
 `;
 
 export const StatisticsList = styled.ul`
@@ -63,9 +60,9 @@ export const StatisticsItem = styled.li`
   display: flex;
   align-items: center;
 
-  font-size: ${theme.fontSizes.s};
-  font-weight: ${theme.fontWeights.normal};
-  line-height: ${theme.space[6]}px;
+  font-size: ${({ theme }) => theme.fontSizes.s};
+  font-weight: ${({ theme }) => theme.fontWeights.normal};
+  line-height: ${({ theme }) => theme.space[6]}px;
 
   position: relative;
 
@@ -94,7 +91,7 @@ export const StatisticsSumList = styled.ul`
 
 export const StatisticsSumItem = styled(StatisticsItem)`
   justify-content: space-between;
-  font-weight: ${theme.fontWeights.bold};
+  font-weight: ${({ theme }) => theme.fontWeights.bold};
   border: none;
   box-shadow: none;
 
@@ -112,7 +109,7 @@ export const Cube = styled.div`
 `;
 
 export const Sum = styled.p`
-  line-height: ${theme.lineHeights.body};
+  line-height: ${({ theme }) => theme.lineHeights.body};
 `;
 
 export const StatisticsWrapper = styled.div`

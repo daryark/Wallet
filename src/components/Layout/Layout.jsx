@@ -1,54 +1,45 @@
 import React, { Suspense } from 'react';
-import { Outlet, NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { Header } from 'components/Header/Header';
-import StatisticsPage from "../../pages/StatisticsPage/StatisticsPage";
+import { Outlet } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+import { BsSun, BsMoon } from 'react-icons/bs';
 
+import { Header, Loader } from 'components';
+
+import { selectTheme } from 'redux/global/global-selectors';
+import { toggleThemeTitle } from 'redux/global/globalSlice';
 import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 
+import { theme } from 'styles/theme';
+import { colors } from 'styles/colors';
+import { Sidebar } from './SideBar/SideBar';
+
 export default function Layout() {
+  const themeTitle = useSelector(selectTheme);
+  const normalizedTheme = { ...theme, ...colors[themeTitle] };
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const dispatch = useDispatch();
+
+  const handleThemeChange = e => {
+    dispatch(toggleThemeTitle(themeTitle));
+  };
 
   return (
-    <>
-      {isLoggedIn && <Header />}
-      <header>
-        <nav>
-          <h1>
-            <NavLink to={'/home'}>Wallet + logo</NavLink>
-          </h1>
-
-          {/* {isLoggedIn ? ( */}
-          <>
-            <div>
-              <NavLink to={'/home'}>Home</NavLink>
-              {/* different content on logged in user and no-logged in */}
-              <NavLink to={'/statistics'}>Statistics</NavLink>
-              {/* <Logout /> //add logout component
-                    //add currency page on media-mobile */}
-            </div>
-          </>
-          {/* ) : ( */}
-          <ul>
-            <li>
-              <NavLink to={'/home'}>Home</NavLink>
-              {/* different content on logged in user and no-logged in */}
-            </li>
-            <li>
-              <NavLink to={'/register'}>Sign Up</NavLink>
-            </li>
-            <li>
-              <NavLink to={'/login'}>Sign In</NavLink>
-            </li>
-          </ul>
-          {/* )} */}
-        </nav>
-      </header>
+    <ThemeProvider theme={normalizedTheme}>
+      {isLoggedIn && (
+        <>
+          <Header />
+          <Sidebar />
+          <button onClick={handleThemeChange}>
+            {themeTitle === 'light' ? <BsMoon /> : <BsSun />}
+          </button>
+        </>
+      )}
       <main>
-        <Suspense fallback={<div>Loader...</div>}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </main>
-    </>
+    </ThemeProvider>
   );
 }

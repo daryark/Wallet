@@ -9,11 +9,11 @@ import {
   Sum,
   StatisticsWrapper,
 } from './StatisticsList.styled';
-import { theme } from 'styles/theme';
 import { categories } from './categories';
 
 import React, { useState } from 'react';
 import Select from 'react-select';
+import { useTheme } from 'styled-components';
 
 const month = [
   { value: 'January', label: 'January' },
@@ -83,6 +83,7 @@ const customStyles = {
 
 const CategorySum = () => {
   const [selectedOption, setSelectedOption] = useState(null);
+  const theme = useTheme();
 
   const handleChange = selectedOption => {
     setSelectedOption(selectedOption);
@@ -103,7 +104,7 @@ const CategorySum = () => {
       </StatisticsListTitle>
       <StatisticsList>
         {categories.map(({ title, color }) => (
-          <StatisticsItem>
+          <StatisticsItem key={title}>
             <Cube color={color} />
             <StatisticsWrapper>
               <p>{title}</p> <Sum>800</Sum>
@@ -114,11 +115,11 @@ const CategorySum = () => {
       <StatisticsSumList>
         <StatisticsSumItem>
           <p>Expenses</p>
-          <p style={{ color: `${theme.color.text_pink}` }}>22 549.24</p>
+          <p style={{ color: theme.color.text_pink }}>22 549.24</p>
         </StatisticsSumItem>
         <StatisticsSumItem>
           <p>Income</p>
-          <p style={{ color: `${theme.color.accent}` }}>27 350.00</p>
+          <p style={{ color: theme.color.accent }}>27 350.00</p>
         </StatisticsSumItem>
       </StatisticsSumList>
     </StatisticsListWrapper>

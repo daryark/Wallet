@@ -4,7 +4,7 @@ import {
   StyledContainer,
   StyledInfo,
   Separator,
-} from './styles';
+} from './Header.styled';
 import { WalletLogo } from 'assets/icons';
 import { ExitButton } from './ExitButton';
 import { useWindowSize } from './hooks/useWindowSize';
@@ -13,15 +13,15 @@ import { selectUser } from 'redux/auth/auth-selectors';
 import { LogoutModal } from 'components/LogoutModal/LogoutModal';
 import { useState } from 'react';
 
-export const Header = () => {
+export const Header = ({ normalizedTheme }) => {
   const [modalOpen, setModalOpen] = useState(false);
-
   const { username } = useSelector(selectUser);
   const { isMobile } = useWindowSize();
 
   const toggleModal = () => {
     setModalOpen(prev => !prev);
   };
+
   return (
     <StyledHeader>
       <StyledContainer>

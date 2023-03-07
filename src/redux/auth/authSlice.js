@@ -24,6 +24,7 @@ const userSlice = createSlice({
       .addCase(loginRequest.fulfilled, (state, { payload }) => {
         state.user.username = payload.username;
         state.user.email = payload.email;
+        state.user.balance = payload.balance;
         state.isLoggedIn = true;
       })
 
@@ -31,6 +32,7 @@ const userSlice = createSlice({
       .addCase(registerRequest.fulfilled, (state, { payload }) => {
         state.user.username = payload.username;
         state.user.email = payload.email;
+        state.user.balance = payload.balance;
         state.isLoggedIn = true;
       })
 
@@ -38,6 +40,7 @@ const userSlice = createSlice({
       .addCase(logOutRequest.fulfilled, state => {
         state.user.username = null;
         state.user.email = null;
+
         state.isLoggedIn = false;
       })
 
@@ -45,6 +48,7 @@ const userSlice = createSlice({
       .addCase(getUserInfoRequest.fulfilled, (state, { payload }) => {
         state.user.username = payload.username;
         state.user.email = payload.email;
+        state.user.balance = payload.balance;
         state.isLoggedIn = true;
       });
   },

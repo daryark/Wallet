@@ -9,10 +9,17 @@ import {
   getTransactionSummary,
 } from './trans-operations';
 
+import {
+  loginRequest,
+  logOutRequest,
+  getUserInfoRequest,
+} from 'redux/auth/auth-operations';
+
 const initialState = {
   transactions: [],
   categories: [],
   summary: null,
+  balance: 0,
   editTransaction: null,
 };
 
@@ -29,11 +36,13 @@ const transactionsSlice = createSlice({
       // -------- fetchTransactions ---------
       .addCase(fetchTransactions.fulfilled, (state, { payload }) => {
         state.transactions = payload.transaction;
+        state.balance = payload.balanceAfter;
       })
 
       // ------- addTransaction -------
       .addCase(addTransaction.fulfilled, (state, { payload }) => {
         state.transactions = [...state.transactions, payload.transaction];
+        state.balance = payload.balanceAfter;
       })
 
       // -------- deleteTransaction --------
@@ -46,6 +55,7 @@ const transactionsSlice = createSlice({
         state.transactions = state.transactions.map(t =>
           t.id === payload.id ? payload : t
         );
+        state.balance = payload.balanceAfter;
       })
 
       // --- getTransactionCategories ---
@@ -56,6 +66,16 @@ const transactionsSlice = createSlice({
       // --- getTransactionSummary ---
       .addCase(getTransactionSummary.fulfilled, (state, { payload }) => {
         state.summary = payload;
+      })
+      // --- logOutRequest ---
+      .addCase(logOutRequest.fulfilled, () => ({ ...initialState }))
+      // --- loginRequest ---
+      .addCase(loginRequest.fulfilled, (state, { payload }) => {
+        state.balance = payload.balance;
+      })
+      // --- getUserInfoRequest ---
+      .addCase(getUserInfoRequest.fulfilled, (state, { payload }) => {
+        state.balance = payload.balance;
       });
   },
 });
