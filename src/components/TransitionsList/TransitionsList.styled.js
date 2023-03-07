@@ -18,7 +18,9 @@ export const StyledItem = styled.li`
   justify-content: space-between;
   padding: 12px 20px 4px 15px;
 
-  border-left: 5px solid ${p => p.theme.color.text_pink};
+  border-left: 5px solid
+    ${({ type, theme }) =>
+      type === 'EXPENSE' ? theme.color.accent : theme.color.text_pink};
   border-bottom: ${p => p.theme.borders.normal} #dcdcdf;
   &:first-of-type {
     border-top-left-radius: 10px;
@@ -32,7 +34,8 @@ export const StyledItem = styled.li`
 `;
 
 export const StyledSum = styled.span`
-  color: ${p => p.theme.color.text_pink};
+  color: ${({ type, theme }) =>
+    type === 'EXPENSE' ? theme.color.accent : theme.color.text_pink};
   font-weight: ${p => p.theme.fontWeights.bold};
 `;
 export const StyledSpan = styled.span`
@@ -68,13 +71,13 @@ export const StyledTable = styled.table`
   width: 100%;
   border-collapse: collapse;
   overflow: hidden;
-  /* text-align: center; */
+  text-align: center;
 `;
 
 export const StyledThead = styled.thead`
-  /* width: 100%;
+  width: 100%;
   position: sticky;
-  z-index: 100; */
+  z-index: 100;
   font-size: ${p => p.theme.fontSizes.m};
   font-weight: ${p => p.theme.fontWeights.bold};
   background-color: ${p => p.theme.color.bg_white};
@@ -88,11 +91,13 @@ export const StyledTbody = styled.tbody`
 `;
 
 export const StyledRow = styled.tr`
-  width: 100%;
-  display: inline-block;
   padding: 14px 20px;
   border-bottom: ${p => p.theme.borders.normal} #dcdcdf;
   &:last-of-type {
     border-bottom: none;
   }
+  /* width: 100%;
+  display: inline-block;
+   
+   */
 `;

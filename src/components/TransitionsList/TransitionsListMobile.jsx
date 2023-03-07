@@ -31,27 +31,27 @@ export const TransactionsListMobile = () => {
       {transitions.map(
         ({ id, transactionDate, type, categoryId, comment, amount }) => (
           <StyledList key={id}>
-            <StyledItem>
+            <StyledItem type={type}>
               <StyledSpan>Date</StyledSpan>
               {transactionDate}
             </StyledItem>
-            <StyledItem>
+            <StyledItem type={type}>
               <StyledSpan>Type</StyledSpan>
               {type}
             </StyledItem>
-            <StyledItem>
+            <StyledItem type={type}>
               <StyledSpan>Category</StyledSpan>
               {categoryId}
             </StyledItem>
-            <StyledItem>
+            <StyledItem type={type}>
               <StyledSpan>Comment</StyledSpan>
               {comment}
             </StyledItem>
-            <StyledItem>
+            <StyledItem type={type}>
               <StyledSpan>Sum</StyledSpan>
-              <StyledSum>{parseFloat(amount).toFixed(2)}</StyledSum>
+              <StyledSum type={type}>{parseFloat(amount).toFixed(2)}</StyledSum>
             </StyledItem>
-            <StyledItem>
+            <StyledItem type={type}>
               <StyledDeleteBtn onClick={() => handleDeleteTransition(id)}>
                 Delete
               </StyledDeleteBtn>
