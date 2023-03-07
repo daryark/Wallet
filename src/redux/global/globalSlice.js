@@ -32,7 +32,7 @@ const extraActions = [
 const getActions = type => extraActions.map(action => action[type]);
 
 const initialGlobalState = {
-  //   themeTitle: 'light',
+  themeTitle: 'light',
   isModalOpen: false,
   isLoading: false,
   error: null,
@@ -47,9 +47,9 @@ const globalSlice = createSlice({
       state.isModalOpen = !state.isModalOpen;
       console.log('isModalAddTransactionOpen', state.isModalOpen);
     },
-    // toggleThemeTitle(state) {
-    //   state.themeTitle = state.themeTitle === 'light' ? 'dark' : 'light';
-    // },
+    toggleThemeTitle(state) {
+      state.themeTitle = state.themeTitle === 'light' ? 'dark' : 'light';
+    },
   },
   extraReducers: builder => {
     builder
@@ -75,5 +75,5 @@ function errorHandler(state, { payload }) {
   state.error = payload;
 }
 export const { isModalAddTransactionOpen } = globalSlice.actions;
-// export const { toggleThemeTitle } = globalSlice.actions;
+export const { toggleThemeTitle } = globalSlice.actions;
 export const globalReducer = globalSlice.reducer;
