@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-export const StyledSideBar = styled.div`
+export const StyledAside = styled.aside`
+  grid-area: sidebar;
+`;
+
+export const StyledSideBar = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,8 +54,8 @@ export const StyledIcon = styled.div`
   padding: 5px;
 
   & svg {
-    width: 38px;
-    height: 38px;
+    width: 28px;
+    height: 28px;
   }
 
   @media screen and (min-width: 768px) {
