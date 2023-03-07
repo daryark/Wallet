@@ -1,9 +1,16 @@
 import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+
 import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
+import { setEditTransaction } from 'redux/transactions/transSlice';
+// import { selectTransactions } from 'redux/transactions/trans-selectors';
+
 import { RiEdit2Line } from 'react-icons/ri';
 
-import { deleteTransaction } from 'redux/transactions/trans-operations';
-import { setEditTransaction } from 'redux/transactions/transSlice';
+import {
+  deleteTransaction,
+  fetchTransactions,
+} from 'redux/transactions/trans-operations';
 import transitions from './transitionsData.json';
 
 import { Container } from 'components/common/common.styled';
@@ -18,6 +25,11 @@ import {
 
 export const TransactionsListMobile = () => {
   const dispatch = useDispatch();
+  // const transactions = useSelector(selectTransactions);
+
+  useEffect(() => {
+    dispatch(fetchTransactions());
+  }, [dispatch]);
 
   const handleEditTransition = contactUser => {
     dispatch(setEditTransaction(contactUser));
