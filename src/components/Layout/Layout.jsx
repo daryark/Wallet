@@ -12,6 +12,7 @@ import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 
 import { theme } from 'styles/theme';
 import { colors } from 'styles/colors';
+import { Sidebar } from 'components/SideBar/SideBar';
 
 export default function Layout() {
   const themeTitle = useSelector(selectTheme);
@@ -28,6 +29,7 @@ export default function Layout() {
       {isLoggedIn && (
         <>
           <Header />
+          <Sidebar />
           <nav>
             <button onClick={handleThemeChange}>
               {themeTitle === 'light' ? <BsMoon /> : <BsSun />}

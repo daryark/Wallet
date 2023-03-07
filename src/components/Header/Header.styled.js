@@ -26,6 +26,7 @@ export const StyledContainer = styled.div`
 `;
 
 export const StyledLogo = styled.div`
+  font-family: Poppins;
   display: flex;
   align-items: center;
   gap: 16px;
