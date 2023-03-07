@@ -12,7 +12,7 @@ function HomePage() {
       <div>HomePage is showing</div>
       <ModalAddTransaction />
       <TransactionsListMobile />
-      {/* <TransactionsList /> */}
+      <TransactionsList />
       {/* <CurrencyPage /> */}
     </>
   );
