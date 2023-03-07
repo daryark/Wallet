@@ -2,18 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 
 import { App } from 'components/App/App';
 // import { Media } from 'components/Media/Media';
-import { store } from 'redux/store';
+import { persistor, store } from 'redux/store';
 
 import GlobalStyles from 'styles/GlobalStyles/GlobalStyles';
-import { theme } from 'styles/theme';
+import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
+    <PersistGate loading={null} persistor={persistor}>
       <GlobalStyles />
       <Provider store={store}>
         <BrowserRouter>
@@ -22,6 +21,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           {/* </Media> */}
         </BrowserRouter>
       </Provider>
-    </ThemeProvider>
+    </PersistGate>
   </React.StrictMode>
 );

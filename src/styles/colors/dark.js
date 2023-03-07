@@ -1,5 +1,5 @@
 export const dark = {
-  colors: {
+  color: {
     accent: '#24CCA7', //mint-green
     text_dark: '#FFFFFF', //
     text_light: '#000000', //
