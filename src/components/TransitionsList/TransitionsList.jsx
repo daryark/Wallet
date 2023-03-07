@@ -6,12 +6,15 @@ import { Table } from 'antd';
 
 import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
 import { setEditTransaction } from 'redux/transactions/transSlice';
-import { selectTransactions } from 'redux/transactions/trans-selectors';
-// import transitions from './transitionsData.json';
+import {
+  selectCategories,
+  selectTransactions,
+} from 'redux/transactions/trans-selectors';
 
 import {
   fetchTransactions,
   deleteTransaction,
+  getTransactionCategories,
 } from 'redux/transactions/trans-operations';
 import {
   StyledBox,
@@ -20,14 +23,16 @@ import {
   StyledEditBtn,
   StyledAmount,
 } from './TransitionsList.styled';
+import { getDate } from 'helpers/getDate';
 
 export const TransactionsList = () => {
   const dispatch = useDispatch();
+  const categories = useSelector(selectCategories);
   const transactions = useSelector(selectTransactions);
-  console.log(transactions);
 
   useEffect(() => {
     dispatch(fetchTransactions());
+    dispatch(getTransactionCategories());
   }, [dispatch]);
 
   const handleEditTransition = contactUser => {
@@ -43,7 +48,10 @@ export const TransactionsList = () => {
       title: 'Date',
       dataIndex: 'date',
       key: 'date',
-      render: (_, record) => <div>{record.transactionDate}</div>,
+      render: (_, record) => {
+        const date = getDate(record.transactionDate);
+        return <div>{date}</div>;
+      },
     },
     {
       title: 'Type',
@@ -54,7 +62,16 @@ export const TransactionsList = () => {
       title: 'Category',
       dataIndex: 'category',
       key: 'category',
-      render: (_, record) => <div>{record.categoryId}</div>,
+      render: (_, record) => {
+        // console.log(categories);
+        // console.log(record.categoryId);
+        if (!categories) return;
+        const getCategory = categories.find(c => c.id === record.categoryId);
+        // console.log(getCategory);
+        const categoryName = getCategory?.name;
+        // console.log(categoryName);
+        return <div>{categoryName}</div>;
+      },
     },
     {
       title: 'Comment',
