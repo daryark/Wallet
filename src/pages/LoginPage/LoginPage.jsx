@@ -1,4 +1,4 @@
-import { Container } from 'components/common/common.styled';
+import { AuthContainer } from 'components/common/common.styled';
 import LoginForm from 'components/LoginForm/LoginForm';
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
@@ -15,9 +15,8 @@ export default function LoginPage() {
     navigate('/');
   }, [isLoggedIn, navigate]);
   return (
-    <Container>
-      LoginPage
+    <AuthContainer>
       <LoginForm />
-    </Container>
+    </AuthContainer>
   );
 }
