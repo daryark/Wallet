@@ -1,5 +1,4 @@
-
-import { TransactionsList, TransactionsListMobile } from 'components';
+import { TransactionsList } from 'components';
 import CurrencyPage from 'pages/CurrencyPage/CurrencyPage';
 import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
 
@@ -19,7 +18,6 @@ function HomePage() {
       {/* <TransactionsListMobile /> */}
       <TransactionsList />
       <CurrencyPage />
-
     </>
   );
 }

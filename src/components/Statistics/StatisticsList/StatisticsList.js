@@ -9,14 +9,14 @@ import {
   StatisticsWrapper,
   Sum,
 } from './StatisticsList.styled';
-import {categories} from './categories';
+import { categories } from './categories';
 
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
-import {useDispatch, useSelector} from "react-redux";
-import {getTransactionSummary} from "../../../redux/transactions/trans-operations";
-import {selectSummary} from "../../../redux/transactions/trans-selectors";
-import {theme} from "antd";
+import { useDispatch, useSelector } from 'react-redux';
+import { getTransactionSummary } from '../../../redux/transactions/trans-operations';
+import { selectSummary } from '../../../redux/transactions/trans-selectors';
+// import {theme} from "antd";
 
 const monthData = [
   { value: 0, label: 'January' },
@@ -34,11 +34,10 @@ const monthData = [
 ];
 
 const yearData = [
-  { value: 2021, label: '2022' },
+  { value: 2021, label: '2021' },
   { value: 2022, label: '2022' },
   { value: 2023, label: '2023' },
 ];
-
 
 const customStyles = {
   control: provided => ({
@@ -91,27 +90,24 @@ const customStyles = {
   }),
 };
 
-
-
-
 const CategorySum = () => {
-  const [month, setMonth] = useState((new Date).getMonth());
-  const [year, setYear] = useState((new Date).getFullYear());
-  const summary = useSelector(selectSummary)
+  const [month, setMonth] = useState(new Date().getMonth());
+  const [year, setYear] = useState(new Date().getFullYear());
+  const summary = useSelector(selectSummary);
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    dispatch(getTransactionSummary({month, year}))
-  }, [month, year])
+  useEffect(() => {
+    dispatch(getTransactionSummary({ month, year }));
+  }, [dispatch, month, year]);
 
-  const handleMonthChange = ({value}) => {
+  const handleMonthChange = ({ value }) => {
     setMonth(value);
   };
-  const handleYearChange = ({value}) => {
+  const handleYearChange = ({ value }) => {
     setYear(value);
   };
 
-  console.log(summary)
+  console.log(summary);
   return (
     <StatisticsListWrapper>
       <Select
