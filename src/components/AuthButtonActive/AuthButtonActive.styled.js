@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledAuthButtonActive = styled.button`
   display: block;
-  width: 280px;
+  width: 300px;
   height: 50px;
   margin: 0 auto;
   padding: 13px 0px;
@@ -10,8 +10,18 @@ export const StyledAuthButtonActive = styled.button`
   border-radius: 20px;
   border: none;
 
-  background-color: green;
-  color: white;
+  background: #24cca7;
+
+  /* font-family: 'Circe'; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: #ffffff;
 
   text-align: center;
   text-transform: uppercase;
