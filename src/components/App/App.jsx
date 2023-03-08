@@ -1,8 +1,9 @@
+import React, { lazy, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Navigate, Route, Routes } from 'react-router-dom';
+
 import Layout from 'components/Layout/Layout';
 import { routes } from 'routes';
-import React, { lazy, useEffect } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { getUserInfoRequest } from 'redux/auth/auth-operations';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
