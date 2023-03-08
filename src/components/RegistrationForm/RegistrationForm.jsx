@@ -12,6 +12,7 @@ import registerSchema from './registerSchema';
 
 import { RegisterBox } from './RegistrationForm.styled';
 import { MdEmail, MdLock, MdAccountBox } from 'react-icons/md';
+import AuthLogo from 'components/AuthLogo/AuthLogo';
 
 const initialValues = {
   email: '',
@@ -36,6 +37,7 @@ const RegistrationForm = () => {
 
   return (
     <RegisterBox>
+      <AuthLogo />
       <Formik
         initialValues={initialValues}
         validationSchema={registerSchema}

@@ -35,7 +35,7 @@ export const InputBox = styled.div`
     transform: translateY(-50%);
     left: 10px;
     z-index: 2;
-    color: grey;
+    color: #bdbdbd;
   }
 `;
 
@@ -49,15 +49,16 @@ export const Input = styled.input`
   /* @include font-circe-small; */
   display: flex;
   margin-bottom: 40px;
-  padding-left: 54px;
+  padding-left: 50px;
   width: 100%;
   height: 36px;
 
   outline: none;
   border: none;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid #e0e0e0;
+
   &::placeholder {
-    color: grey;
+    color: #bdbdbd;
   }
 `;
 

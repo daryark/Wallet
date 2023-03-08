@@ -10,6 +10,7 @@ import AuthButton from 'components/AuthButton/AuthButton';
 import AuthField from 'components/AuthField/AuthField';
 
 import { MdEmail, MdLock } from 'react-icons/md';
+import AuthLogo from 'components/AuthLogo/AuthLogo';
 
 const initialValues = {
   email: '',
@@ -37,6 +38,7 @@ const LoginForm = () => {
 
   return (
     <LoginBox>
+      <AuthLogo />
       <Formik
         initialValues={initialValues}
         validationSchema={loginSchema}
