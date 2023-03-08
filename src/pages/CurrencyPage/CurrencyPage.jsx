@@ -34,21 +34,23 @@ export default function CurrencyPage() {
 
   return (
     <div className={css.thumb}>
-      <table>
-        <thead className={css.thead}>
-          <tr>
-            <th>Currency</th>
-            <th>Purchase</th>
-            <th>Sale</th>
+      <table className={css.currencyTable}>
+        <thead>
+          <tr className={css.currencyTr}>
+            <th className={css.currencyHead}>Currency</th>
+            <th className={css.currencyHead}>Purchase</th>
+            <th className={css.currencyHead}>Sale</th>
           </tr>
         </thead>
-        <tbody>
-          {currency.map(({ currencyCodeA, date, rateBuy, rateSell }) => {
+        <tbody className={css.currencyBody}>
+          {currency.map(({ currencyCodeA, rateBuy, rateSell }) => {
             return (
-              <tr key={currencyCodeA}>
-                <td>{currencyCodeA === 840 ? 'USD' : 'EUR'}</td>
-                <td>{rateBuy}</td>
-                <td>{rateSell}</td>
+              <tr key={currencyCodeA} className={css.currencyTrBody}>
+                <td className={css.currencyCeil}>
+                  {currencyCodeA === 840 ? 'USD' : 'EUR'}
+                </td>
+                <td className={css.currencyCeil}>{rateBuy.toFixed(2)}</td>
+                <td className={css.currencyCeil}>{rateSell.toFixed(2)}</td>
               </tr>
             );
           })}
