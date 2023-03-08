@@ -111,23 +111,21 @@ const CategorySum = () => {
     setYear(value);
   };
 
-  console.log(summary)
+  console.log(month)
   return (
     <StatisticsListWrapper>
       <Select
-        // defaultInputValue={monthData[month].label}
         value={month}
         onChange={handleMonthChange}
         options={monthData}
-        placeholder="Select a month"
+        placeholder={ monthData[month].label}
         styles={customStyles}
       />
       <Select
-        // defaultInputValue={yearData[year].label}
         value={year}
         onChange={handleYearChange}
         options={yearData}
-        placeholder="Select a year"
+        placeholder={year}
         styles={customStyles}
       />
 
