@@ -9,6 +9,8 @@ import AuthButtonActive from 'components/AuthButtonActive/AuthButtonActive';
 import AuthButton from 'components/AuthButton/AuthButton';
 import AuthField from 'components/AuthField/AuthField';
 
+import { MdEmail, MdLock } from 'react-icons/md';
+
 const initialValues = {
   email: '',
   password: '',
@@ -41,8 +43,14 @@ const LoginForm = () => {
         onSubmit={handleSubmit}
       >
         <Form>
-          <AuthField type="email" name="email" placeholder="E-mail" />
           <AuthField
+            icon={MdEmail}
+            type="email"
+            name="email"
+            placeholder="E-mail"
+          />
+          <AuthField
+            icon={MdLock}
             style={{ marginBottom: '42px' }}
             type="password"
             name="password"

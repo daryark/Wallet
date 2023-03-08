@@ -1,10 +1,10 @@
 import React, { Suspense } from 'react';
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { BsSun, BsMoon } from 'react-icons/bs';
 
-import { Header, Loader } from 'components';
+import { Header, Loader, Sidebar } from 'components';
 
 import { selectTheme } from 'redux/global/global-selectors';
 import { toggleThemeTitle } from 'redux/global/globalSlice';
@@ -30,19 +30,10 @@ export default function Layout() {
       {isLoggedIn && (
         <>
           <Header />
-          <nav>
-            <button onClick={handleThemeChange}>
-              {themeTitle === 'light' ? <BsMoon /> : <BsSun />}
-            </button>
-            <ul>
-              <li>
-                <NavLink to={'/home'}>Home</NavLink>
-              </li>
-              <li>
-                <NavLink to={'/statistics'}>Statistics</NavLink>
-              </li>
-            </ul>
-          </nav>
+          <Sidebar />
+          <button onClick={handleThemeChange}>
+            {themeTitle === 'light' ? <BsMoon /> : <BsSun />}
+          </button>
         </>
       )}
       <main>
