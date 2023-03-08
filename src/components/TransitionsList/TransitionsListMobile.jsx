@@ -58,48 +58,50 @@ export const TransactionsListMobile = () => {
           const categoryName = getCategory?.name;
 
           return (
-            <StyledList key={id}>
-              <StyledItem type={type}>
-                <StyledSpan>Date</StyledSpan>
-                {date}
-              </StyledItem>
-              <StyledItem type={type}>
-                <StyledSpan>Type</StyledSpan>
-                {type}
-              </StyledItem>
-              <StyledItem type={type}>
-                <StyledSpan>Category</StyledSpan>
-                {categoryName}
-              </StyledItem>
-              <StyledItem type={type}>
-                <StyledSpan>Comment</StyledSpan>
-                {capitalizeFirstLetter(comment)}
-              </StyledItem>
-              <StyledItem type={type}>
-                <StyledSpan>Sum</StyledSpan>
-                <StyledSum type={type}>{sum}</StyledSum>
-              </StyledItem>
-              <StyledItem type={type}>
-                <StyledDeleteBtn onClick={() => handleDeleteTransition(id)}>
-                  Delete
-                </StyledDeleteBtn>
-                <StyledEditBtn
-                  onClick={() =>
-                    handleEditTransition({
-                      id,
-                      transactionDate,
-                      type,
-                      categoryId,
-                      comment,
-                      amount,
-                    })
-                  }
-                >
-                  <RiEdit2Line size={14} />
-                  Edit
-                </StyledEditBtn>
-              </StyledItem>
-            </StyledList>
+            <>
+              <StyledList key={id}>
+                <StyledItem type={type}>
+                  <StyledSpan>Date</StyledSpan>
+                  {date}
+                </StyledItem>
+                <StyledItem type={type}>
+                  <StyledSpan>Type</StyledSpan>
+                  {type}
+                </StyledItem>
+                <StyledItem type={type}>
+                  <StyledSpan>Category</StyledSpan>
+                  {categoryName}
+                </StyledItem>
+                <StyledItem type={type}>
+                  <StyledSpan>Comment</StyledSpan>
+                  {capitalizeFirstLetter(comment)}
+                </StyledItem>
+                <StyledItem type={type}>
+                  <StyledSpan>Sum</StyledSpan>
+                  <StyledSum type={type}>{sum}</StyledSum>
+                </StyledItem>
+                <StyledItem type={type}>
+                  <StyledDeleteBtn onClick={() => handleDeleteTransition(id)}>
+                    Delete
+                  </StyledDeleteBtn>
+                  <StyledEditBtn
+                    onClick={() =>
+                      handleEditTransition({
+                        id,
+                        transactionDate,
+                        type,
+                        categoryId,
+                        comment,
+                        amount,
+                      })
+                    }
+                  >
+                    <RiEdit2Line size={14} />
+                    Edit
+                  </StyledEditBtn>
+                </StyledItem>
+              </StyledList>
+            </>
           );
         }
       )}
