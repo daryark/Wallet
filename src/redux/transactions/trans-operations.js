@@ -5,6 +5,7 @@ import {
   TransactionCategoriesAPI,
   TransactionSummaryAPI,
 } from 'services/api';
+import {log10} from "chart.js/helpers";
 
 export const fetchTransactions = createAsyncThunk(
   'transactions/getTransactions',
@@ -74,9 +75,9 @@ export const getTransactionSummary = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       // return await TransactionSummaryAPI.getTransactionSummary(formData);
-      const { response } = await TransactionSummaryAPI.getTransactionSummary(
-        formData
+      const response  = await TransactionSummaryAPI.getTransactionSummary(formData
       );
+      console.log(response)
       return response;
     } catch (error) {
       return rejectWithValue(error.message);

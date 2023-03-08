@@ -13,9 +13,9 @@ import { categories } from './categories';
 
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getTransactionSummary } from '../../../redux/transactions/trans-operations';
-import { selectSummary } from '../../../redux/transactions/trans-selectors';
+// import { selectSummary } from '../../../redux/transactions/trans-selectors';
 // import {theme} from "antd";
 
 const monthData = [
@@ -93,7 +93,7 @@ const customStyles = {
 const CategorySum = () => {
   const [month, setMonth] = useState(new Date().getMonth());
   const [year, setYear] = useState(new Date().getFullYear());
-  const summary = useSelector(selectSummary);
+  // const summary = useSelector(selectSummary);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -107,23 +107,21 @@ const CategorySum = () => {
     setYear(value);
   };
 
-  console.log(summary);
+  // console.log(summary)
   return (
     <StatisticsListWrapper>
       <Select
-        // defaultInputValue={monthData[month].label}
         value={month}
         onChange={handleMonthChange}
         options={monthData}
-        placeholder="Select a month"
+        placeholder={monthData[month].label}
         styles={customStyles}
       />
       <Select
-        // defaultInputValue={yearData[year].label}
         value={year}
         onChange={handleYearChange}
         options={yearData}
-        placeholder="Select a year"
+        placeholder={year}
         styles={customStyles}
       />
 
