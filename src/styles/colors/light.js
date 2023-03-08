@@ -11,5 +11,6 @@ export const light = {
     bg_grey_main: 'rgba(255,255,255, 0.4)',
     bg_grey_login: '#E7EAF2',
     bg_thead: '#f0f0f0',
+    bg_tbody: '#f0f0f066',
   },
 };

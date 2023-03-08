@@ -49,6 +49,11 @@ export const TransactionsList = () => {
       title: 'Date',
       dataIndex: 'date',
       key: 'date',
+      sorter: (a, b) => {
+        const ams = new Date(a.transactionDate).getTime();
+        const bms = new Date(b.transactionDate).getTime();
+        return ams - bms;
+      },
       render: (_, record) => {
         const date = getDate(record.transactionDate);
         return <div>{date}</div>;
@@ -64,6 +69,7 @@ export const TransactionsList = () => {
       title: 'Category',
       dataIndex: 'category',
       key: 'category',
+},
       render: (_, record) => {
         if (!categories) return;
         const getCategory = categories.find(c => c.id === record.categoryId);
@@ -117,7 +123,7 @@ export const TransactionsList = () => {
       amount,
     })
   );
-  const scroll = { scrollToFirstRowOnChange: true, y: 200 };
+  const scroll = { scrollToFirstRowOnChange: true, y: 500 };
   return (
     <>
       {transactions.length > 0 ? (
