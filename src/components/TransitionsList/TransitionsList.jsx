@@ -4,7 +4,7 @@ import { RiEdit2Line } from 'react-icons/ri';
 
 import { Table } from 'antd';
 
-import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
+import { toggleEditModal } from 'redux/global/globalSlice';
 import { setEditTransaction } from 'redux/transactions/transSlice';
 import {
   selectCategories,
@@ -38,7 +38,7 @@ export const TransactionsList = () => {
 
   const handleEditTransition = contactUser => {
     dispatch(setEditTransaction(contactUser));
-    dispatch(isModalAddTransactionOpen());
+    dispatch(toggleEditModal());
   };
   const handleDeleteTransition = transitionId => {
     dispatch(deleteTransaction(transitionId));

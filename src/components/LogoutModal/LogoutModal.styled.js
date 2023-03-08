@@ -11,7 +11,7 @@ export const StyledBackdrop = styled.div`
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.25);
-  z-index: 5;
+  z-index: 160;
 `;
 
 export const StyledModal = styled.div`
