@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+// export const ListContainer = styled.div`
+//   /* background-attachment: fixed; */
+//   height: 370px;
+//   overflow-y: auto;
+// `;
+
 export const StyledList = styled.ul`
   margin-bottom: ${p => p.theme.space[2]}px;
   min-width: 280px;
@@ -30,7 +36,7 @@ export const StyledItem = styled.li`
     left: 0;
     height: 100%;
     background-color: ${({ type, theme }) =>
-      type === 'EXPENSE' ? theme.color.accent : theme.color.text_pink};
+      type === 'INCOME' ? theme.color.accent : theme.color.text_pink};
   }
 
   border-bottom: ${p => p.theme.borders.normal} #dcdcdf;
@@ -135,6 +141,12 @@ export const StyledBox = styled.div`
 
     & .ant-table-thead th.ant-table-column-has-sorters:hover {
       background: ${p => p.theme.color.bg_thead};
+    }
+    & td.ant-table-column-sort {
+      background: ${p => p.theme.color.bg_thead};
+    }
+    & .ant-table-tbody > tr.ant-table-row:hover > td {
+      background: ${p => p.theme.color.bg_tbody};
     }
   }
 

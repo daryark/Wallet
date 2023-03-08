@@ -11,5 +11,6 @@ export const dark = {
     bg_grey_main: 'rgba(0, 0, 6, 0.95)', //bg on home dark
     bg_grey_login: '#27292F',
     bg_thead: '#605e5e',
+    bg_tbody: '#605e5e80',
   },
 };
