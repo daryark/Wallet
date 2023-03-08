@@ -1,7 +1,7 @@
 export const getDate = str => {
   const date = new Date(str);
   const d = date.getDate();
-  const m = date.getMonth();
+  const m = date.getMonth() + 1;
 
   const day = String(d).padStart(2, '0');
   const month = String(m).padStart(2, '0');
