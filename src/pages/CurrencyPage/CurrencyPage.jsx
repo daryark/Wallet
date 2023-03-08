@@ -4,13 +4,19 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { fetchCurrencyMonoBank } from 'redux/monobank/mono-operations';
 import { selectCurrency } from 'redux/monobank/mono-selectors';
+import { Loader } from './Loader';
+import { ReactComponent as Mountain } from 'components/images/Mountain.svg';
+
 import css from '../CurrencyPage/CurrencyPage.module.css';
+import { StyledCurrencyThumb } from './styles';
 import { setCurrencyFromLocalStorage } from 'redux/monobank/monoSlice';
+import { selectIsLoading } from 'redux/global/global-selectors';
 const oneHour = 3600000;
 
 export default function CurrencyPage() {
   const dispatch = useDispatch();
   const currency = useSelector(selectCurrency);
+  const loading = useSelector(selectIsLoading);
 
   useEffect(() => {
     const currencyFromStorage = JSON.parse(
@@ -33,8 +39,8 @@ export default function CurrencyPage() {
   }, [dispatch]);
 
   return (
-    <div className={css.thumb}>
-      <table className={css.currencyTable}>
+    <StyledCurrencyThumb>
+      {/* <table className={css.currencyTable}>
         <thead>
           <tr className={css.currencyTr}>
             <th className={css.currencyHead}>Currency</th>
@@ -42,20 +48,25 @@ export default function CurrencyPage() {
             <th className={css.currencyHead}>Sale</th>
           </tr>
         </thead>
-        <tbody className={css.currencyBody}>
-          {currency.map(({ currencyCodeA, rateBuy, rateSell }) => {
-            return (
-              <tr key={currencyCodeA} className={css.currencyTrBody}>
-                <td className={css.currencyCeil}>
-                  {currencyCodeA === 840 ? 'USD' : 'EUR'}
-                </td>
-                <td className={css.currencyCeil}>{rateBuy.toFixed(2)}</td>
-                <td className={css.currencyCeil}>{rateSell.toFixed(2)}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+        {loading ? (
+          <Loader />
+        ) : (
+          <tbody className={css.currencyBody}>
+            {currency.map(({ currencyCodeA, rateBuy, rateSell }) => {
+              return (
+                <tr key={currencyCodeA} className={css.currencyTrBody}>
+                  <td className={css.currencyCeil}>
+                    {currencyCodeA === 840 ? 'USD' : 'EUR'}
+                  </td>
+                  <td className={css.currencyCeil}>{rateBuy.toFixed(2)}</td>
+                  <td className={css.currencyCeil}>{rateSell.toFixed(2)}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        )}
+      </table> */}
+      <Mountain />
+    </StyledCurrencyThumb>
   );
 }

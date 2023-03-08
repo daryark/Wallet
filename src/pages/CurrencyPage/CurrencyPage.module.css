@@ -9,7 +9,6 @@
   font-size: 16px;
   font-weight: 400;
   background-image: url(../../components/images/CurrencyVioletBlock.png);
-  padding-top: 17px;
 }
 .currencyTable {
   display: grid;
@@ -24,4 +23,5 @@
 .currencyTr {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  padding-top: 20px;
 }
