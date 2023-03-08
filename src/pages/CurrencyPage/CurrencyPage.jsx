@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -12,9 +11,10 @@ import css from '../CurrencyPage/CurrencyPage.module.css';
 import { StyledCurrencyThumb } from './styles';
 import { setCurrencyFromLocalStorage } from 'redux/monobank/monoSlice';
 import { selectIsLoading } from 'redux/global/global-selectors';
+import WithAuthRedirect from 'HOC/WithAuthRedirect';
 const oneHour = 3600000;
 
-export default function CurrencyPage() {
+function CurrencyPage() {
   const dispatch = useDispatch();
   const currency = useSelector(selectCurrency);
   const loading = useSelector(selectIsLoading);
@@ -71,3 +71,5 @@ export default function CurrencyPage() {
     </StyledCurrencyThumb>
   );
 }
+
+export default WithAuthRedirect(CurrencyPage, '/login');
