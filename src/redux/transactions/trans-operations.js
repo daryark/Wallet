@@ -1,12 +1,17 @@
-import {createAsyncThunk} from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import {TransactionCategoriesAPI, TransactionsAPI, TransactionSummaryAPI,} from 'services/api';
+import {
+  TransactionsAPI,
+  TransactionCategoriesAPI,
+  TransactionSummaryAPI,
+} from 'services/api';
 
 export const fetchTransactions = createAsyncThunk(
   'transactions/getTransactions',
   async (_, { rejectWithValue }) => {
     try {
-      const { response } = await TransactionsAPI.getUserTransactions();
+      const response = await TransactionsAPI.getUserTransactions();
+      // console.log(response);
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -18,7 +23,8 @@ export const addTransaction = createAsyncThunk(
   'transactions/addTransition',
   async (formData, { rejectWithValue }) => {
     try {
-      const { response } = await TransactionsAPI.createTransaction(formData);
+      const response = await TransactionsAPI.createTransaction(formData);
+      // console.log('response', response);
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -54,7 +60,8 @@ export const getTransactionCategories = createAsyncThunk(
   'transactions/getTransactionCategories',
   async (_, { rejectWithValue }) => {
     try {
-      const { response } = await TransactionCategoriesAPI();
+      const response =
+        await TransactionCategoriesAPI.getTransactionCategories();
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -67,6 +74,10 @@ export const getTransactionSummary = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       return await TransactionSummaryAPI.getTransactionSummary(formData);
+      const { response } = await TransactionSummaryAPI.getTransactionSummary(
+        formData
+      );
+      return response;
     } catch (error) {
       return rejectWithValue(error.message);
     }

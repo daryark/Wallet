@@ -1,22 +1,34 @@
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { RiEdit2Line } from 'react-icons/ri';
 
 import { Table } from 'antd';
 
 import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
-import { deleteTransaction } from 'redux/transactions/trans-operations';
 import { setEditTransaction } from 'redux/transactions/transSlice';
-import transitions from './transitionsData.json';
-import { StyledDeleteBtn, StyledEditBtn } from './TransitionsList.styled';
-// import {
-//   StyledRow,
-//   StyledTable,
-//   StyledTbody,
-//   StyledThead,
-// } from './TransitionsList.styled';
+import { selectTransactions } from 'redux/transactions/trans-selectors';
+// import transitions from './transitionsData.json';
+
+import {
+  fetchTransactions,
+  deleteTransaction,
+} from 'redux/transactions/trans-operations';
+import {
+  StyledBox,
+  BtnBox,
+  StyledDeleteBtn,
+  StyledEditBtn,
+  StyledAmount,
+} from './TransitionsList.styled';
 
 export const TransactionsList = () => {
   const dispatch = useDispatch();
+  const transactions = useSelector(selectTransactions);
+  console.log(transactions);
+
+  useEffect(() => {
+    dispatch(fetchTransactions());
+  }, [dispatch]);
 
   const handleEditTransition = contactUser => {
     dispatch(setEditTransaction(contactUser));
@@ -56,7 +68,7 @@ export const TransactionsList = () => {
       key: 'sum',
       render: (_, record) => {
         const amount = parseFloat(record.amount).toFixed(2);
-        return <div>{amount}</div>;
+        return <StyledAmount type={record.type}>{amount}</StyledAmount>;
       },
     },
     {
@@ -64,19 +76,19 @@ export const TransactionsList = () => {
       key: 'action',
       render: (_, record) => {
         return (
-          <>
+          <BtnBox>
             <StyledEditBtn onClick={() => handleEditTransition(record)}>
               <RiEdit2Line size={14} />
             </StyledEditBtn>
             <StyledDeleteBtn onClick={() => handleDeleteTransition(record.key)}>
               Delete
             </StyledDeleteBtn>
-          </>
+          </BtnBox>
         );
       },
     },
   ];
-  const dataSource = transitions.map(
+  const dataSource = transactions?.map(
     ({ id, transactionDate, type, categoryId, comment, amount }) => ({
       key: id,
       transactionDate,
@@ -87,5 +99,21 @@ export const TransactionsList = () => {
     })
   );
 
-  return <Table dataSource={dataSource} columns={columns}></Table>;
+  return (
+    <>
+      {transactions.length > 0 ? (
+        <StyledBox>
+          <Table dataSource={dataSource} columns={columns}></Table>
+        </StyledBox>
+      ) : (
+        <div>
+          There aren't any transactions. Press the button and add your first
+          one!
+        </div>
+      )}
+      {/* <StyledBox>
+        <Table dataSource={dataSource} columns={columns}></Table>
+      </StyledBox> */}
+    </>
+  );
 };
