@@ -129,6 +129,9 @@ export const StyledBox = styled.div`
       background-color: ${p => p.theme.color.bg_white};
       border: none;
     }
+    & .ant-table-column-sorters:hover .ant-table-column-sorter {
+      color: ${p => p.theme.color.accent};
+    }
   }
 
   & .ant-table-content {

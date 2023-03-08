@@ -47,7 +47,6 @@ export const TransactionsList = () => {
   const columns = [
     {
       title: 'Date',
-      // align: 'left',
       dataIndex: 'date',
       key: 'date',
       render: (_, record) => {
@@ -65,6 +64,7 @@ export const TransactionsList = () => {
       title: 'Category',
       dataIndex: 'category',
       key: 'category',
+      // sorter: (a, b) => a.categoryName - b.categoryName,
       render: (_, record) => {
         if (!categories) return;
         const getCategory = categories.find(c => c.id === record.categoryId);
@@ -84,6 +84,7 @@ export const TransactionsList = () => {
       align: 'right',
       dataIndex: 'sum',
       key: 'sum',
+      sorter: (a, b) => a.amount - b.amount,
       render: (_, record) => {
         const positNum = Math.abs(record.amount);
         const amount = parseFloat(positNum).toFixed(2);
@@ -117,7 +118,7 @@ export const TransactionsList = () => {
       amount,
     })
   );
-
+  const scroll = { scrollToFirstRowOnChange: true, y: 200 };
   return (
     <>
       {transactions.length > 0 ? (
@@ -125,6 +126,7 @@ export const TransactionsList = () => {
           <Table
             dataSource={dataSource}
             columns={columns}
+            scroll={scroll}
             pagination={false}
           ></Table>
         </StyledBox>
