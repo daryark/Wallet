@@ -24,6 +24,7 @@ import {
   StyledAmount,
 } from './TransitionsList.styled';
 import { getDate } from 'helpers/getDate';
+import { capitalizeFirstLetter } from 'helpers/capitalize';
 
 export const TransactionsList = () => {
   const dispatch = useDispatch();
@@ -46,6 +47,7 @@ export const TransactionsList = () => {
   const columns = [
     {
       title: 'Date',
+      // align: 'left',
       dataIndex: 'date',
       key: 'date',
       render: (_, record) => {
@@ -55,6 +57,7 @@ export const TransactionsList = () => {
     },
     {
       title: 'Type',
+      align: 'center',
       dataIndex: 'type',
       key: 'type',
     },
@@ -63,13 +66,10 @@ export const TransactionsList = () => {
       dataIndex: 'category',
       key: 'category',
       render: (_, record) => {
-        // console.log(categories);
-        // console.log(record.categoryId);
         if (!categories) return;
         const getCategory = categories.find(c => c.id === record.categoryId);
-        // console.log(getCategory);
         const categoryName = getCategory?.name;
-        // console.log(categoryName);
+
         return <div>{categoryName}</div>;
       },
     },
@@ -77,14 +77,16 @@ export const TransactionsList = () => {
       title: 'Comment',
       dataIndex: 'comment',
       key: 'comment',
-      render: (_, record) => <div>{record.comment}</div>,
+      render: (_, record) => <div>{capitalizeFirstLetter(record.comment)}</div>,
     },
     {
       title: 'Sum',
+      align: 'right',
       dataIndex: 'sum',
       key: 'sum',
       render: (_, record) => {
-        const amount = parseFloat(record.amount).toFixed(2);
+        const positNum = Math.abs(record.amount);
+        const amount = parseFloat(positNum).toFixed(2);
         return <StyledAmount type={record.type}>{amount}</StyledAmount>;
       },
     },
@@ -120,7 +122,11 @@ export const TransactionsList = () => {
     <>
       {transactions.length > 0 ? (
         <StyledBox>
-          <Table dataSource={dataSource} columns={columns}></Table>
+          <Table
+            dataSource={dataSource}
+            columns={columns}
+            pagination={false}
+          ></Table>
         </StyledBox>
       ) : (
         <div>
