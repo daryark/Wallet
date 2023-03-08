@@ -13,13 +13,18 @@ import {
 } from 'redux/transactions/trans-operations';
 
 import { FormModalAddTransactionStyled } from './FormModalAddTransaction.styled';
+// import { SelectField } from 'components/Forms/SelectField/SelectField';
+// import { CustomInputDate } from 'components/Forms/CustomInputDate/CustomInputDate';
+// import { DateTimeField } from 'components/ModalAddTransaction/DateTimeField/DateTimeField';
+
+import Datetime from 'react-datetime';
+import 'react-datetime/css/react-datetime.css';
 
 const defaultState = {
   type: 'EXPENSE',
   categoryId: '',
   amount: '',
-  // date: new Date(),
-  date: '',
+  date: new Date(),
   comment: '',
 };
 
@@ -46,18 +51,25 @@ function FormModalAddTransaction({ handleCloseModal, isEditForm = false }) {
   );
 
   const handleCheckboxChange = event => {
-    transactionState.type === 'EXPENSE'
-      ? setTransactionState(prev => ({ ...prev, type: 'INCOME' }))
-      : setTransactionState(prev => ({ ...prev, type: 'EXPENSE' }));
+    if (transactionState.type === 'EXPENSE') {
+      setTransactionState(prev => ({ ...prev, type: 'INCOME' }));
+      event.target.removeAttribute('checked', 'true');
+    } else {
+      setTransactionState(prev => ({ ...prev, type: 'EXPENSE' }));
+      event.target.setAttribute('checked', 'true');
+    }
   };
 
   const handleSelectChange = event => {
-    console.log('event.target.value ', event.target.value);
     setTransactionState(prev => ({ ...prev, categoryId: event.target.value }));
   };
 
+  const handleDateChange = event => {
+    setTransactionState(prev => ({ ...prev, date: event._d }));
+  };
+
   const handleSubmit = (values, actions) => {
-    const { amount, comment, date } = values;
+    const { amount, comment } = values;
 
     const formData = {
       ...(transactionState.type === 'INCOME' && {
@@ -70,12 +82,11 @@ function FormModalAddTransaction({ handleCloseModal, isEditForm = false }) {
       }),
 
       type: transactionState.type,
-      transactionDate: date,
+      transactionDate: transactionState.date,
       comment,
       amount:
         transactionState.type === 'INCOME' ? Number(amount) : -Number(amount),
     };
-    // console.log('formData', formData);
     onSubmit(formData);
     setTransactionState(prev => ({ ...prev, type: 'EXPENSE' }));
     actions.resetForm();
@@ -106,10 +117,10 @@ function FormModalAddTransaction({ handleCloseModal, isEditForm = false }) {
           <label className="switcher__box">
             <Field
               type="checkbox"
-              checked={transactionState.type === 'EXPENSE' ? true : false}
               name="type"
               onChange={handleCheckboxChange}
               className="switcher__checkbox"
+              checked={transactionState.type === 'EXPENSE' ? true : false}
             />
             <span className="switcher__toggle"></span>
           </label>
@@ -122,7 +133,7 @@ function FormModalAddTransaction({ handleCloseModal, isEditForm = false }) {
           className={
             transactionState.type === 'EXPENSE'
               ? 'category'
-              : 'category isHidden' // from GlobalStyles
+              : 'category isHidden'
           }
           onClick={handleSelectChange}
         >
@@ -178,35 +189,63 @@ function FormModalAddTransaction({ handleCloseModal, isEditForm = false }) {
             })} */}
         </Field>
 
+        {/* <Field name="categoryId" component={SelectField} options={options} /> */}
+
         <div className="amount-date-wrapper">
           <Field
             type="number"
             placeholder="0.00"
             name="amount"
             className="amount"
+            // value={Number(transactionState.amount).toFixed(2)}
           />
 
-          <Field
+          <Datetime
+            type="date"
+            name="date"
+            className="date"
+            dateFormat="DD.MM.YYYY"
+            timeFormat={false}
+            value={transactionState.date}
+            onChange={handleDateChange}
+          />
+
+          {/* <DateTime
+            type="date"
+            name="date"
+            className="date"
+            selected={
+              transactionState.date ? transactionState.date : new Date()
+            }
+            // onChange={val => setValue(val)}
+            dateFormat="MM.DD.YYYY"
+            timeFormat={false}
+            // selected={(field.value && new Date(field.value)) || null}
+            // onChange={val => {
+            //   setFieldValue(field.name, val);
+            // }}
+          /> */}
+
+          {/* <Field
+            name="date"
+            as={DateTimeField}
+            // placeholder="First Name"
+          /> */}
+
+          {/* <Field
             type="date"
             name="date"
             className="date"
             // value={
             //   transactionState.date ? transactionState.date : new Date()
             // }
-          />
+          /> */}
 
           {/* <Field
-            component={ */}
-          {/* <Datetime
-            type="date"
             name="date"
             className="date"
-            // onChange={val => setValue(val)}
-            dateFormat="MM.DD.YYYY"
-            timeFormat={false}
-            // initialValue={transactionState.date}
-          /> */}
-          {/* }
+            component={SelectField}
+            options={options}
           /> */}
         </div>
 

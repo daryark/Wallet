@@ -29,51 +29,54 @@ export const FormModalAddTransactionStyled = styled(Form)`
       /* color:; */
     }
 
-    /* &__box {
-        position: relative;
-        display: inline-block;
-        width: 80px;
-        height: 40px;
-      }
+    &__box {
+      position: relative;
+      display: inline-block;
+      width: 80px;
+      height: 40px;
+    }
 
-      &__checkbox {
-        opacity: 0;
-        width: 0;
-        height: 0;
+    &__checkbox {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
 
-        &:checked .switcher__toggle:before {
-          -webkit-transform: translateX(44px);
-          -ms-transform: translateX(44px);
-          transform: translateX(44px);
-        }
-      }
+    &__toggle {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #fff;
+      -webkit-transition: 0.4s;
+      border-radius: 30px;
+      border: 1px solid #e0e0e0;
+      transition: 0.4s;
 
-      &__toggle {
+      &:before {
         position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #fff;
-        -webkit-transition: 0.4s;
+        content: '';
+        height: 44px;
+        width: 44px;
+        left: -4px;
+        bottom: -2px;
         transition: 0.4s;
-        border-radius: 30px;
+        border-radius: 50%;
+        background-color: #24cca7;
+        box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+        -webkit-transition: 0.4s;
+      }
+    }
 
-        &:before {
-          position: absolute;
-          content: '';
-          height: 44px;
-          width: 44px;
-          left: -4px;
-          bottom: -2px;
-          transition: 0.4s;
-          background-color: #ff6596;
-          box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
-          border-radius: 50%;
-          -webkit-transition: 0.4s;
-        }
-      } */
+    &__checkbox:checked + .switcher__toggle:before {
+      background-color: #ff6596;
+      box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
+      -webkit-transform: translateX(44px);
+      -ms-transform: translateX(44px);
+      transform: translateX(44px);
+    }
   }
 
   & input,
@@ -107,6 +110,15 @@ export const FormModalAddTransactionStyled = styled(Form)`
 
       & .amount {
         width: calc((100% - 30px) / 2);
+        text-align: center;
+
+        ::-webkit-outer-spin-button,
+        ::-webkit-inner-spin-button {
+          /* display: none; */
+          -webkit-appearance: none;
+          -moz-appearance: textfield;
+          margin: 0;
+        }
 
         &::placeholder {
           text-align: center;
@@ -118,19 +130,6 @@ export const FormModalAddTransactionStyled = styled(Form)`
       }
     }
   }
-
-  /* & .category.visually-hidden { //from GlobalStyles
-    /* position: absolute;
-    white-space: nowrap;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    border: 0;
-    padding: 0;
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    margin: -1px; */
-  /* } */
 
   & .comment {
     width: 100%;
