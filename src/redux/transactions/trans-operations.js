@@ -12,7 +12,6 @@ export const fetchTransactions = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await TransactionsAPI.getUserTransactions();
-      // console.log(response);
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -25,7 +24,6 @@ export const addTransaction = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       const response = await TransactionsAPI.createTransaction(formData);
-      // console.log('response', response);
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -35,11 +33,12 @@ export const addTransaction = createAsyncThunk(
 
 export const deleteTransaction = createAsyncThunk(
   'transactions/deleteTransition',
-  async (transitionId, { rejectWithValue }) => {
+  async (formData, { rejectWithValue }) => {
     try {
-      const response = await TransactionsAPI.removeTransaction(transitionId);
-      console.log(response);
-      return transitionId;
+      await TransactionsAPI.removeTransaction(formData.transitionId);
+      const newBalance = formData.balance - formData.delAmount;
+      const info = { id: formData.transitionId, balance: newBalance };
+      return info;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -50,8 +49,22 @@ export const editTransaction = createAsyncThunk(
   'transactions/editTransition',
   async (formData, { rejectWithValue }) => {
     try {
-      const response = await TransactionsAPI.updateTransaction(formData);
-      return response;
+      // console.log(formData);
+      const info = {
+        id: formData.id,
+        amount: formData.amount,
+        comment: formData.comment,
+      };
+      const response = await TransactionsAPI.updateTransaction(info);
+
+      const newBalance = formData.balance - formData.oldAmnt + formData.amount;
+      // console.log(newBalance);
+      const data = {
+        response,
+        balance: newBalance,
+      };
+
+      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }

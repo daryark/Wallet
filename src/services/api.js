@@ -71,7 +71,6 @@ export const TransactionsAPI = {
   },
 
   async removeTransaction(key) {
-    console.log(key);
     await $privateHost.delete(`/api/transactions/${key}`);
     return key;
   },
