@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 import { fetchCurrencyMonoBank } from './mono-operations';
+
+const currencyFromStorage = JSON.parse(
+  localStorage.getItem('currencyInTheMoment')
+);
 
 const initialState = {
   currency: [],
@@ -10,7 +13,11 @@ const initialState = {
 const currencySlice = createSlice({
   name: 'currency',
   initialState,
-  reducers: {},
+  reducers: {
+    setCurrencyFromLocalStorage(state, { payload }) {
+      state.currency = payload;
+    },
+  },
   extraReducers: builder => {
     builder
 
@@ -22,8 +29,10 @@ const currencySlice = createSlice({
       })
       .addCase(fetchCurrencyMonoBank.rejected, state => {
         state.isLoading = false;
+        state.currency = currencyFromStorage;
       });
   },
 });
+export const { setCurrencyFromLocalStorage } = currencySlice.actions;
 
 export const currencyReducer = currencySlice.reducer;
