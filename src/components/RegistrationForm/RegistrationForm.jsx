@@ -9,7 +9,9 @@ import { useNavigate } from 'react-router-dom';
 import { registerRequest } from 'redux/auth/auth-operations';
 
 import registerSchema from './registerSchema';
+
 import { RegisterBox } from './RegistrationForm.styled';
+import { MdEmail, MdLock, MdAccountBox } from 'react-icons/md';
 
 const initialValues = {
   email: '',
@@ -40,15 +42,33 @@ const RegistrationForm = () => {
         onSubmit={handleSubmit}
       >
         <Form>
-          <AuthField type="email" name="email" placeholder="E-mail" />
-          <AuthField type="password" name="password" placeholder="Password" />
           <AuthField
+            icon={MdEmail}
+            type="email"
+            name="email"
+            placeholder="E-mail"
+          />
+
+          <AuthField
+            icon={MdLock}
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
+
+          <AuthField
+            icon={MdLock}
             type="password"
             name="confirmPass"
             placeholder="Confirm password"
           />
 
-          <AuthField type="text" name="name" placeholder="First name" />
+          <AuthField
+            icon={MdAccountBox}
+            type="text"
+            name="name"
+            placeholder="First name"
+          />
 
           <AuthButtonActive text="Register" />
           <AuthButton text="Log in" path={'/login'} onClick={changeRoute} />

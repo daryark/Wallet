@@ -37,6 +37,7 @@ const initialGlobalState = {
   isLoading: false,
   error: null,
   status: 'idle',
+  isModalTeamOpen: false,
 };
 
 const globalSlice = createSlice({
@@ -46,6 +47,9 @@ const globalSlice = createSlice({
     isModalAddTransactionOpen(state) {
       state.isModalOpen = !state.isModalOpen;
       console.log('isModalAddTransactionOpen', state.isModalOpen);
+    },
+    toggleModalTeam(state) {
+      state.isModalTeamOpen = !state.isModalTeamOpen;
     },
     toggleThemeTitle(state) {
       state.themeTitle = state.themeTitle === 'light' ? 'dark' : 'light';
@@ -74,6 +78,7 @@ function errorHandler(state, { payload }) {
   state.isLoading = false;
   state.error = payload;
 }
-export const { isModalAddTransactionOpen } = globalSlice.actions;
+export const { isModalAddTransactionOpen, toggleModalTeam } =
+  globalSlice.actions;
 export const { toggleThemeTitle } = globalSlice.actions;
 export const globalReducer = globalSlice.reducer;

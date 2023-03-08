@@ -47,7 +47,7 @@ export const StyledItem = styled.li`
 
 export const StyledSum = styled.span`
   color: ${({ type, theme }) =>
-    type === 'EXPENSE' ? theme.color.accent : theme.color.text_pink};
+    type === 'INCOME' ? theme.color.accent : theme.color.text_pink};
   font-weight: ${p => p.theme.fontWeights.bold};
 `;
 export const StyledSpan = styled.span`
@@ -129,6 +129,13 @@ export const StyledBox = styled.div`
       background-color: ${p => p.theme.color.bg_white};
       border: none;
     }
+    & .ant-table-column-sorters:hover .ant-table-column-sorter {
+      color: ${p => p.theme.color.accent};
+    }
+
+    & .ant-table-thead th.ant-table-column-has-sorters:hover {
+      background: ${p => p.theme.color.bg_thead};
+    }
   }
 
   & .ant-table-content {
@@ -151,7 +158,7 @@ export const StyledBox = styled.div`
       border-bottom: none;
       &::before {
         background-color: transparent;
-        border: none;
+        display: none;
       }
     }
   }

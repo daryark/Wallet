@@ -6,12 +6,15 @@ import { Table } from 'antd';
 
 import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
 import { setEditTransaction } from 'redux/transactions/transSlice';
-import { selectTransactions } from 'redux/transactions/trans-selectors';
-// import transitions from './transitionsData.json';
+import {
+  selectCategories,
+  selectTransactions,
+} from 'redux/transactions/trans-selectors';
 
 import {
   fetchTransactions,
   deleteTransaction,
+  getTransactionCategories,
 } from 'redux/transactions/trans-operations';
 import {
   StyledBox,
@@ -20,14 +23,17 @@ import {
   StyledEditBtn,
   StyledAmount,
 } from './TransitionsList.styled';
+import { getDate } from 'helpers/getDate';
+import { capitalizeFirstLetter } from 'helpers/capitalize';
 
 export const TransactionsList = () => {
   const dispatch = useDispatch();
+  const categories = useSelector(selectCategories);
   const transactions = useSelector(selectTransactions);
-  console.log(transactions);
 
   useEffect(() => {
     dispatch(fetchTransactions());
+    dispatch(getTransactionCategories());
   }, [dispatch]);
 
   const handleEditTransition = contactUser => {
@@ -43,10 +49,14 @@ export const TransactionsList = () => {
       title: 'Date',
       dataIndex: 'date',
       key: 'date',
-      render: (_, record) => <div>{record.transactionDate}</div>,
+      render: (_, record) => {
+        const date = getDate(record.transactionDate);
+        return <div>{date}</div>;
+      },
     },
     {
       title: 'Type',
+      align: 'center',
       dataIndex: 'type',
       key: 'type',
     },
@@ -54,20 +64,30 @@ export const TransactionsList = () => {
       title: 'Category',
       dataIndex: 'category',
       key: 'category',
-      render: (_, record) => <div>{record.categoryId}</div>,
+      // sorter: (a, b) => a.categoryName - b.categoryName,
+      render: (_, record) => {
+        if (!categories) return;
+        const getCategory = categories.find(c => c.id === record.categoryId);
+        const categoryName = getCategory?.name;
+
+        return <div>{categoryName}</div>;
+      },
     },
     {
       title: 'Comment',
       dataIndex: 'comment',
       key: 'comment',
-      render: (_, record) => <div>{record.comment}</div>,
+      render: (_, record) => <div>{capitalizeFirstLetter(record.comment)}</div>,
     },
     {
       title: 'Sum',
+      align: 'right',
       dataIndex: 'sum',
       key: 'sum',
+      sorter: (a, b) => a.amount - b.amount,
       render: (_, record) => {
-        const amount = parseFloat(record.amount).toFixed(2);
+        const positNum = Math.abs(record.amount);
+        const amount = parseFloat(positNum).toFixed(2);
         return <StyledAmount type={record.type}>{amount}</StyledAmount>;
       },
     },
@@ -92,18 +112,23 @@ export const TransactionsList = () => {
     ({ id, transactionDate, type, categoryId, comment, amount }) => ({
       key: id,
       transactionDate,
-      type: type === 'INCOME' ? '-' : '+',
+      type: type === 'INCOME' ? '+' : '-',
       categoryId,
       comment,
       amount,
     })
   );
-
+  const scroll = { scrollToFirstRowOnChange: true, y: 200 };
   return (
     <>
       {transactions.length > 0 ? (
         <StyledBox>
-          <Table dataSource={dataSource} columns={columns}></Table>
+          <Table
+            dataSource={dataSource}
+            columns={columns}
+            scroll={scroll}
+            pagination={false}
+          ></Table>
         </StyledBox>
       ) : (
         <div>
@@ -111,9 +136,6 @@ export const TransactionsList = () => {
           one!
         </div>
       )}
-      {/* <StyledBox>
-        <Table dataSource={dataSource} columns={columns}></Table>
-      </StyledBox> */}
     </>
   );
 };
