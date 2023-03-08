@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import currencyImg from '../../components/images/CurrencyVioletBlock.png';
-import downImg from '../../components/images/MountainViolet.png';
+// import downImg from '../../components/images/MountainViolet.png';
 
 export const StyledCurrencyThumb = styled.div`
   position: relative;

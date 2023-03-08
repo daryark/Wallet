@@ -28,7 +28,7 @@ const transactionsSlice = createSlice({
   initialState,
   reducers: {
     setEditTransaction(state, { payload }) {
-      state.editContact = payload;
+      state.editTransaction = payload;
     },
   },
   extraReducers: builder => {
