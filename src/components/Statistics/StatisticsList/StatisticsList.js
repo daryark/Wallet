@@ -1,34 +1,44 @@
 import {
-  StatisticsListWrapper,
-  StatisticsListTitle,
-  StatisticsList,
-  StatisticsItem,
-  StatisticsSumList,
-  StatisticsSumItem,
   Cube,
-  Sum,
+  StatisticsItem,
+  StatisticsList,
+  StatisticsListTitle,
+  StatisticsListWrapper,
+  StatisticsSumItem,
+  StatisticsSumList,
   StatisticsWrapper,
+  Sum,
 } from './StatisticsList.styled';
-import { categories } from './categories';
+import {categories} from './categories';
 
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Select from 'react-select';
-import { useTheme } from 'styled-components';
+import {useDispatch, useSelector} from "react-redux";
+import {getTransactionSummary} from "../../../redux/transactions/trans-operations";
+import {selectSummary} from "../../../redux/transactions/trans-selectors";
+import {theme} from "antd";
 
-const month = [
-  { value: 'January', label: 'January' },
-  { value: 'February', label: 'February' },
-  { value: 'March', label: 'March' },
-  { value: 'April', label: 'April' },
-  { value: 'May', label: 'May' },
-  { value: 'June', label: 'June' },
-  { value: 'July', label: 'July' },
-  { value: 'August', label: 'August' },
-  { value: 'September', label: 'September' },
-  { value: 'October', label: 'October' },
-  { value: 'November', label: 'November' },
-  { value: 'December', label: 'December' },
+const monthData = [
+  { value: 0, label: 'January' },
+  { value: 1, label: 'February' },
+  { value: 2, label: 'March' },
+  { value: 3, label: 'April' },
+  { value: 4, label: 'May' },
+  { value: 5, label: 'June' },
+  { value: 6, label: 'July' },
+  { value: 7, label: 'August' },
+  { value: 8, label: 'September' },
+  { value: 9, label: 'October' },
+  { value: 10, label: 'November' },
+  { value: 11, label: 'December' },
 ];
+
+const yearData = [
+  { value: 2021, label: '2022' },
+  { value: 2022, label: '2022' },
+  { value: 2023, label: '2023' },
+];
+
 
 const customStyles = {
   control: provided => ({
@@ -81,23 +91,46 @@ const customStyles = {
   }),
 };
 
-const CategorySum = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
-  const theme = useTheme();
 
-  const handleChange = selectedOption => {
-    setSelectedOption(selectedOption);
+
+
+const CategorySum = () => {
+  const [month, setMonth] = useState((new Date).getMonth());
+  const [year, setYear] = useState((new Date).getFullYear());
+  const summary = useSelector(selectSummary)
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(getTransactionSummary({month, year}))
+  }, [month, year])
+
+  const handleMonthChange = ({value}) => {
+    setMonth(value);
+  };
+  const handleYearChange = ({value}) => {
+    setYear(value);
   };
 
+  console.log(summary)
   return (
     <StatisticsListWrapper>
       <Select
-        value={selectedOption}
-        onChange={handleChange}
-        options={month}
+        // defaultInputValue={monthData[month].label}
+        value={month}
+        onChange={handleMonthChange}
+        options={monthData}
         placeholder="Select a month"
         styles={customStyles}
       />
+      <Select
+        // defaultInputValue={yearData[year].label}
+        value={year}
+        onChange={handleYearChange}
+        options={yearData}
+        placeholder="Select a year"
+        styles={customStyles}
+      />
+
       <StatisticsListTitle>
         <p>Category</p>
         <p>Sum</p>
@@ -115,11 +148,11 @@ const CategorySum = () => {
       <StatisticsSumList>
         <StatisticsSumItem>
           <p>Expenses</p>
-          <p style={{ color: theme.color.text_pink }}>22 549.24</p>
+          {/*<p style={{ color: theme.color.text_pink }}>22 549.24</p>*/}
         </StatisticsSumItem>
         <StatisticsSumItem>
           <p>Income</p>
-          <p style={{ color: theme.color.accent }}>27 350.00</p>
+          {/*<p style={{ color: theme.color.accent }}>27 350.00</p>*/}
         </StatisticsSumItem>
       </StatisticsSumList>
     </StatisticsListWrapper>
