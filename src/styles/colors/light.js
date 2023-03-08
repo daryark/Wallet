@@ -9,5 +9,6 @@ export const light = {
     text_pink: '#FF6596',
     bg_white: '#FFFFFF',
     bg_grey_main: '#E7EAF2',
+    bg_thead: '#f0f0f0',
   },
 };
