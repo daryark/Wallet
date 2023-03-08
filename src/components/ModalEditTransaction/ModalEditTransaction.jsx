@@ -17,7 +17,7 @@ export const ModalEditTransaction = () => {
     return () => {
       document.removeEventListener('keydown', handleEscape);
     };
-  }, []);
+  }, [dispatch]);
   const closeModal = e => {
     if (e.target !== e.currentTarget) return;
     dispatch(toggleEditModal());
