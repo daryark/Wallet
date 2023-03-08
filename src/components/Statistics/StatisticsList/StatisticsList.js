@@ -111,7 +111,7 @@ const CategorySum = () => {
     setYear(value);
   };
 
-  console.log(month)
+  // console.log(summary)
   return (
     <StatisticsListWrapper>
       <Select
