@@ -136,6 +136,12 @@ export const StyledBox = styled.div`
     & .ant-table-thead th.ant-table-column-has-sorters:hover {
       background: ${p => p.theme.color.bg_thead};
     }
+    & td.ant-table-column-sort {
+      background: ${p => p.theme.color.bg_thead};
+    }
+    & .ant-table-tbody > tr.ant-table-row:hover > td {
+      background: ${p => p.theme.color.bg_tbody};
+    }
   }
 
   & .ant-table-content {
