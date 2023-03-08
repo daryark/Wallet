@@ -11,18 +11,20 @@ import { selectEditTransaction } from 'redux/transactions/trans-selectors';
 import { editTransaction } from 'redux/transactions/trans-operations';
 import { categories } from 'components/Statistics/StatisticsList/categories';
 import { getDate } from 'helpers/getDate';
+import { capitalizeFirstLetter } from 'helpers/capitalize';
 
 export const ModalEdit = () => {
   const updateTransaction = useSelector(selectEditTransaction);
   const dispatch = useDispatch();
   const transactionDate = getDate(updateTransaction.transactionDate);
-  const sum = parseFloat(updateTransaction.amount).toFixed(2);
+  const positNum = Math.abs(updateTransaction.amount);
+  const sum = parseFloat(positNum).toFixed(2);
 
-  // if (!categories) return;
-  const getCategory = categories.find(
+  const getCategory = categories?.find(
     c => c.id === updateTransaction.categoryId
   );
   const categoryName = getCategory?.name;
+  const capitalizedComment = capitalizeFirstLetter(updateTransaction.comment);
 
   // console.log(updateTransaction);
 
@@ -37,7 +39,7 @@ export const ModalEdit = () => {
     categoryId: categoryName,
     amount: sum,
     date: transactionDate,
-    comment: updateTransaction.comment,
+    comment: capitalizedComment,
   };
   const validationSchema = Yup.object({
     name: Yup.string()
