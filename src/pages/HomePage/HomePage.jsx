@@ -1,5 +1,4 @@
-
-import { TransactionsList, TransactionsListMobile } from 'components';
+import { Balance, TransactionsList, TransactionsListMobile } from 'components';
 import CurrencyPage from 'pages/CurrencyPage/CurrencyPage';
 import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
 
@@ -14,12 +13,12 @@ function HomePage() {
   return (
     <>
       <div>HomePage is showing</div>
+      <Balance />
       <ModalBackdrop />
       <ModalAddTransaction />
       {/* <TransactionsListMobile /> */}
       <TransactionsList />
       <CurrencyPage />
-
     </>
   );
 }
