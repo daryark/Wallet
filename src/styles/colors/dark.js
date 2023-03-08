@@ -9,6 +9,6 @@ export const dark = {
     text_pink: '#FF6596',
     bg_white: '#1C1C1C', //modal, header bg
     bg_grey_main: '#27292F', //bg on home dark
-    // bg_main: ' rgba(255, 255, 255, 0.4)',
+    bg_thead: '#605e5e',
   },
 };

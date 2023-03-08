@@ -60,8 +60,8 @@ export const TransactionsAPI = {
     return data;
   },
 
-  async createTransaction({ user }) {
-    const { data } = await $privateHost.post(`/api/transactions`, user);
+  async createTransaction(transaction) {
+    const { data } = await $privateHost.post(`/api/transactions`, transaction);
     return data;
   },
 
@@ -70,9 +70,10 @@ export const TransactionsAPI = {
     return data;
   },
 
-  async removeTransaction({ key }) {
-    const { data } = await $privateHost.delete(`/api/transactions/${key}`);
-    return data;
+  async removeTransaction(key) {
+    console.log(key);
+    await $privateHost.delete(`/api/transactions/${key}`);
+    return key;
   },
 };
 
