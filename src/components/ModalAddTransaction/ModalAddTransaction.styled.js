@@ -11,7 +11,7 @@ export const ModalAddTransactionStyled = styled.div`
   min-height: calc(100vh - 60px);
   padding: 20px;
   background-color: #fff;
-  z-index: 2;
+  z-index: 102;
 
   @media screen and (min-width: 768px) {
     top: 50%;
