@@ -99,7 +99,7 @@ const CategorySum = () => {
 
   useEffect(() => {
     dispatch(getTransactionSummary({month: month + 1, year}))
-  }, [month, year])
+  }, [dispatch,month, year])
 
   const handleMonthChange = ({value}) => {
     setMonth(value);
@@ -108,7 +108,6 @@ const CategorySum = () => {
     setYear(value);
   };
 
-  console.log(summary)
   return (
     <StatisticsListWrapper>
       <Select

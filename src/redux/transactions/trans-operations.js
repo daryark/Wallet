@@ -5,7 +5,7 @@ import {
   TransactionCategoriesAPI,
   TransactionSummaryAPI,
 } from 'services/api';
-import {log10} from "chart.js/helpers";
+// import {log10} from "chart.js/helpers";
 
 export const fetchTransactions = createAsyncThunk(
   'transactions/getTransactions',
@@ -47,9 +47,9 @@ export const deleteTransaction = createAsyncThunk(
 
 export const editTransaction = createAsyncThunk(
   'transactions/editTransition',
-  async ({ formData }, { rejectWithValue }) => {
+  async (formData, { rejectWithValue }) => {
     try {
-      const { response } = await TransactionsAPI.updateTransaction(formData);
+      const response = await TransactionsAPI.updateTransaction(formData);
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -75,7 +75,8 @@ export const getTransactionSummary = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       // return await TransactionSummaryAPI.getTransactionSummary(formData);
-      const response  = await TransactionSummaryAPI.getTransactionSummary(formData
+      const response = await TransactionSummaryAPI.getTransactionSummary(
+        formData
       );
       return response;
     } catch (error) {
