@@ -85,11 +85,11 @@ export const TransactionsListMobile = () => {
                   onClick={() =>
                     handleEditTransition({
                       id,
-                      date,
+                      transactionDate,
                       type,
-                      categoryName,
+                      categoryId,
                       comment,
-                      sum,
+                      amount,
                     })
                   }
                 >

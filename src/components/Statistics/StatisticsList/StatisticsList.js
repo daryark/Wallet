@@ -12,7 +12,7 @@ import { useTheme } from 'styled-components';
 
 const CategorySum = () => {
   const theme = useTheme();
-  console.log(theme);
+  // console.log(theme);
 
   return (
     <>
