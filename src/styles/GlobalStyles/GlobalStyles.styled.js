@@ -16,8 +16,25 @@ html {
 
 body {
   margin: 0;
+  color: ${({ theme }) => theme.color.text_dark};
+  background-color: ${({ theme }) => theme.color.bg_grey_main};
+  
+    backdrop-filter: blur(25px);
+  /* background: ${({ theme }) => theme.color.bg_coverage}; */
 }
+/*   
+ @media screen and (min-width: 768px) {
+    body {
+      background-repeat: no-repeat;
+    background-image: url(./assets/bg/Ellipse_pink.png),
+      url(./assets/bg/Ellipse_purple.png);
+    background-position: top 0px right 0px, bottom 0px left 0px;
+    }
+  } */
 
+  #root {
+    height: 100vh;
+  }
 p,
 h1,
 h2,
@@ -76,8 +93,8 @@ svg {
     }
     @media (min-width: ${theme.breakpoints.xl}) {
       max-width: ${theme.breakpoints.xl};
-    }
-  } */
+    } */
+  /* } */
   .isHidden {
     position: absolute;
     width: 1px;
