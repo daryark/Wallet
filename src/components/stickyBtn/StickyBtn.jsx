@@ -29,11 +29,15 @@ export const ButtonUp = () => {
   }, []);
   return (
     <>
-      {isVisible && (
+      <BtnUp onClick={scrollToTop} className={isVisible ? '' : 'isHidden'}>
+        <BsCaretUpFill size={25} />
+      </BtnUp>
+
+      {/* {isVisible && (
         <BtnUp onClick={scrollToTop}>
           <BsCaretUpFill size={25} />
         </BtnUp>
-      )}
+      )} */}
     </>
   );
 };

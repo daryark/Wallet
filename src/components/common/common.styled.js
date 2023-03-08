@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   margin: 20px 20px 30px;
-  position: relative;
   @media screen and (min-width: 768px) {
     margin: 32px 32px 24px;
   }
