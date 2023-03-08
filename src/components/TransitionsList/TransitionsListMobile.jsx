@@ -26,6 +26,7 @@ import {
   StyledSum,
 } from './TransitionsList.styled';
 import { getDate } from 'helpers/getDate';
+import { capitalizeFirstLetter } from 'helpers/capitalize';
 
 export const TransactionsListMobile = () => {
   const dispatch = useDispatch();
@@ -49,10 +50,11 @@ export const TransactionsListMobile = () => {
       {transactions.map(
         ({ id, transactionDate, type, categoryId, comment, amount }) => {
           const date = getDate(transactionDate);
-          const sum = parseFloat(amount).toFixed(2);
 
-          // if (!categories) return;
-          const getCategory = categories.find(c => c.id === categoryId);
+          const positNum = Math.abs(amount);
+          const sum = parseFloat(positNum).toFixed(2);
+
+          const getCategory = categories?.find(c => c.id === categoryId);
           const categoryName = getCategory?.name;
 
           return (
@@ -71,7 +73,7 @@ export const TransactionsListMobile = () => {
               </StyledItem>
               <StyledItem type={type}>
                 <StyledSpan>Comment</StyledSpan>
-                {comment}
+                {capitalizeFirstLetter(comment)}
               </StyledItem>
               <StyledItem type={type}>
                 <StyledSpan>Sum</StyledSpan>
