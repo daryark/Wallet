@@ -32,6 +32,9 @@ body {
     }
   } */
 
+  #root {
+    height: 100vh;
+  }
 p,
 h1,
 h2,

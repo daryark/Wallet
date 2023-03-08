@@ -8,6 +8,7 @@ import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
 import FormModalAddTransaction from '../FormModalAddTransaction/FormModalAddTransaction';
 
 import { ModalAddTransactionStyled } from './ModalAddTransaction.styled';
+import { ModalCloseBtn } from 'reusable';
 
 function ModalAddTransaction() {
   const isModalOpen = useSelector(selectIsModalOpen);
@@ -21,15 +22,22 @@ function ModalAddTransaction() {
   }, [error]);
 
   useEffect(() => {
-    window.addEventListener('keydown', handleCloseModal);
+    function handleEscapeClick(event) {
+      if (event.key === 'Escape') {
+        dispatch(isModalAddTransactionOpen());
+      }
+    }
+
+    // if (isModalOpen)  // ДОДАТИ КОЛИ БУДЕ ПІДКЛЮЧЕНА КНОПКА ВІДКРИВАННЯ
+    window.addEventListener('keydown', handleEscapeClick);
 
     return () => {
-      window.removeEventListener('keydown', handleCloseModal);
+      window.removeEventListener('keydown', handleEscapeClick);
     };
-  });
+  }, [dispatch, isModalOpen]);
 
   const handleCloseModal = event => {
-    if (event.target === event.currentTarget || event.key === 'Escape') {
+    if (event.target === event.currentTarget) {
       dispatch(isModalAddTransactionOpen());
     }
   };
@@ -39,13 +47,7 @@ function ModalAddTransaction() {
       {isModalOpen && (
         <>
           <ModalAddTransactionStyled>
-            <button
-              type="button"
-              className="modal__close-btn"
-              onClick={handleCloseModal}
-            >
-              [x]
-            </button>
+            <ModalCloseBtn />
             <h2 className="modal__title">Add transaction</h2>
             <FormModalAddTransaction handleCloseModal={handleCloseModal} />
           </ModalAddTransactionStyled>

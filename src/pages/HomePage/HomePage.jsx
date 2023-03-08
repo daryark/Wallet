@@ -1,23 +1,26 @@
-// import { TransactionsList } from 'components';
-import { ButtonUp, TransactionsListMobile } from 'components';
+import { ButtonUp, TransactionsList, TransactionsListMobile } from 'components';
+import CurrencyPage from 'pages/CurrencyPage/CurrencyPage';
 import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
-import React from 'react';
-// import { TransactionsList, TransactionsListMobile } from 'components';
+
 
 import WithAuthRedirect from 'HOC/WithAuthRedirect';
 import { Container } from 'components/common/common.styled';
-// import CurrencyPage from 'pages/CurrencyPage/CurrencyPage';
+import ModalBackdrop from 'components/ModalBackdrop/ModalBackdrop';
 
 function HomePage() {
   return (
     <Container>
-      {/* <TransactionsList /> */}
-      {/* <CurrencyPage /> */}
+      
       <TransactionsListMobile />
+      <TransactionsList />
+      <CurrencyPage />
 
+      <ModalBackdrop />
       <ModalAddTransaction />
       <ButtonUp />
     </Container>
+
+    
   );
 }
 export default WithAuthRedirect(HomePage, '/login');
