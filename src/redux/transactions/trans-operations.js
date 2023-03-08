@@ -77,7 +77,6 @@ export const getTransactionSummary = createAsyncThunk(
       // return await TransactionSummaryAPI.getTransactionSummary(formData);
       const response  = await TransactionSummaryAPI.getTransactionSummary(formData
       );
-      console.log(response)
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
