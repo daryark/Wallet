@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { BsSun, BsMoon } from 'react-icons/bs';
 
-import { Header, Loader } from 'components';
+import { Header, Loader, Sidebar } from 'components';
 
 import { selectTheme } from 'redux/global/global-selectors';
 import { toggleThemeTitle } from 'redux/global/globalSlice';
@@ -12,7 +12,7 @@ import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 
 import { theme } from 'styles/theme';
 import { colors } from 'styles/colors';
-import { Sidebar } from './SideBar/SideBar';
+import GlobalStyles from 'styles/GlobalStyles/GlobalStyles';
 
 export default function Layout() {
   const themeTitle = useSelector(selectTheme);
@@ -26,6 +26,7 @@ export default function Layout() {
 
   return (
     <ThemeProvider theme={normalizedTheme}>
+      <GlobalStyles />
       {isLoggedIn && (
         <>
           <Header />

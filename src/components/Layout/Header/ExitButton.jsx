@@ -1,6 +1,6 @@
 import { Exit } from 'assets/icons';
 import { StyledBtn } from './Header.styled';
-import { useWindowSize } from './hooks/useWindowSize';
+import { useWindowSize } from '../../../hooks/useWindowSize';
 
 export const ExitButton = ({ onClick }) => {
   const { isMobile } = useWindowSize();

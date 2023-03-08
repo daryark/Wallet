@@ -2,6 +2,12 @@ import { createGlobalStyle } from 'styled-components';
 import { theme } from '../theme';
 
 const GlobalStyles = createGlobalStyle`
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
     box-sizing: border-box;
     scroll-behavior: smooth;
@@ -47,7 +53,7 @@ svg {
 	fill: currentColor;
 }
 
-#root {
+/* #root {
     min-height: 100vh;
     margin: 0 auto;
     display: grid;
@@ -71,7 +77,7 @@ svg {
     @media (min-width: ${theme.breakpoints.xl}) {
       max-width: ${theme.breakpoints.xl};
     }
-  }
+  } */
   .isHidden {
     position: absolute;
     width: 1px;
