@@ -1,5 +1,8 @@
-import { TransactionsList } from 'components';
+
+import { TransactionsList, TransactionsListMobile } from 'components';
+import CurrencyPage from 'pages/CurrencyPage/CurrencyPage';
 import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
+
 import React from 'react';
 // import { TransactionsList, TransactionsListMobile } from 'components';
 
@@ -13,7 +16,8 @@ function HomePage() {
       <ModalAddTransaction />
       {/* <TransactionsListMobile /> */}
       <TransactionsList />
-      {/* <CurrencyPage /> */}
+      <CurrencyPage />
+
     </>
   );
 }
