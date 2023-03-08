@@ -1,11 +1,40 @@
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RiEdit2Line } from 'react-icons/ri';
+
+import { Table } from 'antd';
+
 import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
-import { deleteTransaction } from 'redux/transactions/trans-operations';
 import { setEditTransaction } from 'redux/transactions/transSlice';
-import transitions from './transitionsData.json';
+import {
+  selectCategories,
+  selectTransactions,
+} from 'redux/transactions/trans-selectors';
+
+import {
+  fetchTransactions,
+  deleteTransaction,
+  getTransactionCategories,
+} from 'redux/transactions/trans-operations';
+import {
+  StyledBox,
+  BtnBox,
+  StyledDeleteBtn,
+  StyledEditBtn,
+  StyledAmount,
+} from './TransitionsList.styled';
+import { getDate } from 'helpers/getDate';
+import { capitalizeFirstLetter } from 'helpers/capitalize';
 
 export const TransactionsList = () => {
   const dispatch = useDispatch();
+  const categories = useSelector(selectCategories);
+  const transactions = useSelector(selectTransactions);
+
+  useEffect(() => {
+    dispatch(fetchTransactions());
+    dispatch(getTransactionCategories());
+  }, [dispatch]);
 
   const handleEditTransition = contactUser => {
     dispatch(setEditTransaction(contactUser));
@@ -14,51 +43,99 @@ export const TransactionsList = () => {
   const handleDeleteTransition = transitionId => {
     dispatch(deleteTransaction(transitionId));
   };
+
+  const columns = [
+    {
+      title: 'Date',
+      dataIndex: 'date',
+      key: 'date',
+      render: (_, record) => {
+        const date = getDate(record.transactionDate);
+        return <div>{date}</div>;
+      },
+    },
+    {
+      title: 'Type',
+      align: 'center',
+      dataIndex: 'type',
+      key: 'type',
+    },
+    {
+      title: 'Category',
+      dataIndex: 'category',
+      key: 'category',
+      // sorter: (a, b) => a.categoryName - b.categoryName,
+      render: (_, record) => {
+        if (!categories) return;
+        const getCategory = categories.find(c => c.id === record.categoryId);
+        const categoryName = getCategory?.name;
+
+        return <div>{categoryName}</div>;
+      },
+    },
+    {
+      title: 'Comment',
+      dataIndex: 'comment',
+      key: 'comment',
+      render: (_, record) => <div>{capitalizeFirstLetter(record.comment)}</div>,
+    },
+    {
+      title: 'Sum',
+      align: 'right',
+      dataIndex: 'sum',
+      key: 'sum',
+      sorter: (a, b) => a.amount - b.amount,
+      render: (_, record) => {
+        const positNum = Math.abs(record.amount);
+        const amount = parseFloat(positNum).toFixed(2);
+        return <StyledAmount type={record.type}>{amount}</StyledAmount>;
+      },
+    },
+    {
+      title: '',
+      key: 'action',
+      render: (_, record) => {
+        return (
+          <BtnBox>
+            <StyledEditBtn onClick={() => handleEditTransition(record)}>
+              <RiEdit2Line size={14} />
+            </StyledEditBtn>
+            <StyledDeleteBtn onClick={() => handleDeleteTransition(record.key)}>
+              Delete
+            </StyledDeleteBtn>
+          </BtnBox>
+        );
+      },
+    },
+  ];
+  const dataSource = transactions?.map(
+    ({ id, transactionDate, type, categoryId, comment, amount }) => ({
+      key: id,
+      transactionDate,
+      type: type === 'INCOME' ? '+' : '-',
+      categoryId,
+      comment,
+      amount,
+    })
+  );
+  const scroll = { scrollToFirstRowOnChange: true, y: 200 };
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Type</th>
-          <th>Category</th>
-          <th>Comment</th>
-          <th>Sum</th>
-        </tr>
-      </thead>
-      <tbody>
-        {transitions.map(
-          ({ id, transactionDate, type, categoryId, comment, amount }) => (
-            <tr key={id}>
-              <td>{transactionDate}</td>
-              <td>{type}</td>
-              <td>{categoryId}</td>
-              <td>{comment}</td>
-              <td>{amount}</td>
-              <td>
-                <button
-                  onClick={() =>
-                    handleEditTransition({
-                      id,
-                      transactionDate,
-                      type,
-                      categoryId,
-                      comment,
-                      amount,
-                    })
-                  }
-                >
-                  Edit
-                </button>
-              </td>
-              <td>
-                <button onClick={() => handleDeleteTransition(id)}>
-                  Delete
-                </button>
-              </td>
-            </tr>
-          )
-        )}
-      </tbody>
-    </table>
+    <>
+      {transactions.length > 0 ? (
+        <StyledBox>
+          <Table
+            dataSource={dataSource}
+            columns={columns}
+            scroll={scroll}
+            pagination={false}
+          ></Table>
+        </StyledBox>
+      ) : (
+        <div>
+          There aren't any transactions. Press the button and add your first
+          one!
+        </div>
+      )}
+    </>
   );
 };

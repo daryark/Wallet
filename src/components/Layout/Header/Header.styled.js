@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
+  grid-area: header;
   background-color: ${({ theme }) => theme.color.bg_white};
 `;
 
@@ -26,6 +27,7 @@ export const StyledContainer = styled.div`
 `;
 
 export const StyledLogo = styled.div`
+  font-family: Poppins;
   display: flex;
   align-items: center;
   gap: 16px;

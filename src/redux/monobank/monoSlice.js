@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 import { fetchCurrencyMonoBank } from './mono-operations';
+
 const currencyFromStorage = JSON.parse(
   localStorage.getItem('currencyInTheMoment')
 );

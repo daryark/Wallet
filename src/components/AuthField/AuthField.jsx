@@ -1,20 +1,21 @@
-// import { useLocation } from 'react-router-dom';
 import { useField } from 'formik';
-import { InputBox, StyledField } from './AuthField.styled';
+import { ErrorMessage, Input, InputBox, InputLabel } from './AuthField.styled';
 
-const AuthField = ({ svg, ...props }) => {
-  //   const location = useLocation();
-  const [field] = useField(props);
+const AuthField = ({ icon: Icon, ...props }) => {
+  const [field, meta] = useField(props);
 
   return (
-    <InputBox>
-      <StyledField {...field} {...props} autoComplete="off" />
-      {/* <ErrorMessage
-          component="div"
-          name={field.name}
-          
-        /> */}
-    </InputBox>
+    <>
+      <InputLabel>
+        <InputBox>
+          <Input {...field} {...props} />
+          <Icon />
+        </InputBox>
+        {meta.touched && meta.error ? (
+          <ErrorMessage className="error">{meta.error}</ErrorMessage>
+        ) : null}
+      </InputLabel>
+    </>
   );
 };
 
