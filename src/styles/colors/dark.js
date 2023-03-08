@@ -8,7 +8,8 @@ export const dark = {
     text_blue: '#4A56E2', //blue bg card
     text_pink: '#FF6596',
     bg_white: '#1C1C1C', //modal, header bg
-    bg_grey_main: '#27292F', //bg on home dark
+    bg_grey_main: 'rgba(0, 0, 6, 0.95)', //bg on home dark
+    bg_grey_login: '#27292F',
     bg_thead: '#605e5e',
   },
 };
