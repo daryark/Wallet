@@ -1,48 +1,161 @@
 import {
-  StatisticsListTitle,
-  StatisticsList,
-  StatisticsItem,
-  StatisticsSumList,
-  StatisticsSumItem,
   Cube,
+  StatisticsItem,
+  StatisticsList,
+  StatisticsListTitle,
+  StatisticsListWrapper,
+  StatisticsSumItem,
+  StatisticsSumList,
   StatisticsWrapper,
+  Sum,
 } from './StatisticsList.styled';
-import { categories } from './categories';
-import { useTheme } from 'styled-components';
+import {categories} from './categories';
+
+import React, {useEffect, useState} from 'react';
+import Select from 'react-select';
+import {useDispatch, useSelector} from "react-redux";
+import {getTransactionSummary} from "../../../redux/transactions/trans-operations";
+import {selectSummary} from "../../../redux/transactions/trans-selectors";
+import {theme} from "antd";
+
+const monthData = [
+  { value: 0, label: 'January' },
+  { value: 1, label: 'February' },
+  { value: 2, label: 'March' },
+  { value: 3, label: 'April' },
+  { value: 4, label: 'May' },
+  { value: 5, label: 'June' },
+  { value: 6, label: 'July' },
+  { value: 7, label: 'August' },
+  { value: 8, label: 'September' },
+  { value: 9, label: 'October' },
+  { value: 10, label: 'November' },
+  { value: 11, label: 'December' },
+];
+
+const yearData = [
+  { value: 2021, label: '2022' },
+  { value: 2022, label: '2022' },
+  { value: 2023, label: '2023' },
+];
+
+
+const customStyles = {
+  control: provided => ({
+    ...provided,
+    // width: '230px',
+    // ширина регулируется общей оберткой для наших двух компонентов
+    // height: '40px',
+    height: '50px', // переписала согласно макету
+    borderRadius: '30px',
+    border: 'solid 1px #000000',
+    cursor: 'pointer',
+    '&:hover': {
+      borderColor: '#D8093A',
+    },
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    backgroundColor: state.isSelected ? '#dedede' : 'transparent',
+    color: state.isSelected ? '#333333' : '#666666',
+
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    padding: '2px 103px 2px 20px',
+    gap: '10px', //
+    '&:hover': {
+      backgroundColor: '#dedede',
+      color: '#333333',
+    },
+  }),
+  singleValue: provided => ({
+    ...provided,
+    color: '#333333',
+  }),
+  dropdownIndicator: provided => ({
+    ...provided,
+    color: '#333333',
+    '&:hover': {
+      color: '#D8093A',
+    },
+  }),
+  indicatorSeparator: () => ({
+    display: 'none',
+  }),
+  menu: provided => ({
+    ...provided,
+    width: '230px',
+    borderRadius: '30px',
+    overflow: 'hidden',
+  }),
+};
+
+
+
 
 const CategorySum = () => {
-  const theme = useTheme();
-  console.log(theme);
+  const [month, setMonth] = useState((new Date).getMonth());
+  const [year, setYear] = useState((new Date).getFullYear());
+  const summary = useSelector(selectSummary)
+  const dispatch = useDispatch();
 
+  useEffect(()=>{
+    dispatch(getTransactionSummary({month, year}))
+  }, [month, year])
+
+  const handleMonthChange = ({value}) => {
+    setMonth(value);
+  };
+  const handleYearChange = ({value}) => {
+    setYear(value);
+  };
+
+  console.log(summary)
   return (
-    <>
+    <StatisticsListWrapper>
+      <Select
+        // defaultInputValue={monthData[month].label}
+        value={month}
+        onChange={handleMonthChange}
+        options={monthData}
+        placeholder="Select a month"
+        styles={customStyles}
+      />
+      <Select
+        // defaultInputValue={yearData[year].label}
+        value={year}
+        onChange={handleYearChange}
+        options={yearData}
+        placeholder="Select a year"
+        styles={customStyles}
+      />
+
       <StatisticsListTitle>
         <p>Category</p>
         <p>Sum</p>
       </StatisticsListTitle>
-
       <StatisticsList>
         {categories.map(({ title, color }) => (
           <StatisticsItem key={title}>
             <Cube color={color} />
             <StatisticsWrapper>
-              <p>{title}</p> <p>800</p>
+              <p>{title}</p> <Sum>800</Sum>
             </StatisticsWrapper>
           </StatisticsItem>
         ))}
       </StatisticsList>
-
       <StatisticsSumList>
         <StatisticsSumItem>
           <p>Expenses</p>
-          <p style={{ color: theme.color.text_pink }}>22 549.24</p>
+          {/*<p style={{ color: theme.color.text_pink }}>22 549.24</p>*/}
         </StatisticsSumItem>
         <StatisticsSumItem>
           <p>Income</p>
-          <p style={{ color: theme.color.accent }}>27 350.00</p>
+          {/*<p style={{ color: theme.color.accent }}>27 350.00</p>*/}
         </StatisticsSumItem>
       </StatisticsSumList>
-    </>
+    </StatisticsListWrapper>
   );
 };
 

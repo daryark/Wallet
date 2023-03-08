@@ -1,56 +1,66 @@
+import Dasha_Yarkovska from 'images/team/Dasha_Yarkovska.jpg';
+import Iryna_Tyshchuk from 'images/team/Iryna_Tyshchuk.jpg';
+import Halyna_Bespiata from 'images/team/Halyna_Bespiata.jpg';
+import Iryna_Malii from 'images/team/Iryna_Malii.jpg';
+import Anna_Semeniuk from 'images/team/Anna_Semeniuk.jpg';
+import Iryna_Pomeshkina from 'images/team/Iryna_Pomeshkina.jpg';
+import Liubov_Firsova from 'images/team/Liubov_Firsova.jpg';
+import Valeriia_Sarazhinska from 'images/team/Valeriia_Sarazhinska.jpg';
+import Yuliya_Nikiforova from 'images/team/Yuliya_Nikiforova.jpg';
+
 export const creators = [
   {
-    id: 2,
+    id: 1,
     name: 'Dasha Yarkovska',
     role: 'Team Lead, Developer',
-    src: 'images/team/Dasha_Yarkovska.jpg',
+    src: Dasha_Yarkovska,
   },
   {
-    id: 6,
+    id: 2,
     name: 'Iryna Tyshchuk',
     role: 'Scrum Master, Developer',
-    src: 'images/team/Iryna_Tyshchuk.jpg',
+    src: Iryna_Tyshchuk,
   },
   {
     id: 3,
     name: 'Halyna Bespiata',
     role: 'Developer',
-    src: 'images/team/Halyna_Bespiata.jpg',
+    src: Halyna_Bespiata,
   },
   {
     id: 4,
     name: 'Iryna Malii',
     role: 'Developer',
-    src: 'images/team/Iryna_Malii.jpg',
-  },
-  {
-    id: 1,
-    name: 'Anna Semeniuk',
-    role: 'Developer',
-    src: 'images/team/Anna_Semeniuk.jpg',
+    src: Iryna_Malii,
   },
   {
     id: 5,
+    name: 'Anna Semeniuk',
+    role: 'Developer',
+    src: Anna_Semeniuk,
+  },
+  {
+    id: 6,
     name: 'Iryna Pomeshkina',
     role: 'Developer',
-    src: 'images/team/Iryna_Pomeshkina.jpg',
+    src: Iryna_Pomeshkina,
   },
   {
     id: 7,
-    name: 'Liubov Firsova.',
+    name: 'Liubov Firsova',
     role: 'Developer',
-    src: 'images/team/Liubov_Firsova.jpg',
+    src: Liubov_Firsova,
   },
   {
     id: 8,
-    name: 'Valeriia Sarazhinska',
+    name: 'Yuliya_Nikiforova',
     role: 'Developer',
-    src: 'images/team/Valeriia_Sarazhinska.jpg',
+    src: Yuliya_Nikiforova,
   },
   {
     id: 9,
-    name: 'Yuliya_Nikiforova',
+    name: 'Valeriia Sarazhinska',
     role: 'Developer',
-    src: 'images/team/Yuliya_Nikiforova.jpg',
+    src: Valeriia_Sarazhinska,
   },
 ];

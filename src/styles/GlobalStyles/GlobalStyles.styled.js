@@ -2,6 +2,12 @@ import { createGlobalStyle } from 'styled-components';
 import { theme } from '../theme';
 
 const GlobalStyles = createGlobalStyle`
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
     box-sizing: border-box;
     scroll-behavior: smooth;
@@ -10,7 +16,21 @@ html {
 
 body {
   margin: 0;
+  color: ${({ theme }) => theme.color.text_dark};
+  background-color: ${({ theme }) => theme.color.bg_grey_main};
+  
+    backdrop-filter: blur(25px);
+  /* background: ${({ theme }) => theme.color.bg_coverage}; */
 }
+/*   
+ @media screen and (min-width: 768px) {
+    body {
+      background-repeat: no-repeat;
+    background-image: url(./assets/bg/Ellipse_pink.png),
+      url(./assets/bg/Ellipse_purple.png);
+    background-position: top 0px right 0px, bottom 0px left 0px;
+    }
+  } */
 
 p,
 h1,
@@ -47,9 +67,6 @@ svg {
 	fill: currentColor;
 }
 
-#root {
-  background-image: url(images/bg_desktop.png);
-}
 /* #root {
     min-height: 100vh;
     margin: 0 auto;
@@ -73,8 +90,8 @@ svg {
     }
     @media (min-width: ${theme.breakpoints.xl}) {
       max-width: ${theme.breakpoints.xl};
-    }
-  } */
+    } */
+  /* } */
   .isHidden {
     position: absolute;
     width: 1px;
