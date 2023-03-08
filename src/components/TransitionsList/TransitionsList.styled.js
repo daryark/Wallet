@@ -151,7 +151,7 @@ export const StyledBox = styled.div`
       border-bottom: none;
       &::before {
         background-color: transparent;
-        border: none;
+        display: none;
       }
     }
   }
