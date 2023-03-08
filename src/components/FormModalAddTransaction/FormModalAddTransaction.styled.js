@@ -132,6 +132,7 @@ export const FormModalAddTransactionStyled = styled(Form)`
   }
 
   & .comment {
+    ////        ??
     width: 100%;
   }
 
