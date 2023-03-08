@@ -6,8 +6,11 @@ body {
 @media screen and (min-width: 768px) {
   body {
     background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url(./images/bg_tablet.png);
+    /* background-size: cover;
+    background-image: url(./images/bg_tablet.png); */
+    /* background-image: url(./assets/bg/Ellipse_pink.png); */
+    background-position-x: top 253px;
+    /* background-position-y: right 0px top 0px; */
   }
 }
 @media screen and (min-width: 1280px) {

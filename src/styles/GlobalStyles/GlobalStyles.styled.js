@@ -12,6 +12,12 @@ body {
   margin: 0;
   color: ${({ theme }) => theme.color.text_dark};
   background-color: ${({ theme }) => theme.color.text_white};
+  
+  /* @media screen and (min-width: 768px) {
+    background-image: url(./assets/bg/Ellipse_pink.png);
+    background-position-x: top 253px;
+background-position-y: right 321px;
+  } */
 }
 
 p,
