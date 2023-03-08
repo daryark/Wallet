@@ -16,7 +16,6 @@ import {
   getTransactionCategories,
 } from 'redux/transactions/trans-operations';
 
-import { Container } from 'components/common/common.styled';
 import {
   StyledList,
   StyledItem,
@@ -46,7 +45,7 @@ export const TransactionsListMobile = () => {
     dispatch(deleteTransaction(transitionId));
   };
   return (
-    <Container>
+    <>
       {transactions.map(
         ({ id, transactionDate, type, categoryId, comment, amount }) => {
           const date = getDate(transactionDate);
@@ -103,6 +102,6 @@ export const TransactionsListMobile = () => {
           );
         }
       )}
-    </Container>
+    </>
   );
 };

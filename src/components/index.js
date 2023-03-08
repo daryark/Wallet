@@ -5,4 +5,5 @@ export * from 'components/TransitionsList/TransitionsListMobile';
 export * from 'components/LoginForm/LoginForm';
 export * from 'components/RegistrationForm/RegistrationForm';
 export * from 'components/Layout/SideBar/SideBar.jsx';
+export * from 'components/stickyBtn/StickyBtn.jsx';
 export { default as ModalTeam } from './ModalTeam/ModalTeam';

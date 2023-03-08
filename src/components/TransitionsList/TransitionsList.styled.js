@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 // export const ListContainer = styled.div`
-//   background-attachment: fixed;
-//   height: 350px;
+//   /* background-attachment: fixed; */
+//   height: 370px;
+//   overflow-y: auto;
 // `;
 
 export const StyledList = styled.ul`
