@@ -8,7 +8,6 @@ export const light = {
     text_blue: '#4A56E2', //blue bg card
     text_pink: '#FF6596',
     bg_white: '#FFFFFF',
-    bg_grey_main: '#BDBDBD', //bg on home
-    // bg_main: ' rgba(255, 255, 255, 0.4)',
+    bg_grey_main: '#E7EAF2', //bg on home
   },
 };

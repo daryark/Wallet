@@ -10,9 +10,11 @@ html {
 
 body {
   margin: 0;
-  /* background-color: '#000'; */
   color: ${({ theme }) => theme.color.text_dark};
-  background-color: ${({ theme }) => theme.color.text_white};
+  background-color: ${({ theme }) => theme.color.bg_grey_main};
+  
+    backdrop-filter: blur(25px);
+  /* background: ${({ theme }) => theme.color.bg_coverage}; */
 }
 /*   
  @media screen and (min-width: 768px) {
