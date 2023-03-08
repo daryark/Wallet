@@ -37,7 +37,8 @@ export const deleteTransaction = createAsyncThunk(
   'transactions/deleteTransition',
   async (transitionId, { rejectWithValue }) => {
     try {
-      await TransactionsAPI.removeTransaction(transitionId);
+      const response = await TransactionsAPI.removeTransaction(transitionId);
+      console.log(response);
       return transitionId;
     } catch (error) {
       return rejectWithValue(error.message);
