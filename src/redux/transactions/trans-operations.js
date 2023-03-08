@@ -73,7 +73,7 @@ export const getTransactionSummary = createAsyncThunk(
   'transactions/getTransactionSummary',
   async (formData, { rejectWithValue }) => {
     try {
-      return await TransactionSummaryAPI.getTransactionSummary(formData);
+      // return await TransactionSummaryAPI.getTransactionSummary(formData);
       const { response } = await TransactionSummaryAPI.getTransactionSummary(
         formData
       );
