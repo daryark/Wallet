@@ -47,7 +47,7 @@ export const StyledItem = styled.li`
 
 export const StyledSum = styled.span`
   color: ${({ type, theme }) =>
-    type === 'EXPENSE' ? theme.color.accent : theme.color.text_pink};
+    type === 'INCOME' ? theme.color.accent : theme.color.text_pink};
   font-weight: ${p => p.theme.fontWeights.bold};
 `;
 export const StyledSpan = styled.span`
@@ -151,7 +151,7 @@ export const StyledBox = styled.div`
       border-bottom: none;
       &::before {
         background-color: transparent;
-        border: none;
+        display: none;
       }
     }
   }
