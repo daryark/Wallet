@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 @font-face {
@@ -17,14 +16,7 @@ body {
   font-weight: 400;
 }
 
-/* @import-normalize; /* bring in normalize.css styles */
-/* 
-body {
-  background-color: #e7eaf2;
-  font-family: 'Poppins', sans-serif;
-}
-
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   body {
     background-repeat: no-repeat;
     background-image: url(./assets/bg/Ellipse_pink.png),
@@ -32,4 +24,4 @@ body {
     background-position: top 0px right 0px, bottom 0px left 0px;
     background-color: #e7eaf2;
   }
-}
+} */
