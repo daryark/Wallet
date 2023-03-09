@@ -47,7 +47,6 @@ const globalSlice = createSlice({
   reducers: {
     isModalAddTransactionOpen(state) {
       state.isModalOpen = !state.isModalOpen;
-      // console.log('isModalAddTransactionOpen', state.isModalOpen);
     },
     toggleModalTeam(state) {
       state.isModalTeamOpen = !state.isModalTeamOpen;
