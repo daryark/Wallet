@@ -22,16 +22,17 @@ function HomePage() {
   const isEditModalOpen = useSelector(selectIsEditModalOpen);
   return (
     <Container>
-      <ModalAddTransaction />
-      {isEditModalOpen && <ModalEditTransaction />}
-      <AddTransactionBtn />
       <Balance />
 
       <TransactionsListMobile />
-      <ButtonUp />
-
       {/* <TransactionsList /> */}
       <CurrencyPage />
+
+      <ModalAddTransaction />
+      {isEditModalOpen && <ModalEditTransaction />}
+
+      <AddTransactionBtn />
+      <ButtonUp />
     </Container>
   );
 }
