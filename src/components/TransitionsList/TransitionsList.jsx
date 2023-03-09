@@ -69,7 +69,6 @@ export const TransactionsList = () => {
       title: 'Category',
       dataIndex: 'category',
       key: 'category',
-},
       render: (_, record) => {
         if (!categories) return;
         const getCategory = categories.find(c => c.id === record.categoryId);
@@ -105,7 +104,11 @@ export const TransactionsList = () => {
             <StyledEditBtn onClick={() => handleEditTransition(record)}>
               <RiEdit2Line size={14} />
             </StyledEditBtn>
-            <StyledDeleteBtn onClick={() => handleDeleteTransition(record.key)}>
+            <StyledDeleteBtn
+              onClick={
+                () => handleDeleteTransition(record.key, record.amount) //add balance,
+              }
+            >
               Delete
             </StyledDeleteBtn>
           </BtnBox>

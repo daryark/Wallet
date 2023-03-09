@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 import { fetchCurrencyMonoBank } from 'redux/monobank/mono-operations';
 import { selectCurrency } from 'redux/monobank/mono-selectors';
 import { Loader } from './Loader';
@@ -9,7 +10,7 @@ import { StyledCurrencyTable } from './currencyStyles';
 import { StyledCurrencyTr } from './currencyStyles';
 import { StyledBodyTr } from './currencyStyles';
 
-// import { ReactComponent as MountainDesk } from 'images/mountain/MountainDeskTop.svg';
+import { ReactComponent as MountainDesk } from 'images/mountain/MountainDeskTop.svg';
 import { ReactComponent as MountainMob } from 'images/mountain/MountainMob.svg';
 
 import { StyledCurrencyThumb } from './currencyStyles';
@@ -19,6 +20,8 @@ import WithAuthRedirect from 'HOC/WithAuthRedirect';
 const oneHour = 3600000;
 
 function CurrencyPage() {
+  const isDeskTopOrLapTop = useMediaQuery({ query: '(min-width: 468px)' });
+  // const isMiddleScreen = useMediaQuery({ query: '(min-width: 468px)' });
   const dispatch = useDispatch();
   const currency = useSelector(selectCurrency);
   const loading = useSelector(selectIsLoading);
@@ -69,7 +72,8 @@ function CurrencyPage() {
           </tbody>
         )}
       </StyledCurrencyTable>
-      <MountainMob />
+
+      {isDeskTopOrLapTop ? <MountainDesk /> : <MountainMob />}
     </StyledCurrencyThumb>
   );
 }
