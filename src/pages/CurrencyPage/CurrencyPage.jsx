@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { fetchCurrencyMonoBank } from 'redux/monobank/mono-operations';
@@ -41,7 +41,7 @@ function CurrencyPage() {
 
   return (
     <StyledCurrencyThumb>
-      {/* <table className={css.currencyTable}>
+      <table className={css.currencyTable}>
         <thead>
           <tr className={css.currencyTr}>
             <th className={css.currencyHead}>Currency</th>
@@ -66,7 +66,7 @@ function CurrencyPage() {
             })}
           </tbody>
         )}
-      </table> */}
+      </table>
       <Mountain />
     </StyledCurrencyThumb>
   );
