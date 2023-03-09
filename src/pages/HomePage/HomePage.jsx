@@ -8,7 +8,7 @@ import {
   TransactionsList,
 } from 'components';
 
-// import CurrencyPage from 'pages/CurrencyPage/CurrencyPage';
+import CurrencyPage from 'pages/CurrencyPage/CurrencyPage';
 import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
 
 import { selectIsEditModalOpen } from 'redux/global/global-selectors';
@@ -31,8 +31,8 @@ function HomePage() {
       <TransactionsListMobile />
       <ButtonUp />
 
-      {/* <TransactionsList /> */}
-      {/* <CurrencyPage /> */}
+      <TransactionsList />
+      <CurrencyPage />
     </Container>
   );
 }
