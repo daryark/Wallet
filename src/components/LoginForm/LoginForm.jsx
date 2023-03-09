@@ -12,9 +12,9 @@ import AuthField from 'components/AuthField/AuthField';
 import { MdEmail, MdLock } from 'react-icons/md';
 import AuthLogo from 'components/AuthLogo/AuthLogo';
 import { useEffect } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
-import { selectUserError } from 'redux/auth/auth-selectors';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+
+import { selectError } from 'redux/global/global-selectors';
 
 const initialValues = {
   email: '',
@@ -36,7 +36,7 @@ const loginSchema = Yup.object().shape({
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const error = useSelector(selectUserError);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     toast.error(error);
@@ -83,18 +83,6 @@ const LoginForm = () => {
           />
         </Form>
       </Formik>
-      <ToastContainer
-        position="top-right"
-        autoClose={3500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
     </LoginBox>
   );
 };
