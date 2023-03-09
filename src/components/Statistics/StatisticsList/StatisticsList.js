@@ -33,7 +33,7 @@ const monthData = [
 ];
 
 const yearData = [
-  {value: 2021, label: '2022'},
+  {value: 2021, label: '2021'},
   {value: 2022, label: '2022'},
   {value: 2023, label: '2023'},
 ];
@@ -92,8 +92,8 @@ const customStyles = {
 
 
 const CategorySum = () => {
-  const [month, setMonth] = useState((new Date).getMonth());
-  const [year, setYear] = useState((new Date).getFullYear());
+  const [month, setMonth] = useState(new Date().getMonth());
+  const [year, setYear] = useState(new Date().getFullYear());
   const summary = useSelector(selectSummary)
   const dispatch = useDispatch();
 
@@ -131,7 +131,7 @@ const CategorySum = () => {
       </StatisticsListTitle>
       <StatisticsList>
         {summary && summary.categoriesSummary.map(({name, type, total}) => {
-          if (type === "INCOME") return
+          if (type === "INCOME") return null
             return (
               <StatisticsItem key={name}>
                 <Cube color={categories[name]}/>
