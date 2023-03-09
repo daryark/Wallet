@@ -14,6 +14,7 @@ export default function RegisterPage() {
 
     navigate('/');
   }, [isLoggedIn, navigate]);
+
   return (
     <AuthContainer>
       <RegistrationForm />
