@@ -13,6 +13,7 @@ import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 import { theme } from 'styles/theme';
 import { colors } from 'styles/colors';
 import GlobalStyles from 'styles/GlobalStyles/GlobalStyles.styled';
+import { ThemeButton } from './Layout.styled';
 
 export default function Layout() {
   const themeTitle = useSelector(selectTheme);
@@ -31,9 +32,13 @@ export default function Layout() {
         <>
           <Header />
           <Sidebar />
-          <button onClick={handleThemeChange}>
-            {themeTitle === 'light' ? <BsMoon /> : <BsSun />}
-          </button>
+          <ThemeButton onClick={handleThemeChange}>
+            {themeTitle === 'light' ? (
+              <BsMoon size={24} />
+            ) : (
+              <BsSun size={24} />
+            )}
+          </ThemeButton>
         </>
       )}
       <main>
