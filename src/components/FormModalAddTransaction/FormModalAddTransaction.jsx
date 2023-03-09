@@ -75,9 +75,6 @@ function FormModalAddTransaction({ handleCloseModal }) {
   const handleSubmit = (values, actions) => {
     const { amount, comment } = values;
 
-    console.log('values', values);
-    console.log('transactionState', transactionState);
-
     const formData = {
       ...(transactionState.type === 'INCOME' && {
         categoryId: optionsIncome[0].id,
