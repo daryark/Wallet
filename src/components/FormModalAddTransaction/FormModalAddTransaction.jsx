@@ -4,9 +4,8 @@ import { Formik } from 'formik';
 import { Field } from 'formik';
 import { date, object, string } from 'yup';
 import { useMediaQuery } from 'react-responsive';
-import Datetime from 'react-datetime';
-import 'react-datetime/css/react-datetime.css';
 
+import DateComponent from './DateComponent';
 import SelectComponent from './SelectComponent';
 
 import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
@@ -69,12 +68,15 @@ function FormModalAddTransaction({ handleCloseModal }) {
     setTransactionState(prev => ({ ...prev, categoryId }));
   };
 
-  const handleDateChange = event => {
-    setTransactionState(prev => ({ ...prev, date: event._d }));
+  const handleDateChange = selectedDate => {
+    setTransactionState(prev => ({ ...prev, date: selectedDate._d }));
   };
 
   const handleSubmit = (values, actions) => {
     const { amount, comment } = values;
+
+    console.log('values', values);
+    console.log('transactionState', transactionState);
 
     const formData = {
       ...(transactionState.type === 'INCOME' && {
@@ -184,10 +186,11 @@ function FormModalAddTransaction({ handleCloseModal }) {
             // value={Number(transactionState.amount).toFixed(2)}
           />
 
-          <Datetime
-            type="date"
-            name="date"
+          <Field
+            as="date"
+            component={DateComponent}
             className="date"
+            name="date"
             dateFormat="DD.MM.YYYY"
             timeFormat={false}
             value={transactionState.date}
