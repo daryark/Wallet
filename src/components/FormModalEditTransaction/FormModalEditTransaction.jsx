@@ -4,7 +4,10 @@ import { Formik } from 'formik';
 import { Field } from 'formik';
 import { object, string } from 'yup';
 
-import { selectEditTransaction } from 'redux/transactions/trans-selectors';
+import {
+  selectBalance,
+  selectEditTransaction,
+} from 'redux/transactions/trans-selectors';
 import { editTransaction } from 'redux/transactions/trans-operations';
 
 import { FormModalEditTransactionStyled } from './FormModalEditTransaction.styled';
@@ -20,6 +23,7 @@ const defaultState = {
 
 function FormModalEditTransaction({ handleCloseModal }) {
   const transactionData = useSelector(selectEditTransaction);
+  const balance = useSelector(selectBalance);
   const [transactionState] = useState(
     transactionData
       ? {
@@ -30,9 +34,26 @@ function FormModalEditTransaction({ handleCloseModal }) {
   );
 
   const dispatch = useDispatch();
+  let oldAmount = transactionData.amount;
 
   const handleSubmit = ({ key, amount, comment }) => {
-    dispatch(editTransaction({ id: key, amount, comment }));
+    amount = Number(amount);
+    let oldAmnt = Math.abs(oldAmount);
+
+    if (transactionData.type === '-') {
+      amount = -Number(amount);
+      oldAmnt = -Number(oldAmnt);
+    }
+
+    dispatch(
+      editTransaction({
+        id: key,
+        amount,
+        comment,
+        oldAmnt,
+        balance,
+      })
+    );
     handleCloseModal();
   };
 

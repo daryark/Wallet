@@ -7,6 +7,7 @@ import { Table } from 'antd';
 import { toggleEditModal } from 'redux/global/globalSlice';
 import { setEditTransaction } from 'redux/transactions/transSlice';
 import {
+  selectBalance,
   selectCategories,
   selectTransactions,
 } from 'redux/transactions/trans-selectors';
@@ -28,6 +29,7 @@ import { capitalizeFirstLetter } from 'helpers/capitalize';
 
 export const TransactionsList = () => {
   const dispatch = useDispatch();
+  const balance = useSelector(selectBalance);
   const categories = useSelector(selectCategories);
   const transactions = useSelector(selectTransactions);
 
@@ -40,8 +42,9 @@ export const TransactionsList = () => {
     dispatch(setEditTransaction(contactUser));
     dispatch(toggleEditModal());
   };
-  const handleDeleteTransition = transitionId => {
-    dispatch(deleteTransaction(transitionId));
+  const handleDeleteTransition = (transitionId, balance, delAmount) => {
+    dispatch(deleteTransaction({ transitionId, balance, delAmount }));
+    // dispatch(fetchTransactions());
   };
 
   const columns = [
@@ -69,7 +72,6 @@ export const TransactionsList = () => {
       title: 'Category',
       dataIndex: 'category',
       key: 'category',
-},
       render: (_, record) => {
         if (!categories) return;
         const getCategory = categories.find(c => c.id === record.categoryId);
@@ -105,7 +107,11 @@ export const TransactionsList = () => {
             <StyledEditBtn onClick={() => handleEditTransition(record)}>
               <RiEdit2Line size={14} />
             </StyledEditBtn>
-            <StyledDeleteBtn onClick={() => handleDeleteTransition(record.key)}>
+            <StyledDeleteBtn
+              onClick={() =>
+                handleDeleteTransition(record.key, balance, record.amount)
+              }
+            >
               Delete
             </StyledDeleteBtn>
           </BtnBox>
@@ -123,7 +129,7 @@ export const TransactionsList = () => {
       amount,
     })
   );
-  const scroll = { scrollToFirstRowOnChange: true, y: 500 };
+  const scroll = { scrollToFirstRowOnChange: true, y: 600 };
   return (
     <>
       {transactions.length > 0 ? (
