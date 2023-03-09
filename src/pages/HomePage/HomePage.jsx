@@ -31,7 +31,7 @@ function HomePage() {
       <TransactionsListMobile />
       <ButtonUp />
 
-      <TransactionsList />
+      {/* <TransactionsList /> */}
       <CurrencyPage />
     </Container>
   );

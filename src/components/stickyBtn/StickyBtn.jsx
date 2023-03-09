@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BsCaretUpFill } from 'react-icons/bs';
+import { BsArrowUpCircleFill } from 'react-icons/bs';
 import { BtnUp } from './StickyBtn.styled';
 
 export const ButtonUp = () => {
@@ -30,12 +30,12 @@ export const ButtonUp = () => {
   return (
     <>
       <BtnUp onClick={scrollToTop} className={isVisible ? '' : 'isHidden'}>
-        <BsCaretUpFill size={25} />
+        <BsArrowUpCircleFill size={28} />
       </BtnUp>
 
       {/* {isVisible && (
         <BtnUp onClick={scrollToTop}>
-          <BsCaretUpFill size={25} />
+          <BsArrowUpCircleFill size={28} />
         </BtnUp>
       )} */}
     </>

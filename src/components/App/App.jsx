@@ -14,7 +14,7 @@ const StatisticsPage = lazy(() =>
   import('pages/StatisticsPage/StatisticsPage')
 );
 
-console.log(window.innerWidth);
+// console.log(window.innerWidth);
 
 export function App() {
   const dispatch = useDispatch();
