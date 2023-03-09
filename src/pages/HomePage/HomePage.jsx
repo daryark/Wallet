@@ -28,10 +28,10 @@ function HomePage() {
 
       <Balance />
 
-      {/* <TransactionsListMobile /> */}
+      <TransactionsListMobile />
       <ButtonUp />
 
-      <TransactionsList />
+      {/* <TransactionsList /> */}
       {/* <CurrencyPage /> */}
     </Container>
   );
