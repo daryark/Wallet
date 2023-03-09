@@ -11,7 +11,6 @@ const GlobalStyles = createGlobalStyle`
 html {
     box-sizing: border-box;
     scroll-behavior: smooth;
-    height: 100%;
   }
 
 body {
@@ -19,7 +18,7 @@ body {
   color: ${({ theme }) => theme.color.text_dark};
   background-color: ${({ theme }) => theme.color.bg_grey_main};
   
-    backdrop-filter: blur(25px);
+    /* backdrop-filter: blur(25px); */
   /* background: ${({ theme }) => theme.color.bg_coverage}; */
 }
 /*   
@@ -31,10 +30,6 @@ body {
     background-position: top 0px right 0px, bottom 0px left 0px;
     }
   } */
-
-  #root {
-    height: 100vh;
-  }
 p,
 h1,
 h2,
