@@ -1,8 +1,9 @@
 import validator from 'validator';
 
-const PasswordStrengthIndicator = ({ password }) => {
+const PasswordIndicator = ({ password }) => {
   const result = validator.isStrongPassword(password, {
     minLength: 6,
+    maxLength: 16,
     minLowercase: 1,
     minUppercase: 1,
     minNumbers: 1,
@@ -10,10 +11,10 @@ const PasswordStrengthIndicator = ({ password }) => {
     returnScore: true,
     pointsPerUnique: 5,
     pointsPerRepeat: 3,
-    pointsForContainingLower: 10,
-    pointsForContainingUpper: 10,
-    pointsForContainingNumber: 10,
-    pointsForContainingSymbol: 10,
+    pointsForContainingLower: 4,
+    pointsForContainingUpper: 4,
+    pointsForContainingNumber: 4,
+    pointsForContainingSymbol: 4,
   });
 
   const handleIndicator = () => {
@@ -51,7 +52,7 @@ const PasswordStrengthIndicator = ({ password }) => {
   });
 
   return (
-    <div className="position-absolute top-100 end-0 w-100">
+    <div>
       {password.length > 0 && (
         <div className="progress" style={{ height: '4px' }}>
           <div className="progress-bar" style={changeIndicatorColor()}></div>
@@ -61,4 +62,4 @@ const PasswordStrengthIndicator = ({ password }) => {
   );
 };
 
-export default PasswordStrengthIndicator;
+export default PasswordIndicator;

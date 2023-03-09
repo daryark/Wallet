@@ -19,6 +19,7 @@ export const InputLabel = styled.label`
   display: block;
   width: 280px;
   margin: 0 auto;
+  min-height: 70px;
 
   @media (min-width: 768px) {
     width: 410px;
@@ -28,7 +29,7 @@ export const InputLabel = styled.label`
 export const InputBox = styled.div`
   position: relative;
   width: 100%;
-
+  margin-bottom: 5px;
   & svg {
     position: absolute;
     top: 50%;
@@ -48,7 +49,7 @@ export const Label = styled.span`
 export const Input = styled.input`
   /* @include font-circe-small; */
   display: flex;
-  margin-bottom: 40px;
+
   padding-left: 50px;
   width: 100%;
   height: 36px;
@@ -64,8 +65,6 @@ export const Input = styled.input`
 
 export const ErrorMessage = styled.div`
   text-align: right;
-  position: absolute;
-  top: 115%;
 
   font-size: 12px;
   color: red;

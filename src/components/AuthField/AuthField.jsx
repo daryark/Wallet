@@ -1,4 +1,4 @@
-import PasswordStrengthIndicator from 'components/RegistrationForm/PasswordStrengthIndicator/PasswordStrengthIndicator';
+import PasswordIndicator from 'components/RegistrationForm/PasswordIndicator/PasswordIndicator';
 import { useField } from 'formik';
 import { useLocation } from 'react-router';
 import { ErrorMessage, Input, InputBox, InputLabel } from './AuthField.styled';
@@ -15,7 +15,7 @@ const AuthField = ({ icon: Icon, ...props }) => {
           <Icon size={24} />
         </InputBox>
         {field.name === 'password' && location.pathname === '/register' && (
-          <PasswordStrengthIndicator password={field.value} />
+          <PasswordIndicator password={field.value} />
         )}
         {meta.touched && meta.error ? (
           <ErrorMessage className="error">{meta.error}</ErrorMessage>

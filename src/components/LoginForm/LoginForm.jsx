@@ -1,5 +1,5 @@
 import { Formik, Form } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginRequest } from 'redux/auth/auth-operations';
 import { LoginBox } from './LoginForm.styled';
@@ -11,6 +11,10 @@ import AuthField from 'components/AuthField/AuthField';
 
 import { MdEmail, MdLock } from 'react-icons/md';
 import AuthLogo from 'components/AuthLogo/AuthLogo';
+import { useEffect } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import { selectUserError } from 'redux/auth/auth-selectors';
+import 'react-toastify/dist/ReactToastify.css';
 
 const initialValues = {
   email: '',
@@ -19,12 +23,24 @@ const initialValues = {
 
 const loginSchema = Yup.object().shape({
   email: Yup.string().email('E-mail is invalid').required('E-mail is required'),
-  password: Yup.string().required('Password is required'),
+  password: Yup.string()
+    .min(6, 'Password must contain at least 6 characters')
+    .max(16, 'Password must contain 16 characters or less')
+    .required('Password is required')
+    .matches(/^[A-Za-z0-9!@#$%^&*()_+!А-Яа-я]+$/, {
+      message: 'Password must not contain space sign',
+      excludeEmptyString: true,
+    }),
 });
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const error = useSelector(selectUserError);
+
+  useEffect(() => {
+    toast.error(error);
+  }, [error]);
 
   const handleSubmit = ({ email, password }, { resetForm }) => {
     dispatch(loginRequest({ email, password }));
@@ -67,6 +83,18 @@ const LoginForm = () => {
           />
         </Form>
       </Formik>
+      <ToastContainer
+        position="top-right"
+        autoClose={3500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </LoginBox>
   );
 };
