@@ -92,7 +92,6 @@ export const getTransactionSummary = createAsyncThunk(
       const response = await TransactionSummaryAPI.getTransactionSummary(
         formData
       );
-      console.log(response);
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
