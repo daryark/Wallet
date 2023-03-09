@@ -1,30 +1,18 @@
-import { useDispatch, useSelector } from 'react-redux';
-import MediaQuery from 'react-responsive';
-
-import { selectIsModalOpen } from 'redux/global/global-selectors';
-import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
+import { useDispatch } from 'react-redux';
 
 import { BackdropStyled } from './ModalBackdrop.styled';
 
-function ModalBackdrop({ children }) {
-  const isModalOpen = useSelector(selectIsModalOpen);
-
+function ModalBackdrop({ children, randomModalClose }) {
   const dispatch = useDispatch();
 
   const handleBackdropClick = event => {
     if (event.target === event.currentTarget) {
-      dispatch(isModalAddTransactionOpen());
+      dispatch(randomModalClose());
     }
   };
 
   return (
-    <MediaQuery minWidth={768}>
-      {isModalOpen && (
-        <BackdropStyled onClick={handleBackdropClick}>
-          {children}
-        </BackdropStyled>
-      )}
-    </MediaQuery>
+    <BackdropStyled onClick={handleBackdropClick}>{children}</BackdropStyled>
   );
 }
 

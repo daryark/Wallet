@@ -9,6 +9,9 @@ import FormModalAddTransaction from '../FormModalAddTransaction/FormModalAddTran
 
 import { ModalAddTransactionStyled } from './ModalAddTransaction.styled';
 import { ModalCloseBtn } from 'reusable';
+import ModalBackdrop from 'components/ModalBackdrop/ModalBackdrop';
+
+import MediaQuery from 'react-responsive';
 
 function ModalAddTransaction() {
   const isModalOpen = useSelector(selectIsModalOpen);
@@ -28,8 +31,7 @@ function ModalAddTransaction() {
       }
     }
 
-    // if (isModalOpen)  // ДОДАТИ КОЛИ БУДЕ ПІДКЛЮЧЕНА КНОПКА ВІДКРИВАННЯ
-    window.addEventListener('keydown', handleEscapeClick);
+    if (isModalOpen) window.addEventListener('keydown', handleEscapeClick);
 
     return () => {
       window.removeEventListener('keydown', handleEscapeClick);
@@ -45,27 +47,38 @@ function ModalAddTransaction() {
   return (
     <>
       {isModalOpen && (
-        <>
+        <MediaQuery minWidth={768}>
+          <ModalBackdrop randomModalClose={isModalAddTransactionOpen}>
+            <ModalAddTransactionStyled>
+              <ModalCloseBtn isRandomModalOpen={isModalAddTransactionOpen} />
+              <h2 className="modal__title">Add transaction</h2>
+              <FormModalAddTransaction handleCloseModal={handleCloseModal} />
+            </ModalAddTransactionStyled>
+          </ModalBackdrop>
+        </MediaQuery>
+      )}
+
+      {isModalOpen && (
+        <MediaQuery maxWidth={767}>
           <ModalAddTransactionStyled>
-            <ModalCloseBtn />
             <h2 className="modal__title">Add transaction</h2>
             <FormModalAddTransaction handleCloseModal={handleCloseModal} />
           </ModalAddTransactionStyled>
-
-          <ToastContainer
-            position="top-right"
-            autoClose={3500}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="colored"
-          />
-        </>
+        </MediaQuery>
       )}
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
   );
 }

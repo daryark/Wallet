@@ -13,11 +13,12 @@ import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 import { theme } from 'styles/theme';
 import { colors } from 'styles/colors';
 import GlobalStyles from 'styles/GlobalStyles/GlobalStyles.styled';
+import { ThemeButton } from './Layout.styled';
 
 export default function Layout() {
   const themeTitle = useSelector(selectTheme);
   const normalizedTheme = { ...theme, ...colors[themeTitle] };
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
 
   const handleThemeChange = e => {
@@ -27,20 +28,27 @@ export default function Layout() {
   return (
     <ThemeProvider theme={normalizedTheme}>
       <GlobalStyles />
-      {isLoggedIn && (
-        <>
-          <Header />
-          <Sidebar />
-          <button onClick={handleThemeChange}>
-            {themeTitle === 'light' ? <BsMoon /> : <BsSun />}
-          </button>
-        </>
-      )}
+      <Header />
+      <Sidebar />
+      <ThemeButton onClick={handleThemeChange}>
+        {themeTitle === 'light' ? <BsMoon size={24} /> : <BsSun size={24} />}
+      </ThemeButton>
+
       <main>
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </main>
+      <div
+        style={{
+          width: '100vw',
+          height: '100vh',
+          position: 'fixed',
+          top: 0,
+          backdropFilter: 'blur(25px)',
+          zIndex: -1,
+        }}
+      />
     </ThemeProvider>
   );
 }

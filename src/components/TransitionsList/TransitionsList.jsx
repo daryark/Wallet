@@ -42,8 +42,8 @@ export const TransactionsList = () => {
     dispatch(setEditTransaction(contactUser));
     dispatch(toggleEditModal());
   };
-  const handleDeleteTransition = transitionId => {
-    dispatch(deleteTransaction(transitionId));
+  const handleDeleteTransition = (transitionId, balance, delAmount) => {
+    dispatch(deleteTransaction({ transitionId, balance, delAmount }));
   };
 
   const columns = [
@@ -128,7 +128,7 @@ export const TransactionsList = () => {
       amount,
     })
   );
-  const scroll = { scrollToFirstRowOnChange: true, y: 500 };
+  const scroll = { scrollToFirstRowOnChange: true, y: 600 };
   return (
     <>
       {transactions.length > 0 ? (

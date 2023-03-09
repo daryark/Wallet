@@ -14,7 +14,7 @@ const StatisticsPage = lazy(() =>
   import('pages/StatisticsPage/StatisticsPage')
 );
 
-console.log(window.innerWidth);
+// console.log(window.innerWidth);
 
 export function App() {
   const dispatch = useDispatch();
@@ -28,11 +28,11 @@ export function App() {
       <Route path={routes.HOME} element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path={routes.CURRENCY_PAGE} element={<CurrencyPage />}></Route>
-        <Route path={routes.REGISTER_PAGE} element={<RegisterPage />} />
-        <Route path={routes.LOGIN_PAGE} element={<LoginPage />} />
         <Route path={routes.STATISTICS_PAGE} element={<StatisticsPage />} />
         <Route path="*" element={<Navigate to={routes.HOME} />} />
       </Route>
+      <Route path={routes.REGISTER_PAGE} element={<RegisterPage />} />
+      <Route path={routes.LOGIN_PAGE} element={<LoginPage />} />
     </Routes>
   );
 }
