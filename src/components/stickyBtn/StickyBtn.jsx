@@ -35,7 +35,7 @@ export const ButtonUp = () => {
 
       {isVisible && (
         <BtnUp type="button" onClick={scrollToTop}>
-          <BsArrowUpCircleFill size={28} />
+          <BsArrowUpCircleFill size={44} />
         </BtnUp>
       )}
     </>
