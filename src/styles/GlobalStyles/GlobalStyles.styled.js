@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
 html {
     box-sizing: border-box;
     scroll-behavior: smooth;
-    height: 100%;
+    /* height: 100%; */
   }
 
 body {
@@ -32,9 +32,9 @@ body {
     }
   } */
 
-  #root {
-    height: 100vh;
-  }
+  /* #root {
+    min-height: 100vh;
+  } */
 p,
 h1,
 h2,

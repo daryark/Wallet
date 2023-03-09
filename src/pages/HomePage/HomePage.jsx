@@ -1,3 +1,6 @@
+import { useSelector } from 'react-redux';
+import React from 'react';
+
 import {
   ButtonUp,
   TransactionsListMobile,
@@ -7,39 +10,29 @@ import {
 
 import CurrencyPage from 'pages/CurrencyPage/CurrencyPage';
 import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
-import { useSelector } from 'react-redux';
-import React from 'react';
-// import { TransactionsList, TransactionsListMobile } from 'components';
+
 import { selectIsEditModalOpen } from 'redux/global/global-selectors';
 
 import WithAuthRedirect from 'HOC/WithAuthRedirect';
+import { AddTransactionBtn } from 'components/AddTransactionBtn/AddTransactionBtn';
 import { Container } from 'components/common/common.styled';
-import ModalBackdrop from 'components/ModalBackdrop/ModalBackdrop';
 
 import { ModalEditTransaction } from 'components/ModalEditTransaction/ModalEditTransaction';
 function HomePage() {
   const isEditModalOpen = useSelector(selectIsEditModalOpen);
   return (
     <Container>
-      <ModalBackdrop />
-      <ModalAddTransaction />
+      <Balance />
 
       <TransactionsListMobile />
-      <ButtonUp />
-
       {/* <TransactionsList /> */}
-      {/* <CurrencyPage /> */}
+      <CurrencyPage />
 
-      <>
-        <div>HomePage is showing</div>
-        <Balance />
-        <ModalBackdrop />
-        <ModalAddTransaction />
-        {isEditModalOpen && <ModalEditTransaction />}
-        <TransactionsListMobile />
-        <TransactionsList />
-        <CurrencyPage />
-      </>
+      <ModalAddTransaction />
+      {isEditModalOpen && <ModalEditTransaction />}
+
+      <AddTransactionBtn />
+      <ButtonUp />
     </Container>
   );
 }

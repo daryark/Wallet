@@ -1,4 +1,4 @@
-// import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 // export const LayoutWrapper = styled.div`
 //   min-height: 100vh;
@@ -16,3 +16,12 @@
 //       'footer footer';
 //   }
 // `;
+export const ThemeButton = styled.button`
+  border: none;
+  background-color: transparent;
+  color: ${p => p.theme.color.text_dark};
+
+  position: absolute;
+  top: 17px;
+  right: 20px;
+`;

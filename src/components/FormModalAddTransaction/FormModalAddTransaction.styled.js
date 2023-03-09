@@ -1,5 +1,37 @@
 import styled from 'styled-components';
 import { Form } from 'formik';
+import { RiCalendar2Fill } from 'react-icons/ri';
+import { AiOutlinePlus } from 'react-icons/ai';
+import { AiOutlineMinus } from 'react-icons/ai';
+
+export const MinusIconStyled = styled(AiOutlineMinus)`
+  position: absolute;
+  fill: #fff;
+  width: 27px;
+  height: auto;
+  top: 8px;
+  left: 79px;
+  z-index: 1;
+`;
+
+export const PlusIconStyled = styled(AiOutlinePlus)`
+  position: absolute;
+  fill: #fff;
+  width: 27px;
+  height: auto;
+  top: 8px;
+  right: 85px;
+  z-index: 1;
+`;
+
+export const CalendarIconStyled = styled(RiCalendar2Fill)`
+  fill: #4a56e2;
+  min-width: 18px;
+  min-height: 20px;
+  position: absolute;
+  top: 2px;
+  right: 14px;
+`;
 
 export const FormModalAddTransactionStyled = styled(Form)`
   display: flex;
@@ -11,16 +43,18 @@ export const FormModalAddTransactionStyled = styled(Form)`
   & .switcher {
     width: 235px;
     height: 44px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    font-family: 'Circe';
     font-weight: 700;
     font-size: 16px;
-    line-height: 24px;
+    line-height: calc(24 / 16);
     color: #e0e0e0;
+
+    /* .switcher__checkbox:checked & .income { // НЕ ПРАЦЮЄ
+      color: #24cca7;
+    } */
 
     & .income {
       /* color:; */
@@ -79,14 +113,27 @@ export const FormModalAddTransactionStyled = styled(Form)`
     }
   }
 
+  & textarea {
+    resize: none;
+  }
+
   & input,
+  & textarea,
   & select {
+    font-family: 'Circe';
     width: 100%;
-    max-height: 32px;
-    padding: 8px;
+    padding: 0 20px 8px;
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #e0e0e0;
+
+    font-weight: 400;
+    font-size: 18px;
+    line-height: calc(27 / 18);
+
+    @media screen and (min-width: 768px) {
+      padding: 0 8px 8px;
+    }
 
     &:focus {
       outline: none;
@@ -95,13 +142,35 @@ export const FormModalAddTransactionStyled = styled(Form)`
     &:-webkit-autofill {
       box-shadow: 0 0 0 30px #fff inset;
     }
+
+    &::placeholder {
+      color: #bdbdbd;
+    }
+  }
+
+  & .category {
+    width: 100%;
   }
 
   & .amount-date-wrapper {
+    position: relative;
+
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 40px 0;
+
+    & .amount {
+      font-weight: 700;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        /* display: none; */
+        -webkit-appearance: none;
+        -moz-appearance: textfield;
+        margin: 0;
+      }
+    }
 
     @media screen and (min-width: 768px) {
       flex-direction: row;
@@ -111,18 +180,6 @@ export const FormModalAddTransactionStyled = styled(Form)`
       & .amount {
         width: calc((100% - 30px) / 2);
         text-align: center;
-
-        ::-webkit-outer-spin-button,
-        ::-webkit-inner-spin-button {
-          /* display: none; */
-          -webkit-appearance: none;
-          -moz-appearance: textfield;
-          margin: 0;
-        }
-
-        &::placeholder {
-          text-align: center;
-        }
       }
 
       & .date {
@@ -131,9 +188,12 @@ export const FormModalAddTransactionStyled = styled(Form)`
     }
   }
 
+  & input.form-control {
+    padding: 0 20px 8px;
+    font-family: 'Circe';
+  }
+
   & .comment {
-    ////        ??
-    width: 100%;
   }
 
   & .btns-wrapper {
@@ -167,11 +227,23 @@ export const FormModalAddTransactionStyled = styled(Form)`
     border: 1px solid transparent;
     color: #fff;
     background-color: #24cca7;
+    transition: box-shadow 0.25s ease;
+
+    &:hover,
+    &focus {
+      box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+    }
   }
 
   & .cancel-btn {
     color: #4a56e2;
     border: 1px solid #4a56e2;
     background-color: #fff;
+    transition: box-shadow 0.25s ease;
+
+    &:hover,
+    &focus {
+      box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
+    }
   }
 `;

@@ -23,21 +23,16 @@ export const ModalAddTransactionStyled = styled.div`
     border-radius: 20px;
   }
 
-  & .modal {
-    &__close-btn {
-      width: 16px;
-      height: 16px;
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
+  & .modal__title {
+    font-family: 'Poppins';
+    text-align: center;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: calc(36 / 24);
 
-    &__title {
-      font-family: 'Poppins';
-      font-weight: 400;
-      text-align: center;
+    @media screen and (min-width: 768px) {
       font-size: 30px;
-      line-height: 45px;
+      line-height: calc(45 / 30);
     }
   }
 `;

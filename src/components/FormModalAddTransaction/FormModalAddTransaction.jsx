@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import { Field } from 'formik';
 import { date, object, string } from 'yup';
+import { useMediaQuery } from 'react-responsive';
+
+import DateComponent from './DateComponent';
+import SelectComponent from './SelectComponent';
 
 import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
 import { selectIsModalOpen } from 'redux/global/global-selectors';
@@ -12,13 +16,12 @@ import {
   getTransactionCategories,
 } from 'redux/transactions/trans-operations';
 
-import { FormModalAddTransactionStyled } from './FormModalAddTransaction.styled';
-// import { SelectField } from 'components/Forms/SelectField/SelectField';
-// import { CustomInputDate } from 'components/Forms/CustomInputDate/CustomInputDate';
-// import { DateTimeField } from 'components/ModalAddTransaction/DateTimeField/DateTimeField';
-
-import Datetime from 'react-datetime';
-import 'react-datetime/css/react-datetime.css';
+import {
+  CalendarIconStyled,
+  FormModalAddTransactionStyled,
+  MinusIconStyled,
+  PlusIconStyled,
+} from './FormModalAddTransaction.styled';
 
 const defaultState = {
   type: 'EXPENSE',
@@ -28,12 +31,14 @@ const defaultState = {
   comment: '',
 };
 
-function FormModalAddTransaction({ handleCloseModal, isEditForm = false }) {
+function FormModalAddTransaction({ handleCloseModal }) {
   const [transactionState, setTransactionState] = useState(defaultState);
   const isModalOpen = useSelector(selectIsModalOpen);
   const categories = useSelector(selectCategories);
 
   const dispatch = useDispatch();
+
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
 
   useEffect(() => {
     if (!isModalOpen) return;
@@ -45,7 +50,6 @@ function FormModalAddTransaction({ handleCloseModal, isEditForm = false }) {
   const optionsIncome = categories.filter(
     category => category.type === 'INCOME'
   );
-
   const optionsExpense = categories.filter(
     category => category.type === 'EXPENSE'
   );
@@ -60,12 +64,12 @@ function FormModalAddTransaction({ handleCloseModal, isEditForm = false }) {
     }
   };
 
-  const handleSelectChange = event => {
-    setTransactionState(prev => ({ ...prev, categoryId: event.target.value }));
+  const handleSelectChange = categoryId => {
+    setTransactionState(prev => ({ ...prev, categoryId }));
   };
 
-  const handleDateChange = event => {
-    setTransactionState(prev => ({ ...prev, date: event._d }));
+  const handleDateChange = selectedDate => {
+    setTransactionState(prev => ({ ...prev, date: selectedDate._d }));
   };
 
   const handleSubmit = (values, actions) => {
@@ -101,7 +105,9 @@ function FormModalAddTransaction({ handleCloseModal, isEditForm = false }) {
     amount: string()
       .required('Required')
       .max(20, 'Must be 20 characters maximum'),
-    date: date().default(() => new Date()),
+    date: date()
+      .required('Required')
+      .default(() => new Date()),
     type: string().required('Required'),
   });
 
@@ -112,8 +118,9 @@ function FormModalAddTransaction({ handleCloseModal, isEditForm = false }) {
       onSubmit={handleSubmit}
     >
       <FormModalAddTransactionStyled className="modal-form">
-        <div className="switcher">
+        <div className="switcher" style={{ position: 'relative' }}>
           <span className="income">Income</span>
+          {transactionState.type === 'INCOME' && <MinusIconStyled />}
           <label className="switcher__box">
             <Field
               type="checkbox"
@@ -124,72 +131,48 @@ function FormModalAddTransaction({ handleCloseModal, isEditForm = false }) {
             />
             <span className="switcher__toggle"></span>
           </label>
+          {transactionState.type === 'EXPENSE' && <PlusIconStyled />}
           <span className="expense">Expense</span>
         </div>
 
         <Field
           as="select"
-          name="categoryId"
+          transactionType={transactionState.type}
+          component={SelectComponent}
           className={
             transactionState.type === 'EXPENSE'
               ? 'category'
               : 'category isHidden'
           }
-          onClick={handleSelectChange}
-        >
-          {categories && transactionState.type === 'EXPENSE' && (
-            <option hidden style={{ color: '#bdbdbd' }}>
-              Select a category
-            </option>
-          )}
+          name="category"
+          placeholder="Select a category"
+          options={(transactionState.type === 'EXPENSE'
+            ? optionsExpense
+            : optionsIncome
+          ).map(option => ({ value: option.id, label: option.name }))}
+          onChange={option => {
+            handleSelectChange(option.value);
+          }}
+        />
 
-          {categories &&
-            transactionState.type === 'EXPENSE' &&
-            optionsExpense.map(category => {
-              return (
-                <option key={category.id} value={category.id}>
-                  {category.name}
-                </option>
-              );
-            })}
-
-          {categories &&
-            transactionState.type === 'INCOME' &&
-            optionsIncome.map(category => {
-              return (
-                <option key={category.id} value={category.id}>
-                  {category.name}
-                </option>
-              );
-            })}
-
-          {/* {categories &&
-            categories.map(category => {
-              if (
-                transactionState.type === 'INCOME' &&
-                category.name === 'Income'
-              ) {
-                return (
-                  <option key={category.id} value={category.id}>
-                    {category.name}
-                  </option>
-                );
-              }
-
-              if (
-                transactionState.type === 'EXPENSE' &&
-                category.name !== 'Income'
-              ) {
-                return (
-                  <option key={category.id} value={category.id}>
-                    {category.name}
-                  </option>
-                );
-              }
-            })} */}
-        </Field>
-
-        {/* <Field name="categoryId" component={SelectField} options={options} /> */}
+        {/* <Select
+          key={transactionState.type}
+          styles={selectStyles(transactionState.type)}
+          components={{ TfiAngleDown }}
+          options={(transactionState.type === 'EXPENSE'
+            ? optionsExpense
+            : optionsIncome
+          ).map(option => ({ value: option.id, label: option.name }))}
+          placeholder="Select a category"
+          onChange={option => {
+            handleSelectChange(option.value);
+          }}
+          className={
+            transactionState.type === 'EXPENSE'
+              ? 'category'
+              : 'category isHidden'
+          }
+        /> */}
 
         <div className="amount-date-wrapper">
           <Field
@@ -200,56 +183,23 @@ function FormModalAddTransaction({ handleCloseModal, isEditForm = false }) {
             // value={Number(transactionState.amount).toFixed(2)}
           />
 
-          <Datetime
-            type="date"
-            name="date"
+          <Field
+            as="date"
+            component={DateComponent}
             className="date"
+            name="date"
             dateFormat="DD.MM.YYYY"
             timeFormat={false}
             value={transactionState.date}
             onChange={handleDateChange}
           />
 
-          {/* <DateTime
-            type="date"
-            name="date"
-            className="date"
-            selected={
-              transactionState.date ? transactionState.date : new Date()
-            }
-            // onChange={val => setValue(val)}
-            dateFormat="MM.DD.YYYY"
-            timeFormat={false}
-            // selected={(field.value && new Date(field.value)) || null}
-            // onChange={val => {
-            //   setFieldValue(field.name, val);
-            // }}
-          /> */}
-
-          {/* <Field
-            name="date"
-            as={DateTimeField}
-            // placeholder="First Name"
-          /> */}
-
-          {/* <Field
-            type="date"
-            name="date"
-            className="date"
-            // value={
-            //   transactionState.date ? transactionState.date : new Date()
-            // }
-          /> */}
-
-          {/* <Field
-            name="date"
-            className="date"
-            component={SelectField}
-            options={options}
-          /> */}
+          <CalendarIconStyled />
         </div>
 
         <Field
+          as="textarea"
+          rows={isMobile ? '5' : '1'}
           type="text"
           placeholder="Comment"
           name="comment"

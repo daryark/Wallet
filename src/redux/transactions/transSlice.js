@@ -46,15 +46,18 @@ const transactionsSlice = createSlice({
 
       // -------- deleteTransaction --------
       .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
-        state.transactions = state.transactions.filter(t => t.id !== payload);
+        state.transactions = state.transactions.filter(
+          t => t.id !== payload.id
+        );
+        state.balance = payload.balance;
       })
 
       // --- editTransaction ---
       .addCase(editTransaction.fulfilled, (state, { payload }) => {
         state.transactions = state.transactions.map(t =>
-          t.id === payload.id ? payload : t
+          t.id === payload.response.id ? payload.response : t
         );
-        state.balance = payload.balanceAfter;
+        state.balance = payload.balance;
       })
 
       // --- getTransactionCategories ---

@@ -121,6 +121,9 @@ export const StyledBox = styled.div`
       border-start-end-radius: ${p => p.theme.radii.large};
       border-end-end-radius: ${p => p.theme.radii.large};
     }
+    & .ant-table-body {
+      overflow-y: auto !important;
+    }
     & .ant-table-tbody > tr > td {
       padding: 14px 20px;
     }
