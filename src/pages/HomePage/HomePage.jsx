@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 import {
   ButtonUp,
@@ -20,6 +21,8 @@ import { Container } from 'components/common/common.styled';
 import { ModalEditTransaction } from 'components/ModalEditTransaction/ModalEditTransaction';
 function HomePage() {
   const isEditModalOpen = useSelector(selectIsEditModalOpen);
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
   return (
     <Container>
       <ModalAddTransaction />
@@ -27,10 +30,9 @@ function HomePage() {
       <AddTransactionBtn />
       <Balance />
 
-      <TransactionsListMobile />
+      {isMobile ? <TransactionsListMobile /> : <TransactionsList />}
       <ButtonUp />
 
-      {/* <TransactionsList /> */}
       <CurrencyPage />
     </Container>
   );

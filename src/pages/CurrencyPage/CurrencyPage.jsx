@@ -2,15 +2,20 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
+
+import { Loader } from './Loader';
 import { fetchCurrencyMonoBank } from 'redux/monobank/mono-operations';
 import { selectCurrency } from 'redux/monobank/mono-selectors';
-import { Loader } from './Loader';
-import { StyledCurrencyTable } from './currencyStyles';
-import { StyledCurrencyTr } from './currencyStyles';
-import { StyledBodyTr } from './currencyStyles';
+import {
+  StyledCurrencyTable,
+  StyledCurrencyTr,
+  StyledBodyTr,
+} from './currencyStyles';
 
-// import { ReactComponent as MountainDesk } from 'images/mountain/MountainDeskTop.svg';
-import { ReactComponent as MountainMob } from 'images/mountain/MountainMob.svg';
+import { ReactComponent as MountainDesk } from 'images/mountain/MountainDeskTop.svg';
+// import { ReactComponent as MountainMob } from 'images/mountain/MountainMob.svg';
+import { ReactComponent as MountainTablet } from 'images/mountain/MountainTablet.svg';
 
 import { StyledCurrencyThumb } from './currencyStyles';
 import { setCurrencyFromLocalStorage } from 'redux/monobank/monoSlice';
@@ -22,6 +27,9 @@ function CurrencyPage() {
   const dispatch = useDispatch();
   const currency = useSelector(selectCurrency);
   const loading = useSelector(selectIsLoading);
+  // const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isTablet = useMediaQuery({ maxWidth: 1279 });
+  const isDesktop = useMediaQuery({ minWidth: 1280 });
 
   useEffect(() => {
     const currencyFromStorage = JSON.parse(
@@ -69,7 +77,9 @@ function CurrencyPage() {
           </tbody>
         )}
       </StyledCurrencyTable>
-      <MountainMob />
+      {/* {isMobile && <MountainMob />} */}
+      {isTablet && <MountainTablet />}
+      {isDesktop && <MountainDesk />}
     </StyledCurrencyThumb>
   );
 }

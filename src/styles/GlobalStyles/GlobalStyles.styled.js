@@ -107,6 +107,10 @@ svg {
     clip: rect(0 0 0 0);
     overflow: hidden;
   }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
 `;
 
 export default GlobalStyles;

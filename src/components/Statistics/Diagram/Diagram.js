@@ -1,21 +1,18 @@
-import {ArcElement, Chart as ChartJS, Legend, Tooltip} from 'chart.js';
-import {Doughnut} from 'react-chartjs-2';
+import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
 import expenses from './expenses.json';
-import {DiagramWrapper} from './Diagram.styled';
-import {useSelector} from "react-redux";
-import {selectBalance} from "../../../redux/transactions/trans-selectors";
+import { DiagramWrapper } from './Diagram.styled';
+import { useSelector } from 'react-redux';
+import { selectBalance } from '../../../redux/transactions/trans-selectors';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-
-
 export const Diagram = () => {
-
-  const balance = useSelector(selectBalance)
+  const balance = useSelector(selectBalance);
   const balanceText = `₴ ${balance.toFixed(2)}`;
-  console.log(balance)
+  console.log(balance);
 
-   const data = {
+  const data = {
     datasets: [
       {
         label: '# of Votes',
@@ -41,6 +38,7 @@ export const Diagram = () => {
       },
     },
   ];
+
   return (
     <DiagramWrapper>
       <Doughnut data={data} plugins={plugins} type={'doughnut'} />

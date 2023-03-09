@@ -10,34 +10,33 @@ import {
   Sum,
 } from './StatisticsList.styled';
 
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
-import {useDispatch, useSelector} from "react-redux";
-import {getTransactionSummary} from "../../../redux/transactions/trans-operations";
-import {selectSummary} from "../../../redux/transactions/trans-selectors";
-import {categories} from "../categories";
+import { useDispatch, useSelector } from 'react-redux';
+import { getTransactionSummary } from '../../../redux/transactions/trans-operations';
+import { selectSummary } from '../../../redux/transactions/trans-selectors';
+import { categories } from '../categories';
 
 const monthData = [
-  {value: 0, label: 'January'},
-  {value: 1, label: 'February'},
-  {value: 2, label: 'March'},
-  {value: 3, label: 'April'},
-  {value: 4, label: 'May'},
-  {value: 5, label: 'June'},
-  {value: 6, label: 'July'},
-  {value: 7, label: 'August'},
-  {value: 8, label: 'September'},
-  {value: 9, label: 'October'},
-  {value: 10, label: 'November'},
-  {value: 11, label: 'December'},
+  { value: 0, label: 'January' },
+  { value: 1, label: 'February' },
+  { value: 2, label: 'March' },
+  { value: 3, label: 'April' },
+  { value: 4, label: 'May' },
+  { value: 5, label: 'June' },
+  { value: 6, label: 'July' },
+  { value: 7, label: 'August' },
+  { value: 8, label: 'September' },
+  { value: 9, label: 'October' },
+  { value: 10, label: 'November' },
+  { value: 11, label: 'December' },
 ];
 
 const yearData = [
-  {value: 2021, label: '2022'},
-  {value: 2022, label: '2022'},
-  {value: 2023, label: '2023'},
+  { value: 2021, label: '2022' },
+  { value: 2022, label: '2022' },
+  { value: 2023, label: '2023' },
 ];
-
 
 const customStyles = {
   control: provided => ({
@@ -90,21 +89,20 @@ const customStyles = {
   }),
 };
 
-
 const CategorySum = () => {
-  const [month, setMonth] = useState((new Date).getMonth());
-  const [year, setYear] = useState((new Date).getFullYear());
-  const summary = useSelector(selectSummary)
+  const [month, setMonth] = useState(new Date().getMonth());
+  const [year, setYear] = useState(new Date().getFullYear());
+  const summary = useSelector(selectSummary);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getTransactionSummary({month: month + 1, year}))
-  }, [dispatch,month, year])
+    dispatch(getTransactionSummary({ month: month + 1, year }));
+  }, [dispatch, month, year]);
 
-  const handleMonthChange = ({value}) => {
+  const handleMonthChange = ({ value }) => {
     setMonth(value);
   };
-  const handleYearChange = ({value}) => {
+  const handleYearChange = ({ value }) => {
     setYear(value);
   };
 
@@ -130,30 +128,35 @@ const CategorySum = () => {
         <p>Sum</p>
       </StatisticsListTitle>
       <StatisticsList>
-        {summary && summary.categoriesSummary.map(({name, type, total}) => {
-          if (type === "INCOME") return
+        {summary &&
+          summary.categoriesSummary.map(({ name, type, total }) => {
+            if (type === 'INCOME') return null;
             return (
               <StatisticsItem key={name}>
-                <Cube color={categories[name]}/>
+                <Cube color={categories[name]} />
                 <StatisticsWrapper>
                   <p>{name}</p> <Sum>{Math.abs(total)}</Sum>
                 </StatisticsWrapper>
               </StatisticsItem>
-            )
-        })}
+            );
+          })}
       </StatisticsList>
       <StatisticsSumList>
         <StatisticsSumItem>
           <p>Expenses</p>
           <p
-            // style={{ color: theme.color.text_pink }}
-          >{summary && Math.abs(summary.expenseSummary)}</p>
+          // style={{ color: theme.color.text_pink }}
+          >
+            {summary && Math.abs(summary.expenseSummary)}
+          </p>
         </StatisticsSumItem>
         <StatisticsSumItem>
           <p>Income</p>
           <p
-            // style={{ color: theme.color.accent }}
-          >{summary && summary.incomeSummary}</p>
+          // style={{ color: theme.color.accent }}
+          >
+            {summary && summary.incomeSummary}
+          </p>
         </StatisticsSumItem>
       </StatisticsSumList>
     </StatisticsListWrapper>

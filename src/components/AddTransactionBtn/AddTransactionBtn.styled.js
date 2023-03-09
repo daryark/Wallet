@@ -24,7 +24,8 @@ export const AddBtn = styled.button`
     box-shadow: 0px 6px 15px rgba(0, 255, 110, 0.884);
   }
   :hover div {
-    rotate: 90deg;
+    transform: rotate(90deg);
+    /* transform-origin: 50%; */
   }
 `;
 
