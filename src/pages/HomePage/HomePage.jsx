@@ -1,24 +1,38 @@
-import { TransactionsList, TransactionsListMobile } from 'components';
+import { useSelector } from 'react-redux';
+import React from 'react';
+
+import {
+  ButtonUp,
+  TransactionsListMobile,
+  Balance,
+  TransactionsList,
+} from 'components';
+
 import CurrencyPage from 'pages/CurrencyPage/CurrencyPage';
 import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
 
-import React from 'react';
-// import { TransactionsList, TransactionsListMobile } from 'components';
+import { selectIsEditModalOpen } from 'redux/global/global-selectors';
 
 import WithAuthRedirect from 'HOC/WithAuthRedirect';
 import { AddTransactionBtn } from 'components/AddTransactionBtn/AddTransactionBtn';
-// import CurrencyPage from 'pages/CurrencyPage/CurrencyPage';
+import { Container } from 'components/common/common.styled';
 
+import { ModalEditTransaction } from 'components/ModalEditTransaction/ModalEditTransaction';
 function HomePage() {
+  const isEditModalOpen = useSelector(selectIsEditModalOpen);
   return (
-    <>
-      <div>HomePage is showing</div>
+    <Container>
       <ModalAddTransaction />
-      {/* <TransactionsListMobile /> */}
+      {isEditModalOpen && <ModalEditTransaction />}
+      <AddTransactionBtn />
+      <Balance />
+
+      <TransactionsListMobile />
+      <ButtonUp />
+
       <TransactionsList />
       <CurrencyPage />
-      <AddTransactionBtn />
-    </>
+    </Container>
   );
 }
 export default WithAuthRedirect(HomePage, '/login');

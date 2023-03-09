@@ -1,4 +1,3 @@
-//hello world:)
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 import {
@@ -38,6 +37,8 @@ const initialGlobalState = {
   error: null,
   status: 'idle',
   isModalTeamOpen: false,
+  isEditModalOpen: false,
+  isLogoutModalOpen: false,
 };
 
 const globalSlice = createSlice({
@@ -52,6 +53,12 @@ const globalSlice = createSlice({
     },
     toggleThemeTitle(state) {
       state.themeTitle = state.themeTitle === 'light' ? 'dark' : 'light';
+    },
+    toggleEditModal(state) {
+      state.isEditModalOpen = !state.isEditModalOpen;
+    },
+    toggleLogoutModalOpen(state) {
+      state.isLogoutModalOpen = !state.isLogoutModalOpen;
     },
   },
   extraReducers: builder => {
@@ -77,7 +84,11 @@ function errorHandler(state, { payload }) {
   state.isLoading = false;
   state.error = payload;
 }
-export const { isModalAddTransactionOpen, toggleModalTeam } =
-  globalSlice.actions;
+export const {
+  isModalAddTransactionOpen,
+  toggleModalTeam,
+  toggleEditModal,
+  toggleLogoutModalOpen,
+} = globalSlice.actions;
 export const { toggleThemeTitle } = globalSlice.actions;
 export const globalReducer = globalSlice.reducer;
