@@ -37,18 +37,13 @@ function FormModalEditTransaction({ handleCloseModal }) {
   let oldAmount = transactionData.amount;
 
   const handleSubmit = ({ key, amount, comment }) => {
-    if (transactionData.type === '+') {
-      amount = Number(amount);
-    } else {
-      amount = -Number(amount);
-    }
-    if (transactionData.type === '-' && amount < oldAmount) {
-      amount = Number(amount);
-    } else {
-      amount = -Number(amount);
-    }
+    amount = Number(amount);
+    let oldAmnt = Math.abs(oldAmount);
 
-    const oldAmnt = Math.abs(oldAmount);
+    if (transactionData.type === '-') {
+      amount = -Number(amount);
+      oldAmnt = -Number(oldAmnt);
+    }
 
     dispatch(
       editTransaction({

@@ -72,7 +72,6 @@ export const TransactionsList = () => {
       title: 'Category',
       dataIndex: 'category',
       key: 'category',
-},
       render: (_, record) => {
         if (!categories) return;
         const getCategory = categories.find(c => c.id === record.categoryId);
@@ -130,7 +129,7 @@ export const TransactionsList = () => {
       amount,
     })
   );
-  const scroll = { scrollToFirstRowOnChange: true, y: 500 };
+  const scroll = { scrollToFirstRowOnChange: true, y: 600 };
   return (
     <>
       {transactions.length > 0 ? (

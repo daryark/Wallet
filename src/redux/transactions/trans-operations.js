@@ -49,7 +49,7 @@ export const editTransaction = createAsyncThunk(
   'transactions/editTransition',
   async (formData, { rejectWithValue }) => {
     try {
-      // console.log(formData);
+      console.log(formData);
       const info = {
         id: formData.id,
         amount: formData.amount,
