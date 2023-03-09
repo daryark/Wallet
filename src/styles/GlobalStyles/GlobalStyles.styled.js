@@ -20,7 +20,7 @@ body {
   background-color: ${({ theme }) => theme.color.bg_grey_main};
   
     backdrop-filter: blur(25px);
-  /* background: ${({ theme }) => theme.color.bg_coverage}; */
+  background: ${({ theme }) => theme.color.bg_coverage};
 }
 /*   
  @media screen and (min-width: 768px) {
@@ -34,6 +34,32 @@ body {
 
   #root {
     height: 100vh;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas:
+      'header header'
+      'sidebar sidebar'
+      'main main'
+      'footer footer';
+@media (min-width: ${theme.breakpoints.sm}) {
+      max-width: ${theme.breakpoints.sm};
+      grid-template-columns: 100%;
+    }
+      @media (min-width: ${theme.breakpoints.md}) {
+      max-width: ${theme.breakpoints.md};
+      grid-template-columns: 100%;
+      grid-template-rows: auto 1fr auto;
+     
+    }
+    @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+      max-width: ${({ theme }) => theme.breakpoints.lg};
+      grid-template-columns: 480px 800px;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas:
+      'header header'
+      'sidebar main'
+      'footer footer';
+    }
   }
 p,
 h1,
@@ -70,31 +96,6 @@ svg {
 	fill: currentColor;
 }
 
-/* #root {
-    min-height: 100vh;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:
-      'header header'
-      'sidebar sidebar'
-      'main main'
-      'footer footer';
-    @media (min-width: ${theme.breakpoints.md}) {
-      max-width: ${theme.breakpoints.md};
-      grid-template-areas:
-        'header header'
-        'sidebar main'
-        'footer footer';
-    }
-    @media (min-width: ${theme.breakpoints.lg}) {
-      max-width: ${theme.breakpoints.lg};
-    }
-    @media (min-width: ${theme.breakpoints.xl}) {
-      max-width: ${theme.breakpoints.xl};
-    } */
-  /* } */
   .isHidden {
     position: absolute;
     width: 1px;
