@@ -44,7 +44,6 @@ export const TransactionsList = () => {
   };
   const handleDeleteTransition = (transitionId, balance, delAmount) => {
     dispatch(deleteTransaction({ transitionId, balance, delAmount }));
-    // dispatch(fetchTransactions());
   };
 
   const columns = [

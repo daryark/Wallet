@@ -8,31 +8,30 @@ import {
   TransactionsList,
 } from 'components';
 
-// import CurrencyPage from 'pages/CurrencyPage/CurrencyPage';
+import CurrencyPage from 'pages/CurrencyPage/CurrencyPage';
 import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
 
 import { selectIsEditModalOpen } from 'redux/global/global-selectors';
 
 import WithAuthRedirect from 'HOC/WithAuthRedirect';
+import { AddTransactionBtn } from 'components/AddTransactionBtn/AddTransactionBtn';
 import { Container } from 'components/common/common.styled';
-import ModalBackdrop from 'components/ModalBackdrop/ModalBackdrop';
 
 import { ModalEditTransaction } from 'components/ModalEditTransaction/ModalEditTransaction';
 function HomePage() {
   const isEditModalOpen = useSelector(selectIsEditModalOpen);
   return (
     <Container>
-      <ModalBackdrop />
       <ModalAddTransaction />
       {isEditModalOpen && <ModalEditTransaction />}
-
+      <AddTransactionBtn />
       <Balance />
 
-      {/* <TransactionsListMobile /> */}
+      <TransactionsListMobile />
       <ButtonUp />
 
-      <TransactionsList />
-      {/* <CurrencyPage /> */}
+      {/* <TransactionsList /> */}
+      <CurrencyPage />
     </Container>
   );
 }

@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
 import { setEditTransaction } from 'redux/transactions/transSlice';
 import {
+  selectBalance,
   selectCategories,
   selectTransactions,
 } from 'redux/transactions/trans-selectors';
@@ -29,6 +30,7 @@ import { capitalizeFirstLetter } from 'helpers/capitalize';
 
 export const TransactionsListMobile = () => {
   const dispatch = useDispatch();
+  const balance = useSelector(selectBalance);
   const transactions = useSelector(selectTransactions);
   const categories = useSelector(selectCategories);
 
@@ -41,66 +43,75 @@ export const TransactionsListMobile = () => {
     dispatch(setEditTransaction(contactUser));
     dispatch(isModalAddTransactionOpen());
   };
-  const handleDeleteTransition = transitionId => {
-    dispatch(deleteTransaction(transitionId));
+  const handleDeleteTransition = (transitionId, balance, delAmount) => {
+    dispatch(deleteTransaction({ transitionId, balance, delAmount }));
   };
   return (
     <>
-      {transactions.map(
-        ({ id, transactionDate, type, categoryId, comment, amount }) => {
-          const date = getDate(transactionDate);
+      {transactions.length > 0 ? (
+        transactions.map(
+          ({ id, transactionDate, type, categoryId, comment, amount }) => {
+            const date = getDate(transactionDate);
 
-          const positNum = Math.abs(amount);
-          const sum = parseFloat(positNum).toFixed(2);
+            const positNum = Math.abs(amount);
+            const sum = parseFloat(positNum).toFixed(2);
 
-          const getCategory = categories?.find(c => c.id === categoryId);
-          const categoryName = getCategory?.name;
+            const getCategory = categories?.find(c => c.id === categoryId);
+            const categoryName = getCategory?.name;
 
-          return (
-            <StyledList key={id}>
-              <StyledItem type={type}>
-                <StyledSpan>Date</StyledSpan>
-                {date}
-              </StyledItem>
-              <StyledItem type={type}>
-                <StyledSpan>Type</StyledSpan>
-                {type}
-              </StyledItem>
-              <StyledItem type={type}>
-                <StyledSpan>Category</StyledSpan>
-                {categoryName}
-              </StyledItem>
-              <StyledItem type={type}>
-                <StyledSpan>Comment</StyledSpan>
-                {capitalizeFirstLetter(comment)}
-              </StyledItem>
-              <StyledItem type={type}>
-                <StyledSpan>Sum</StyledSpan>
-                <StyledSum type={type}>{sum}</StyledSum>
-              </StyledItem>
-              <StyledItem type={type}>
-                <StyledDeleteBtn onClick={() => handleDeleteTransition(id)}>
-                  Delete
-                </StyledDeleteBtn>
-                <StyledEditBtn
-                  onClick={() =>
-                    handleEditTransition({
-                      id,
-                      transactionDate,
-                      type,
-                      categoryId,
-                      comment,
-                      amount,
-                    })
-                  }
-                >
-                  <RiEdit2Line size={14} />
-                  Edit
-                </StyledEditBtn>
-              </StyledItem>
-            </StyledList>
-          );
-        }
+            return (
+              <StyledList key={id}>
+                <StyledItem type={type}>
+                  <StyledSpan>Date</StyledSpan>
+                  {date}
+                </StyledItem>
+                <StyledItem type={type}>
+                  <StyledSpan>Type</StyledSpan>
+                  {type}
+                </StyledItem>
+                <StyledItem type={type}>
+                  <StyledSpan>Category</StyledSpan>
+                  {categoryName}
+                </StyledItem>
+                <StyledItem type={type}>
+                  <StyledSpan>Comment</StyledSpan>
+                  {capitalizeFirstLetter(comment)}
+                </StyledItem>
+                <StyledItem type={type}>
+                  <StyledSpan>Sum</StyledSpan>
+                  <StyledSum type={type}>{sum}</StyledSum>
+                </StyledItem>
+                <StyledItem type={type}>
+                  <StyledDeleteBtn
+                    onClick={() => handleDeleteTransition(id, balance, amount)}
+                  >
+                    Delete
+                  </StyledDeleteBtn>
+                  <StyledEditBtn
+                    onClick={() =>
+                      handleEditTransition({
+                        id,
+                        transactionDate,
+                        type,
+                        categoryId,
+                        comment,
+                        amount,
+                      })
+                    }
+                  >
+                    <RiEdit2Line size={14} />
+                    Edit
+                  </StyledEditBtn>
+                </StyledItem>
+              </StyledList>
+            );
+          }
+        )
+      ) : (
+        <div>
+          There aren't any transactions. Press the button and add your first
+          one!
+        </div>
       )}
     </>
   );
