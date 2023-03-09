@@ -7,8 +7,6 @@ import Layout from 'components/Layout/Layout';
 import { routes } from 'routes';
 import { getUserInfoRequest } from 'redux/auth/auth-operations';
 
-// import RegisterPage from 'pages/RegisterPage/RegisterPage';
-// import LoginPage from 'pages/LoginPage/LoginPage';
 import { Loader } from 'components';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
@@ -18,8 +16,6 @@ const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const StatisticsPage = lazy(() =>
   import('pages/StatisticsPage/StatisticsPage')
 );
-
-// console.log(window.innerWidth);
 
 export function App() {
   const dispatch = useDispatch();

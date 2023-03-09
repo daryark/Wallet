@@ -35,10 +35,6 @@ export default function Layout() {
 
       <main>
         <Outlet />
-
-        {/* <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense> */}
       </main>
 
       <div
