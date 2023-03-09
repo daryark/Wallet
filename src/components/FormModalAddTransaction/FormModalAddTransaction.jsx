@@ -5,23 +5,18 @@ import { Field } from 'formik';
 import { date, object, string } from 'yup';
 import { useMediaQuery } from 'react-responsive';
 
-import DateComponent from './DateComponent';
-import SelectComponent from './SelectComponent';
-
-import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
 import { selectIsModalOpen } from 'redux/global/global-selectors';
 import { selectCategories } from 'redux/transactions/trans-selectors';
+import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
 import {
   addTransaction,
   getTransactionCategories,
 } from 'redux/transactions/trans-operations';
 
-import {
-  CalendarIconStyled,
-  FormModalAddTransactionStyled,
-  MinusIconStyled,
-  PlusIconStyled,
-} from './FormModalAddTransaction.styled';
+import DateComponent from './DateComponent/DateComponent';
+import SelectComponent from './SelectComponent/SelectComponent';
+
+import { FormModalAddTransactionStyled } from './FormModalAddTransaction.styled';
 
 const defaultState = {
   type: 'EXPENSE',
@@ -119,8 +114,9 @@ function FormModalAddTransaction({ handleCloseModal }) {
     >
       <FormModalAddTransactionStyled className="modal-form">
         <div className="switcher" style={{ position: 'relative' }}>
-          <span className="income">Income</span>
-          {transactionState.type === 'INCOME' && <MinusIconStyled />}
+          <span className={transactionState.type === 'INCOME' ? 'income' : ''}>
+            Income
+          </span>
           <label className="switcher__box">
             <Field
               type="checkbox"
@@ -131,8 +127,11 @@ function FormModalAddTransaction({ handleCloseModal }) {
             />
             <span className="switcher__toggle"></span>
           </label>
-          {transactionState.type === 'EXPENSE' && <PlusIconStyled />}
-          <span className="expense">Expense</span>
+          <span
+            className={transactionState.type === 'EXPENSE' ? 'expense' : ''}
+          >
+            Expense
+          </span>
         </div>
 
         <Field
@@ -155,32 +154,12 @@ function FormModalAddTransaction({ handleCloseModal }) {
           }}
         />
 
-        {/* <Select
-          key={transactionState.type}
-          styles={selectStyles(transactionState.type)}
-          components={{ TfiAngleDown }}
-          options={(transactionState.type === 'EXPENSE'
-            ? optionsExpense
-            : optionsIncome
-          ).map(option => ({ value: option.id, label: option.name }))}
-          placeholder="Select a category"
-          onChange={option => {
-            handleSelectChange(option.value);
-          }}
-          className={
-            transactionState.type === 'EXPENSE'
-              ? 'category'
-              : 'category isHidden'
-          }
-        /> */}
-
         <div className="amount-date-wrapper">
           <Field
             type="number"
             placeholder="0.00"
             name="amount"
             className="amount"
-            // value={Number(transactionState.amount).toFixed(2)}
           />
 
           <Field
@@ -193,8 +172,6 @@ function FormModalAddTransaction({ handleCloseModal }) {
             value={transactionState.date}
             onChange={handleDateChange}
           />
-
-          <CalendarIconStyled />
         </div>
 
         <Field
@@ -203,7 +180,6 @@ function FormModalAddTransaction({ handleCloseModal }) {
           type="text"
           placeholder="Comment"
           name="comment"
-          className="comment"
         />
 
         <div className="btns-wrapper">

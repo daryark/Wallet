@@ -1,48 +1,19 @@
 import styled from 'styled-components';
 import { Form } from 'formik';
-import { RiCalendar2Fill } from 'react-icons/ri';
-import { AiOutlinePlus } from 'react-icons/ai';
-import { AiOutlineMinus } from 'react-icons/ai';
-
-export const MinusIconStyled = styled(AiOutlineMinus)`
-  position: absolute;
-  fill: #fff;
-  width: 27px;
-  height: auto;
-  top: 8px;
-  left: 79px;
-  z-index: 1;
-`;
-
-export const PlusIconStyled = styled(AiOutlinePlus)`
-  position: absolute;
-  fill: #fff;
-  width: 27px;
-  height: auto;
-  top: 8px;
-  right: 85px;
-  z-index: 1;
-`;
-
-export const CalendarIconStyled = styled(RiCalendar2Fill)`
-  fill: #4a56e2;
-  min-width: 18px;
-  min-height: 20px;
-  position: absolute;
-  top: 2px;
-  right: 14px;
-`;
 
 export const FormModalAddTransactionStyled = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+
+  & > *:not(:last-child) {
+    margin-bottom: 40px;
+  }
 
   & .switcher {
     width: 235px;
-    height: 44px;
+    height: 46px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -52,15 +23,12 @@ export const FormModalAddTransactionStyled = styled(Form)`
     line-height: calc(24 / 16);
     color: #e0e0e0;
 
-    /* .switcher__checkbox:checked & .income { // НЕ ПРАЦЮЄ
-      color: #24cca7;
-    } */
-
     & .income {
-      /* color:; */
+      color: #24cca7;
     }
+
     & .expense {
-      /* color:; */
+      color: #ff6596;
     }
 
     &__box {
@@ -95,10 +63,11 @@ export const FormModalAddTransactionStyled = styled(Form)`
         height: 44px;
         width: 44px;
         left: -4px;
-        bottom: -2px;
+        bottom: -3px;
         transition: 0.4s;
         border-radius: 50%;
         background-color: #24cca7;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 768 768'%3E%3Cpath d='M607.5 415.5h-192v192h-63v-192h-192v-63h192v-192h63v192h192v63z'/%3E%3C/svg%3E");
         box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
         -webkit-transition: 0.4s;
       }
@@ -106,6 +75,7 @@ export const FormModalAddTransactionStyled = styled(Form)`
 
     &__checkbox:checked + .switcher__toggle:before {
       background-color: #ff6596;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 768 768'%3E%3Cpath d='M607.5 415.5h-447v-63h447v63z'/%3E%3C/svg%3E");
       box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
       -webkit-transform: translateX(44px);
       -ms-transform: translateX(44px);
@@ -118,9 +88,14 @@ export const FormModalAddTransactionStyled = styled(Form)`
   }
 
   & input,
+  & select {
+    max-height: 32px;
+  }
+
+  & input,
   & textarea,
   & select {
-    font-family: 'Circe';
+    font-family: inherit;
     width: 100%;
     padding: 0 20px 8px;
     background-color: transparent;
@@ -150,6 +125,10 @@ export const FormModalAddTransactionStyled = styled(Form)`
 
   & .category {
     width: 100%;
+
+    &.isHidden {
+      margin-bottom: 0;
+    }
   }
 
   & .amount-date-wrapper {
@@ -190,10 +169,6 @@ export const FormModalAddTransactionStyled = styled(Form)`
 
   & input.form-control {
     padding: 0 20px 8px;
-    font-family: 'Circe';
-  }
-
-  & .comment {
   }
 
   & .btns-wrapper {
@@ -204,7 +179,7 @@ export const FormModalAddTransactionStyled = styled(Form)`
     width: 100%;
 
     & button {
-      font-family: 'Circe';
+      font-family: inherit;
       font-weight: 400;
       font-size: 18px;
       line-height: 27px;
