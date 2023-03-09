@@ -29,6 +29,7 @@ export const AddBtn = styled.button`
 `;
 
 export const AddIcon = styled(BsPlusLg)`
+  display: block;
   fill: white;
   width: 20px;
   height: 20px;

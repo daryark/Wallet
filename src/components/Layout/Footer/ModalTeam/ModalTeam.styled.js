@@ -1,19 +1,6 @@
 import styled from 'styled-components';
 
-export const BackDrop = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 1200;
-`;
-
-export const Modal = styled.div`
+export const ModalStyled = styled.div`
   box-sizing: border-box;
   position: absolute;
   top: 50%;
@@ -48,7 +35,7 @@ export const Modal = styled.div`
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: all 3000ms linear;
+    transition: all 1000ms linear;
   }
   .activeSlide {
     opacity: 1;
@@ -74,7 +61,15 @@ export const Modal = styled.div`
     height: 250px;
     object-fit: cover;
     margin: 0 auto;
-    box-shadow: rgba(0, 0, 0, 0.2);
+    box-shadow: rgb(0 0 0 / 25%) 0px 4px 4px;
     display: block;
+  }
+
+  div {
+    margin-top: 20px;
+    font-size: ${p => p.theme.fontSizes.m};
+    :not(:last-child) {
+      margin-top: 8px;
+    }
   }
 `;
