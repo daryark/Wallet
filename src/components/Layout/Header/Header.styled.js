@@ -57,7 +57,7 @@ export const StyledInfo = styled.div`
   font-weight: ${({ theme }) => theme.fontWeights.normal};
   font-size: ${({ theme }) => theme.fontSizes.m};
   line-height: ${({ theme }) => theme.lineHeights.body};
-  color: ${({ theme }) => theme.color.text_grey_main};
+  color: ${({ theme }) => theme.color.text_grey_balance};
 
   @media screen and (min-width: 768px) {
     gap: 12px;
@@ -74,7 +74,7 @@ export const StyledBtn = styled.button`
   font-weight: ${({ theme }) => theme.fontWeights.normal};
   font-size: ${({ theme }) => theme.fontSizes.m};
   line-height: ${({ theme }) => theme.lineHeights.body};
-  color: ${({ theme }) => theme.color.text_grey_main};
+  color: ${({ theme }) => theme.color.text_grey_balance};
 
   @media screen and (min-width: 768px) {
     gap: 12px;
@@ -82,7 +82,7 @@ export const StyledBtn = styled.button`
 `;
 
 export const Separator = styled.div`
+  background-color: ${({ theme }) => theme.color.text_grey_balance};
   width: 1px;
   height: 30px;
-  background-color: ${({ theme }) => theme.color.text_grey_main};
 `;
