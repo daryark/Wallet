@@ -47,26 +47,16 @@ function ModalAddTransaction() {
   return (
     <>
       {isModalOpen && (
-        <MediaQuery minWidth={768}>
-          <ModalBackdrop randomModalClose={isModalAddTransactionOpen}>
-            <ModalAddTransactionStyled>
-              <ModalCloseBtn isRandomModalOpen={isModalAddTransactionOpen} />
-              <h2 className="modal__title">Add transaction</h2>
-              <FormModalAddTransaction handleCloseModal={handleCloseModal} />
-            </ModalAddTransactionStyled>
-          </ModalBackdrop>
-        </MediaQuery>
-      )}
-
-      {isModalOpen && (
-        <MediaQuery maxWidth={767}>
+        <ModalBackdrop randomModalClose={isModalAddTransactionOpen}>
           <ModalAddTransactionStyled>
+            <MediaQuery minWidth={768}>
+              <ModalCloseBtn isRandomModalOpen={isModalAddTransactionOpen} />
+            </MediaQuery>
             <h2 className="modal__title">Add transaction</h2>
             <FormModalAddTransaction handleCloseModal={handleCloseModal} />
           </ModalAddTransactionStyled>
-        </MediaQuery>
+        </ModalBackdrop>
       )}
-
       <ToastContainer
         position="top-right"
         autoClose={3500}
