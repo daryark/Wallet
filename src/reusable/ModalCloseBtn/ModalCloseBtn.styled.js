@@ -1,3 +1,4 @@
+import { TfiClose } from 'react-icons/tfi';
 import styled from 'styled-components';
 
 export const ButtonClose = styled.button`
@@ -12,15 +13,17 @@ export const ButtonClose = styled.button`
   border-radius: ${({ theme }) => theme.radii.round};
   border: 1px solid transparent;
   background-color: transparent;
+  color: ${({ theme }) => theme.color.text_dark};
   cursor: pointer;
-  transition: border 500ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  & svg {
-    width: 16px;
-    height: auto;
-  }
+  transition: border ${({ theme }) => theme.transition};
 
   :hover {
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgb(191 189 189);
   }
+`;
+
+export const StyledIconClose = styled(TfiClose)`
+  width: 16px;
+  height: auto;
+  fill: currentColor;
 `;
