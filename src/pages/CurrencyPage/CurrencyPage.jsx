@@ -30,7 +30,7 @@ function CurrencyPage() {
   const dispatch = useDispatch();
   const currency = useSelector(selectCurrency);
   const loading = useSelector(selectIsLoading);
-
+  const a = '';
   useEffect(() => {
     const currencyFromStorage = JSON.parse(
       localStorage.getItem('currencyInTheMoment')
