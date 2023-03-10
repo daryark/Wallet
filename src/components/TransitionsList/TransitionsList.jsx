@@ -9,6 +9,7 @@ import { setEditTransaction } from 'redux/transactions/transSlice';
 import {
   selectBalance,
   selectCategories,
+  selectIsDeleting,
   selectTransactions,
 } from 'redux/transactions/trans-selectors';
 
@@ -26,12 +27,17 @@ import {
 } from './TransitionsList.styled';
 import { getDate } from 'helpers/getDate';
 import { capitalizeFirstLetter } from 'helpers/capitalize';
+import { LoaderDel } from './LoaderDelBtn';
+import { useRef } from 'react';
 
 export const TransactionsList = () => {
   const dispatch = useDispatch();
   const balance = useSelector(selectBalance);
   const categories = useSelector(selectCategories);
   const transactions = useSelector(selectTransactions);
+  const loading = useSelector(selectIsDeleting);
+
+  const delId = useRef(null);
 
   useEffect(() => {
     dispatch(fetchTransactions());
@@ -43,6 +49,7 @@ export const TransactionsList = () => {
     dispatch(toggleEditModal());
   };
   const handleDeleteTransition = (transitionId, balance, delAmount) => {
+    delId.current = transitionId;
     dispatch(deleteTransaction({ transitionId, balance, delAmount }));
   };
 
@@ -107,11 +114,16 @@ export const TransactionsList = () => {
               <RiEdit2Line size={14} />
             </StyledEditBtn>
             <StyledDeleteBtn
+              disabled={loading && record.key === delId.current}
               onClick={() =>
                 handleDeleteTransition(record.key, balance, record.amount)
               }
             >
-              Delete
+              {loading && record.key === delId.current ? (
+                <LoaderDel />
+              ) : (
+                'Delete'
+              )}
             </StyledDeleteBtn>
           </BtnBox>
         );
@@ -128,7 +140,7 @@ export const TransactionsList = () => {
       amount,
     })
   );
-  const scroll = { scrollToFirstRowOnChange: true, y: 600 };
+  const scroll = { scrollToFirstRowOnChange: true, y: 450 };
   return (
     <>
       {transactions.length > 0 ? (
