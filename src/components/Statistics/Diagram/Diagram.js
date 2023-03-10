@@ -1,28 +1,61 @@
 import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import expenses from './expenses.json';
 import { DiagramWrapper } from './Diagram.styled';
 import { useSelector } from 'react-redux';
-import { selectBalance } from '../../../redux/transactions/trans-selectors';
+import {
+  selectBalance,
+  selectSummary,
+} from '../../../redux/transactions/trans-selectors';
+import { categories } from '../categories';
+import { useEffect, useState } from 'react';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const Diagram = () => {
+  // const balance = useSelector(selectBalance);
+  // const balanceText = `₴ ${balance.toFixed(2)}`;
+  // console.log(balance);
+
+  // const data = {
+  //   datasets: [
+  //     {
+  //       label: '# of Votes',
+  //       data: expenses.map(expense => expense.percent),
+  //       backgroundColor: expenses.map(expense => expense.color),
+  //       borderColor: expenses.map(expense => expense.color),
+  //       borderWidth: 1,
+  //     },
+  //   ],
+  // };
+  const [data, setData] = useState([]);
+  const summary = useSelector(selectSummary);
+
   const balance = useSelector(selectBalance);
   const balanceText = `₴ ${balance.toFixed(2)}`;
-  console.log(balance);
 
-  const data = {
-    datasets: [
-      {
-        label: '# of Votes',
-        data: expenses.map(expense => expense.percent),
-        backgroundColor: expenses.map(expense => expense.color),
-        borderColor: expenses.map(expense => expense.color),
-        borderWidth: 1,
-      },
-    ],
-  };
+  useEffect(() => {
+    const doughnutData = () => {
+      if (!summary) return [];
+      return [
+        {
+          data: summary.categoriesSummary.map(({ type, total }) => {
+            if (type === 'INCOME') return null;
+            return Math.abs(total);
+          }),
+          backgroundColor: summary.categoriesSummary.map(({ name, type }) => {
+            if (type === 'INCOME') return null;
+            return categories[name];
+          }),
+          borderColor: summary.categoriesSummary.map(({ name, type }) => {
+            if (type === 'INCOME') return null;
+            return categories[name];
+          }),
+          borderWidth: 1,
+        },
+      ];
+    };
+    setData(doughnutData());
+  }, [summary]);
 
   const plugins = [
     {
@@ -41,7 +74,13 @@ export const Diagram = () => {
 
   return (
     <DiagramWrapper>
-      <Doughnut data={data} plugins={plugins} type={'doughnut'} />
+      {data.length && (
+        <Doughnut
+          data={{ datasets: data }}
+          plugins={plugins}
+          type={'doughnut'}
+        />
+      )}
     </DiagramWrapper>
   );
 };

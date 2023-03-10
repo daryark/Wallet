@@ -10,7 +10,6 @@ const GlobalStyles = createGlobalStyle`
 html {
     box-sizing: border-box;
     scroll-behavior: smooth;
-    height: 100%;
   }
 
 body {
@@ -18,8 +17,8 @@ body {
   color: ${({ theme }) => theme.color.text_dark};
   background-color: ${({ theme }) => theme.color.bg_grey_main};
   
-    backdrop-filter: blur(25px);
-  background: ${({ theme }) => theme.color.bg_coverage};
+    /* backdrop-filter: blur(25px); */
+  /* background: ${({ theme }) => theme.color.bg_coverage}; */
 }
 /*   
  @media screen and (min-width: 768px) {
@@ -60,6 +59,7 @@ body {
       'footer footer';
     }
   }
+  
 p,
 h1,
 h2,
