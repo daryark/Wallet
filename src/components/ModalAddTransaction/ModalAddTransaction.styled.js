@@ -8,12 +8,13 @@ export const ModalAddTransactionStyled = styled.div`
   flex-direction: column;
   gap: 40px;
   width: 100%;
-  min-height: calc(100% - 60px);
+  height: calc(100% - 60px);
   padding: 20px;
   background-color: ${p => p.theme.color.bg_white};
   z-index: 102;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    height: auto;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

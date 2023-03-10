@@ -12,8 +12,10 @@ import { ModalCloseBtn } from 'reusable';
 import ModalBackdrop from 'components/ModalBackdrop/ModalBackdrop';
 
 import MediaQuery from 'react-responsive';
+import { useWindowSize } from 'hooks/useWindowSize';
 
 function ModalAddTransaction() {
+  const { isMobile } = useWindowSize();
   const isModalOpen = useSelector(selectIsModalOpen);
 
   const error = useSelector(selectError);
@@ -31,12 +33,21 @@ function ModalAddTransaction() {
       }
     }
 
+    if (isModalOpen && isMobile) {
+      document.body.style.overflow = 'hidden';
+      document.querySelector('.modal-add-transaction').style.overflow = 'auto';
+    }
+
     if (isModalOpen) window.addEventListener('keydown', handleEscapeClick);
 
     return () => {
       window.removeEventListener('keydown', handleEscapeClick);
+
+      if (isMobile) {
+        document.body.style.overflow = 'auto';
+      }
     };
-  }, [dispatch, isModalOpen]);
+  }, [dispatch, isMobile, isModalOpen]);
 
   const handleCloseModal = event => {
     if (event.target === event.currentTarget) {
@@ -48,7 +59,7 @@ function ModalAddTransaction() {
     <>
       {isModalOpen && (
         <ModalBackdrop randomModalClose={isModalAddTransactionOpen}>
-          <ModalAddTransactionStyled>
+          <ModalAddTransactionStyled className="modal-add-transaction">
             <MediaQuery minWidth={768}>
               <ModalCloseBtn isRandomModalOpen={isModalAddTransactionOpen} />
             </MediaQuery>
