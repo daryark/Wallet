@@ -7,7 +7,7 @@ export const RegisterBox = styled.div`
     margin: 0 auto;
     width: 532px;
     height: 616px;
-
+    background-color: #e5e5e5;
     background-color: white;
     border-radius: 20px;
   }
