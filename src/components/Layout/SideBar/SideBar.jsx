@@ -11,9 +11,11 @@ import { useWindowSize } from 'hooks/useWindowSize';
 import { routes } from 'routes';
 import { Balance } from 'components';
 import CurrencyPage from 'pages/CurrencyPage/CurrencyPage';
+import { useTranslation } from 'react-i18next';
 
 export const Sidebar = () => {
   const { isMobile } = useWindowSize();
+  const { t } = useTranslation();
   return (
     <StyledAside>
       <div>
@@ -22,13 +24,13 @@ export const Sidebar = () => {
             <StyledIcon>
               <MdHome />
             </StyledIcon>
-            {!isMobile && 'Home'}
+            {!isMobile && t('navHomeLink')}
           </StyledBtn>
           <StyledBtn to={routes.STATISTICS_PAGE}>
             <StyledIcon>
               <SlGraph />
             </StyledIcon>
-            {!isMobile && 'Statistics'}
+            {!isMobile && t('navStatisticsLink')}
           </StyledBtn>
           {isMobile && (
             <StyledBtn to={routes.CURRENCY_PAGE}>
