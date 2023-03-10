@@ -6,7 +6,6 @@ import { BsSun, BsMoon } from 'react-icons/bs';
 
 import { Footer, Header, Loader, Sidebar } from 'components';
 
-
 import { selectTheme } from 'redux/global/global-selectors';
 import { toggleThemeTitle } from 'redux/global/globalSlice';
 
@@ -18,6 +17,8 @@ import {
   StyledFooterPusher,
   StyledMain,
 } from 'components/common/FooterPusher.styled';
+import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
+import { Suspense } from 'react';
 
 export default function Layout() {
   const themeTitle = useSelector(selectTheme);
@@ -34,7 +35,7 @@ export default function Layout() {
       <GlobalStyles />
 
       <StyledFooterPusher>
-        {isLoggedIn && (
+        {selectIsLoggedIn && (
           <>
             <Header />
             <Sidebar />
@@ -51,9 +52,7 @@ export default function Layout() {
         <Footer />
       </StyledFooterPusher>
 
-     
-
-     {* <div
+      {/* <div
         style={{
           width: '100vw',
           height: '100vh',
@@ -62,8 +61,7 @@ export default function Layout() {
           backdropFilter: 'blur(25px)',
           zIndex: -1,
         }}
-      /> *}
-
+      />  */}
     </ThemeProvider>
   );
 }
