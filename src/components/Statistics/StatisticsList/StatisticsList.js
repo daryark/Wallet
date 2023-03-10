@@ -19,6 +19,8 @@ import { getTransactionSummary } from '../../../redux/transactions/trans-operati
 import { selectSummary } from '../../../redux/transactions/trans-selectors';
 import { categories } from '../categories';
 import { useTranslation } from 'react-i18next';
+import { categoryCheck } from 'components/TransitionsList/categoryCheck';
+import { selectLanguage } from 'redux/global/global-selectors';
 
 const yearData = [
   { value: 2021, label: '2021' },
@@ -81,6 +83,7 @@ const CategorySum = () => {
   const dispatch = useDispatch();
   const theme = useTheme();
   const { t } = useTranslation();
+  const lan = useSelector(selectLanguage);
 
   useEffect(() => {
     dispatch(getTransactionSummary({ month: month + 1, year }));
@@ -139,11 +142,21 @@ const CategorySum = () => {
         {summary &&
           summary.categoriesSummary.map(({ name, type, total }) => {
             if (type === 'INCOME') return null;
+
+            let categoryName = '';
+            if (lan === true) {
+              categoryName = name;
+            }
+            if (lan === false) {
+              categoryName = categoryCheck(name);
+            }
+            // потрібно замінити умову, щоб lan === 'ru'
+
             return (
               <StatisticsItem key={name}>
                 <Cube color={categories[name]} />
                 <StatisticsWrapper>
-                  <p>{name}</p> <Sum>{Math.abs(total)}</Sum>
+                  <p>{categoryName}</p> <Sum>{Math.abs(total)}</Sum>
                 </StatisticsWrapper>
               </StatisticsItem>
             );
