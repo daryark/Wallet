@@ -6,13 +6,15 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from 'components/Layout/Layout';
 import { routes } from 'routes';
 import { getUserInfoRequest } from 'redux/auth/auth-operations';
+import RegisterPage from 'pages/RegisterPage/RegisterPage';
+import LoginPage from 'pages/LoginPage/LoginPage';
 
 import { Loader } from 'components';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const CurrencyPage = lazy(() => import('pages/CurrencyPage/CurrencyPage'));
-const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
-const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
+// const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
+// const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const StatisticsPage = lazy(() =>
   import('pages/StatisticsPage/StatisticsPage')
 );

@@ -37,7 +37,8 @@ export const loginRequest = createAsyncThunk(
 
       return user;
     } catch (error) {
-      return rejectWithValue(error.message);
+      console.log(error);
+      return rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -66,7 +67,7 @@ export const getUserInfoRequest = createAsyncThunk(
 
       return response;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(null);
     }
   }
 );
