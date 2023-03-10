@@ -10,6 +10,7 @@ import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 
 import { Loader } from 'components';
+import { Toaster } from 'components/Toaster/Toaster';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const CurrencyPage = lazy(() => import('pages/CurrencyPage/CurrencyPage'));
@@ -27,17 +28,23 @@ export function App() {
   }, [dispatch]);
 
   return (
-    <Suspense fallback={<Loader />}>
-      <Routes>
-        <Route path={routes.HOME} element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path={routes.CURRENCY_PAGE} element={<CurrencyPage />}></Route>
-          <Route path={routes.STATISTICS_PAGE} element={<StatisticsPage />} />
-          <Route path="*" element={<Navigate to={routes.HOME} />} />
-        </Route>
-        <Route path={routes.REGISTER_PAGE} element={<RegisterPage />} />
-        <Route path={routes.LOGIN_PAGE} element={<LoginPage />} />
-      </Routes>
-    </Suspense>
+    <>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path={routes.HOME} element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route
+              path={routes.CURRENCY_PAGE}
+              element={<CurrencyPage />}
+            ></Route>
+            <Route path={routes.STATISTICS_PAGE} element={<StatisticsPage />} />
+            <Route path="*" element={<Navigate to={routes.HOME} />} />
+          </Route>
+          <Route path={routes.REGISTER_PAGE} element={<RegisterPage />} />
+          <Route path={routes.LOGIN_PAGE} element={<LoginPage />} />
+        </Routes>
+      </Suspense>
+      {/* <Toaster /> */}
+    </>
   );
 }
