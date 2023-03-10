@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const ButtonClose = styled.button`
-  /* width: 16px;
-  height: 16px; */
   position: absolute;
   top: 20px;
   display: flex;
@@ -16,6 +14,11 @@ export const ButtonClose = styled.button`
   background-color: transparent;
   cursor: pointer;
   transition: border 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  & svg {
+    width: 16px;
+    height: auto;
+  }
 
   :hover {
     border: 1px solid rgba(0, 0, 0, 0.1);

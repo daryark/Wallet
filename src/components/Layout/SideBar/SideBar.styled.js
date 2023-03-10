@@ -3,6 +3,12 @@ import { NavLink } from 'react-router-dom';
 
 export const StyledAside = styled.aside`
   grid-area: sidebar;
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: flex;
+  }
+  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+    display: block;
+  }
 `;
 
 export const StyledSideBar = styled.nav`

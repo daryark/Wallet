@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { theme } from '../theme';
 
 const GlobalStyles = createGlobalStyle`
 *,
@@ -30,6 +29,38 @@ body {
     background-position: top 0px right 0px, bottom 0px left 0px;
     }
   } */
+
+  #root {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas:
+      'header header'
+      'sidebar sidebar'
+      'main main'
+      'footer footer';
+@media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+      max-width: ${({ theme }) => theme.breakpoints.sm};
+      /* grid-template-columns: 100%; */
+    }
+      @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+      max-width: ${({ theme }) => theme.breakpoints.md};
+      grid-template-columns: 100%;
+      grid-template-rows: auto auto 1fr auto;
+      
+     
+    }
+    @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+      max-width: ${({ theme }) => theme.breakpoints.lg};
+      grid-template-columns: 480px 800px;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas:
+      'header header'
+      'sidebar main'
+      'footer footer';
+    }
+  }
+  
 p,
 h1,
 h2,
@@ -65,31 +96,6 @@ svg {
 	fill: currentColor;
 }
 
-/* #root {
-    min-height: 100vh;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:
-      'header header'
-      'sidebar sidebar'
-      'main main'
-      'footer footer';
-    @media (min-width: ${theme.breakpoints.md}) {
-      max-width: ${theme.breakpoints.md};
-      grid-template-areas:
-        'header header'
-        'sidebar main'
-        'footer footer';
-    }
-    @media (min-width: ${theme.breakpoints.lg}) {
-      max-width: ${theme.breakpoints.lg};
-    }
-    @media (min-width: ${theme.breakpoints.xl}) {
-      max-width: ${theme.breakpoints.xl};
-    } */
-  /* } */
   .isHidden {
     position: absolute;
     width: 1px;
@@ -101,6 +107,10 @@ svg {
     clip-path: inset(100%);
     clip: rect(0 0 0 0);
     overflow: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
   }
 `;
 

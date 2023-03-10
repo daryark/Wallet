@@ -9,32 +9,38 @@ import {
 } from './SideBar.styled';
 import { useWindowSize } from 'hooks/useWindowSize';
 import { routes } from 'routes';
+import { Balance } from 'components';
+import CurrencyPage from 'pages/CurrencyPage/CurrencyPage';
 
 export const Sidebar = () => {
   const { isMobile } = useWindowSize();
   return (
     <StyledAside>
-      <StyledSideBar>
-        <StyledBtn to={routes.HOME}>
-          <StyledIcon>
-            <MdHome />
-          </StyledIcon>
-          {!isMobile && 'Home'}
-        </StyledBtn>
-        <StyledBtn to={routes.STATISTICS_PAGE}>
-          <StyledIcon>
-            <SlGraph />
-          </StyledIcon>
-          {!isMobile && 'Statistics'}
-        </StyledBtn>
-        {isMobile && (
-          <StyledBtn to={routes.CURRENCY_PAGE}>
+      <div>
+        <StyledSideBar>
+          <StyledBtn to={routes.HOME}>
             <StyledIcon>
-              <TbCurrencyDollar />
+              <MdHome />
             </StyledIcon>
+            {!isMobile && 'Home'}
           </StyledBtn>
-        )}
-      </StyledSideBar>
+          <StyledBtn to={routes.STATISTICS_PAGE}>
+            <StyledIcon>
+              <SlGraph />
+            </StyledIcon>
+            {!isMobile && 'Statistics'}
+          </StyledBtn>
+          {isMobile && (
+            <StyledBtn to={routes.CURRENCY_PAGE}>
+              <StyledIcon>
+                <TbCurrencyDollar />
+              </StyledIcon>
+            </StyledBtn>
+          )}
+        </StyledSideBar>
+        {!isMobile && <Balance />}
+      </div>
+      {!isMobile && <CurrencyPage />}
     </StyledAside>
   );
 };
