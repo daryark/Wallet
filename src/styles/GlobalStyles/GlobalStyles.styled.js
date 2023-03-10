@@ -32,6 +32,7 @@ body {
 
   #root {
     height: 100vh;
+    max-width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:

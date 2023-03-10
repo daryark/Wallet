@@ -76,7 +76,7 @@ function CurrencyPage() {
   useEffect(() => {
     if (isMobile) return;
     navigate('/');
-  }, [isMobile]);
+  }, [isMobile, navigate]);
 
   return (
     <>

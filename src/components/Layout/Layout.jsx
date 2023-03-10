@@ -12,13 +12,15 @@ import { toggleThemeTitle } from 'redux/global/globalSlice';
 import { theme } from 'styles/theme';
 import { colors } from 'styles/colors';
 import GlobalStyles from 'styles/GlobalStyles/GlobalStyles.styled';
-import { ThemeButton } from './Layout.styled';
+import { Background, ThemeButton } from './Layout.styled';
 import {
-  StyledFooterPusher,
+  // StyledFooterPusher,
   StyledMain,
 } from 'components/common/FooterPusher.styled';
 import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 import { Suspense } from 'react';
+import { ReactComponent as EllipsePink } from 'assets/bg/Ellipse_pink_2.svg';
+import { ReactComponent as EllipsePurple } from 'assets/bg/Ellipse_purple_2.svg';
 
 export default function Layout() {
   const themeTitle = useSelector(selectTheme);
@@ -34,14 +36,13 @@ export default function Layout() {
     <ThemeProvider theme={normalizedTheme}>
       <GlobalStyles />
 
-      {/* <StyledFooterPusher> */}
       {selectIsLoggedIn && (
         <>
           <Header />
-          <Sidebar />
           <ThemeButton onClick={handleThemeChange}>
             {themeTitle === 'light' ? <BsMoon /> : <BsSun />}
           </ThemeButton>
+          <Sidebar />
         </>
       )}
       <StyledMain>
@@ -50,18 +51,12 @@ export default function Layout() {
         </Suspense>
       </StyledMain>
       <Footer />
-      {/* </StyledFooterPusher> */}
 
-      {/* <div
-        style={{
-          width: '100vw',
-          height: '100vh',
-          position: 'fixed',
-          top: 0,
-          backdropFilter: 'blur(25px)',
-          zIndex: -1,
-        }}
-      />  */}
+      <Background>
+        <div className="blur" />
+        <EllipsePink className="ellipse_pink" themeProp={themeTitle} />
+        <EllipsePurple className="ellipse_purple" />
+      </Background>
     </ThemeProvider>
   );
 }
