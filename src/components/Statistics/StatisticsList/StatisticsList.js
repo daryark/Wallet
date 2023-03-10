@@ -9,6 +9,7 @@ import {
   StatisticsWrapper,
   Sum,
 } from './StatisticsList.styled';
+import { useTheme } from 'styled-components';
 
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
@@ -94,6 +95,7 @@ const CategorySum = () => {
   const [year, setYear] = useState(new Date().getFullYear());
   const summary = useSelector(selectSummary);
   const dispatch = useDispatch();
+  const theme = useTheme();
 
   useEffect(() => {
     dispatch(getTransactionSummary({ month: month + 1, year }));
@@ -105,6 +107,8 @@ const CategorySum = () => {
   const handleYearChange = ({ value }) => {
     setYear(value);
   };
+
+  // const amount = parseFloat(positNum).toFixed(2);  ось так додати 2 цифри після крапки
 
   return (
     <StatisticsListWrapper>
@@ -144,17 +148,13 @@ const CategorySum = () => {
       <StatisticsSumList>
         <StatisticsSumItem>
           <p>Expenses</p>
-          <p
-          // style={{ color: theme.color.text_pink }}
-          >
+          <p style={{ color: theme.color.text_pink }}>
             {summary && Math.abs(summary.expenseSummary)}
           </p>
         </StatisticsSumItem>
         <StatisticsSumItem>
           <p>Income</p>
-          <p
-          // style={{ color: theme.color.accent }}
-          >
+          <p style={{ color: theme.color.accent }}>
             {summary && summary.incomeSummary}
           </p>
         </StatisticsSumItem>

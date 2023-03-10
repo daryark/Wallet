@@ -1,21 +1,18 @@
 import { useDispatch } from 'react-redux';
 import { toggleModalTeam } from 'redux/global/globalSlice';
-import { IconHeart, OpenTeamModal } from './OpenModalTeamBtn.styled';
+import { StyledOpenTeamModalBtn } from './OpenModalTeamBtn.styled';
 
-function OpenModalTeamBtn() {
+export function OpenModalTeamBtn({ children }) {
   const dispatch = useDispatch();
   return (
-    <OpenTeamModal
+    <StyledOpenTeamModalBtn
       type="button"
       aria-label="open team modal"
       onClick={() => {
         dispatch(toggleModalTeam());
       }}
     >
-      <span>Creators</span>
-      <IconHeart />
-    </OpenTeamModal>
+      {children}
+    </StyledOpenTeamModalBtn>
   );
 }
-
-export default OpenModalTeamBtn;

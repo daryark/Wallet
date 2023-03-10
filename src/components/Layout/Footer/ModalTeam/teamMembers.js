@@ -1,12 +1,12 @@
-import Dasha_Yarkovska from 'images/team/Dasha_Yarkovska.jpg';
-import Iryna_Tyshchuk from 'images/team/Iryna_Tyshchuk.jpg';
-import Halyna_Bespiata from 'images/team/Halyna_Bespiata.jpg';
-import Iryna_Malii from 'images/team/Iryna_Malii.jpg';
-import Anna_Semeniuk from 'images/team/Anna_Semeniuk.jpg';
-import Iryna_Pomeshkina from 'images/team/Iryna_Pomeshkina.jpg';
-import Liubov_Firsova from 'images/team/Liubov_Firsova.jpg';
-import Valeriia_Sarazhinska from 'images/team/Valeriia_Sarazhinska.jpg';
-import Yuliya_Nikiforova from 'images/team/Yuliya_Nikiforova.jpg';
+import Dasha_Yarkovska from '../../../../assets/images/team/Dasha_Yarkovska.jpg';
+import Iryna_Tyshchuk from 'assets/images/team/Iryna_Tyshchuk.jpg';
+import Halyna_Bespiata from 'assets/images/team/Halyna_Bespiata.jpg';
+import Iryna_Malii from 'assets/images/team/Iryna_Malii.jpg';
+import Anna_Semeniuk from 'assets/images/team/Anna_Semeniuk.jpg';
+import Iryna_Pomeshkina from 'assets/images/team/Iryna_Pomeshkina.jpg';
+import Liubov_Firsova from 'assets/images/team/Liubov_Firsova.jpg';
+import Valeriia_Sarazhinska from 'assets/images/team/Valeriia_Sarazhinska.jpg';
+import Yuliya_Nikiforova from 'assets/images/team/Yuliya_Nikiforova.jpg';
 
 export const creators = [
   {
@@ -53,7 +53,7 @@ export const creators = [
   },
   {
     id: 8,
-    name: 'Yuliya_Nikiforova',
+    name: 'Yuliya Nikiforova',
     role: 'Developer',
     src: Yuliya_Nikiforova,
   },
