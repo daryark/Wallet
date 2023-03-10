@@ -15,7 +15,8 @@ import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 
 import { selectError } from 'redux/global/global-selectors';
-
+import { useTranslation } from 'react-i18next';
+import LangCheckbox from 'components/LangChekbox/LangChekbox';
 const initialValues = {
   email: '',
   password: '',
@@ -37,7 +38,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const error = useSelector(selectError);
-
+  const { t } = useTranslation();
   useEffect(() => {
     toast.error(error);
   }, [error]);
@@ -55,6 +56,7 @@ const LoginForm = () => {
   return (
     <LoginBox>
       <AuthLogo />
+      <LangCheckbox />
       <Formik
         initialValues={initialValues}
         validationSchema={loginSchema}
@@ -65,19 +67,19 @@ const LoginForm = () => {
             icon={MdEmail}
             type="email"
             name="email"
-            placeholder="E-mail"
+            placeholder={t('registerFormEmail')}
           />
           <AuthField
             icon={MdLock}
             style={{ marginBottom: '42px' }}
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder={t('registerFormPassword')}
           />
 
-          <AuthButtonActive text="Log in" />
+          <AuthButtonActive text={t('registerFormLoginBtn')} />
           <AuthButton
-            text="Register"
+            text={t('registerFormSignupBtn')}
             path={'/register'}
             onClick={changeRoute}
           />

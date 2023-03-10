@@ -1,0 +1,45 @@
+{
+  "registerFormEmail": "Електронна пошта",
+  "registerFormPassword": "Пароль",
+  "registerFormConfirmPassword": "Підтвердіть пароль",
+  "registerFormName": "Ваше ім'я",
+  "registerFormLoginBtn": "Вхід",
+  "registerFormSignupBtn": "Реєстрація",
+
+  "headerExitBtn": "Вийти",
+
+  "modalLogOutQuestion": "Ви дійсно бажаєте залишити додаток?",
+  "modalLogOutCancelBtn": "Так",
+  "modalLogOutAcceptBtn": "Ні",
+
+  "navHomeLink": "Головна",
+  "navStatisticsLink": "Статистика",
+
+  "balanceTitle": "Ваш баланс",
+
+  "currency": "Валюта",
+  "currencyPurchase": "Купівля",
+  "currencySale": "Продаж",
+
+  "statisticsTitle": "Статистика",
+  "statisticsCategory": "Категорія",
+  "statisticsAmounts": "Cумма",
+  "statisticsOutcomes": "Витрати",
+  "statisticsIncomes": "Дохід",
+
+  "modalAddTransactionTitle": "Додати транзакцію",
+  "modalAddTransactionErrorMsg": "Операция добавления может занять немного больше времени из-за того, что это транзакция добавлена задним числом.",
+  "modalAddTransactionIncomesType": "Дохід",
+  "modalAddTransactionOutcomesType": "Витрати",
+  "modalAddTransactionNewCategory": "Назва нової категорії",
+  "modalAddTransactionComment": "Коментар",
+  "modalAddTransactionCancelBtn": "Відміна",
+  "modalAddTransactionAcceptBtn": "Додати",
+
+  "transactionsTableDate": "Дата",
+  "transactionsTableType": "Тип",
+  "transactionsTableCategory": "Категорія",
+  "transactionsTableComment": "Коментар",
+  "transactionsTableAmount": "Кількість",
+  "transactionsTableBalance": "Баланс"
+}

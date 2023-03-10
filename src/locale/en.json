@@ -1,0 +1,45 @@
+{
+  "registerFormEmail": "E-mail",
+  "registerFormPassword": "Password",
+  "registerFormConfirmPassword": "Confirm your password",
+  "registerFormName": "Your name",
+  "registerFormLoginBtn": "Log in",
+  "registerFormSignupBtn": "Sign up",
+
+  "headerExitBtn": "Exit",
+
+  "modalLogOutQuestion": "Are you sure you want to exit the app?",
+  "modalLogOutCancelBtn": "No",
+  "modalLogOutAcceptBtn": "Yes",
+
+  "navHomeLink": "Home",
+  "navStatisticsLink": "Statistics",
+
+  "balanceTitle": "Your balance",
+
+  "currency": "Currency",
+  "currencyPurchase": "Purchase",
+  "currencySale": "Sale",
+
+  "statisticsTitle": "Statistics",
+  "statisticsCategory": "Category",
+  "statisticsAmounts": "Category",
+  "statisticsOutcomes": "Outcomes",
+  "statisticsIncomes": "Incomes",
+
+  "modalAddTransactionTitle": "Add a transaction",
+  "modalAddTransactionErrorMsg": "The process of adding a transaction can take a little more time because of you add an old transaction.",
+  "modalAddTransactionIncomesType": "Incomes",
+  "modalAddTransactionOutcomesType": "Outcomes",
+  "modalAddTransactionNewCategory": "Name of the new category",
+  "modalAddTransactionComment": "Comment",
+  "modalAddTransactionCancelBtn": "Cancel",
+  "modalAddTransactionAcceptBtn": "Add",
+
+  "transactionsTableDate": "Date",
+  "transactionsTableType": "Type",
+  "transactionsTableCategory": "Category",
+  "transactionsTableComment": "Comment",
+  "transactionsTableAmount": "Amount",
+  "transactionsTableBalance": "Balance"
+}

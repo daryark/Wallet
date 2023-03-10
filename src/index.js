@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import { App } from 'components/App/App';
 import { persistor, store } from 'redux/store';
-
+import './locale/locale-logic';
 import { PersistGate } from 'redux-persist/integration/react';
 import './index.css';
 import { Toaster } from 'components/Toaster/Toaster';
