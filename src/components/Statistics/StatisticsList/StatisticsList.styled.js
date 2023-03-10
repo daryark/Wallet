@@ -31,6 +31,19 @@ export const StatisticsListWrapper = styled.div`
     width: 395px;
   }
 `;
+export const SelectWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  @media screen and (min-width: 768px) {
+ flex-direction: row;
+  gap:16px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    gap:32px;
+  }
+`;
 
 export const StatisticsListTitle = styled.div`
   height: 58px;

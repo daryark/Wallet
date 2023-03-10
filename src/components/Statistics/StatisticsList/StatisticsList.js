@@ -1,5 +1,5 @@
 import {
-  Cube,
+  Cube, SelectWrapper,
   StatisticsItem,
   StatisticsList,
   StatisticsListTitle,
@@ -16,6 +16,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getTransactionSummary} from "../../../redux/transactions/trans-operations";
 import {selectSummary} from "../../../redux/transactions/trans-selectors";
 import {categories} from "../categories";
+import {theme} from "styles/theme";
 
 const monthData = [
   {value: 0, label: 'January'},
@@ -42,31 +43,35 @@ const yearData = [
 const customStyles = {
   control: provided => ({
     ...provided,
-    // width: '230px',
-    // ширина регулируется общей оберткой для наших двух компонентов
-    // height: '40px',
-    height: '50px', // переписала согласно макету
+    height: '50px',
     borderRadius: '30px',
     border: 'solid 1px #000000',
     cursor: 'pointer',
+    overflow: 'hidden',
     '&:hover': {
-      borderColor: '#D8093A',
+      borderColor: '#4A56E2',
     },
+    '@media screen and (min-width: 768px)': {
+      width: '160px',},
+    '@media screen and (min-width: 1280px)': {
+      width: '182px',}
   }),
+
   option: (provided, state) => ({
     ...provided,
-    backgroundColor: state.isSelected ? '#dedede' : 'transparent',
-    color: state.isSelected ? '#333333' : '#666666',
-
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    padding: '2px 103px 2px 20px',
-    gap: '10px', //
+    backgroundColor: state.isSelected ? '#FFFFFF' : ' #E5E5E5',
+    color: state.isSelected ? '#FFFFFF' : '#666666',
+    // display: 'flex',
+    // flexDirection: 'row',
+    // alignItems: 'flex-start',
+    // margin: '2px 103px 2px 20px',
+    // gap: '8px',
     '&:hover': {
-      backgroundColor: '#dedede',
-      color: '#333333',
+      backgroundColor: '#FFFFFF',
+      color: '#000000',
+
     },
+
   }),
   singleValue: provided => ({
     ...provided,
@@ -76,17 +81,22 @@ const customStyles = {
     ...provided,
     color: '#333333',
     '&:hover': {
-      color: '#D8093A',
+      color: '#4A56E2',
     },
+
   }),
   indicatorSeparator: () => ({
     display: 'none',
   }),
   menu: provided => ({
     ...provided,
-    width: '230px',
+    backgroundColor:'#E5E5E5',
     borderRadius: '30px',
     overflow: 'hidden',
+    '@media screen and (min-width: 768px)': {
+      width: '160px',},
+    '@media screen and (min-width: 1280px)': {
+      width: '182px',}
   }),
 };
 
@@ -110,6 +120,7 @@ const CategorySum = () => {
 
   return (
     <StatisticsListWrapper>
+      <SelectWrapper>
       <Select
         value={month}
         onChange={handleMonthChange}
@@ -124,11 +135,12 @@ const CategorySum = () => {
         placeholder={year}
         styles={customStyles}
       />
-
+      </SelectWrapper>
       <StatisticsListTitle>
         <p>Category</p>
         <p>Sum</p>
       </StatisticsListTitle>
+      {summary && (
       <StatisticsList>
         {summary && summary.categoriesSummary.map(({name, type, total}) => {
           if (type === "INCOME") return null
@@ -142,6 +154,7 @@ const CategorySum = () => {
             )
         })}
       </StatisticsList>
+        )}
       <StatisticsSumList>
         <StatisticsSumItem>
           <p>Expenses</p>
