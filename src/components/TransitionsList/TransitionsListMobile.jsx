@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
 
-import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
+import { toggleEditModal } from 'redux/global/globalSlice';
 import { setEditTransaction } from 'redux/transactions/transSlice';
 import {
   selectBalance,
@@ -46,7 +46,7 @@ export const TransactionsListMobile = () => {
 
   const handleEditTransition = contactUser => {
     dispatch(setEditTransaction(contactUser));
-    dispatch(isModalAddTransactionOpen());
+    dispatch(toggleEditModal());
   };
   const handleDeleteTransition = (transitionId, balance, delAmount) => {
     delId.current = transitionId;
