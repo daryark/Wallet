@@ -213,6 +213,17 @@ export const StyledBox = styled.div`
     }
   }
 `;
+
+export const StyledNoTransactionDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 30px;
+  background-color: ${p => p.theme.color.bg_white};
+  box-shadow: rgb(0 0 0 / 25%) 0px 4px 4px;
+`;
+
 // =====================LoaderDel=====================================
 
 export const LoaderDelBtn = styled.div`

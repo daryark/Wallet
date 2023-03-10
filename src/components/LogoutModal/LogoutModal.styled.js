@@ -24,6 +24,11 @@ export const StyledModal = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.m};
   line-height: ${({ theme }) => theme.lineHeights.body};
   color: ${({ theme }) => theme.color.text_dark};
+
+  & p {
+    width: 70%;
+    margin: 0 auto 20px auto;
+  }
 `;
 
 export const StyledBtn = styled.button`

@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const StyledHeader = styled.header`
   grid-area: header;
   background-color: ${({ theme }) => theme.color.bg_white};
+  position: relative;
+  z-index: 2;
 `;
 
 export const StyledContainer = styled.div`
