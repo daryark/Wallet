@@ -34,8 +34,6 @@ body {
     background: ${({ theme }) => theme.color.accent};
     border-radius: 10px;
   }
-  
-    /* backdrop-filter: blur(25px); */
   /* background: ${({ theme }) => theme.color.bg_coverage}; */
 }
 /*   

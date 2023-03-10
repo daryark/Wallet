@@ -16,4 +16,4 @@ export * from './AddTransactionBtn/AddTransactionBtn';
 
 export * from 'components/Balance/Balance.jsx';
 
-export { default as ModalTeam } from './ModalTeam/ModalTeam';
+// export { default as ModalTeam } from './ModalTeam/ModalTeam';
