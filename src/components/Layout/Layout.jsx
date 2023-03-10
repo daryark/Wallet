@@ -34,23 +34,23 @@ export default function Layout() {
     <ThemeProvider theme={normalizedTheme}>
       <GlobalStyles />
 
-      {/* <StyledFooterPusher> */}
-      {selectIsLoggedIn && (
-        <>
-          <Header />
-          <Sidebar />
-          <ThemeButton onClick={handleThemeChange}>
-            {themeTitle === 'light' ? <BsMoon /> : <BsSun />}
-          </ThemeButton>
-        </>
-      )}
-      <StyledMain>
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
-      </StyledMain>
-      <Footer />
-      {/* </StyledFooterPusher> */}
+      <StyledFooterPusher>
+        {selectIsLoggedIn && (
+          <>
+            <Header />
+            <Sidebar />
+            <ThemeButton onClick={handleThemeChange}>
+              {themeTitle === 'light' ? <BsMoon /> : <BsSun />}
+            </ThemeButton>
+          </>
+        )}
+        <StyledMain>
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        </StyledMain>
+        <Footer />
+      </StyledFooterPusher>
 
       {/* <div
         style={{
