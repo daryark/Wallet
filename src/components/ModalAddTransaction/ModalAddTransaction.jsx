@@ -12,11 +12,13 @@ import { ModalCloseBtn } from 'reusable';
 import ModalBackdrop from 'components/ModalBackdrop/ModalBackdrop';
 
 import MediaQuery from 'react-responsive';
+import { useTranslation } from 'react-i18next';
 
 function ModalAddTransaction() {
   const isModalOpen = useSelector(selectIsModalOpen);
 
   const error = useSelector(selectError);
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
 
@@ -52,7 +54,7 @@ function ModalAddTransaction() {
             <MediaQuery minWidth={768}>
               <ModalCloseBtn isRandomModalOpen={isModalAddTransactionOpen} />
             </MediaQuery>
-            <h2 className="modal__title">Add transaction</h2>
+            <h2 className="modal__title">{t('modalAddTransactionTitle')}</h2>
             <FormModalAddTransaction handleCloseModal={handleCloseModal} />
           </ModalAddTransactionStyled>
         </ModalBackdrop>

@@ -8,9 +8,12 @@
 
   "headerExitBtn": "Exit",
 
-  "modalLogOutQuestion": "Are you sure you want to exit the app?",
+  "modalLogOutQuestionDear": "Dear",
+  "modalLogOutQuestion": "are you sure you want to exit the app?",
   "modalLogOutCancelBtn": "No",
   "modalLogOutAcceptBtn": "Yes",
+  "modalLogOutGoBackBtn": "Go back",
+  "modalLogOutLogOutBtn": "Log out",
 
   "navHomeLink": "Home",
   "navStatisticsLink": "Statistics",
@@ -23,23 +26,48 @@
 
   "statisticsTitle": "Statistics",
   "statisticsCategory": "Category",
-  "statisticsAmounts": "Category",
-  "statisticsOutcomes": "Outcomes",
-  "statisticsIncomes": "Incomes",
+  "statisticsAmounts": "Sum",
+  "statisticsOutcomes": "Expenses",
+  "statisticsIncomes": "Income",
 
-  "modalAddTransactionTitle": "Add a transaction",
+  "statisticsJanuary": "January",
+  "statisticsFebruary": "February",
+  "statisticsMarch": "March",
+  "statisticsApril": "April",
+  "statisticsMay": "May",
+  "statisticsJune": "June",
+  "statisticsJuly": "July",
+  "statisticsAugust": "August",
+  "statisticsSeptember": "September",
+  "statisticsOctober": "October",
+  "statisticsNovember": "November",
+  "statisticsDecember": "December",
+
+  "modalAddTransactionTitle": "Add transaction",
   "modalAddTransactionErrorMsg": "The process of adding a transaction can take a little more time because of you add an old transaction.",
-  "modalAddTransactionIncomesType": "Incomes",
-  "modalAddTransactionOutcomesType": "Outcomes",
+  "modalAddTransactionIncomesType": "Income",
+  "modalAddTransactionOutcomesType": "Expense",
   "modalAddTransactionNewCategory": "Name of the new category",
   "modalAddTransactionComment": "Comment",
   "modalAddTransactionCancelBtn": "Cancel",
   "modalAddTransactionAcceptBtn": "Add",
+  "modalAddTransactionSelect": "Select a caterory",
+
+  "modalEditTransactionIncomesType": "Income",
+  "modalEditTransactionExpenseType": "Expense",
 
   "transactionsTableDate": "Date",
   "transactionsTableType": "Type",
   "transactionsTableCategory": "Category",
   "transactionsTableComment": "Comment",
-  "transactionsTableAmount": "Amount",
-  "transactionsTableBalance": "Balance"
+  "transactionsTableAmount": "Sum",
+  "transactionsTableBalance": "Balance",
+  "transactionsTableDelete": "Delete",
+  "transactionsTableEdit": "Edit",
+  "transactionsTableNoTransactions": "There are no transactions. Press the button and add your first one",
+
+  "modalTeamTitle": "This website creators",
+  "footerText": "All Rights Reserved",
+  "footerDeveloped": "Developed",
+  "footerBy": "by "
 }

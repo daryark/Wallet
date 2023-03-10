@@ -8,9 +8,12 @@
 
   "headerExitBtn": "Вийти",
 
+  "modalLogOutQuestionDear": "Любий користувачу",
   "modalLogOutQuestion": "Ви дійсно бажаєте залишити додаток?",
   "modalLogOutCancelBtn": "Так",
   "modalLogOutAcceptBtn": "Ні",
+  "modalLogOutGoBackBtn": "Повернутися",
+  "modalLogOutLogOutBtn": "Вийти",
 
   "navHomeLink": "Головна",
   "navStatisticsLink": "Статистика",
@@ -27,6 +30,19 @@
   "statisticsOutcomes": "Витрати",
   "statisticsIncomes": "Дохід",
 
+  "statisticsJanuary": "Січень",
+  "statisticsFebruary": "Лютий",
+  "statisticsMarch": "Березень",
+  "statisticsApril": "Квітень",
+  "statisticsMay": "Травень",
+  "statisticsJune": "Червень",
+  "statisticsJuly": "Липень",
+  "statisticsAugust": "Серпень",
+  "statisticsSeptember": "Вересень",
+  "statisticsOctober": "Жовтень",
+  "statisticsNovember": "Листопад",
+  "statisticsDecember": "Грудень",
+
   "modalAddTransactionTitle": "Додати транзакцію",
   "modalAddTransactionErrorMsg": "Операция добавления может занять немного больше времени из-за того, что это транзакция добавлена задним числом.",
   "modalAddTransactionIncomesType": "Дохід",
@@ -35,11 +51,23 @@
   "modalAddTransactionComment": "Коментар",
   "modalAddTransactionCancelBtn": "Відміна",
   "modalAddTransactionAcceptBtn": "Додати",
+  "modalAddTransactionSelect": "Оберіть категорію",
+
+  "modalEditTransactionIncomesType": "Дохід",
+  "modalEditTransactionExpenseType": "Витрати",
 
   "transactionsTableDate": "Дата",
   "transactionsTableType": "Тип",
   "transactionsTableCategory": "Категорія",
   "transactionsTableComment": "Коментар",
   "transactionsTableAmount": "Кількість",
-  "transactionsTableBalance": "Баланс"
+  "transactionsTableBalance": "Баланс",
+  "transactionsTableDelete": "Видалити",
+  "transactionsTableEdit": "Коригувати",
+  "transactionsTableNoTransactions": "Наразі у вас немає транзакцій. Натисність кнопку та додайте свою першу до застосунку!",
+
+  "modalTeamTitle": "Творці цього застосунку",
+  "footerText": "Всі права захищені",
+  "footerDeveloped": "Розроблено",
+  "footerBy": "командою "
 }

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Diagram } from './Diagram/Diagram';
-
+import { useTranslation } from 'react-i18next';
 
 const Title = styled.h1`
   font-weight: 400;
@@ -14,9 +14,10 @@ const Title = styled.h1`
 `;
 
 export const Statistics = () => {
+  const { t } = useTranslation();
   return (
     <div>
-      <Title>Statistics</Title>
+      <Title>{t('statisticsTitle')}</Title>
       <Diagram />
     </div>
   );

@@ -7,11 +7,14 @@ import { ModalCloseBtn } from 'reusable';
 import ModalBackdrop from 'components/ModalBackdrop/ModalBackdrop';
 import { ModalStyled } from './ModalTeam.styled';
 
+import { useTranslation } from 'react-i18next';
+
 export function ModalTeam() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const isModalOpen = useSelector(selectIsModalTeamOpen);
 
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (currentIndex > creators.length) {
@@ -63,7 +66,7 @@ export function ModalTeam() {
         <ModalBackdrop randomModalClose={toggleModalTeam}>
           <ModalStyled>
             <ModalCloseBtn type="button" isRandomModalOpen={toggleModalTeam} />
-            <h2>This website creators</h2>
+            <h2>{t('modalTeamTitle')}</h2>
             <div>
               <ul>
                 {creators.map(({ name, role, src, id }) => {

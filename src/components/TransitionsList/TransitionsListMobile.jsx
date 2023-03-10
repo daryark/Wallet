@@ -32,6 +32,8 @@ import { LoaderDel } from './LoaderDelBtn';
 import { ModalEditTransaction } from 'components/ModalEditTransaction/ModalEditTransaction';
 import { selectIsEditModalOpen } from 'redux/global/global-selectors';
 
+import { useTranslation } from 'react-i18next';
+
 export const TransactionsListMobile = () => {
   const dispatch = useDispatch();
   const balance = useSelector(selectBalance);
@@ -40,6 +42,7 @@ export const TransactionsListMobile = () => {
   const loading = useSelector(selectIsDeleting);
   const isEditModalOpen = useSelector(selectIsEditModalOpen);
 
+  const { t } = useTranslation();
   const delId = useRef(null);
 
   useEffect(() => {
@@ -71,23 +74,23 @@ export const TransactionsListMobile = () => {
             return (
               <StyledList key={id}>
                 <StyledItem type={type}>
-                  <StyledSpan>Date</StyledSpan>
+                  <StyledSpan>{t('transactionsTableDate')}</StyledSpan>
                   {date}
                 </StyledItem>
                 <StyledItem type={type}>
-                  <StyledSpan>Type</StyledSpan>
+                  <StyledSpan>{t('transactionsTableType')}</StyledSpan>
                   {type}
                 </StyledItem>
                 <StyledItem type={type}>
-                  <StyledSpan>Category</StyledSpan>
+                  <StyledSpan>{t('transactionsTableCategory')}</StyledSpan>
                   {categoryName}
                 </StyledItem>
                 <StyledItem type={type}>
-                  <StyledSpan>Comment</StyledSpan>
+                  <StyledSpan>{t('transactionsTableComment')}</StyledSpan>
                   {capitalizeFirstLetter(comment)}
                 </StyledItem>
                 <StyledItem type={type}>
-                  <StyledSpan>Sum</StyledSpan>
+                  <StyledSpan>{t('transactionsTableAmount')}</StyledSpan>
                   <StyledSum type={type}>{sum}</StyledSum>
                 </StyledItem>
                 <StyledItem type={type}>
@@ -95,7 +98,11 @@ export const TransactionsListMobile = () => {
                     disabled={loading && id === delId.current}
                     onClick={() => handleDeleteTransition(id, balance, amount)}
                   >
-                    {loading && id === delId.current ? <LoaderDel /> : 'Delete'}
+                    {loading && id === delId.current ? (
+                      <LoaderDel />
+                    ) : (
+                      t('transactionsTableDelete')
+                    )}
                   </StyledDeleteBtn>
                   <StyledEditBtn
                     onClick={() =>
@@ -110,7 +117,7 @@ export const TransactionsListMobile = () => {
                     }
                   >
                     <RiEdit2Line size={14} />
-                    Edit
+                    {t('transactionsTableEdit')}
                   </StyledEditBtn>
                 </StyledItem>
               </StyledList>
@@ -118,10 +125,7 @@ export const TransactionsListMobile = () => {
           }
         )
       ) : (
-        <div>
-          There aren't any transactions. Press the button and add your first
-          one!
-        </div>
+        <div>{t('transactionsTableNoTransactions')}</div>
       )}
       {isEditModalOpen && <ModalEditTransaction />}
     </>

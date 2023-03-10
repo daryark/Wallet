@@ -19,6 +19,8 @@ import {
   StyledCurrencyTr,
 } from './currencyStyles';
 
+import { useTranslation } from 'react-i18next';
+
 import { setCurrencyFromLocalStorage } from 'redux/monobank/monoSlice';
 import { selectIsLoading } from 'redux/global/global-selectors';
 import WithAuthRedirect from 'HOC/WithAuthRedirect';
@@ -28,6 +30,7 @@ function CurrencyPage() {
   const isMobile = useMediaQuery({ query: '(min-width: 370px)' });
 
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const currency = useSelector(selectCurrency);
   const loading = useSelector(selectIsLoading);
 
@@ -57,9 +60,9 @@ function CurrencyPage() {
         <StyledCurrencyTable>
           <StyledCurrencyThead>
             <StyledCurrencyTr>
-              <th>Currency</th>
-              <th>Purchase</th>
-              <th>Sale</th>
+              <th>{t('currency')}</th>
+              <th>{t('currencyPurchase')}</th>
+              <th>{t('currencySale')}</th>
             </StyledCurrencyTr>
           </StyledCurrencyThead>
           {loading ? (

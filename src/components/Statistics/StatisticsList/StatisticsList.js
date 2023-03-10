@@ -18,21 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTransactionSummary } from '../../../redux/transactions/trans-operations';
 import { selectSummary } from '../../../redux/transactions/trans-selectors';
 import { categories } from '../categories';
-
-const monthData = [
-  { value: 0, label: 'January' },
-  { value: 1, label: 'February' },
-  { value: 2, label: 'March' },
-  { value: 3, label: 'April' },
-  { value: 4, label: 'May' },
-  { value: 5, label: 'June' },
-  { value: 6, label: 'July' },
-  { value: 7, label: 'August' },
-  { value: 8, label: 'September' },
-  { value: 9, label: 'October' },
-  { value: 10, label: 'November' },
-  { value: 11, label: 'December' },
-];
+import { useTranslation } from 'react-i18next';
 
 const yearData = [
   { value: 2021, label: '2021' },
@@ -94,6 +80,7 @@ const CategorySum = () => {
   const summary = useSelector(selectSummary);
   const dispatch = useDispatch();
   const theme = useTheme();
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getTransactionSummary({ month: month + 1, year }));
@@ -105,6 +92,21 @@ const CategorySum = () => {
   const handleYearChange = ({ value }) => {
     setYear(value);
   };
+
+  const monthData = [
+    { value: 0, label: t('statisticsJanuary') },
+    { value: 1, label: t('statisticsFebruary') },
+    { value: 2, label: t('statisticsMarch') },
+    { value: 3, label: t('statisticsApril') },
+    { value: 4, label: t('statisticsMay') },
+    { value: 5, label: t('statisticsJune') },
+    { value: 6, label: t('statisticsJuly') },
+    { value: 7, label: t('statisticsAugust') },
+    { value: 8, label: t('statisticsSeptember') },
+    { value: 9, label: t('statisticsOctober') },
+    { value: 10, label: t('statisticsNovember') },
+    { value: 11, label: t('statisticsDecember') },
+  ];
 
   // const amount = parseFloat(positNum).toFixed(2);  ось так додати 2 цифри після крапки
 
@@ -130,8 +132,8 @@ const CategorySum = () => {
       </SelectWrapper>
 
       <StatisticsListTitle>
-        <p>Category</p>
-        <p>Sum</p>
+        <p>{t('statisticsCategory')}</p>
+        <p>{t('statisticsAmounts')}</p>
       </StatisticsListTitle>
       <StatisticsList>
         {summary &&
@@ -149,13 +151,13 @@ const CategorySum = () => {
       </StatisticsList>
       <StatisticsSumList>
         <StatisticsSumItem>
-          <p>Expenses</p>
+          <p>{t('statisticsOutcomes')}</p>
           <p style={{ color: theme.color.text_pink }}>
             {summary && Math.abs(summary.expenseSummary)}
           </p>
         </StatisticsSumItem>
         <StatisticsSumItem>
-          <p>Income</p>
+          <p>{t('statisticsIncomes')}</p>
           <p style={{ color: theme.color.accent }}>
             {summary && summary.incomeSummary}
           </p>

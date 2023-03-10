@@ -32,6 +32,8 @@ import { useRef } from 'react';
 import { ModalEditTransaction } from 'components/ModalEditTransaction/ModalEditTransaction';
 import { selectIsEditModalOpen } from 'redux/global/global-selectors';
 
+import { useTranslation } from 'react-i18next';
+
 export const TransactionsList = () => {
   const dispatch = useDispatch();
   const balance = useSelector(selectBalance);
@@ -39,6 +41,8 @@ export const TransactionsList = () => {
   const transactions = useSelector(selectTransactions);
   const loading = useSelector(selectIsDeleting);
   const isEditModalOpen = useSelector(selectIsEditModalOpen);
+
+  const { t } = useTranslation();
 
   const delId = useRef(null);
 
@@ -58,7 +62,7 @@ export const TransactionsList = () => {
 
   const columns = [
     {
-      title: 'Date',
+      title: t('transactionsTableDate'),
       dataIndex: 'date',
       key: 'date',
       sorter: (a, b) => {
@@ -72,13 +76,13 @@ export const TransactionsList = () => {
       },
     },
     {
-      title: 'Type',
+      title: t('transactionsTableType'),
       align: 'center',
       dataIndex: 'type',
       key: 'type',
     },
     {
-      title: 'Category',
+      title: t('transactionsTableCategory'),
       dataIndex: 'category',
       key: 'category',
       render: (_, record) => {
@@ -90,13 +94,13 @@ export const TransactionsList = () => {
       },
     },
     {
-      title: 'Comment',
+      title: t('transactionsTableComment'),
       dataIndex: 'comment',
       key: 'comment',
       render: (_, record) => <div>{capitalizeFirstLetter(record.comment)}</div>,
     },
     {
-      title: 'Sum',
+      title: t('transactionsTableAmount'),
       align: 'right',
       dataIndex: 'sum',
       key: 'sum',
@@ -125,7 +129,7 @@ export const TransactionsList = () => {
               {loading && record.key === delId.current ? (
                 <LoaderDel />
               ) : (
-                'Delete'
+                t('transactionsTableDelete')
               )}
             </StyledDeleteBtn>
           </BtnBox>
@@ -157,10 +161,7 @@ export const TransactionsList = () => {
           {isEditModalOpen && <ModalEditTransaction />}
         </StyledBox>
       ) : (
-        <div>
-          There aren't any transactions. Press the button and add your first
-          one!
-        </div>
+        <div>{t('transactionsTableNoTransactions')}</div>
       )}
     </>
   );

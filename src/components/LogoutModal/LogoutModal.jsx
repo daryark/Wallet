@@ -5,9 +5,12 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { logOutRequest } from 'redux/auth/auth-operations';
 
+import { useTranslation } from 'react-i18next';
+
 export const LogoutModal = ({ toggleModal }) => {
   const { username } = useSelector(selectUser);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleEscape = e => {
@@ -27,16 +30,18 @@ export const LogoutModal = ({ toggleModal }) => {
   return (
     <StyledBackdrop onClick={closeModal}>
       <StyledModal>
-        <p>Dear {username}, are you sure you want to Log out? </p>
+        <p>
+          {t('modalLogOutQuestionDear')} {username} , {t('modalLogOutQuestion')}
+        </p>
         <StyledBtn
           primary
           onClick={() => {
             dispatch(logOutRequest());
           }}
         >
-          Log Out
+          {t('modalLogOutLogOutBtn')}
         </StyledBtn>
-        <StyledBtn onClick={toggleModal}>Go back</StyledBtn>
+        <StyledBtn onClick={toggleModal}>{t('modalLogOutGoBackBtn')}</StyledBtn>
       </StyledModal>
     </StyledBackdrop>
   );

@@ -11,6 +11,7 @@ import {
 import { editTransaction } from 'redux/transactions/trans-operations';
 
 import { FormModalEditTransactionStyled } from './FormModalEditTransaction.styled';
+import { useTranslation } from 'react-i18next';
 
 const defaultState = {
   type: '',
@@ -24,6 +25,7 @@ const defaultState = {
 function FormModalEditTransaction({ handleCloseModal }) {
   const transactionData = useSelector(selectEditTransaction);
   const balance = useSelector(selectBalance);
+  const { t } = useTranslation();
   const [transactionState] = useState(
     transactionData
       ? {
@@ -77,7 +79,7 @@ function FormModalEditTransaction({ handleCloseModal }) {
     >
       <FormModalEditTransactionStyled className="modal-form">
         <div className="switcher">
-          <span className="income">Income</span>
+          <span className="income">{t('modalEditTransactionIncomesType')}</span>
           <label className="switcher__box">
             <Field
               disabled
@@ -89,7 +91,9 @@ function FormModalEditTransaction({ handleCloseModal }) {
             />
             <span className="switcher__toggle"></span>
           </label>
-          <span className="expense">Expense</span>
+          <span className="expense">
+            {t('modalEditTransactionExpenseType')}
+          </span>
         </div>
 
         <Field
@@ -192,14 +196,14 @@ function FormModalEditTransaction({ handleCloseModal }) {
 
         <Field
           type="text"
-          placeholder="Comment"
+          placeholder={t('modalAddTransactionComment')}
           name="comment"
           className="comment"
         />
 
         <div className="btns-wrapper">
           <button type="submit" className="submit-btn">
-            EDIT
+            {t('transactionsTableEdit')}
           </button>
 
           <button
@@ -207,7 +211,7 @@ function FormModalEditTransaction({ handleCloseModal }) {
             className="cancel-btn"
             onClick={handleCloseModal}
           >
-            CANCEL
+            {t('modalAddTransactionCancelBtn')}
           </button>
         </div>
       </FormModalEditTransactionStyled>
