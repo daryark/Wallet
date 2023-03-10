@@ -27,8 +27,6 @@ import WithAuthRedirect from 'HOC/WithAuthRedirect';
 const oneHour = 3600000;
 
 function CurrencyPage() {
-  // const isDeskTop = useMediaQuery({ query: '(min-width: 1280px)' });
-  // const isTablet = useMediaQuery({ query: '(min-width: 767px)' });
   const isMobile = useMediaQuery({ query: '(min-width: 370px)' });
 
   const dispatch = useDispatch();
