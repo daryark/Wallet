@@ -2,13 +2,16 @@ import styled from 'styled-components';
 
 export const BtnUp = styled.button`
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 40px;
+  right: 90px;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+
   z-index: 1;
-
-  bottom: 0;
-  left: 0;
-
-  height: 30px;
-  width: 30px;
 
   background-color: transparent;
   border: none;
