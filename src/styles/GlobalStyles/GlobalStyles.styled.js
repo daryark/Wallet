@@ -46,6 +46,7 @@ body {
       @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
       max-width: ${({ theme }) => theme.breakpoints.md};
       grid-template-columns: 100%;
+      grid-template-rows: auto auto 1fr auto;
       
      
     }
