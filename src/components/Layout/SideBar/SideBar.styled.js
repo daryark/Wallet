@@ -5,6 +5,8 @@ export const StyledAside = styled.aside`
   grid-area: sidebar;
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     display: flex;
+    max-width: 768px;
+    margin: 0 auto;
   }
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: block;
