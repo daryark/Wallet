@@ -30,9 +30,13 @@ import { getDate } from 'helpers/getDate';
 import { capitalizeFirstLetter } from 'helpers/capitalize';
 import { LoaderDel } from './LoaderDelBtn';
 import { ModalEditTransaction } from 'components/ModalEditTransaction/ModalEditTransaction';
-import { selectIsEditModalOpen } from 'redux/global/global-selectors';
+import {
+  selectIsEditModalOpen,
+  selectLanguage,
+} from 'redux/global/global-selectors';
 
 import { useTranslation } from 'react-i18next';
+import { categoryCheck, typeCheck } from './categoryCheck';
 
 export const TransactionsListMobile = () => {
   const dispatch = useDispatch();
@@ -44,6 +48,7 @@ export const TransactionsListMobile = () => {
 
   const { t } = useTranslation();
   const delId = useRef(null);
+  const lan = useSelector(selectLanguage);
 
   useEffect(() => {
     dispatch(fetchTransactions());
@@ -69,7 +74,23 @@ export const TransactionsListMobile = () => {
             const sum = parseFloat(positNum).toFixed(2);
 
             const getCategory = categories?.find(c => c.id === categoryId);
-            const categoryName = getCategory?.name;
+            const catN = getCategory?.name;
+            let categoryName = '';
+            if (lan === true) {
+              categoryName = catN;
+            }
+            if (lan === false) {
+              categoryName = categoryCheck(catN);
+            }
+            // потрібно замінити умову, щоб lan === 'ru'
+
+            let transType = '';
+            if (lan === true) {
+              transType = type;
+            }
+            if (lan === false) {
+              transType = typeCheck(type);
+            }
 
             return (
               <StyledList key={id}>
@@ -79,7 +100,7 @@ export const TransactionsListMobile = () => {
                 </StyledItem>
                 <StyledItem type={type}>
                   <StyledSpan>{t('transactionsTableType')}</StyledSpan>
-                  {type}
+                  {transType}
                 </StyledItem>
                 <StyledItem type={type}>
                   <StyledSpan>{t('transactionsTableCategory')}</StyledSpan>
