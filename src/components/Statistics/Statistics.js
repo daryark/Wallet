@@ -6,7 +6,7 @@ const Title = styled.h1`
   font-weight: 400;
   font-size: 30px;
   margin-bottom: 8px;
-  align-self: flex-start; // добавила
+  align-self: flex-start;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 20px;
