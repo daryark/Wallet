@@ -28,12 +28,10 @@ function HomePage() {
       <ModalAddTransaction />
       {isEditModalOpen && <ModalEditTransaction />}
       <AddTransactionBtn />
-      <Balance />
+      {isMobile && <Balance />}
 
       {isMobile ? <TransactionsListMobile /> : <TransactionsList />}
       <ButtonUp />
-
-      <CurrencyPage />
     </Container>
   );
 }

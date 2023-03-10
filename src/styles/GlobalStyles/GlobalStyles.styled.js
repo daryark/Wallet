@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { theme } from '../theme';
 
 const GlobalStyles = createGlobalStyle`
 *,
@@ -41,14 +40,14 @@ body {
       'sidebar sidebar'
       'main main'
       'footer footer';
-@media (min-width: ${theme.breakpoints.sm}) {
-      max-width: ${theme.breakpoints.sm};
-      grid-template-columns: 100%;
+@media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+      max-width: ${({ theme }) => theme.breakpoints.sm};
+      /* grid-template-columns: 100%; */
     }
-      @media (min-width: ${theme.breakpoints.md}) {
-      max-width: ${theme.breakpoints.md};
+      @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+      max-width: ${({ theme }) => theme.breakpoints.md};
       grid-template-columns: 100%;
-      grid-template-rows: auto 1fr auto;
+      
      
     }
     @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
