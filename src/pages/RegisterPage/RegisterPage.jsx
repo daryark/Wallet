@@ -1,3 +1,4 @@
+import { AuthContainer } from 'components/common/common.styled';
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
@@ -13,10 +14,10 @@ export default function RegisterPage() {
 
     navigate('/');
   }, [isLoggedIn, navigate]);
+
   return (
-    <div>
-      RegisterPage
+    <AuthContainer>
       <RegistrationForm />
-    </div>
+    </AuthContainer>
   );
 }

@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { theme } from '../theme';
 
 const GlobalStyles = createGlobalStyle`
 *,
@@ -11,7 +10,6 @@ const GlobalStyles = createGlobalStyle`
 html {
     box-sizing: border-box;
     scroll-behavior: smooth;
-    height: 100%;
   }
 
 body {
@@ -19,7 +17,7 @@ body {
   color: ${({ theme }) => theme.color.text_dark};
   background-color: ${({ theme }) => theme.color.bg_grey_main};
   
-    backdrop-filter: blur(25px);
+    /* backdrop-filter: blur(25px); */
   /* background: ${({ theme }) => theme.color.bg_coverage}; */
 }
 /*   
@@ -34,7 +32,35 @@ body {
 
   #root {
     height: 100vh;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas:
+      'header header'
+      'sidebar sidebar'
+      'main main'
+      'footer footer';
+@media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+      max-width: ${({ theme }) => theme.breakpoints.sm};
+      /* grid-template-columns: 100%; */
+    }
+      @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+      max-width: ${({ theme }) => theme.breakpoints.md};
+      grid-template-columns: 100%;
+      grid-template-rows: auto auto 1fr auto;
+      
+     
+    }
+    @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+      max-width: ${({ theme }) => theme.breakpoints.lg};
+      grid-template-columns: 480px 800px;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas:
+      'header header'
+      'sidebar main'
+      'footer footer';
+    }
   }
+  
 p,
 h1,
 h2,
@@ -70,31 +96,6 @@ svg {
 	fill: currentColor;
 }
 
-/* #root {
-    min-height: 100vh;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:
-      'header header'
-      'sidebar sidebar'
-      'main main'
-      'footer footer';
-    @media (min-width: ${theme.breakpoints.md}) {
-      max-width: ${theme.breakpoints.md};
-      grid-template-areas:
-        'header header'
-        'sidebar main'
-        'footer footer';
-    }
-    @media (min-width: ${theme.breakpoints.lg}) {
-      max-width: ${theme.breakpoints.lg};
-    }
-    @media (min-width: ${theme.breakpoints.xl}) {
-      max-width: ${theme.breakpoints.xl};
-    } */
-  /* } */
   .isHidden {
     position: absolute;
     width: 1px;
@@ -106,6 +107,10 @@ svg {
     clip-path: inset(100%);
     clip: rect(0 0 0 0);
     overflow: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
   }
 `;
 

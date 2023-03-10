@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
+import { BsFillPlusCircleFill } from 'react-icons/bs';
 import { AddBtn, AddIcon } from './AddTransactionBtn.styled';
 
 export function AddTransactionBtn() {
@@ -11,9 +12,10 @@ export function AddTransactionBtn() {
       aria-label="add transaction button"
       onClick={() => dispatch(isModalAddTransactionOpen())}
     >
-      <div>
+      <BsFillPlusCircleFill size={44} />
+      {/* <div>
         <AddIcon />
-      </div>
+      </div> */}
     </AddBtn>
   );
 }

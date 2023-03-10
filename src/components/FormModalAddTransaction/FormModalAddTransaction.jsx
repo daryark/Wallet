@@ -5,23 +5,24 @@ import { Field } from 'formik';
 import { date, object, string } from 'yup';
 import { useMediaQuery } from 'react-responsive';
 
-import DateComponent from './DateComponent';
-import SelectComponent from './SelectComponent';
-
-import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
 import { selectIsModalOpen } from 'redux/global/global-selectors';
 import { selectCategories } from 'redux/transactions/trans-selectors';
+import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
 import {
   addTransaction,
   getTransactionCategories,
 } from 'redux/transactions/trans-operations';
 
+import DateComponent from './DateComponent/DateComponent';
+import SelectComponent from './SelectComponent/SelectComponent';
+
 import {
-  CalendarIconStyled,
+  ErrorMessageStyled,
   FormModalAddTransactionStyled,
-  MinusIconStyled,
-  PlusIconStyled,
 } from './FormModalAddTransaction.styled';
+import ButtonSubmit from './ButtonsModalAddTransaction/ButtonSubmit';
+import { ButtonClose } from 'reusable/ModalCloseBtn/ModalCloseBtn.styled';
+import ButtonCancel from './ButtonsModalAddTransaction/ButtonCancel';
 
 const defaultState = {
   type: 'EXPENSE',
@@ -104,7 +105,7 @@ function FormModalAddTransaction({ handleCloseModal }) {
   let validationSchema = object({
     amount: string()
       .required('Required')
-      .max(20, 'Must be 20 characters maximum'),
+      .max(16, 'Must be 16 characters maximum'),
     date: date()
       .required('Required')
       .default(() => new Date()),
@@ -119,8 +120,9 @@ function FormModalAddTransaction({ handleCloseModal }) {
     >
       <FormModalAddTransactionStyled className="modal-form">
         <div className="switcher" style={{ position: 'relative' }}>
-          <span className="income">Income</span>
-          {transactionState.type === 'INCOME' && <MinusIconStyled />}
+          <span className={transactionState.type === 'INCOME' ? 'income' : ''}>
+            Income
+          </span>
           <label className="switcher__box">
             <Field
               type="checkbox"
@@ -131,70 +133,65 @@ function FormModalAddTransaction({ handleCloseModal }) {
             />
             <span className="switcher__toggle"></span>
           </label>
-          {transactionState.type === 'EXPENSE' && <PlusIconStyled />}
-          <span className="expense">Expense</span>
+          <span
+            className={transactionState.type === 'EXPENSE' ? 'expense' : ''}
+          >
+            Expense
+          </span>
         </div>
 
-        <Field
-          as="select"
-          transactionType={transactionState.type}
-          component={SelectComponent}
+        <div
           className={
             transactionState.type === 'EXPENSE'
-              ? 'category'
-              : 'category isHidden'
+              ? 'category-wrapper'
+              : 'category-wrapper isHidden'
           }
-          name="category"
-          placeholder="Select a category"
-          options={(transactionState.type === 'EXPENSE'
-            ? optionsExpense
-            : optionsIncome
-          ).map(option => ({ value: option.id, label: option.name }))}
-          onChange={option => {
-            handleSelectChange(option.value);
-          }}
-        />
-
-        {/* <Select
-          key={transactionState.type}
-          styles={selectStyles(transactionState.type)}
-          components={{ TfiAngleDown }}
-          options={(transactionState.type === 'EXPENSE'
-            ? optionsExpense
-            : optionsIncome
-          ).map(option => ({ value: option.id, label: option.name }))}
-          placeholder="Select a category"
-          onChange={option => {
-            handleSelectChange(option.value);
-          }}
-          className={
-            transactionState.type === 'EXPENSE'
-              ? 'category'
-              : 'category isHidden'
-          }
-        /> */}
+        >
+          <label>
+            <Field
+              as="select"
+              name="category"
+              placeholder="Select a category"
+              component={SelectComponent}
+              options={(transactionState.type === 'EXPENSE'
+                ? optionsExpense
+                : optionsIncome
+              ).map(option => ({ value: option.id, label: option.name }))}
+              onChange={option => {
+                handleSelectChange(option.value);
+              }}
+            />
+          </label>
+        </div>
 
         <div className="amount-date-wrapper">
-          <Field
-            type="number"
-            placeholder="0.00"
-            name="amount"
-            className="amount"
-            // value={Number(transactionState.amount).toFixed(2)}
-          />
+          <div className="amount-wrapper">
+            <label>
+              <Field
+                type="number"
+                placeholder="0.00"
+                name="amount"
+                className="amount"
+              />
+            </label>
+            <ErrorMessageStyled name="amount" component="div" />
+          </div>
 
-          <Field
-            as="date"
-            component={DateComponent}
-            className="date"
-            name="date"
-            dateFormat="DD.MM.YYYY"
-            timeFormat={false}
-            value={transactionState.date}
-            onChange={handleDateChange}
-          />
-
-          <CalendarIconStyled />
+          <div className="date-wrapper">
+            <label>
+              <Field
+                as="date"
+                component={DateComponent}
+                className="date"
+                name="date"
+                dateFormat="DD.MM.YYYY"
+                timeFormat={false}
+                value={transactionState.date}
+                onChange={handleDateChange}
+              />
+            </label>
+            <ErrorMessageStyled name="date" component="div" />
+          </div>
         </div>
 
         <Field
@@ -203,21 +200,11 @@ function FormModalAddTransaction({ handleCloseModal }) {
           type="text"
           placeholder="Comment"
           name="comment"
-          className="comment"
         />
 
         <div className="btns-wrapper">
-          <button type="submit" className="submit-btn">
-            ADD
-          </button>
-
-          <button
-            type="button"
-            className="cancel-btn"
-            onClick={handleCloseModal}
-          >
-            CANCEL
-          </button>
+          <ButtonSubmit className="submit-btn" text="ADD" />
+          <ButtonCancel handleCloseModal={handleCloseModal} text={'CANCEL'} />
         </div>
       </FormModalAddTransactionStyled>
     </Formik>
