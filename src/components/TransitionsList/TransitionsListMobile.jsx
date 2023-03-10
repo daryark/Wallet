@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
 import { setEditTransaction } from 'redux/transactions/transSlice';
 import {
   selectBalance,
   selectCategories,
+  selectIsDeleting,
   selectTransactions,
 } from 'redux/transactions/trans-selectors';
 
@@ -27,12 +28,16 @@ import {
 } from './TransitionsList.styled';
 import { getDate } from 'helpers/getDate';
 import { capitalizeFirstLetter } from 'helpers/capitalize';
+import { LoaderDel } from './LoaderDelBtn';
 
 export const TransactionsListMobile = () => {
   const dispatch = useDispatch();
   const balance = useSelector(selectBalance);
   const transactions = useSelector(selectTransactions);
   const categories = useSelector(selectCategories);
+  const loading = useSelector(selectIsDeleting);
+
+  const delId = useRef(null);
 
   useEffect(() => {
     dispatch(fetchTransactions());
@@ -44,6 +49,7 @@ export const TransactionsListMobile = () => {
     dispatch(isModalAddTransactionOpen());
   };
   const handleDeleteTransition = (transitionId, balance, delAmount) => {
+    delId.current = transitionId;
     dispatch(deleteTransaction({ transitionId, balance, delAmount }));
   };
   return (
@@ -83,9 +89,10 @@ export const TransactionsListMobile = () => {
                 </StyledItem>
                 <StyledItem type={type}>
                   <StyledDeleteBtn
+                    disabled={loading && id === delId.current}
                     onClick={() => handleDeleteTransition(id, balance, amount)}
                   >
-                    Delete
+                    {loading && id === delId.current ? <LoaderDel /> : 'Delete'}
                   </StyledDeleteBtn>
                   <StyledEditBtn
                     onClick={() =>

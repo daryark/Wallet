@@ -10,7 +10,6 @@ import {
 import {
   fetchTransactions,
   addTransaction,
-  deleteTransaction,
   editTransaction,
   getTransactionCategories,
   getTransactionSummary,
@@ -23,7 +22,6 @@ const extraActions = [
   getUserInfoRequest,
   fetchTransactions,
   addTransaction,
-  deleteTransaction,
   editTransaction,
   getTransactionCategories,
   getTransactionSummary,
