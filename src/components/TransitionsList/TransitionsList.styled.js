@@ -186,6 +186,7 @@ export const StyledBox = styled.div`
     position: sticky;
     z-index: 100;
     font-size: 17px;
+    font-family: Circe;
     font-weight: ${p => p.theme.fontWeights.bold};
     background-color: ${p => p.theme.color.bg_white};
 

@@ -128,6 +128,16 @@ svg {
   ::-webkit-scrollbar {
     width: 10px;
   }
+
+  .statisticsSelect {
+    @media screen and (min-width: 768px) {
+      width: calc((100% - 16px) / 2);
+    }
+
+    @media screen and (min-width: 1280px) {
+      width: calc((100% - 32px) / 2);
+    }
+  }
 `;
 
 export default GlobalStyles;

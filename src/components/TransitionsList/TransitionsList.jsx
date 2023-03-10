@@ -29,6 +29,8 @@ import { getDate } from 'helpers/getDate';
 import { capitalizeFirstLetter } from 'helpers/capitalize';
 import { LoaderDel } from './LoaderDelBtn';
 import { useRef } from 'react';
+import { ModalEditTransaction } from 'components/ModalEditTransaction/ModalEditTransaction';
+import { selectIsEditModalOpen } from 'redux/global/global-selectors';
 
 export const TransactionsList = () => {
   const dispatch = useDispatch();
@@ -36,6 +38,7 @@ export const TransactionsList = () => {
   const categories = useSelector(selectCategories);
   const transactions = useSelector(selectTransactions);
   const loading = useSelector(selectIsDeleting);
+  const isEditModalOpen = useSelector(selectIsEditModalOpen);
 
   const delId = useRef(null);
 
@@ -151,6 +154,7 @@ export const TransactionsList = () => {
             scroll={scroll}
             pagination={false}
           ></Table>
+          {isEditModalOpen && <ModalEditTransaction />}
         </StyledBox>
       ) : (
         <div>
