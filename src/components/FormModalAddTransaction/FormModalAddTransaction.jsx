@@ -21,7 +21,7 @@ import {
   FormModalAddTransactionStyled,
 } from './FormModalAddTransaction.styled';
 import ButtonSubmit from './ButtonsModalAddTransaction/ButtonSubmit';
-import { ButtonClose } from 'reusable/ModalCloseBtn/ModalCloseBtn.styled';
+// import { ButtonClose } from 'reusable/ModalCloseBtn/ModalCloseBtn.styled';
 import ButtonCancel from './ButtonsModalAddTransaction/ButtonCancel';
 
 const defaultState = {

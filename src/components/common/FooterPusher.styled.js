@@ -7,6 +7,7 @@ export const StyledFooterPusher = styled.div`
 `;
 
 export const StyledMain = styled.main`
+  grid-area: main;
   flex-grow: 1;
   max-width: 768px;
   margin: 0 auto;

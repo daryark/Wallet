@@ -33,7 +33,7 @@ body {
   #root {
     height: 100vh;
     display: grid;
-    grid-template-columns: 100%;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
       'header header'
       'sidebar sidebar'

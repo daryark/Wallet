@@ -8,9 +8,9 @@ export function Footer() {
     <>
       <StyledFooter>
         <StyledContainer style={{ justifyContent: 'center' }}>
-          <ul class="list">
-            <li class="item">© 2023 | All Rights Reserved |&#20;</li>
-            <li class="item">
+          <ul className="list">
+            <li className="item">© 2023 | All Rights Reserved |&#20;</li>
+            <li className="item">
               Developed
               <StyledIconHeart />
               by <OpenModalTeamBtn>REACTive</OpenModalTeamBtn>
