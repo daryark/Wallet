@@ -23,7 +23,7 @@ export const StyledLoader = styled.div`
   & #first {
     height: 80px;
     width: 20px;
-    background-color: ${({ theme }) => theme.color.text_blue};
+    background-color: '#4A56E2';
     box-shadow: 0px 3px 10px rgba(74, 86, 226, 0.5);
     border-radius: 6px;
     animation: loader 2s linear 0ms infinite;
@@ -32,7 +32,7 @@ export const StyledLoader = styled.div`
   & #second {
     height: 80px;
     width: 20px;
-    background-color: ${({ theme }) => theme.color.text_blue};
+    background-color: '#4A56E2';
     box-shadow: 0px 3px 10px rgba(74, 86, 226, 0.5);
     border-radius: 6px;
     animation: loader 2s linear 500ms infinite;
@@ -41,7 +41,7 @@ export const StyledLoader = styled.div`
   & #third {
     height: 80px;
     width: 20px;
-    background-color: ${({ theme }) => theme.color.text_blue};
+    background-color: '#4A56E2';
     box-shadow: 0px 3px 10px rgba(74, 86, 226, 0.5);
     border-radius: 6px;
     animation: loader 2s linear 1000ms infinite;
@@ -50,7 +50,7 @@ export const StyledLoader = styled.div`
   & #fourth {
     height: 80px;
     width: 20px;
-    background-color: ${({ theme }) => theme.color.text_blue};
+    background-color: '#4A56E2';
     box-shadow: 0px 3px 10px rgba(74, 86, 226, 0.5);
     border-radius: 6px;
     animation: loader 2s linear 1500ms infinite;
@@ -68,3 +68,4 @@ export const StyledLoader = styled.div`
     }
   }
 `;
+/* background-color: ${({ theme }) => theme.color.text_blue}; */

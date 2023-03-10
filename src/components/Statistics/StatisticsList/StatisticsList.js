@@ -9,14 +9,14 @@ import {
   StatisticsWrapper,
   Sum,
 } from './StatisticsList.styled';
+import { useTheme } from 'styled-components';
 
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
-import {useDispatch, useSelector} from "react-redux";
-import {getTransactionSummary} from "../../../redux/transactions/trans-operations";
-import {selectSummary} from "../../../redux/transactions/trans-selectors";
-import {categories} from "../categories";
-import {theme} from "styles/theme";
+import { useDispatch, useSelector } from 'react-redux';
+import { getTransactionSummary } from '../../../redux/transactions/trans-operations';
+import { selectSummary } from '../../../redux/transactions/trans-selectors';
+import { categories } from '../categories';
 
 const monthData = [
   {value: 0, label: 'January'},
@@ -100,23 +100,25 @@ const customStyles = {
   }),
 };
 
-
 const CategorySum = () => {
   const [month, setMonth] = useState(new Date().getMonth());
   const [year, setYear] = useState(new Date().getFullYear());
-  const summary = useSelector(selectSummary)
+  const summary = useSelector(selectSummary);
   const dispatch = useDispatch();
+  const theme = useTheme();
 
   useEffect(() => {
-    dispatch(getTransactionSummary({month: month + 1, year}))
-  }, [dispatch,month, year])
+    dispatch(getTransactionSummary({ month: month + 1, year }));
+  }, [dispatch, month, year]);
 
-  const handleMonthChange = ({value}) => {
+  const handleMonthChange = ({ value }) => {
     setMonth(value);
   };
-  const handleYearChange = ({value}) => {
+  const handleYearChange = ({ value }) => {
     setYear(value);
   };
+
+  // const amount = parseFloat(positNum).toFixed(2);  ось так додати 2 цифри після крапки
 
   return (
     <StatisticsListWrapper>
@@ -142,31 +144,32 @@ const CategorySum = () => {
       </StatisticsListTitle>
       {summary && (
       <StatisticsList>
-        {summary && summary.categoriesSummary.map(({name, type, total}) => {
-          if (type === "INCOME") return null
+        {summary &&
+          summary.categoriesSummary.map(({ name, type, total }) => {
+            if (type === 'INCOME') return null;
             return (
               <StatisticsItem key={name}>
-                <Cube color={categories[name]}/>
+                <Cube color={categories[name]} />
                 <StatisticsWrapper>
                   <p>{name}</p> <Sum>{Math.abs(total)}</Sum>
                 </StatisticsWrapper>
               </StatisticsItem>
-            )
-        })}
+            );
+          })}
       </StatisticsList>
         )}
       <StatisticsSumList>
         <StatisticsSumItem>
           <p>Expenses</p>
-          <p
-            // style={{ color: theme.color.text_pink }}
-          >{summary && Math.abs(summary.expenseSummary)}</p>
+          <p style={{ color: theme.color.text_pink }}>
+            {summary && Math.abs(summary.expenseSummary)}
+          </p>
         </StatisticsSumItem>
         <StatisticsSumItem>
           <p>Income</p>
-          <p
-            // style={{ color: theme.color.accent }}
-          >{summary && summary.incomeSummary}</p>
+          <p style={{ color: theme.color.accent }}>
+            {summary && summary.incomeSummary}
+          </p>
         </StatisticsSumItem>
       </StatisticsSumList>
     </StatisticsListWrapper>

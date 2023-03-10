@@ -1,48 +1,65 @@
-import {ArcElement, Chart as ChartJS, Legend, Tooltip} from 'chart.js';
-import {Doughnut} from 'react-chartjs-2';
-import {DiagramWrapper} from './Diagram.styled';
-import {useSelector} from "react-redux";
-import {selectBalance, selectSummary} from "../../../redux/transactions/trans-selectors";
-import {categories} from "../categories";
-import {useEffect, useState} from "react";
+import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
+import { DiagramWrapper } from './Diagram.styled';
+import { useSelector } from 'react-redux';
+import {
+  selectBalance,
+  selectSummary,
+} from '../../../redux/transactions/trans-selectors';
+import { categories } from '../categories';
+import { useEffect, useState } from 'react';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const Diagram = () => {
-  const [data, setData] = useState([])
-  const summary = useSelector(selectSummary)
+  // const balance = useSelector(selectBalance);
+  // const balanceText = `₴ ${balance.toFixed(2)}`;
+  // console.log(balance);
 
-  const balance = useSelector(selectBalance)
+  // const data = {
+  //   datasets: [
+  //     {
+  //       label: '# of Votes',
+  //       data: expenses.map(expense => expense.percent),
+  //       backgroundColor: expenses.map(expense => expense.color),
+  //       borderColor: expenses.map(expense => expense.color),
+  //       borderWidth: 1,
+  //     },
+  //   ],
+  // };
+  const [data, setData] = useState([]);
+  const summary = useSelector(selectSummary);
+
+  const balance = useSelector(selectBalance);
   const balanceText = `₴ ${balance.toFixed(2)}`;
 
   useEffect(() => {
     const doughnutData = () => {
-      if (!summary) return []
+      if (!summary) return [];
       return [
         {
-          data: summary.categoriesSummary.map(({type, total}) => {
-            if (type === "INCOME") return null
-            return Math.abs(total)
+          data: summary.categoriesSummary.map(({ type, total }) => {
+            if (type === 'INCOME') return null;
+            return Math.abs(total);
           }),
-          backgroundColor: summary.categoriesSummary.map(({name, type}) => {
-            if (type === "INCOME") return null
-            return categories[name]
+          backgroundColor: summary.categoriesSummary.map(({ name, type }) => {
+            if (type === 'INCOME') return null;
+            return categories[name];
           }),
-          borderColor: summary.categoriesSummary.map(({name, type}) => {
-            if (type === "INCOME") return null
-            return categories[name]
+          borderColor: summary.categoriesSummary.map(({ name, type }) => {
+            if (type === 'INCOME') return null;
+            return categories[name];
           }),
           borderWidth: 1,
         },
-      ]
-    }
-    setData(doughnutData())
-  }, [summary])
-
+      ];
+    };
+    setData(doughnutData());
+  }, [summary]);
 
   const plugins = [
     {
-      beforeDraw: function ({width, height, ctx}) {
+      beforeDraw: function ({ width, height, ctx }) {
         ctx.restore();
         ctx.font = 20 + 'px sans-serif';
         ctx.textBaseline = 'top';
@@ -54,9 +71,16 @@ export const Diagram = () => {
       },
     },
   ];
+
   return (
     <DiagramWrapper>
-      {data.length && <Doughnut data={{datasets: data}} plugins={plugins} type={'doughnut'}/>}
+      {data.length && (
+        <Doughnut
+          data={{ datasets: data }}
+          plugins={plugins}
+          type={'doughnut'}
+        />
+      )}
     </DiagramWrapper>
   );
 };
