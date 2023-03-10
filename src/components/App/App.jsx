@@ -2,6 +2,7 @@ import React, { lazy, useEffect } from 'react';
 import { Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 import Layout from 'components/Layout/Layout';
 import { routes } from 'routes';
@@ -21,6 +22,7 @@ const StatisticsPage = lazy(() =>
 
 export function App() {
   const dispatch = useDispatch();
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   useEffect(() => {
     dispatch(getUserInfoRequest());
@@ -31,7 +33,12 @@ export function App() {
       <Routes>
         <Route path={routes.HOME} element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path={routes.CURRENCY_PAGE} element={<CurrencyPage />}></Route>
+          {isMobile && (
+            <Route
+              path={routes.CURRENCY_PAGE}
+              element={<CurrencyPage />}
+            ></Route>
+          )}
           <Route path={routes.STATISTICS_PAGE} element={<StatisticsPage />} />
           <Route path="*" element={<Navigate to={routes.HOME} />} />
         </Route>
