@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledCurrencyThumb = styled.div`
   position: relative;
-  background-color: #4a56e2;
+  background-color: ${p => p.theme.color.text_blue};
   background-image: linear-gradient(
     rgba(255, 255, 255, 0.2) 50px,
     #4a56e2 50px
@@ -10,7 +10,7 @@ export const StyledCurrencyThumb = styled.div`
   height: 184px;
   width: 280px;
 
-  color: white;
+  color: ${p => p.theme.color.text_light};
   font-size: ${({ theme }) => theme.fontSizes.s};
   font-weight: ${({ theme }) => theme.fontWeights.normal};
   line-height: ${({ theme }) => theme.lineHeights.body};
@@ -39,60 +39,6 @@ export const StyledCurrencyThumb = styled.div`
     );
   }
 `;
-
-// export const StyledCurrencyThumbTablet = styled.div`
-//   position: relative;
-//   background-color: #4a56e2;
-//   background-image: linear-gradient(
-//     rgba(255, 255, 255, 0.2) 50px,
-//     #4a56e2 50px
-//   );
-//   width: 336px;
-//   height: 182px;
-
-//   color: white;
-//   font-size: ${({ theme }) => theme.fontSizes.s};
-//   font-weight: ${({ theme }) => theme.fontWeights.normal};
-//   line-height: ${({ theme }) => theme.lineHeights.body};
-
-//   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-//   border-radius: ${({ theme }) => theme.radii.large};
-
-//   & svg {
-//     position: absolute;
-//     bottom: 0;
-//     left: 0;
-//     width: 100%;
-//   }
-// `;
-
-// export const StyledCurrencyThumbDesk = styled.div`
-//   position: relative;
-//   background-color: #4a56e2;
-
-//   width: 393px;
-//   height: 331px;
-//   padding-top: 17px;
-//   background-image: linear-gradient(
-//     rgba(255, 255, 255, 0.2) 60px,
-//     #4a56e2 60px
-//   );
-
-//   color: white;
-//   font-size: ${({ theme }) => theme.fontSizes.s};
-//   font-weight: ${({ theme }) => theme.fontWeights.normal};
-//   line-height: ${({ theme }) => theme.lineHeights.body};
-
-//   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-//   border-radius: ${({ theme }) => theme.radii.large};
-
-//   & svg {
-//     position: absolute;
-//     bottom: 0;
-//     left: 0;
-//     width: 100%;
-//   }
-// `;
 
 export const StyledCurrencyTable = styled.table`
   grid-template-rows: repeat(2, 1fr);

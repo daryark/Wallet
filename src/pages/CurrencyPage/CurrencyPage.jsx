@@ -4,14 +4,18 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
-import { fetchCurrencyMonoBank } from 'redux/monobank/mono-operations';
-import { selectCurrency } from 'redux/monobank/mono-selectors';
 import { Loader } from './Loader';
+import { ReactComponent as MountainDesk } from 'assets/mountain/MountainDeskTop.svg';
+
+import { ReactComponent as MountainMob } from 'assets/mountain/MountainMob.svg';
+
+import { fetchCurrencyMonoBank } from 'redux/monobank/mono-operations';
+import { setCurrencyFromLocalStorage } from 'redux/monobank/monoSlice';
+import { selectCurrency } from 'redux/monobank/mono-selectors';
+import { selectIsLoading } from 'redux/global/global-selectors';
+import WithAuthRedirect from 'HOC/WithAuthRedirect';
+
 import { StyledCurrencyTable } from './currencyStyles';
-
-import { ReactComponent as MountainDesk } from 'images/mountain/MountainDeskTop.svg';
-import { ReactComponent as MountainMob } from 'images/mountain/MountainMob.svg';
-
 import {
   StyledCurrencyThumb,
   StyledCurrencyThead,
@@ -19,9 +23,6 @@ import {
   StyledCurrencyTr,
 } from './currencyStyles';
 
-import { setCurrencyFromLocalStorage } from 'redux/monobank/monoSlice';
-import { selectIsLoading } from 'redux/global/global-selectors';
-import WithAuthRedirect from 'HOC/WithAuthRedirect';
 const oneHour = 3600000;
 
 function CurrencyPage() {
@@ -30,7 +31,7 @@ function CurrencyPage() {
   const dispatch = useDispatch();
   const currency = useSelector(selectCurrency);
   const loading = useSelector(selectIsLoading);
-  const a = '';
+
   useEffect(() => {
     const currencyFromStorage = JSON.parse(
       localStorage.getItem('currencyInTheMoment')
