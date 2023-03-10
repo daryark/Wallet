@@ -8,7 +8,6 @@ import { Header, Loader, Sidebar } from 'components';
 
 import { selectTheme } from 'redux/global/global-selectors';
 import { toggleThemeTitle } from 'redux/global/globalSlice';
-import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 
 import { theme } from 'styles/theme';
 import { colors } from 'styles/colors';
