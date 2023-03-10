@@ -16,7 +16,13 @@ import {
 import DateComponent from './DateComponent/DateComponent';
 import SelectComponent from './SelectComponent/SelectComponent';
 
-import { FormModalAddTransactionStyled } from './FormModalAddTransaction.styled';
+import {
+  ErrorMessageStyled,
+  FormModalAddTransactionStyled,
+} from './FormModalAddTransaction.styled';
+import ButtonSubmit from './ButtonsModalAddTransaction/ButtonSubmit';
+import { ButtonClose } from 'reusable/ModalCloseBtn/ModalCloseBtn.styled';
+import ButtonCancel from './ButtonsModalAddTransaction/ButtonCancel';
 
 const defaultState = {
   type: 'EXPENSE',
@@ -99,7 +105,7 @@ function FormModalAddTransaction({ handleCloseModal }) {
   let validationSchema = object({
     amount: string()
       .required('Required')
-      .max(20, 'Must be 20 characters maximum'),
+      .max(16, 'Must be 16 characters maximum'),
     date: date()
       .required('Required')
       .default(() => new Date()),
@@ -134,44 +140,58 @@ function FormModalAddTransaction({ handleCloseModal }) {
           </span>
         </div>
 
-        <Field
-          as="select"
-          transactionType={transactionState.type}
-          component={SelectComponent}
+        <div
           className={
             transactionState.type === 'EXPENSE'
-              ? 'category'
-              : 'category isHidden'
+              ? 'category-wrapper'
+              : 'category-wrapper isHidden'
           }
-          name="category"
-          placeholder="Select a category"
-          options={(transactionState.type === 'EXPENSE'
-            ? optionsExpense
-            : optionsIncome
-          ).map(option => ({ value: option.id, label: option.name }))}
-          onChange={option => {
-            handleSelectChange(option.value);
-          }}
-        />
+        >
+          <label>
+            <Field
+              as="select"
+              name="category"
+              placeholder="Select a category"
+              component={SelectComponent}
+              options={(transactionState.type === 'EXPENSE'
+                ? optionsExpense
+                : optionsIncome
+              ).map(option => ({ value: option.id, label: option.name }))}
+              onChange={option => {
+                handleSelectChange(option.value);
+              }}
+            />
+          </label>
+        </div>
 
         <div className="amount-date-wrapper">
-          <Field
-            type="number"
-            placeholder="0.00"
-            name="amount"
-            className="amount"
-          />
+          <div className="amount-wrapper">
+            <label>
+              <Field
+                type="number"
+                placeholder="0.00"
+                name="amount"
+                className="amount"
+              />
+            </label>
+            <ErrorMessageStyled name="amount" component="div" />
+          </div>
 
-          <Field
-            as="date"
-            component={DateComponent}
-            className="date"
-            name="date"
-            dateFormat="DD.MM.YYYY"
-            timeFormat={false}
-            value={transactionState.date}
-            onChange={handleDateChange}
-          />
+          <div className="date-wrapper">
+            <label>
+              <Field
+                as="date"
+                component={DateComponent}
+                className="date"
+                name="date"
+                dateFormat="DD.MM.YYYY"
+                timeFormat={false}
+                value={transactionState.date}
+                onChange={handleDateChange}
+              />
+            </label>
+            <ErrorMessageStyled name="date" component="div" />
+          </div>
         </div>
 
         <Field
@@ -183,17 +203,8 @@ function FormModalAddTransaction({ handleCloseModal }) {
         />
 
         <div className="btns-wrapper">
-          <button type="submit" className="submit-btn">
-            ADD
-          </button>
-
-          <button
-            type="button"
-            className="cancel-btn"
-            onClick={handleCloseModal}
-          >
-            CANCEL
-          </button>
+          <ButtonSubmit className="submit-btn" text="ADD" />
+          <ButtonCancel handleCloseModal={handleCloseModal} text={'CANCEL'} />
         </div>
       </FormModalAddTransactionStyled>
     </Formik>

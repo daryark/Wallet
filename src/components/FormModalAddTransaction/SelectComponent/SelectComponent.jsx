@@ -1,5 +1,6 @@
 import Select, { components } from 'react-select';
 import { TfiAngleDown } from 'react-icons/tfi';
+
 import { selectStyles } from './SelectComponentStyles';
 
 const DropdownIndicator = props => {
@@ -12,7 +13,6 @@ const DropdownIndicator = props => {
 
 const SelectComponent = ({
   field,
-  transactionType,
   options,
   placeholder = 'Select',
   className,
@@ -26,7 +26,7 @@ const SelectComponent = ({
       options={options}
       onChange={onChange}
       components={{ DropdownIndicator }}
-      styles={selectStyles(transactionType)}
+      styles={selectStyles()}
       openMenuOnFocus={true}
       isSearchable={true}
     />

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Form } from 'formik';
+import { Form, ErrorMessage } from 'formik';
 
 export const FormModalAddTransactionStyled = styled(Form)`
   display: flex;
@@ -123,7 +123,7 @@ export const FormModalAddTransactionStyled = styled(Form)`
     }
   }
 
-  & .category {
+  & .category-wrapper {
     width: 100%;
 
     &.isHidden {
@@ -132,12 +132,15 @@ export const FormModalAddTransactionStyled = styled(Form)`
   }
 
   & .amount-date-wrapper {
-    position: relative;
-
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 40px 0;
+
+    & .amount-wrapper,
+    & .date-wrapper {
+      position: relative;
+    }
 
     & .amount {
       font-weight: 700;
@@ -156,13 +159,21 @@ export const FormModalAddTransactionStyled = styled(Form)`
       align-items: center;
       gap: 0 30px;
 
-      & .amount {
+      & .amount-wrapper {
         width: calc((100% - 30px) / 2);
+      }
+
+      & .date-wrapper {
+        width: calc((100% - 30px) / 2);
+      }
+
+      & .amount {
+        width: 100%;
         text-align: center;
       }
 
       & .date {
-        width: calc((100% - 30px) / 2);
+        width: 100%;
       }
     }
   }
@@ -206,6 +217,7 @@ export const FormModalAddTransactionStyled = styled(Form)`
 
     &:hover,
     &focus {
+      outline: none;
       box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
     }
   }
@@ -218,7 +230,15 @@ export const FormModalAddTransactionStyled = styled(Form)`
 
     &:hover,
     &focus {
+      outline: none;
       box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
     }
   }
+`;
+
+export const ErrorMessageStyled = styled(ErrorMessage)`
+  position: absolute;
+  top: 36px;
+  left: 0;
+  color: red;
 `;
