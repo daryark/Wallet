@@ -2,13 +2,14 @@ import styled from 'styled-components';
 
 export const RegisterBox = styled.div`
   padding: 32px 0px 36px;
+  background-color: white;
 
   @media screen and (min-width: 768px) {
+    padding: 40px 58px 62px 65px;
     margin: 0 auto;
     width: 532px;
     height: 616px;
-    background-color: #e5e5e5;
-    background-color: white;
+
     border-radius: 20px;
   }
 
