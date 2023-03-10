@@ -16,6 +16,24 @@ body {
   margin: 0;
   color: ${({ theme }) => theme.color.text_dark};
   background-color: ${({ theme }) => theme.color.bg_grey_main};
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #c5baff;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.color.accent};
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: ${({ theme }) => theme.color.accent};
+    border-radius: 10px;
+  }
   
     /* backdrop-filter: blur(25px); */
   /* background: ${({ theme }) => theme.color.bg_coverage}; */
