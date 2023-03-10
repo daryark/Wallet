@@ -64,3 +64,60 @@ export const creators = [
     src: Valeriia_Sarazhinska,
   },
 ];
+
+export const creatorsUkr = [
+  {
+    id: 1,
+    name: "Дар'я Ярковська",
+    role: 'Лідер Команди, Розробниця',
+    src: Dasha_Yarkovska,
+  },
+  {
+    id: 2,
+    name: 'Ірина Тищук',
+    role: 'Скрам Майстер, Розробниця',
+    src: Iryna_Tyshchuk,
+  },
+  {
+    id: 3,
+    name: 'Галина Беспята',
+    role: 'Розробниця',
+    src: Halyna_Bespiata,
+  },
+  {
+    id: 4,
+    name: 'Ірина Малій',
+    role: 'Розробниця',
+    src: Iryna_Malii,
+  },
+  {
+    id: 5,
+    name: 'Анна Семенюк',
+    role: 'Розробниця',
+    src: Anna_Semeniuk,
+  },
+  {
+    id: 6,
+    name: 'Ірина Помешкіна',
+    role: 'Розробниця',
+    src: Iryna_Pomeshkina,
+  },
+  {
+    id: 7,
+    name: 'Любов Фірсова',
+    role: 'Розробниця',
+    src: Liubov_Firsova,
+  },
+  {
+    id: 8,
+    name: 'Юлія Нікіфорова',
+    role: 'Розробниця',
+    src: Yuliya_Nikiforova,
+  },
+  {
+    id: 9,
+    name: 'Валерія Саражинська',
+    role: 'Розробниця',
+    src: Valeriia_Sarazhinska,
+  },
+];
