@@ -12,5 +12,6 @@ export const light = {
     bg_grey_login: '#E7EAF2',
     bg_thead: '#f0f0f0',
     bg_tbody: '#f0f0f066',
+    bg_white_select:'#f5f3f3',
   },
 };

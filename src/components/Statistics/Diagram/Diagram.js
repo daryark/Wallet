@@ -6,7 +6,6 @@ import {selectBalance, selectSummary,} from '../../../redux/transactions/trans-s
 import {categories} from '../categories';
 import {useEffect, useState} from 'react';
 import {useTheme} from "styled-components";
-import {dark} from "../../../styles/colors/dark";
 
 const plugins = (theme, balanceText) => {
   return [
@@ -15,7 +14,7 @@ const plugins = (theme, balanceText) => {
         ctx.restore();
         ctx.font = 20 + 'px sans-serif';
         ctx.textBaseline = 'top';
-        ctx.fillStyle =  '#666666';
+        ctx.fillStyle = '#4A56E2';
         const text = balanceText,
           textX = Math.round((width - ctx.measureText(text).width) / 2),
           textY = height / 2;

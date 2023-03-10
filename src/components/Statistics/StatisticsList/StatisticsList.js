@@ -60,7 +60,8 @@ const customStyles = theme => ({
 
   option: (provided, state) => ({
     ...provided,
-    backgroundColor: state.isSelected ? '#FFFFFF' : theme.color.bg_white,
+    paddingLeft:'15px',
+    backgroundColor: state.isSelected ? '#FFFFFF' : theme.color.bg_white_select,
     color: state.isSelected ? '#FFFFFF' : theme.text_dark,
     width:'100%',
     '&:hover': {
@@ -87,7 +88,8 @@ const customStyles = theme => ({
   }),
   menu: provided => ({
     ...provided,
-    backgroundColor: theme.color.bg_white,
+    backgroundColor: theme.color.bg_white_select,
+    backdropFilter: 'blur(25px)',
     borderRadius: '30px',
     overflow: 'hidden',
     '@media screen and (min-width: 768px)': {
