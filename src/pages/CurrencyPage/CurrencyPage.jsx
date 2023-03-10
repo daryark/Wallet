@@ -14,8 +14,6 @@ import { ReactComponent as MountainMob } from 'images/mountain/MountainMob.svg';
 
 import {
   StyledCurrencyThumb,
-  StyledCurrencyThumbTablet,
-  StyledCurrencyThumbDesk,
   StyledCurrencyThead,
   StyledBodyTr,
   StyledCurrencyTr,
