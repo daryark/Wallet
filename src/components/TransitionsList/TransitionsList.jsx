@@ -30,9 +30,13 @@ import { capitalizeFirstLetter } from 'helpers/capitalize';
 import { LoaderDel } from './LoaderDelBtn';
 import { useRef } from 'react';
 import { ModalEditTransaction } from 'components/ModalEditTransaction/ModalEditTransaction';
-import { selectIsEditModalOpen } from 'redux/global/global-selectors';
+import {
+  selectIsEditModalOpen,
+  selectLanguage,
+} from 'redux/global/global-selectors';
 
 import { useTranslation } from 'react-i18next';
+import { categoryCheck } from './categoryCheck';
 
 export const TransactionsList = () => {
   const dispatch = useDispatch();
@@ -45,6 +49,7 @@ export const TransactionsList = () => {
   const { t } = useTranslation();
 
   const delId = useRef(null);
+  const lan = useSelector(selectLanguage);
 
   useEffect(() => {
     dispatch(fetchTransactions());
@@ -88,7 +93,15 @@ export const TransactionsList = () => {
       render: (_, record) => {
         if (!categories) return;
         const getCategory = categories.find(c => c.id === record.categoryId);
-        const categoryName = getCategory?.name;
+        const catN = getCategory?.name;
+        let categoryName = '';
+        if (lan === true) {
+          categoryName = catN;
+        }
+        if (lan === false) {
+          categoryName = categoryCheck(catN);
+        }
+        // потрібно замінити умову, щоб lan === 'ru'
 
         return <div>{categoryName}</div>;
       },
