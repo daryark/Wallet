@@ -7,13 +7,17 @@ import { fetchCurrencyMonoBank } from 'redux/monobank/mono-operations';
 import { selectCurrency } from 'redux/monobank/mono-selectors';
 import { Loader } from './Loader';
 import { StyledCurrencyTable } from './currencyStyles';
-import { StyledCurrencyTr } from './currencyStyles';
-import { StyledBodyTr } from './currencyStyles';
 
 import { ReactComponent as MountainDesk } from 'images/mountain/MountainDeskTop.svg';
 import { ReactComponent as MountainMob } from 'images/mountain/MountainMob.svg';
 
-import { StyledCurrencyThumb } from './currencyStyles';
+import {
+  StyledCurrencyThumb,
+  StyledCurrencyThead,
+  StyledBodyTr,
+  StyledCurrencyTr,
+} from './currencyStyles';
+
 import { setCurrencyFromLocalStorage } from 'redux/monobank/monoSlice';
 import { selectIsLoading } from 'redux/global/global-selectors';
 import WithAuthRedirect from 'HOC/WithAuthRedirect';
@@ -49,13 +53,13 @@ function CurrencyPage() {
   return (
     <StyledCurrencyThumb>
       <StyledCurrencyTable>
-        <thead>
+        <StyledCurrencyThead>
           <StyledCurrencyTr>
             <th>Currency</th>
             <th>Purchase</th>
             <th>Sale</th>
           </StyledCurrencyTr>
-        </thead>
+        </StyledCurrencyThead>
         {loading ? (
           <Loader />
         ) : (

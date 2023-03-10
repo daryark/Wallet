@@ -13,6 +13,7 @@ export const StyledCurrencyThumb = styled.div`
   color: white;
   font-size: ${({ theme }) => theme.fontSizes.s};
   font-weight: ${({ theme }) => theme.fontWeights.normal};
+  line-height: ${({ theme }) => theme.lineHeights.body};
 
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: ${({ theme }) => theme.radii.large};
@@ -43,11 +44,20 @@ export const StyledCurrencyTable = styled.table`
   display: grid;
   grid-template-rows: repeat(2, 1fr);
 `;
+export const StyledCurrencyThead = styled.thead`
+  height: 50px;
+  @media screen and (min-width: 1280px) {
+    height: 60px;
+  }
+`;
 
 export const StyledCurrencyTr = styled.tr`
+  font-size: ${({ theme }) => theme.fontSizes.m};
+  font-weight: ${({ theme }) => theme.fontWeights.bold};
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  padding-top: 20px;
+  height: 60px;
+  /* padding-top: 20px; */
 `;
 
 export const StyledBodyTr = styled.tr`
