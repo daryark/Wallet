@@ -53,9 +53,9 @@ export default function Layout() {
       <Footer />
 
       <Background>
-        <div className="blur" />
-        <EllipsePink className="ellipse_pink" themeProp={themeTitle} />
+        <EllipsePink className="ellipse_pink" />
         <EllipsePurple className="ellipse_purple" />
+        <div className="blur" />
       </Background>
     </ThemeProvider>
   );

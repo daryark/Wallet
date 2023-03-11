@@ -12,5 +12,6 @@ export const dark = {
     bg_grey_login: '#27292F',
     bg_thead: '#605e5e',
     bg_tbody: '#605e5e80',
+    bg_blur: 'rgba(0, 0, 0, 0.4)',
   },
 };

@@ -10,19 +10,17 @@ export const ThemeButton = styled.button`
   right: 20px;
 `;
 
+// export const Blur = styled.div`
+//   width: '100vw';
+//   height: '100vh';
+//   position: 'fixed';
+//   top: 0;
+//   backdrop-filter: blur(25px);
+//   filter: blur(25px);
+//   z-index: -1;
+// `;
+
 export const Background = styled.div`
-  position: relative;
-
-  & .blur {
-    width: '100vw';
-    height: '100vh';
-    position: 'fixed';
-    top: 0;
-    backdrop-filter: blur(25px);
-    /* filter: blur(25px); */
-    z-index: -1;
-  }
-
   & .ellipse_pink {
     position: fixed;
     transform: translateX(-50%);
@@ -33,9 +31,8 @@ export const Background = styled.div`
       top: -110px;
     }
 
-    /* & path {
-      fill: ${({ themeProp }) =>
-      themeProp === 'dark' ? '#d0b0aa' : '#ffd8d0'};
+    /* @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+      
     } */
   }
 
@@ -52,10 +49,20 @@ export const Background = styled.div`
       left: calc(50% - 409px);
       bottom: -157px;
     }
+  }
 
-    /* & path {
-      fill: ${({ themeProp, theme }) =>
-      themeProp === 'dark' ? '#9b92cb' : '#c5baff'};
-    } */
+  & .blur {
+    width: '100vw';
+    height: '100vh';
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    /* background-color: rgba(255, 255, 255, 0.4); */
+    background-color: ${({ theme }) => theme.color.bg_blur};
+    backdrop-filter: blur(25px);
+    /* filter: blur(25px); */
+    z-index: -1;
   }
 `;
