@@ -24,6 +24,7 @@ import {
   StyledDeleteBtn,
   StyledEditBtn,
   StyledAmount,
+  StyledNoTransactionDiv,
 } from './TransitionsList.styled';
 import { getDate } from 'helpers/getDate';
 import { capitalizeFirstLetter } from 'helpers/capitalize';
@@ -153,10 +154,10 @@ export const TransactionsList = () => {
           ></Table>
         </StyledBox>
       ) : (
-        <div>
+        <StyledNoTransactionDiv>
           There aren't any transactions. Press the button and add your first
           one!
-        </div>
+        </StyledNoTransactionDiv>
       )}
     </>
   );
