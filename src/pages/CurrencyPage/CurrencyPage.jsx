@@ -4,28 +4,13 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
-
+import { Loader } from './Loader';
 import { fetchCurrencyMonoBank } from 'redux/monobank/mono-operations';
 import { selectCurrency } from 'redux/monobank/mono-selectors';
-import { Loader } from './Loader';
-import { StyledCurrencyTable } from './currencyStyles';
 
+import { StyledCurrencyTable } from './currencyStyles';
 import { ReactComponent as MountainDesk } from 'images/mountain/MountainDeskTop.svg';
 import { ReactComponent as MountainMob } from 'images/mountain/MountainMob.svg';
-
-// import { Loader } from './Loader';
-// import { fetchCurrencyMonoBank } from 'redux/monobank/mono-operations';
-// import { selectCurrency } from 'redux/monobank/mono-selectors';
-// import {
-//   StyledCurrencyTable,
-//   StyledCurrencyTr,
-//   StyledBodyTr,
-// } from './currencyStyles';
-
-// import { ReactComponent as MountainDesk } from 'images/mountain/MountainDeskTop.svg';
-// // import { ReactComponent as MountainMob } from 'images/mountain/MountainMob.svg';
-// import { ReactComponent as MountainTablet } from 'images/mountain/MountainTablet.svg';
-// >>>>>>> dev
 
 import {
   StyledCurrencyThumb,
@@ -46,13 +31,6 @@ function CurrencyPage() {
   const currency = useSelector(selectCurrency);
   const loading = useSelector(selectIsLoading);
 
-  const a = '';
-
-//   // const isMobile = useMediaQuery({ maxWidth: 767 });
-//   const isTablet = useMediaQuery({ maxWidth: 1279 });
-//   const isDesktop = useMediaQuery({ minWidth: 1280 });
-
-// >>>>>>> dev
   useEffect(() => {
     const currencyFromStorage = JSON.parse(
       localStorage.getItem('currencyInTheMoment')
@@ -74,7 +52,6 @@ function CurrencyPage() {
   }, [dispatch]);
 
   return (
-
     <>
       <StyledCurrencyThumb>
         <StyledCurrencyTable>
@@ -111,37 +88,6 @@ function CurrencyPage() {
         {!isMobile ? <MountainDesk /> : <MountainMob />}
       </StyledCurrencyThumb>
     </>
-// =======
-//     <StyledCurrencyThumb>
-//       <StyledCurrencyTable>
-//         <thead>
-//           <StyledCurrencyTr>
-//             <th>Currency</th>
-//             <th>Purchase</th>
-//             <th>Sale</th>
-//           </StyledCurrencyTr>
-//         </thead>
-//         {loading ? (
-//           <Loader />
-//         ) : (
-//           <tbody>
-//             {currency.map(({ currencyCodeA, rateBuy, rateSell }) => {
-//               return (
-//                 <StyledBodyTr key={currencyCodeA}>
-//                   <td>{currencyCodeA === 840 ? 'USD' : 'EUR'}</td>
-//                   <td>{rateBuy.toFixed(2)}</td>
-//                   <td>{rateSell.toFixed(2)}</td>
-//                 </StyledBodyTr>
-//               );
-//             })}
-//           </tbody>
-//         )}
-//       </StyledCurrencyTable>
-//       {/* {isMobile && <MountainMob />} */}
-//       {isTablet && <MountainTablet />}
-//       {isDesktop && <MountainDesk />}
-//     </StyledCurrencyThumb>
-// >>>>>>> dev
   );
 }
 

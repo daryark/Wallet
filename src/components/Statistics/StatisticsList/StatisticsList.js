@@ -1,5 +1,6 @@
 import {
   Cube,
+  SelectWrapper,
   StatisticsItem,
   StatisticsList,
   StatisticsListTitle,
@@ -42,10 +43,7 @@ const yearData = [
 const customStyles = {
   control: provided => ({
     ...provided,
-    // width: '230px',
-    // ширина регулируется общей оберткой для наших двух компонентов
-    // height: '40px',
-    height: '50px', // переписала согласно макету
+    height: '50px',
     borderRadius: '30px',
     border: 'solid 1px #000000',
     cursor: 'pointer',
@@ -112,20 +110,24 @@ const CategorySum = () => {
 
   return (
     <StatisticsListWrapper>
-      <Select
-        value={month}
-        onChange={handleMonthChange}
-        options={monthData}
-        placeholder={monthData[month].label}
-        styles={customStyles}
-      />
-      <Select
-        value={year}
-        onChange={handleYearChange}
-        options={yearData}
-        placeholder={year}
-        styles={customStyles}
-      />
+      <SelectWrapper>
+        <Select
+          value={month}
+          onChange={handleMonthChange}
+          options={monthData}
+          placeholder={monthData[month].label}
+          styles={customStyles}
+          className="statisticsSelect"
+        />
+        <Select
+          value={year}
+          onChange={handleYearChange}
+          options={yearData}
+          placeholder={year}
+          styles={customStyles}
+          className="statisticsSelect"
+        />
+      </SelectWrapper>
 
       <StatisticsListTitle>
         <p>Category</p>
