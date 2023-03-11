@@ -16,8 +16,24 @@ body {
   margin: 0;
   color: ${({ theme }) => theme.color.text_dark};
   background-color: ${({ theme }) => theme.color.bg_grey_main};
-  
-    /* backdrop-filter: blur(25px); */
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #c5baff;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.color.accent};
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: ${({ theme }) => theme.color.accent};
+    border-radius: 10px;
+  }
   /* background: ${({ theme }) => theme.color.bg_coverage}; */
 }
 /*   
@@ -111,6 +127,16 @@ svg {
 
   ::-webkit-scrollbar {
     width: 10px;
+  }
+
+  .statisticsSelect {
+    @media screen and (min-width: 768px) {
+      width: calc((100% - 16px) / 2);
+    }
+
+    @media screen and (min-width: 1280px) {
+      width: calc((100% - 32px) / 2);
+    }
   }
 `;
 

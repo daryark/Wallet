@@ -1,6 +1,5 @@
-import { TfiClose } from 'react-icons/tfi';
 import { useDispatch } from 'react-redux';
-import { ButtonClose } from './ModalCloseBtn.styled';
+import { ButtonClose, StyledIconClose } from './ModalCloseBtn.styled';
 
 function ModalCloseBtn({ isRandomModalOpen }) {
   const dispatch = useDispatch();
@@ -15,7 +14,7 @@ function ModalCloseBtn({ isRandomModalOpen }) {
       aria-label="close button"
       onClick={handleModalClose}
     >
-      <TfiClose />
+      <StyledIconClose />
     </ButtonClose>
   );
 }

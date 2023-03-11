@@ -1,4 +1,3 @@
-// import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
@@ -13,10 +12,7 @@ import { theme } from 'styles/theme';
 import { colors } from 'styles/colors';
 import GlobalStyles from 'styles/GlobalStyles/GlobalStyles.styled';
 import { ThemeButton } from './Layout.styled';
-import {
-  StyledFooterPusher,
-  StyledMain,
-} from 'components/common/FooterPusher.styled';
+import { StyledMain } from 'components/common/FooterPusher.styled';
 import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 import { Suspense } from 'react';
 
@@ -34,23 +30,23 @@ export default function Layout() {
     <ThemeProvider theme={normalizedTheme}>
       <GlobalStyles />
 
-      <StyledFooterPusher>
-        {selectIsLoggedIn && (
-          <>
-            <Header />
-            <Sidebar />
-            <ThemeButton onClick={handleThemeChange}>
-              {themeTitle === 'light' ? <BsMoon /> : <BsSun />}
-            </ThemeButton>
-          </>
-        )}
-        <StyledMain>
-          <Suspense fallback={<Loader />}>
-            <Outlet />
-          </Suspense>
-        </StyledMain>
-        <Footer />
-      </StyledFooterPusher>
+      {/* <StyledFooterPusher> */}
+      {selectIsLoggedIn && (
+        <>
+          <Header />
+          <Sidebar />
+          <ThemeButton onClick={handleThemeChange}>
+            {themeTitle === 'light' ? <BsMoon /> : <BsSun />}
+          </ThemeButton>
+        </>
+      )}
+      <StyledMain>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </StyledMain>
+      <Footer />
+      {/* </StyledFooterPusher> */}
 
       {/* <div
         style={{
