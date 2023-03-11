@@ -22,14 +22,17 @@ import {
 import { setCurrencyFromLocalStorage } from 'redux/monobank/monoSlice';
 import { selectIsLoading } from 'redux/global/global-selectors';
 import WithAuthRedirect from 'HOC/WithAuthRedirect';
+import { useNavigate } from 'react-router-dom';
 const oneHour = 3600000;
 
 function CurrencyPage() {
-  const isMobile = useMediaQuery({ query: '(min-width: 370px)' });
+  const mountainsTransition = useMediaQuery({ query: '(min-width: 370px)' });
 
   const dispatch = useDispatch();
   const currency = useSelector(selectCurrency);
   const loading = useSelector(selectIsLoading);
+  const navigate = useNavigate();
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   useEffect(() => {
     const currencyFromStorage = JSON.parse(
@@ -50,6 +53,11 @@ function CurrencyPage() {
       setCurrencyFromLocalStorage(currencyFromStorage);
     }
   }, [dispatch]);
+
+  useEffect(() => {
+    if (isMobile) return;
+    navigate('/');
+  }, [isMobile, navigate]);
 
   return (
     <>
@@ -85,7 +93,7 @@ function CurrencyPage() {
           )}
         </StyledCurrencyTable>
 
-        {!isMobile ? <MountainDesk /> : <MountainMob />}
+        {!mountainsTransition ? <MountainDesk /> : <MountainMob />}
       </StyledCurrencyThumb>
     </>
   );

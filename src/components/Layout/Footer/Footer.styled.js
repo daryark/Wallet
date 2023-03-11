@@ -1,12 +1,9 @@
 import { BsBalloonHeartFill } from 'react-icons/bs';
 import styled from 'styled-components';
+import { StyledHeader } from '../Header/Header.styled';
 
-export const StyledFooter = styled.footer`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background-color: ${({ theme }) => theme.color.bg_white};
+export const StyledFooter = styled(StyledHeader)`
+  grid-area: footer;
 
   .list {
     display: flex;
