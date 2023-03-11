@@ -1,12 +1,9 @@
 import { BsBalloonHeartFill } from 'react-icons/bs';
 import styled from 'styled-components';
+import { StyledHeader } from '../Header/Header.styled';
 
-export const StyledFooter = styled.footer`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background-color: ${({ theme }) => theme.color.bg_white};
+export const StyledFooter = styled(StyledHeader)`
+  grid-area: footer;
 
   .list {
     display: flex;
@@ -34,13 +31,19 @@ export const StyledFooter = styled.footer`
 export const StyledIconHeart = styled(BsBalloonHeartFill)`
   @keyframes scaleHeart {
     0% {
-      scale: 1;
+      transform: translateY(-2px);
+    }
+    25% {
+      transform: translateY(-7px);
     }
     50% {
-      scale: 1.1;
+      transform: translateY(-2px);
+    }
+    75% {
+      transform: translateY(3px);
     }
     100% {
-      scale: 1;
+      transform: translateY(-2px);
     }
   }
 
@@ -49,5 +52,5 @@ export const StyledIconHeart = styled(BsBalloonHeartFill)`
   height: 20px;
   margin-left: 5px;
   margin-right: 5px;
-  animation: scaleHeart 1000ms linear infinite;
+  animation: scaleHeart 2000ms linear infinite;
 `;

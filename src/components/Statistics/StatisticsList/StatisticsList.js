@@ -46,6 +46,8 @@ const customStyles = {
     height: '50px',
     borderRadius: '30px',
     border: 'solid 1px #000000',
+    marginBottom: '20px',
+    backgroundColor: 'transparent',
     cursor: 'pointer',
     '&:hover': {
       borderColor: '#D8093A',
