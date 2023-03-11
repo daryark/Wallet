@@ -13,6 +13,10 @@ export const StyledList = styled.ul`
   &:last-of-type {
     margin-bottom: none;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    margin-top: 32px;
+  }
 `;
 
 export const StyledItem = styled.li`
@@ -186,6 +190,7 @@ export const StyledBox = styled.div`
     position: sticky;
     z-index: 100;
     font-size: 17px;
+    font-family: Circe;
     font-weight: ${p => p.theme.fontWeights.bold};
     background-color: ${p => p.theme.color.bg_white};
 

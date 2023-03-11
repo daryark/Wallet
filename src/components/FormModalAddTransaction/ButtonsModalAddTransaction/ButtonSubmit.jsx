@@ -1,8 +1,10 @@
+import { ButtonSubmitStyled } from './FormButtons.styled';
+
 const ButtonSubmit = ({ className, text }) => {
   return (
-    <button type="submit" className={className}>
+    <ButtonSubmitStyled type="submit" className={className}>
       {text}
-    </button>
+    </ButtonSubmitStyled>
   );
 };
 

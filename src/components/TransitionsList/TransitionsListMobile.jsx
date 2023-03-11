@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
 
-import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
+import { toggleEditModal } from 'redux/global/globalSlice';
 import { setEditTransaction } from 'redux/transactions/transSlice';
 import {
   selectBalance,
@@ -30,6 +30,8 @@ import {
 import { getDate } from 'helpers/getDate';
 import { capitalizeFirstLetter } from 'helpers/capitalize';
 import { LoaderDel } from './LoaderDelBtn';
+import { ModalEditTransaction } from 'components/ModalEditTransaction/ModalEditTransaction';
+import { selectIsEditModalOpen } from 'redux/global/global-selectors';
 
 export const TransactionsListMobile = () => {
   const dispatch = useDispatch();
@@ -37,6 +39,7 @@ export const TransactionsListMobile = () => {
   const transactions = useSelector(selectTransactions);
   const categories = useSelector(selectCategories);
   const loading = useSelector(selectIsDeleting);
+  const isEditModalOpen = useSelector(selectIsEditModalOpen);
 
   const delId = useRef(null);
 
@@ -47,7 +50,7 @@ export const TransactionsListMobile = () => {
 
   const handleEditTransition = contactUser => {
     dispatch(setEditTransaction(contactUser));
-    dispatch(isModalAddTransactionOpen());
+    dispatch(toggleEditModal());
   };
   const handleDeleteTransition = (transitionId, balance, delAmount) => {
     delId.current = transitionId;
@@ -121,6 +124,7 @@ export const TransactionsListMobile = () => {
           one!
         </StyledNoTransactionDiv>
       )}
+      {isEditModalOpen && <ModalEditTransaction />}
     </>
   );
 };
