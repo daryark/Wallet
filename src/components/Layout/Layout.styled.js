@@ -38,16 +38,16 @@ export const Background = styled.div`
 
   & .ellipse_purple {
     position: fixed;
-    transform: translateX(-50%) rotate(17deg);
+    transform: translateX(-50%) rotate(15deg);
     z-index: -1;
 
     @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-      left: calc(50% - 388px);
-      bottom: -186px;
+      left: calc(50% - 237px);
+      bottom: -166px;
     }
     @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-      left: calc(50% - 409px);
-      bottom: -157px;
+      left: calc(50% - 509px);
+      bottom: -137px;
     }
   }
 
@@ -59,10 +59,8 @@ export const Background = styled.div`
     left: 0;
     bottom: 0;
     right: 0;
-    /* background-color: rgba(255, 255, 255, 0.4); */
     background-color: ${({ theme }) => theme.color.bg_blur};
     backdrop-filter: blur(25px);
-    /* filter: blur(25px); */
     z-index: -1;
   }
 `;

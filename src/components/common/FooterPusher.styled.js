@@ -11,6 +11,7 @@ export const StyledMain = styled.main`
   /* flex-grow: 1; */
   max-width: ${({ theme }) => theme.breakpoints.sm};
   margin: 0 auto;
+  margin-bottom: 32px;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     max-width: ${({ theme }) => theme.breakpoints.md};
