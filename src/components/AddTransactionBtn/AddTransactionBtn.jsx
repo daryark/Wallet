@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
-import { AddBtn, AddIcon } from './AddTransactionBtn.styled';
+import { AddBtn } from './AddTransactionBtn.styled';
 import { useWindowSize } from 'hooks/useWindowSize';
 
 export function AddTransactionBtn() {
