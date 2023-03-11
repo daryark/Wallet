@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Formik, Field } from 'formik';
+import { Formik } from 'formik';
+import { Field } from 'formik';
 import { date, object, string } from 'yup';
 import { useMediaQuery } from 'react-responsive';
 
@@ -20,7 +21,6 @@ import {
   FormModalAddTransactionStyled,
 } from './FormModalAddTransaction.styled';
 import ButtonSubmit from './ButtonsModalAddTransaction/ButtonSubmit';
-import { ButtonClose } from 'reusable/ModalCloseBtn/ModalCloseBtn.styled';
 import ButtonCancel from './ButtonsModalAddTransaction/ButtonCancel';
 
 const defaultState = {
@@ -116,9 +116,6 @@ function FormModalAddTransaction({ handleCloseModal }) {
       initialValues={transactionState}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
-      onChange={({ nextValues }) => {
-        setTransactionState(prev => ({ ...prev, nextValues }));
-      }}
     >
       <FormModalAddTransactionStyled className="modal-form">
         <div className="switcher" style={{ position: 'relative' }}>
@@ -141,6 +138,7 @@ function FormModalAddTransaction({ handleCloseModal }) {
             Expense
           </span>
         </div>
+
         <div
           className={
             transactionState.type === 'EXPENSE'
@@ -202,6 +200,7 @@ function FormModalAddTransaction({ handleCloseModal }) {
           placeholder="Comment"
           name="comment"
         />
+
         <div className="btns-wrapper">
           <ButtonSubmit className="submit-btn" text="ADD" />
           <ButtonCancel handleCloseModal={handleCloseModal} text={'CANCEL'} />

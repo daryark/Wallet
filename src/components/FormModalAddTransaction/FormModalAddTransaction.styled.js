@@ -18,19 +18,17 @@ export const FormModalAddTransactionStyled = styled(Form)`
     align-items: center;
     justify-content: space-between;
 
-    font-weight: ${p => p.theme.fontWeights.bold};
-    font-size: ${p => p.theme.fontSizes.s};
+    font-weight: 700;
+    font-size: 16px;
     line-height: calc(24 / 16);
-    color: ${p => p.theme.color.text_grey_secondary};
+    color: #e0e0e0;
 
     & .income {
-      color: ${p => p.theme.color.accent};
-      transition: color 0.4s ease-in-out;
+      color: #24cca7;
     }
 
     & .expense {
-      color: ${p => p.theme.color.text_pink};
-      transition: color 0.4s ease-in-out;
+      color: #ff6596;
     }
 
     &__box {
@@ -48,16 +46,16 @@ export const FormModalAddTransactionStyled = styled(Form)`
 
     &__toggle {
       position: absolute;
+      cursor: pointer;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: ${p => p.theme.color.bg_white};
-      border-radius: ${p => p.theme.radii.large};
-      border: ${p => p.theme.borders.normal}${p => p.theme.color.text_grey_secondary};
-      transition: transform 0.4s ease-in-out;
-      -webkit-transition: transform 0.4s ease-in-out;
-      cursor: pointer;
+      background-color: #fff;
+      -webkit-transition: 0.4s;
+      border-radius: 30px;
+      border: 1px solid #e0e0e0;
+      transition: 0.4s;
 
       &:before {
         position: absolute;
@@ -66,17 +64,17 @@ export const FormModalAddTransactionStyled = styled(Form)`
         width: 44px;
         left: -4px;
         bottom: -3px;
-        border-radius: ${p => p.theme.radii.round};
-        box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
-        background-color: ${p => p.theme.color.accent};
+        transition: 0.4s;
+        border-radius: 50%;
+        background-color: #24cca7;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 768 768'%3E%3Cpath d='M607.5 415.5h-192v192h-63v-192h-192v-63h192v-192h63v192h192v63z'/%3E%3C/svg%3E");
-        transition: transform 0.4s ease-in-out;
-        -webkit-transition: transform 0.4s ease-in-out;
+        box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+        -webkit-transition: 0.4s;
       }
     }
 
     &__checkbox:checked + .switcher__toggle:before {
-      background-color: ${p => p.theme.color.text_pink};
+      background-color: #ff6596;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 768 768'%3E%3Cpath d='M607.5 415.5h-447v-63h447v63z'/%3E%3C/svg%3E");
       box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
       -webkit-transform: translateX(44px);
@@ -100,16 +98,15 @@ export const FormModalAddTransactionStyled = styled(Form)`
     font-family: inherit;
     width: 100%;
     padding: 0 20px 8px;
-    color: ${p => p.theme.color.text_dark};
     background-color: transparent;
-    border: ${p => p.theme.borders.none};
-    border-bottom: ${p => p.theme.borders.normal}${p => p.theme.color.text_grey_secondary};
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
 
-    font-weight: ${p => p.theme.fontWeights.normal};
-    font-size: ${p => p.theme.fontSizes.m};
+    font-weight: 400;
+    font-size: 18px;
     line-height: calc(27 / 18);
 
-    @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    @media screen and (min-width: 768px) {
       padding: 0 8px 8px;
     }
 
@@ -118,7 +115,7 @@ export const FormModalAddTransactionStyled = styled(Form)`
     }
 
     &:-webkit-autofill {
-      box-shadow: 0 0 0 30px ${p => p.theme.color.bg_white} inset;
+      box-shadow: 0 0 0 30px #fff inset;
     }
 
     &::placeholder {
@@ -128,7 +125,6 @@ export const FormModalAddTransactionStyled = styled(Form)`
 
   & .category-wrapper {
     width: 100%;
-    transition: margin 0.4s ease;
 
     &.isHidden {
       margin-bottom: 0;
@@ -147,7 +143,7 @@ export const FormModalAddTransactionStyled = styled(Form)`
     }
 
     & .amount {
-      font-weight: ${p => p.theme.fontWeights.bold};
+      font-weight: 700;
 
       &::-webkit-outer-spin-button,
       &::-webkit-inner-spin-button {
@@ -158,7 +154,7 @@ export const FormModalAddTransactionStyled = styled(Form)`
       }
     }
 
-    @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    @media screen and (min-width: 768px) {
       flex-direction: row;
       align-items: center;
       gap: 0 30px;
@@ -182,12 +178,61 @@ export const FormModalAddTransactionStyled = styled(Form)`
     }
   }
 
+  & input.form-control {
+    padding: 0 20px 8px;
+  }
+
   & .btns-wrapper {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    width: 100%;
+
+    & button {
+      font-family: inherit;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 27px;
+      text-align: center;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 0px -10px;
+      width: calc(100% + 20px);
+      height: 50px;
+      border-radius: 20px;
+
+      @media screen and (min-width: 768px) {
+        width: 300px;
+        margin: 0;
+      }
+    }
+  }
+
+  & .submit-btn {
+    border: 1px solid transparent;
+    color: #fff;
+    background-color: #24cca7;
+    transition: box-shadow 0.25s ease;
+
+    &:hover,
+    &focus {
+      outline: none;
+      box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+    }
+  }
+
+  & .cancel-btn {
+    color: #4a56e2;
+    border: 1px solid #4a56e2;
+    background-color: #fff;
+    transition: box-shadow 0.25s ease;
+
+    &:hover,
+    &focus {
+      outline: none;
+      box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
+    }
   }
 `;
 
@@ -195,5 +240,5 @@ export const ErrorMessageStyled = styled(ErrorMessage)`
   position: absolute;
   top: 36px;
   left: 0;
-  color: #ff3333;
+  color: red;
 `;

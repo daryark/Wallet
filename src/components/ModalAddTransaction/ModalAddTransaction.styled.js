@@ -1,38 +1,37 @@
 import styled from 'styled-components';
 
 export const ModalAddTransactionStyled = styled.div`
-  position: absolute;
-  top: 60px;
-  left: 0;
   display: flex;
   flex-direction: column;
   gap: 40px;
-  width: 100%;
-  height: calc(100% - 60px);
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100vw;
+  min-height: calc(100vh - 60px);
   padding: 20px;
-  background-color: ${p => p.theme.color.bg_white};
+  background-color: #fff;
   z-index: 102;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    height: auto;
+  @media screen and (min-width: 768px) {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding: 40px 73px;
     width: 540px;
     min-height: 508px;
-    padding: 40px 73px;
-    border-radius: ${p => p.theme.radii.medium};
+    border-radius: 20px;
   }
 
   & .modal__title {
     font-family: 'Poppins';
     text-align: center;
-    font-weight: ${p => p.theme.fontWeights.normal};
-    font-size: ${p => p.theme.fontSizes.l};
+    font-weight: 400;
+    font-size: 24px;
     line-height: calc(36 / 24);
 
-    @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}) {
-      font-size: ${p => p.theme.fontSizes.xl};
+    @media screen and (min-width: 768px) {
+      font-size: 30px;
       line-height: calc(45 / 30);
     }
   }

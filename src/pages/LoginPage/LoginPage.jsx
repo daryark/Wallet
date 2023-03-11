@@ -4,6 +4,13 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
+import {
+  BgContainer,
+  ImgLogin,
+  LoginText,
+  SectionLogin,
+  SvgWrapper,
+} from './LoginPage.styled';
 
 export default function LoginPage() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -14,9 +21,18 @@ export default function LoginPage() {
 
     navigate('/');
   }, [isLoggedIn, navigate]);
+
   return (
-    <AuthContainer>
-      <LoginForm />
-    </AuthContainer>
+    <SectionLogin>
+      <AuthContainer>
+        <SvgWrapper>
+          <BgContainer>
+            <ImgLogin />
+            <LoginText>Finance App</LoginText>
+          </BgContainer>
+          <LoginForm />
+        </SvgWrapper>
+      </AuthContainer>
+    </SectionLogin>
   );
 }

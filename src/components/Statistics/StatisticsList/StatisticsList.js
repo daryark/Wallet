@@ -1,5 +1,6 @@
 import {
-  Cube, SelectWrapper,
+  Cube,
+  SelectWrapper,
   StatisticsItem,
   StatisticsList,
   StatisticsListTitle,
@@ -19,57 +20,53 @@ import { selectSummary } from '../../../redux/transactions/trans-selectors';
 import { categories } from '../categories';
 
 const monthData = [
-  {value: 0, label: 'January'},
-  {value: 1, label: 'February'},
-  {value: 2, label: 'March'},
-  {value: 3, label: 'April'},
-  {value: 4, label: 'May'},
-  {value: 5, label: 'June'},
-  {value: 6, label: 'July'},
-  {value: 7, label: 'August'},
-  {value: 8, label: 'September'},
-  {value: 9, label: 'October'},
-  {value: 10, label: 'November'},
-  {value: 11, label: 'December'},
+  { value: 0, label: 'January' },
+  { value: 1, label: 'February' },
+  { value: 2, label: 'March' },
+  { value: 3, label: 'April' },
+  { value: 4, label: 'May' },
+  { value: 5, label: 'June' },
+  { value: 6, label: 'July' },
+  { value: 7, label: 'August' },
+  { value: 8, label: 'September' },
+  { value: 9, label: 'October' },
+  { value: 10, label: 'November' },
+  { value: 11, label: 'December' },
 ];
 
 const yearData = [
-  {value: 2021, label: '2021'},
-  {value: 2022, label: '2022'},
-  {value: 2023, label: '2023'},
+  { value: 2021, label: '2021' },
+  { value: 2022, label: '2022' },
+  { value: 2023, label: '2023' },
 ];
 
-
-const customStyles = theme => ({
+const customStyles = {
   control: provided => ({
     ...provided,
     height: '50px',
     borderRadius: '30px',
     border: 'solid 1px #000000',
+    marginBottom: '20px',
+    backgroundColor: 'transparent',
     cursor: 'pointer',
-    overflow: 'hidden',
     '&:hover': {
-      borderColor: '#4A56E2',
+      borderColor: '#D8093A',
     },
-    '@media screen and (min-width: 768px)': {
-      width: '160px',},
-    '@media screen and (min-width: 1280px)': {
-      width: '182px',},
-    backgroundColor: theme.color.bg_white,
   }),
-
   option: (provided, state) => ({
     ...provided,
-    paddingLeft:'15px',
-    backgroundColor: state.isSelected ? '#FFFFFF' : theme.color.bg_white_select,
-    color: state.isSelected ? '#FFFFFF' : theme.text_dark,
-    width:'100%',
+    backgroundColor: state.isSelected ? '#dedede' : 'transparent',
+    color: state.isSelected ? '#333333' : '#666666',
+
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    padding: '2px 103px 2px 20px',
+    gap: '10px', //
     '&:hover': {
-      backgroundColor: '#FFFFFF',
-      color: '#4A56E2',
-
+      backgroundColor: '#dedede',
+      color: '#333333',
     },
-
   }),
   singleValue: provided => ({
     ...provided,
@@ -79,29 +76,19 @@ const customStyles = theme => ({
     ...provided,
     color: '#333333',
     '&:hover': {
-      color: '#4A56E2',
+      color: '#D8093A',
     },
-
   }),
   indicatorSeparator: () => ({
     display: 'none',
   }),
   menu: provided => ({
     ...provided,
-    backgroundColor: theme.color.bg_white_select,
-    backdropFilter: 'blur(25px)',
+    width: '230px',
     borderRadius: '30px',
     overflow: 'hidden',
-    '@media screen and (min-width: 768px)': {
-      width: '160px',},
-    '@media screen and (min-width: 1280px)': {
-      width: '182px',}
   }),
-placeholder: provided => ({
-    ...provided,
-  color: theme.text_dark,
-  }),
-});
+};
 
 const CategorySum = () => {
   const [month, setMonth] = useState(new Date().getMonth());
@@ -109,7 +96,6 @@ const CategorySum = () => {
   const summary = useSelector(selectSummary);
   const dispatch = useDispatch();
   const theme = useTheme();
- const selectStyles = customStyles(theme)
 
   useEffect(() => {
     dispatch(getTransactionSummary({ month: month + 1, year }));
@@ -127,26 +113,28 @@ const CategorySum = () => {
   return (
     <StatisticsListWrapper>
       <SelectWrapper>
-      <Select
-        value={month}
-        onChange={handleMonthChange}
-        options={monthData}
-        placeholder={monthData[month].label}
-        styles={selectStyles}
-      />
-      <Select
-        value={year}
-        onChange={handleYearChange}
-        options={yearData}
-        placeholder={year}
-        styles={selectStyles}
-      />
+        <Select
+          value={month}
+          onChange={handleMonthChange}
+          options={monthData}
+          placeholder={monthData[month].label}
+          styles={customStyles}
+          className="statisticsSelect"
+        />
+        <Select
+          value={year}
+          onChange={handleYearChange}
+          options={yearData}
+          placeholder={year}
+          styles={customStyles}
+          className="statisticsSelect"
+        />
       </SelectWrapper>
+
       <StatisticsListTitle>
         <p>Category</p>
         <p>Sum</p>
       </StatisticsListTitle>
-      {summary && (
       <StatisticsList>
         {summary &&
           summary.categoriesSummary.map(({ name, type, total }) => {
@@ -155,24 +143,23 @@ const CategorySum = () => {
               <StatisticsItem key={name}>
                 <Cube color={categories[name]} />
                 <StatisticsWrapper>
-                  <p>{name}</p> <Sum>{parseFloat(Math.abs(total)).toFixed(2)}</Sum>
+                  <p>{name}</p> <Sum>{Math.abs(total)}</Sum>
                 </StatisticsWrapper>
               </StatisticsItem>
             );
           })}
       </StatisticsList>
-        )}
       <StatisticsSumList>
         <StatisticsSumItem>
           <p>Expenses</p>
           <p style={{ color: theme.color.text_pink }}>
-            {summary && parseFloat(Math.abs(summary.expenseSummary)).toFixed(2)}
+            {summary && Math.abs(summary.expenseSummary)}
           </p>
         </StatisticsSumItem>
         <StatisticsSumItem>
           <p>Income</p>
           <p style={{ color: theme.color.accent }}>
-            {summary && parseFloat(summary.incomeSummary).toFixed(2)}
+            {summary && summary.incomeSummary}
           </p>
         </StatisticsSumItem>
       </StatisticsSumList>

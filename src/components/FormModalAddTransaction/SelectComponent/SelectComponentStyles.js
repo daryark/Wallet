@@ -1,18 +1,16 @@
-export const selectStyles = theme => {
+export const selectStyles = () => {
   return {
     control: provided => ({
       ...provided,
-      border: `${theme.borders.none}`,
+      border: 'none',
       paddingBottom: 4,
       borderRadius: 0,
-      borderBottom: `${theme.borders.normal} ${theme.color.text_grey_secondary}`,
+      borderBottom: '1px solid #e0e0e0',
       minHeight: 34,
       boxShadow: 'none',
-      backgroundColor: `${theme.color.bg_white}`,
-      transition: 'color 0.2s ease',
 
       '&:hover': {
-        borderBottom: `${theme.borders.normal} ${theme.color.text_grey_secondary}`,
+        borderBottom: '1px solid #e0e0e0',
       },
     }),
     indicatorSeparator: () => ({
@@ -20,32 +18,32 @@ export const selectStyles = theme => {
     }),
     input: provided => ({
       ...provided,
-      fontSize: `${theme.fontSizes.m}`,
-      color: `${theme.color.text_dark}`,
+      fontSize: 18,
+      color: '#000000',
     }),
     placeholder: provided => ({
       ...provided,
       color: '#bdbdbd',
       margin: 0,
-      fontSize: `${theme.fontSizes.m}`,
+      fontSize: 18,
     }),
     singleValue: provided => ({
       ...provided,
-      color: `${theme.color.text_dark}`,
+      color: '#000000',
       margin: 0,
-      fontSize: `${theme.fontSizes.m}`,
+      fontSize: 18,
     }),
     dropdownIndicator: provided => ({
       ...provided,
-      color: `${theme.color.text_dark}`,
+      color: '#000000',
       padding: '9px 8px',
       alignItems: 'flex-start',
       width: 'auto',
       height: 'auto',
-      transition: 'color 0.2s ease',
+      transition: 'color 0.4s ease',
 
       '&:hover': {
-        color: `${theme.color.text_grey_secondary}`,
+        color: '#e0e0e0',
       },
 
       '&>svg': {
@@ -57,7 +55,7 @@ export const selectStyles = theme => {
       ...provided,
       height: 'auto',
       maxHeight: 352,
-      background: `${theme.color.bg_white}b3`,
+      background: 'rgba(255, 255, 255, 0.7)',
       boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
       backdropFilter: 'blur(20px)',
       borderRadius: 20,
@@ -72,19 +70,17 @@ export const selectStyles = theme => {
     }),
     option: (provided, { isSelected }) => ({
       ...provided,
-      background: isSelected ? `${theme.color.bg_white}` : 'transparent',
-      color: isSelected
-        ? `${theme.color.text_pink}`
-        : `${theme.color.text_dark}`,
+      background: isSelected ? '#ffffff' : 'transparent',
+      color: isSelected ? '#FF6596' : '#000000',
       fontWeight: isSelected ? 700 : 400,
       cursor: 'pointer',
       padding: '8.5px 20px',
-      fontSize: `${theme.fontSizes.m}`,
+      fontSize: 18,
       lineHeight: 1.5,
 
       '&:hover': {
-        color: `${theme.color.text_pink}`,
-        background: `${theme.color.bg_white}`,
+        color: '#FF6596',
+        background: '#ffffff',
         fontWeight: 700,
       },
     }),
