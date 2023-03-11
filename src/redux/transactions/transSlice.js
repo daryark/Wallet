@@ -17,6 +17,7 @@ import {
 
 const initialState = {
   transactions: [],
+  isDeleting: false,
   categories: [],
   summary: null,
   balance: 0,
@@ -45,11 +46,18 @@ const transactionsSlice = createSlice({
       })
 
       // -------- deleteTransaction --------
+      .addCase(deleteTransaction.pending, state => {
+        state.isDeleting = true;
+      })
       .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
         state.transactions = state.transactions.filter(
           t => t.id !== payload.id
         );
         state.balance = payload.balance;
+        state.isDeleting = false;
+      })
+      .addCase(deleteTransaction.rejected, state => {
+        state.isDeleting = false;
       })
 
       // --- editTransaction ---

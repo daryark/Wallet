@@ -8,12 +8,11 @@ export function Footer() {
     <>
       <StyledFooter as="footer">
         <StyledContainer style={{ justifyContent: 'center' }}>
-          <ul className="list">
-            <li className="item">© 2023 | All Rights Reserved |&#20;</li>
-            <li className="item">
-              Developed
+          <ul class="list">
+            <li class="item">© 2023 | All Rights Reserved |&#20;</li>
+            <li class="item">
+              Developed by <OpenModalTeamBtn>REACTive</OpenModalTeamBtn>
               <StyledIconHeart />
-              by <OpenModalTeamBtn>REACTive</OpenModalTeamBtn>
             </li>
           </ul>
         </StyledContainer>

@@ -1,4 +1,3 @@
-// import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
@@ -13,10 +12,7 @@ import { theme } from 'styles/theme';
 import { colors } from 'styles/colors';
 import GlobalStyles from 'styles/GlobalStyles/GlobalStyles.styled';
 import { Background, ThemeButton } from './Layout.styled';
-import {
-  // StyledFooterPusher,
-  StyledMain,
-} from 'components/common/FooterPusher.styled';
+import { StyledMain } from 'components/common/FooterPusher.styled';
 import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 import { Suspense } from 'react';
 import { ReactComponent as EllipsePink } from 'assets/bg/Ellipse_pink_2.svg';
@@ -39,10 +35,10 @@ export default function Layout() {
       {selectIsLoggedIn && (
         <>
           <Header />
+          <Sidebar />
           <ThemeButton onClick={handleThemeChange}>
             {themeTitle === 'light' ? <BsMoon /> : <BsSun />}
           </ThemeButton>
-          <Sidebar />
         </>
       )}
       <StyledMain>
