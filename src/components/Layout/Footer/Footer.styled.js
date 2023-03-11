@@ -22,6 +22,14 @@ export const StyledFooter = styled(StyledHeader)`
     font-size: ${p => p.theme.fontSizes.xs};
     color: ${({ theme }) => theme.color.text_dark};
 
+    &:first-of-type {
+      padding-top: 5px;
+    }
+
+    &:last-of-type {
+      margin: 0 auto;
+    }
+
     @media screen and (min-width: 768px) {
       font-size: ${p => p.theme.fontSizes.s};
     }
@@ -31,19 +39,19 @@ export const StyledFooter = styled(StyledHeader)`
 export const StyledIconHeart = styled(BsBalloonHeartFill)`
   @keyframes scaleHeart {
     0% {
-      transform: translateY(-2px);
+      transform: translateY(-0px);
     }
     25% {
-      transform: translateY(-7px);
+      transform: translateY(-5px);
     }
     50% {
-      transform: translateY(-2px);
+      transform: translateY(-0px);
     }
     75% {
-      transform: translateY(3px);
+      transform: translateY(5px);
     }
     100% {
-      transform: translateY(-2px);
+      transform: translateY(-0px);
     }
   }
 
@@ -51,6 +59,5 @@ export const StyledIconHeart = styled(BsBalloonHeartFill)`
   width: 20px;
   height: 20px;
   margin-left: 5px;
-  margin-right: 5px;
   animation: scaleHeart 2000ms linear infinite;
 `;
