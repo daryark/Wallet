@@ -11,6 +11,7 @@ import { getUserInfoRequest } from 'redux/auth/auth-operations';
 // import LoginPage from 'pages/LoginPage/LoginPage';
 
 import { Loader } from 'components';
+import { Toaster } from 'components/Toaster/Toaster';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const CurrencyPage = lazy(() => import('pages/CurrencyPage/CurrencyPage'));
@@ -29,16 +30,16 @@ export function App() {
   }, [dispatch]);
 
   return (
-    <Suspense fallback={<Loader />}>
-      <Routes>
-        <Route path={routes.HOME} element={<Layout />}>
-          <Route index element={<HomePage />} />
-          {isMobile && (
+
+    <>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path={routes.HOME} element={<Layout />}>
+            <Route index element={<HomePage />} />
             <Route
               path={routes.CURRENCY_PAGE}
               element={<CurrencyPage />}
             ></Route>
-          )}
           <Route path={routes.STATISTICS_PAGE} element={<StatisticsPage />} />
           <Route path="*" element={<Navigate to={routes.HOME} />} />
         </Route>
@@ -46,5 +47,6 @@ export function App() {
         <Route path={routes.LOGIN_PAGE} element={<LoginPage />} />
       </Routes>
     </Suspense>
+
   );
 }
