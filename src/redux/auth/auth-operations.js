@@ -17,7 +17,7 @@ export const registerRequest = createAsyncThunk(
 
       return user;
     } catch (error) {
-      return rejectWithValue(error.response.data.message);
+      return rejectWithValue(error.message);
     }
   }
 );

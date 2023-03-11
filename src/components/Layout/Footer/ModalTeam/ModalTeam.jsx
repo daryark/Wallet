@@ -5,7 +5,7 @@ import { toggleModalTeam } from 'redux/global/globalSlice';
 import { selectIsModalTeamOpen } from 'redux/global/global-selectors';
 import { ModalCloseBtn } from 'reusable';
 import ModalBackdrop from 'components/ModalBackdrop/ModalBackdrop';
-import { StyledModalTeam } from './ModalTeam.styled';
+import { ModalStyled } from './ModalTeam.styled';
 
 export function ModalTeam() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -20,7 +20,7 @@ export function ModalTeam() {
 
     let slider = setInterval(
       () => setCurrentIndex(prevState => prevState + 1),
-      2500
+      1500
     );
     return () => {
       clearInterval(slider);
@@ -48,6 +48,7 @@ export function ModalTeam() {
       id === currentIndex - 1 ||
       (currentIndex === 0 && id === creators.length)
     ) {
+      // console.log(currentIndex);
       position =
         currentIndex % 2 === 0 || !currentIndex
           ? 'lastSlideLeft'
@@ -60,30 +61,26 @@ export function ModalTeam() {
     <>
       {isModalOpen && (
         <ModalBackdrop randomModalClose={toggleModalTeam}>
-          <StyledModalTeam>
-            <ModalCloseBtn isRandomModalOpen={toggleModalTeam} />
-            <h2 className="title">This website creators</h2>
-            <ul className="list">
-              {creators.map(({ name, role, src, id }) => {
-                const position = sliderMove(id);
-                return (
-                  <li key={id} className={position}>
-                    <img
-                      className="image"
-                      src={src}
-                      alt={name}
-                      width="85"
-                      loading="lazy"
-                    />
-                    <div className="text__wrapper">
-                      <p>{name}</p>
-                      <p>{role}</p>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          </StyledModalTeam>
+          <ModalStyled>
+            <ModalCloseBtn type="button" isRandomModalOpen={toggleModalTeam} />
+            <h2>This website creators</h2>
+            <div>
+              <ul>
+                {creators.map(({ name, role, src, id }) => {
+                  const position = sliderMove(id);
+                  return (
+                    <li key={id} className={position}>
+                      <img src={src} alt={name} width="85" loading="lazy" />
+                      <div>
+                        <p>{name}</p>
+                        <p>{role}</p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </ModalStyled>
         </ModalBackdrop>
       )}
     </>

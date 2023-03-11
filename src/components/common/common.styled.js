@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  /* padding: 20px 20px 30px;
+  padding: 20px 20px 30px;
   @media screen and (min-width: 768px) {
     padding: 32px 32px 24px;
   }
 
   @media screen and (min-width: 1280px) {
     padding: 16px 16px 40px;
-  } */
+  }
 `;
 
 export const ContainerAuth = styled.div`

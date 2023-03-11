@@ -6,13 +6,14 @@ import { OpenModalTeamBtn } from './OpenModalTeamBtn/OpenModalTeamBtn';
 export function Footer() {
   return (
     <>
-      <StyledFooter as="footer">
+      <StyledFooter>
         <StyledContainer style={{ justifyContent: 'center' }}>
           <ul class="list">
             <li class="item">© 2023 | All Rights Reserved |&#20;</li>
             <li class="item">
-              Developed by <OpenModalTeamBtn>REACTive</OpenModalTeamBtn>
+              Developed
               <StyledIconHeart />
+              by <OpenModalTeamBtn>REACTive</OpenModalTeamBtn>
             </li>
           </ul>
         </StyledContainer>

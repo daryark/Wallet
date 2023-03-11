@@ -24,16 +24,12 @@ export const StyledCurrencyThumb = styled.div`
     left: 0;
     width: 100%;
   }
-  @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-top: 20px;
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+  @media screen and (min-width: 768px) {
     width: 336px;
     height: 182px;
   }
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+  @media (min-width: 1280px) {
     width: 393px;
     height: 331px;
     padding-top: 17px;

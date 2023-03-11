@@ -1,68 +1,20 @@
-import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
-import { DiagramWrapper } from './Diagram.styled';
-import { useSelector } from 'react-redux';
-import {
-  selectBalance,
-  selectSummary,
-} from '../../../redux/transactions/trans-selectors';
-import { categories } from '../categories';
-import { useEffect, useState } from 'react';
+import {ArcElement, Chart as ChartJS, Legend, Tooltip} from 'chart.js';
+import {Doughnut} from 'react-chartjs-2';
+import {DiagramWrapper} from './Diagram.styled';
+import {useSelector} from 'react-redux';
+import {selectBalance, selectSummary,} from '../../../redux/transactions/trans-selectors';
+import {categories} from '../categories';
+import {useEffect, useState} from 'react';
+import {useTheme} from "styled-components";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
-
-export const Diagram = () => {
-  // const balance = useSelector(selectBalance);
-  // const balanceText = `₴ ${balance.toFixed(2)}`;
-  // console.log(balance);
-
-  // const data = {
-  //   datasets: [
-  //     {
-  //       label: '# of Votes',
-  //       data: expenses.map(expense => expense.percent),
-  //       backgroundColor: expenses.map(expense => expense.color),
-  //       borderColor: expenses.map(expense => expense.color),
-  //       borderWidth: 1,
-  //     },
-  //   ],
-  // };
-  const [data, setData] = useState([]);
-  const summary = useSelector(selectSummary);
-
-  const balance = useSelector(selectBalance);
-  const balanceText = `₴ ${balance.toFixed(2)}`;
-
-  useEffect(() => {
-    const doughnutData = () => {
-      if (!summary) return [];
-      return [
-        {
-          data: summary.categoriesSummary.map(({ type, total }) => {
-            if (type === 'INCOME') return null;
-            return Math.abs(total);
-          }),
-          backgroundColor: summary.categoriesSummary.map(({ name, type }) => {
-            if (type === 'INCOME') return null;
-            return categories[name];
-          }),
-          borderColor: summary.categoriesSummary.map(({ name, type }) => {
-            if (type === 'INCOME') return null;
-            return categories[name];
-          }),
-          borderWidth: 1,
-        },
-      ];
-    };
-    setData(doughnutData());
-  }, [summary]);
-
-  const plugins = [
+const plugins = (theme, balanceText) => {
+  return [
     {
-      beforeDraw: function ({ width, height, ctx }) {
+      beforeDraw: function ({width, height, ctx}) {
         ctx.restore();
         ctx.font = 20 + 'px sans-serif';
         ctx.textBaseline = 'top';
+        ctx.fillStyle = '#4A56E2';
         const text = balanceText,
           textX = Math.round((width - ctx.measureText(text).width) / 2),
           textY = height / 2;
@@ -71,14 +23,58 @@ export const Diagram = () => {
       },
     },
   ];
+}
 
+export const Diagram = () => {
+  const [data, setData] = useState([]);
+  const [plugin, setPlugin] = useState([])
+  const summary = useSelector(selectSummary);
+
+  const balance = useSelector(selectBalance);
+  const balanceText = `₴ ${balance.toFixed(2)}`;
+
+  const theme = useTheme();
+
+  useEffect(() => {
+      setPlugin(plugins(theme, balanceText))
+      const doughnutData = () => {
+        if (!summary) return [];
+        return [
+          {
+            data: summary.categoriesSummary.map(({type, total}) => {
+              if (type === 'INCOME') return null;
+              return Math.abs(total);
+            }),
+            backgroundColor: summary.categoriesSummary.map(({name, type}) => {
+              if (type === 'INCOME') return null;
+              return categories[name];
+            }),
+            borderColor: summary.categoriesSummary.map(({name, type}) => {
+              if (type === 'INCOME') return null;
+              return categories[name];
+            }),
+            borderWidth: 1,
+          },
+        ];
+      };
+      setData(doughnutData());
+      ChartJS.register(ArcElement, Tooltip, Legend);
+      const chart = new ChartJS('myChart', {
+        type: 'doughnut',
+        data: {datasets: data},
+      });
+      return () => {
+        chart.destroy();
+      }
+    },
+    [summary, theme, balanceText]);
   return (
     <DiagramWrapper>
       {data.length && (
         <Doughnut
-          data={{ datasets: data }}
-          plugins={plugins}
+          data={{datasets: data}}
           type={'doughnut'}
+          plugins={plugin}
         />
       )}
     </DiagramWrapper>
