@@ -16,6 +16,8 @@ body {
   margin: 0;
   color: ${({ theme }) => theme.color.text_dark};
   background-color: ${({ theme }) => theme.color.bg_grey_main};
+}
+
   &::-webkit-scrollbar {
     width: 10px;
   }
@@ -34,23 +36,13 @@ body {
     background: ${({ theme }) => theme.color.accent};
     border-radius: 10px;
   }
-  /* background: ${({ theme }) => theme.color.bg_coverage}; */
-}
-/*   
- @media screen and (min-width: 768px) {
-    body {
-      background-repeat: no-repeat;
-    background-image: url(./assets/bg/Ellipse_pink.png),
-      url(./assets/bg/Ellipse_purple.png);
-    background-position: top 0px right 0px, bottom 0px left 0px;
-    }
-  } */
 
   #root {
     height: 100vh;
     max-width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto 1fr auto;
     grid-template-areas:
       'header header'
       'sidebar sidebar'

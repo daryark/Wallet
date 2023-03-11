@@ -9,22 +9,37 @@ export const ThemeButton = styled.button`
   top: 17px;
   right: 20px;
 `;
+export const StyledMain = styled.main`
+  grid-area: main;
+  /* max-width: ${({ theme }) => theme.breakpoints.sm}; */
+  margin: 0 auto;
+  margin-bottom: 32px;
+  padding: 0 20px;
 
-// export const Blur = styled.div`
-//   width: '100vw';
-//   height: '100vh';
-//   position: 'fixed';
-//   top: 0;
-//   backdrop-filter: blur(25px);
-//   filter: blur(25px);
-//   z-index: -1;
-// `;
+  @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+    max-width: ${({ theme }) => theme.breakpoints.sm};
+  }
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    max-width: ${({ theme }) => theme.breakpoints.md};
+    padding: 0;
+    /* пофиксить паддинг на таблет и десктоп */
+  }
+  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+    max-width: ${({ theme }) => theme.breakpoints.lg};
+  }
+`;
 
 export const Background = styled.div`
   & .ellipse_pink {
     position: fixed;
     transform: translateX(-50%);
     z-index: -1;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+      & path {
+        fill: none;
+      }
+    }
 
     @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
       left: calc(50% + 395px);
@@ -40,6 +55,12 @@ export const Background = styled.div`
     position: fixed;
     transform: translateX(-50%) rotate(15deg);
     z-index: -1;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+      & path {
+        fill: none;
+      }
+    }
 
     @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
       left: calc(50% - 237px);

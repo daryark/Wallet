@@ -12,7 +12,7 @@ import { theme } from 'styles/theme';
 import { colors } from 'styles/colors';
 import GlobalStyles from 'styles/GlobalStyles/GlobalStyles.styled';
 import { Background, ThemeButton } from './Layout.styled';
-import { StyledMain } from 'components/common/FooterPusher.styled';
+import { StyledMain } from 'components/Layout/Layout.styled';
 import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 import { Suspense } from 'react';
 import { ReactComponent as EllipsePink } from 'assets/bg/Ellipse_pink_2.svg';
