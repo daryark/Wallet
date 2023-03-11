@@ -15,10 +15,18 @@ export const ButtonClose = styled.button`
   background-color: transparent;
   color: ${({ theme }) => theme.color.text_dark};
   cursor: pointer;
-  transition: border ${({ theme }) => theme.transition};
+  transition: border ${({ theme }) => theme.transition},
+    scale ${({ theme }) => theme.transition};
+
+  & svg {
+    width: 16px;
+    height: auto;
+    fill: ${p => p.theme.color.text_dark};
+  }
 
   :hover {
     border: 1px solid rgb(191 189 189);
+    scale: 0.9;
   }
 `;
 

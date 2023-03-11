@@ -1,8 +1,14 @@
+import { ButtonCancelStyled } from './FormButtons.styled';
+
 const ButtonCancel = ({ handleCloseModal, text }) => {
   return (
-    <button type="button" className="cancel-btn" onClick={handleCloseModal}>
+    <ButtonCancelStyled
+      type="button"
+      className="cancel-btn"
+      onClick={handleCloseModal}
+    >
       {text}
-    </button>
+    </ButtonCancelStyled>
   );
 };
 
