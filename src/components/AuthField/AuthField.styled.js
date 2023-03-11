@@ -3,15 +3,17 @@ import { Field } from 'formik';
 import styled from 'styled-components';
 
 export const StyledField = styled(Field)`
-  display: flex;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  width: 280px;
   margin-bottom: 40px;
   padding-left: 54px;
-  width: 100%;
   height: 36px;
 
   outline: none;
   border: none;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid #e0e0e0;
 `;
 
 export const InputLabel = styled.label`
