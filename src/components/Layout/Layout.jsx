@@ -11,7 +11,7 @@ import { toggleThemeTitle } from 'redux/global/globalSlice';
 import { theme } from 'styles/theme';
 import { colors } from 'styles/colors';
 import GlobalStyles from 'styles/GlobalStyles/GlobalStyles.styled';
-import { Background, ThemeButton } from './Layout.styled';
+import { Background, Container, ThemeButton } from './Layout.styled';
 import { StyledMain } from 'components/Layout/Layout.styled';
 import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 import { Suspense } from 'react';
@@ -31,21 +31,19 @@ export default function Layout() {
   return (
     <ThemeProvider theme={normalizedTheme}>
       <GlobalStyles />
+      <ThemeButton onClick={handleThemeChange}>
+        {themeTitle === 'light' ? <BsMoon /> : <BsSun />}
+      </ThemeButton>
+      <Header />
 
-      {selectIsLoggedIn && (
-        <>
-          <Header />
-          <Sidebar />
-          <ThemeButton onClick={handleThemeChange}>
-            {themeTitle === 'light' ? <BsMoon /> : <BsSun />}
-          </ThemeButton>
-        </>
-      )}
+      <Sidebar />
+
       <StyledMain>
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </StyledMain>
+
       <Footer />
 
       <Background>

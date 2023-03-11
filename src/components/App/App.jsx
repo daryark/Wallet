@@ -34,7 +34,7 @@ export function App() {
       <Routes>
         <Route path={routes.HOME} element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path={routes.CURRENCY_PAGE} element={<CurrencyPage />}></Route>
+          <Route path={routes.CURRENCY_PAGE} element={<CurrencyPage />} />
           <Route path={routes.STATISTICS_PAGE} element={<StatisticsPage />} />
           <Route path="*" element={<Navigate to={routes.HOME} />} />
         </Route>
