@@ -34,12 +34,21 @@ export const StyledFooter = styled.footer`
 export const StyledIconHeart = styled(BsBalloonHeartFill)`
   @keyframes scaleHeart {
     0% {
+      transform: translateY(-0px);
+    }
+    25% {
+      transform: translateY(-5px);
       scale: 1;
     }
     50% {
+      transform: translateY(-0px);
       scale: 1.1;
     }
+    75% {
+      transform: translateY(5px);
+    }
     100% {
+      transform: translateY(-0px);
       scale: 1;
     }
   }
@@ -49,5 +58,5 @@ export const StyledIconHeart = styled(BsBalloonHeartFill)`
   height: 20px;
   margin-left: 5px;
   margin-right: 5px;
-  animation: scaleHeart 1000ms linear infinite;
+  animation: scaleHeart 2000ms linear infinite;
 `;
