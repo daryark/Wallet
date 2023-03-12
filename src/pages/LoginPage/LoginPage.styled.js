@@ -64,9 +64,9 @@ export const LoginText = styled.p`
   @media screen and (min-width: 768px) {
     font-family: 'Poppins';
     font-style: normal;
-    font-weight: 400;
+    font-weight: ${({ theme }) => theme.fontWeights.normal};
     font-size: 30px;
     line-height: 1.5;
-    color: #000000;
+    color: ${({ theme }) => theme.color.text_dark};
   }
 `;
