@@ -13,7 +13,7 @@ export function ThemeSwitcher() {
     dispatch(toggleThemeTitle(themeTitle));
   };
   return (
-    <ThemeButton onClick={handleThemeChange}>
+    <ThemeButton onClick={handleThemeChange} width={'24px'}>
       {themeTitle === 'light' ? <BsMoon /> : <BsSun />}
     </ThemeButton>
   );

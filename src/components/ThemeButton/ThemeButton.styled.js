@@ -3,10 +3,12 @@ import styled from 'styled-components';
 export const ThemeButton = styled.button`
   border: none;
   background-color: transparent;
-  color: ${({ theme }) => theme.color.text_dark};
-  /* z-index: 10; */
+  color: ${({ theme }) => theme.color.text_grey_balance};
 
-  /* position: absolute; */
-  /* top: 17px;
-  right: 20px; */
+  & svg {
+    display: inline-block;
+    margin-top: 5px;
+    width: 24px;
+    height: 24px;
+  }
 `;

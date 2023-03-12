@@ -4,6 +4,7 @@ import {
   StyledContainer,
   StyledInfo,
   Separator,
+  HeaderRight,
 } from './Header.styled';
 import { WalletLogo } from 'assets/icons';
 import { ExitButton } from './ExitButton';
@@ -30,12 +31,21 @@ export const Header = ({ normalizedTheme }) => {
           <WalletLogo width={isMobile ? 30 : 40} />
           Wallet
         </StyledLogo>
-        <StyledInfo>
-          <ThemeSwitcher />
-          {username}
-          {!isMobile && <Separator />}
-          <ExitButton onClick={toggleModal} />
-        </StyledInfo>
+
+        <HeaderRight>
+          <StyledInfo>
+            {username}
+            {!isMobile && <Separator />}
+            <ExitButton onClick={toggleModal} />
+          </StyledInfo>
+          {!isMobile && (
+            <StyledInfo>
+              <button>EN</button>
+              <Separator />
+              <ThemeSwitcher />
+            </StyledInfo>
+          )}
+        </HeaderRight>
       </StyledContainer>
       {modalOpen && <LogoutModal toggleModal={toggleModal} />}
     </StyledHeader>

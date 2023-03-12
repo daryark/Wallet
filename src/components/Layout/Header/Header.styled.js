@@ -98,3 +98,9 @@ export const Separator = styled.div`
   width: 1px;
   height: 30px;
 `;
+
+export const HeaderRight = styled.div`
+  display: flex;
+  gap: 50px;
+  padding-right: 10px;
+`;
