@@ -6,6 +6,7 @@ import { selectIsModalTeamOpen } from 'redux/global/global-selectors';
 import { ModalCloseBtn } from 'reusable';
 import ModalBackdrop from 'components/ModalBackdrop/ModalBackdrop';
 import { ModalStyled } from './ModalTeam.styled';
+import { SelectLink } from '../SelectLink/SelectLink';
 
 export function ModalTeam() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -64,6 +65,7 @@ export function ModalTeam() {
           <ModalStyled>
             <ModalCloseBtn type="button" isRandomModalOpen={toggleModalTeam} />
             <h2>This website creators</h2>
+            <SelectLink />
             <div>
               <ul>
                 {creators.map(({ name, role, src, id }) => {

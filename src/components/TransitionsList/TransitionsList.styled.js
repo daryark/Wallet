@@ -116,6 +116,7 @@ export const StyledBox = styled.div`
       border-end-start-radius: ${p => p.theme.radii.large};
     }
     & .ant-table-container table > thead > tr > :last-child {
+      display: none; //to fix border white line
       border-start-end-radius: ${p => p.theme.radii.large};
       border-end-end-radius: ${p => p.theme.radii.large};
     }

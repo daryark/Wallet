@@ -15,6 +15,7 @@ import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 
 import { selectError } from 'redux/global/global-selectors';
+import { GoogleRegister } from 'components/GoogleRegister/GoogleRegister';
 
 const initialValues = {
   email: '',
@@ -83,6 +84,7 @@ const LoginForm = () => {
           />
         </Form>
       </Formik>
+      <GoogleRegister />
     </LoginBox>
   );
 };
