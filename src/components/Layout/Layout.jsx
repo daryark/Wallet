@@ -13,7 +13,7 @@ import { theme } from 'styles/theme';
 import { colors } from 'styles/colors';
 import GlobalStyles from 'styles/GlobalStyles/GlobalStyles.styled';
 // import { Background, Container, ThemeButton } from './Layout.styled';
-import { StyledMain } from 'components/Layout/Layout.styled';
+import { StyledMain, ThemeButton } from 'components/Layout/Layout.styled';
 // import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 import { Suspense } from 'react';
 
