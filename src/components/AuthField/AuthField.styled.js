@@ -51,7 +51,7 @@ export const Label = styled.span`
 export const Input = styled.input`
   /* @include font-circe-small; */
   display: flex;
-
+  background-color: ${({ theme }) => theme.color.bg_white};
   padding-left: 50px;
   width: 100%;
   height: 36px;
