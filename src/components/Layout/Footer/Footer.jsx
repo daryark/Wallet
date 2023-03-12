@@ -11,7 +11,7 @@ export function Footer() {
           <ul className="list">
             <li className="item">© 2023 | All Rights Reserved |&#20;</li>
             <li className="item">
-              Developed by
+              <span>Developed by </span>
               <OpenModalTeamBtn> REACTive</OpenModalTeamBtn>
               <StyledIconHeart />
             </li>
