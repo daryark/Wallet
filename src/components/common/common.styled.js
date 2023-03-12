@@ -3,11 +3,13 @@ import styled from 'styled-components';
 export const Container = styled.div`
   padding: 20px 20px 30px;
   @media screen and (min-width: 768px) {
-    padding: 32px 32px 24px;
+    /* padding: 32px 32px 24px; */
+    padding: 0;
+    padding-top: 32px;
   }
 
   @media screen and (min-width: 1280px) {
-    padding: 16px 16px 40px;
+    padding: 46px 16px 0 69px;
   }
 `;
 
