@@ -154,7 +154,7 @@ export const StyledBox = styled.div`
       }
     }
     & .ant-table-thead > tr > th {
-      padding: 16px 20px;
+      padding: 16px 17px;
       color: ${p => p.theme.color.text_dark};
       background-color: ${p => p.theme.color.bg_white};
       border: none;
@@ -184,9 +184,9 @@ export const StyledBox = styled.div`
   & .ant-table-thead {
     width: 100%;
     position: sticky;
-    z-index: 100;
+    z-index: 1;
     font-size: 17px;
-    font-family: Circe;
+    font-family: 'Circe';
     font-weight: ${p => p.theme.fontWeights.bold};
     background-color: ${p => p.theme.color.bg_white};
 
