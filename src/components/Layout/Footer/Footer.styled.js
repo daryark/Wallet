@@ -1,23 +1,22 @@
 import { BsBalloonHeartFill } from 'react-icons/bs';
 import styled from 'styled-components';
+import { StyledHeader } from '../Header/Header.styled';
 
-export const StyledFooter = styled.footer`
+export const StyledFooter = styled(StyledHeader)`
   grid-area: footer;
-  display: flex;
+  /* display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
-  background-color: ${({ theme }) => theme.color.bg_white};
+  background-color: ${({ theme }) => theme.color.bg_white}; */
 
   .list {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: baseline;
+    text-align: center;
     padding: 0 auto;
 
     @media screen and (min-width: 768px) {
-      flex-direction: row;
+      display: flex;
+      align-items: baseline;
       gap: 0;
     }
   }
@@ -29,6 +28,11 @@ export const StyledFooter = styled.footer`
     @media screen and (min-width: 768px) {
       font-size: ${p => p.theme.fontSizes.s};
     }
+  }
+
+  &:last-of-type {
+    /* display: flex;
+    justify-content: center; */
   }
 `;
 

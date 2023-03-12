@@ -14,7 +14,7 @@ export const AddBtn = styled.button`
   border: none;
   cursor: pointer;
   color: ${p => p.theme.color.accent};
-  z-index: 1;
+  z-index: 50;
   transition: color ${p => p.theme.transition};
 
   div {

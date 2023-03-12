@@ -6,7 +6,15 @@ export const StyledHeader = styled.header`
   background-color: ${({ theme }) => theme.color.bg_white};
   position: relative;
   z-index: 2;
-  width: 100vw;
+  width: calc(100vw - (${({ theme }) => theme.space[5]}*2));
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    width: calc(100vw - (${({ theme }) => theme.space[7]}*2));
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+    width: calc(100vw - (${({ theme }) => theme.space[3]}*2));
+  }
 `;
 
 export const StyledContainer = styled.div`

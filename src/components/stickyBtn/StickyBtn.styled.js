@@ -11,7 +11,7 @@ export const BtnUp = styled.button`
   height: 44px;
   cursor: pointer;
 
-  z-index: 1;
+  z-index: 50;
 
   background-color: transparent;
   border: none;
