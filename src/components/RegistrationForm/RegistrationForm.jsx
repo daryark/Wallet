@@ -17,6 +17,7 @@ import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { selectError } from 'redux/global/global-selectors';
 import { GoogleRegister } from 'components/GoogleRegister/GoogleRegister';
+import { useTranslation } from 'react-i18next';
 
 const initialValues = {
   email: '',
@@ -29,6 +30,7 @@ const RegistrationForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const error = useSelector(selectError);
+  const { t } = useTranslation();
 
   useEffect(() => {
     toast.error(error);
@@ -57,32 +59,36 @@ const RegistrationForm = () => {
             icon={MdEmail}
             type="email"
             name="email"
-            placeholder="E-mail"
+            placeholder={t('registerFormEmail')}
           />
 
           <AuthField
             icon={MdLock}
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder={t('registerFormPassword')}
           />
 
           <AuthField
             icon={MdLock}
             type="password"
             name="confirmPass"
-            placeholder="Confirm password"
+            placeholder={t('registerFormConfirmPassword')}
           />
 
           <AuthField
             icon={MdAccountBox}
             type="text"
             name="name"
-            placeholder="First name"
+            placeholder={t('registerFormName')}
           />
 
-          <AuthButtonActive text="Register" />
-          <AuthButton text="Log in" path={'/login'} onClick={changeRoute} />
+          <AuthButtonActive text={t('registerFormSignupBtn')} />
+          <AuthButton
+            text={t('registerFormLoginBtn')}
+            path={'/login'}
+            onClick={changeRoute}
+          />
         </Form>
       </Formik>
       <GoogleRegister />
