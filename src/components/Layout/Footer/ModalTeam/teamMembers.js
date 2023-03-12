@@ -73,3 +73,69 @@ export const creators = [
     gh: 'https://github.com/ValeriaSarazhinska',
   },
 ];
+
+export const creatorsUkr = [
+  {
+    id: 1,
+    name: "Дар'я Ярковська",
+    role: 'Лідер Команди, Розробниця',
+    src: Dasha_Yarkovska,
+    gh: 'https://github.com/daryark',
+  },
+  {
+    id: 2,
+    name: 'Ірина Тищук',
+    role: 'Скрам Майстер, Розробниця',
+    src: Iryna_Tyshchuk,
+    gh: 'https://github.com/Iryna-Tyshchuk',
+  },
+  {
+    id: 3,
+    name: 'Галина Беспята',
+    role: 'Розробниця',
+    src: Halyna_Bespiata,
+    gh: 'https://github.com/GalinaBespiata',
+  },
+  {
+    id: 4,
+    name: 'Ірина Малій',
+    role: 'Розробниця',
+    src: Iryna_Malii,
+    gh: 'https://github.com/irynam23',
+  },
+  {
+    id: 5,
+    name: 'Анна Семенюк',
+    role: 'Розробниця',
+    src: Anna_Semeniuk,
+    gh: 'https://github.com/seannse',
+  },
+  {
+    id: 6,
+    name: 'Ірина Помешкіна',
+    role: 'Розробниця',
+    src: Iryna_Pomeshkina,
+    gh: 'https://github.com/aripluss',
+  },
+  {
+    id: 7,
+    name: 'Любов Фірсова',
+    role: 'Розробниця',
+    src: Liubov_Firsova,
+    gh: 'https://github.com/Firsache',
+  },
+  {
+    id: 8,
+    name: 'Юлія Нікіфорова',
+    role: 'Розробниця',
+    src: Yuliya_Nikiforova,
+    gh: 'https://github.com/YuliiaN',
+  },
+  {
+    id: 9,
+    name: 'Валерія Саражинська',
+    role: 'Розробниця',
+    src: Valeriia_Sarazhinska,
+    gh: 'https://github.com/ValeriaSarazhinska',
+  },
+];

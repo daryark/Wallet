@@ -1,0 +1,73 @@
+{
+  "registerFormEmail": "E-mail",
+  "registerFormPassword": "Password",
+  "registerFormConfirmPassword": "Confirm your password",
+  "registerFormName": "Your name",
+  "registerFormLoginBtn": "Log in",
+  "registerFormSignupBtn": "Sign up",
+
+  "headerExitBtn": "Exit",
+
+  "modalLogOutQuestionDear": "Dear",
+  "modalLogOutQuestion": "are you sure you want to exit the app?",
+  "modalLogOutCancelBtn": "No",
+  "modalLogOutAcceptBtn": "Yes",
+  "modalLogOutGoBackBtn": "Go back",
+  "modalLogOutLogOutBtn": "Log out",
+
+  "navHomeLink": "Home",
+  "navStatisticsLink": "Statistics",
+
+  "balanceTitle": "Your balance",
+
+  "currency": "Currency",
+  "currencyPurchase": "Purchase",
+  "currencySale": "Sale",
+
+  "statisticsTitle": "Statistics",
+  "statisticsCategory": "Category",
+  "statisticsAmounts": "Sum",
+  "statisticsOutcomes": "Expenses",
+  "statisticsIncomes": "Income",
+
+  "statisticsJanuary": "January",
+  "statisticsFebruary": "February",
+  "statisticsMarch": "March",
+  "statisticsApril": "April",
+  "statisticsMay": "May",
+  "statisticsJune": "June",
+  "statisticsJuly": "July",
+  "statisticsAugust": "August",
+  "statisticsSeptember": "September",
+  "statisticsOctober": "October",
+  "statisticsNovember": "November",
+  "statisticsDecember": "December",
+
+  "modalAddTransactionTitle": "Add transaction",
+  "modalAddTransactionErrorMsg": "The process of adding a transaction can take a little more time because of you add an old transaction.",
+  "modalAddTransactionIncomesType": "Income",
+  "modalAddTransactionOutcomesType": "Expense",
+  "modalAddTransactionNewCategory": "Name of the new category",
+  "modalAddTransactionComment": "Comment",
+  "modalAddTransactionCancelBtn": "Cancel",
+  "modalAddTransactionAcceptBtn": "Add",
+  "modalAddTransactionSelect": "Select a caterory",
+
+  "modalEditTransactionIncomesType": "Income",
+  "modalEditTransactionExpenseType": "Expense",
+
+  "transactionsTableDate": "Date",
+  "transactionsTableType": "Type",
+  "transactionsTableCategory": "Category",
+  "transactionsTableComment": "Comment",
+  "transactionsTableAmount": "Sum",
+  "transactionsTableBalance": "Balance",
+  "transactionsTableDelete": "Delete",
+  "transactionsTableEdit": "Edit",
+  "transactionsTableNoTransactions": "There are no transactions. Press the button and add your first one",
+
+  "modalTeamTitle": "This website creators",
+  "footerText": "All Rights Reserved",
+  "footerDeveloped": "Developed",
+  "footerBy": "by "
+}
