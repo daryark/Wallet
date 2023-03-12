@@ -8,9 +8,11 @@ import ModalBackdrop from 'components/ModalBackdrop/ModalBackdrop';
 import { ModalStyled } from './ModalTeam.styled';
 import { SelectLink } from '../SelectLink/SelectLink';
 
+
 export function ModalTeam() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const isModalOpen = useSelector(selectIsModalTeamOpen);
+
 
   const dispatch = useDispatch();
 
@@ -21,7 +23,7 @@ export function ModalTeam() {
 
     let slider = setInterval(
       () => setCurrentIndex(prevState => prevState + 1),
-      1500
+      2000
     );
     return () => {
       clearInterval(slider);
@@ -37,6 +39,8 @@ export function ModalTeam() {
 
     if (isModalOpen) document.addEventListener('keydown', onEscClose);
     return () => document.removeEventListener('keydown', onEscClose);
+    
+    ;
   }, [dispatch, isModalOpen]);
 
   function sliderMove(id) {
@@ -49,7 +53,6 @@ export function ModalTeam() {
       id === currentIndex - 1 ||
       (currentIndex === 0 && id === creators.length)
     ) {
-      // console.log(currentIndex);
       position =
         currentIndex % 2 === 0 || !currentIndex
           ? 'lastSlideLeft'
@@ -66,22 +69,21 @@ export function ModalTeam() {
             <ModalCloseBtn type="button" isRandomModalOpen={toggleModalTeam} />
             <h2>This website creators</h2>
             <SelectLink />
-            <div>
-              <ul>
-                {creators.map(({ name, role, src, id }) => {
-                  const position = sliderMove(id);
-                  return (
-                    <li key={id} className={position}>
-                      <img src={src} alt={name} width="85" loading="lazy" />
-                      <div>
-                        <p>{name}</p>
-                        <p>{role}</p>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+
+            <ul>
+              {creators.map(({ name, role, src, id }) => {
+                const position = sliderMove(id);
+                return (
+                  <li key={id} className={position}>
+                    <img src={src} alt={name} width="85" loading="lazy" />
+                    <div className="team__text">
+                      <p>{name}</p>
+                      <p>{role}</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
           </ModalStyled>
         </ModalBackdrop>
       )}
