@@ -70,13 +70,12 @@ const LoginForm = () => {
           />
           <AuthField
             icon={MdLock}
-            style={{ marginBottom: '42px' }}
             type="password"
             name="password"
             placeholder="Password"
           />
 
-          <AuthButtonActive text="Log in" />
+          <AuthButtonActive style={{ marginTop: '42px' }} text="Log in" />
           <AuthButton
             text="Register"
             path={'/register'}
