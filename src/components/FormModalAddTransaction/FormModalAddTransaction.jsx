@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field } from 'formik';
 import { date, object, string } from 'yup';
 import { useMediaQuery } from 'react-responsive';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 
 import { selectIsModalOpen } from 'redux/global/global-selectors';
 import { selectCategories } from 'redux/transactions/trans-selectors';
@@ -36,7 +36,7 @@ function FormModalAddTransaction({ handleCloseModal }) {
   const [transactionState, setTransactionState] = useState(defaultState);
   const isModalOpen = useSelector(selectIsModalOpen);
   const categories = useSelector(selectCategories);
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   const dispatch = useDispatch();
 

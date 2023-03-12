@@ -37,6 +37,7 @@ const initialGlobalState = {
   isModalTeamOpen: false,
   isEditModalOpen: false,
   isLogoutModalOpen: false,
+  language: false,
 };
 
 const globalSlice = createSlice({
@@ -57,6 +58,9 @@ const globalSlice = createSlice({
     },
     toggleLogoutModalOpen(state) {
       state.isLogoutModalOpen = !state.isLogoutModalOpen;
+    },
+    changeLanguage(state, { payload }) {
+      state.language = payload;
     },
   },
   extraReducers: builder => {
@@ -88,5 +92,5 @@ export const {
   toggleEditModal,
   toggleLogoutModalOpen,
 } = globalSlice.actions;
-export const { toggleThemeTitle } = globalSlice.actions;
+export const { toggleThemeTitle, changeLanguage } = globalSlice.actions;
 export const globalReducer = globalSlice.reducer;
