@@ -1,5 +1,4 @@
 import Select, { components } from 'react-select';
-import { useTheme } from 'styled-components';
 import { TfiAngleDown } from 'react-icons/tfi';
 
 import { selectStyles } from './SelectComponentStyles';
@@ -19,8 +18,6 @@ const SelectComponent = ({
   className,
   onChange,
 }) => {
-  const theme = useTheme();
-
   return (
     <Select
       name={field.name}
@@ -29,7 +26,7 @@ const SelectComponent = ({
       options={options}
       onChange={onChange}
       components={{ DropdownIndicator }}
-      styles={selectStyles(theme)}
+      styles={selectStyles()}
       openMenuOnFocus={true}
       isSearchable={true}
     />
