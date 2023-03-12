@@ -25,7 +25,7 @@ export const Header = ({ normalizedTheme }) => {
   return (
     <StyledHeader>
       <StyledContainer>
-        <StyledLogo>
+        <StyledLogo to="/">
           <WalletLogo width={isMobile ? 30 : 40} />
           Wallet
         </StyledLogo>

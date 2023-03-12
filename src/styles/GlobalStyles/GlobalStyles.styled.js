@@ -36,20 +36,12 @@ body {
   }
   /* background: ${({ theme }) => theme.color.bg_coverage}; */
 }
-/*   
- @media screen and (min-width: 768px) {
-    body {
-      background-repeat: no-repeat;
-    background-image: url(./assets/bg/Ellipse_pink.png),
-      url(./assets/bg/Ellipse_purple.png);
-    background-position: top 0px right 0px, bottom 0px left 0px;
-    }
-  } */
+
 
   #root {
     height: 100vh;
     display: grid;
-    grid-template-columns: 100%;
+    grid-template-rows: auto auto 1fr auto;
     grid-template-areas:
       'header header'
       'sidebar sidebar'
@@ -61,7 +53,6 @@ body {
     }
       @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
       max-width: ${({ theme }) => theme.breakpoints.md};
-      grid-template-columns: 100%;
       grid-template-rows: auto auto 1fr auto;
       
      
@@ -69,7 +60,7 @@ body {
     @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
       max-width: ${({ theme }) => theme.breakpoints.lg};
       grid-template-columns: 480px 800px;
-      grid-template-rows: auto 1fr auto;
+      grid-template-rows: auto 1fr auto ;
       grid-template-areas:
       'header header'
       'sidebar main'

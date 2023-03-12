@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledCurrencyThumb = styled.div`
   position: relative;
+  margin-top: 28px;
   background-color: #4a56e2;
   background-image: linear-gradient(
     rgba(255, 255, 255, 0.2) 50px,
@@ -25,6 +26,7 @@ export const StyledCurrencyThumb = styled.div`
     width: 100%;
   }
   @media screen and (min-width: 768px) {
+    margin-top: 32px;
     width: 336px;
     height: 182px;
   }

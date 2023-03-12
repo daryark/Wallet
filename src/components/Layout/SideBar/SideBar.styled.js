@@ -5,6 +5,10 @@ export const StyledAside = styled.aside`
   grid-area: sidebar;
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     display: flex;
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 0 32px 20px 32px;
   }
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: block;

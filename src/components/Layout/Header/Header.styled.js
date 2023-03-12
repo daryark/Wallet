@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
@@ -29,7 +30,7 @@ export const StyledContainer = styled.div`
   }
 `;
 
-export const StyledLogo = styled.div`
+export const StyledLogo = styled(NavLink)`
   font-family: Poppins;
   display: flex;
   align-items: center;

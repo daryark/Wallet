@@ -1,6 +1,5 @@
-import { MdHome } from 'react-icons/md';
+import { MdAttachMoney, MdHome } from 'react-icons/md';
 import { SlGraph } from 'react-icons/sl';
-import { TbCurrencyDollar } from 'react-icons/tb';
 import {
   StyledSideBar,
   StyledBtn,
@@ -33,7 +32,7 @@ export const Sidebar = () => {
           {isMobile && (
             <StyledBtn to={routes.CURRENCY_PAGE}>
               <StyledIcon>
-                <TbCurrencyDollar />
+                <MdAttachMoney />
               </StyledIcon>
             </StyledBtn>
           )}
