@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/auth-selectors';
 import { LogoutModal } from 'components/LogoutModal/LogoutModal';
 import { useState } from 'react';
+import { ThemeSwitcher } from 'components/ThemeButton/ThemeButton';
 
 export const Header = ({ normalizedTheme }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -30,6 +31,7 @@ export const Header = ({ normalizedTheme }) => {
           Wallet
         </StyledLogo>
         <StyledInfo>
+          <ThemeSwitcher />
           {username}
           {!isMobile && <Separator />}
           <ExitButton onClick={toggleModal} />
