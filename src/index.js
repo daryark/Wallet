@@ -13,7 +13,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <PersistGate loading={null} persistor={persistor}>
       <Provider store={store}>
-        <BrowserRouter basename="Wallet">
+        <BrowserRouter
+        // basename="Wallet"
+        >
           <App />
         </BrowserRouter>
       </Provider>
