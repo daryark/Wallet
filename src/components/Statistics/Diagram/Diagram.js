@@ -72,13 +72,18 @@ export const Diagram = () => {
 
   return (
     <DiagramWrapper>
-      {data.length && (
-        <Doughnut
-          data={{ datasets: data }}
-          type={'doughnut'}
-          plugins={plugin}
-        />
-      )}
+      {
+        data.length && (
+          <Doughnut
+            data={{ datasets: data }}
+            type={'doughnut'}
+            plugins={plugin}
+          />
+        )
+        // : (
+        //   // <p> You have no transactions in this period</p>
+        // )
+      }
     </DiagramWrapper>
   );
 };
