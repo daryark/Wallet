@@ -10,7 +10,6 @@ export const ThemeButton = styled.button`
   right: 20px;
 `;
 export const StyledMain = styled.main`
-  grid-area: main;
   max-width: ${({ theme }) => theme.breakpoints.sm};
   margin: 0 auto;
   margin-bottom: 32px;
@@ -71,5 +70,22 @@ export const Background = styled.div`
     background-color: ${({ theme }) => theme.color.bg_blur};
     backdrop-filter: blur(25px);
     z-index: -1;
+  }
+`;
+
+export const Container = styled.div`
+  grid-area: main;
+  margin: 0 auto;
+  max-width: ${({ theme }) => theme.breakpoints.sm};
+  padding: 0 20px;
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    max-width: ${({ theme }) => theme.breakpoints.md};
+    padding: 0 32px;
+  }
+  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+    max-width: ${({ theme }) => theme.breakpoints.lg};
+    /* padding: 0; */
+    display: flex;
+    /* grid-template-columns: 480px auto; */
   }
 `;

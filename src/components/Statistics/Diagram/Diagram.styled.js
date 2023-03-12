@@ -8,7 +8,7 @@ export const DiagramWrapper = styled.div`
     width: 336px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1280px) {
     width: 288px;
   }
 `;

@@ -15,6 +15,7 @@ import GlobalStyles from 'styles/GlobalStyles/GlobalStyles.styled';
 // import { Background, Container, ThemeButton } from './Layout.styled';
 import {
   Background,
+  Container,
   StyledMain,
   ThemeButton,
 } from 'components/Layout/Layout.styled';
@@ -41,13 +42,14 @@ export default function Layout() {
       </ThemeButton>
       <Header />
 
-      <Sidebar />
-
-      <StyledMain>
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
-      </StyledMain>
+      <Container>
+        <Sidebar />
+        <StyledMain>
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        </StyledMain>
+      </Container>
 
       <Footer />
 

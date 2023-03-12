@@ -17,6 +17,10 @@ export const BalanceBox = styled.div`
     text-transform: uppercase;
   }
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    margin-bottom: 32px;
+  }
+
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     margin-top: 28px;
     margin-right: 32px;

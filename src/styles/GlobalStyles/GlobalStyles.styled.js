@@ -41,32 +41,30 @@ body {
   #root {
     height: 100vh;
     display: grid;
-    grid-template-rows: auto auto 1fr auto;
+    grid-template-rows: auto 1fr auto ;
     grid-template-areas:
-      'header header'
-      'sidebar sidebar'
-      'main main'
-      'footer footer';
-@media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-      max-width: ${({ theme }) => theme.breakpoints.sm};
+      'header'
+      'main'
+      'footer ';
+/* @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+      max-width: ${({ theme }) => theme.breakpoints.sm}; */
       /* grid-template-columns: 100%; */
     }
-      @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-      max-width: ${({ theme }) => theme.breakpoints.md};
-      grid-template-rows: auto auto 1fr auto;
+      /* @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+      max-width: ${({ theme }) => theme.breakpoints.md}; */
+      /* grid-template-rows: auto auto 1fr auto; */
       
      
-    }
-    @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-      max-width: ${({ theme }) => theme.breakpoints.lg};
-      grid-template-columns: 480px 800px;
-      grid-template-rows: auto 1fr auto ;
-      grid-template-areas:
+    /* } */
+    /* @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+      max-width: ${({ theme }) => theme.breakpoints.lg}; */
+      /* grid-template-columns: 480px 800px; */
+      /* grid-template-areas:
       'header header'
       'sidebar main'
-      'footer footer';
-    }
-  }
+      'footer footer'; */
+    /* } */
+  /* } */
   
 p,
 h1,

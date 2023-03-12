@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledList = styled.ul`
   margin-bottom: ${p => p.theme.space[2]}px;
   min-width: 280px;
-  max-width: 500px;
+  max-width: 715px;
   border-radius: 10px;
   overflow: hidden;
   color: ${p => p.theme.color.text_dark};
