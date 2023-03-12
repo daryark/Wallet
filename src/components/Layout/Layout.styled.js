@@ -51,12 +51,6 @@ export const Background = styled.div`
     transform: translateX(-50%);
     z-index: -1;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-      & path {
-        fill: none;
-      }
-    }
-
     @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
       left: calc(50% + 395px);
       top: -110px;
@@ -72,12 +66,6 @@ export const Background = styled.div`
     transform: translateX(-50%) rotate(15deg);
     z-index: -1;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-      & path {
-        fill: none;
-      }
-    }
-
     @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
       left: calc(50% - 237px);
       bottom: -166px;
@@ -89,8 +77,8 @@ export const Background = styled.div`
   }
 
   & .blur {
-    width: '100vw';
-    height: '100vh';
+    width: 100vw;
+    height: 100vh;
     position: fixed;
     top: 0;
     left: 0;

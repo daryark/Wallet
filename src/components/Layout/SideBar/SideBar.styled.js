@@ -8,6 +8,9 @@ export const StyledAside = styled.aside`
   }
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: block;
+    border-right: 1px solid #e7e5f2;
+    box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
+      1px 0px 0px rgba(255, 255, 255, 0.6);
   }
 `;
 
