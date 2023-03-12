@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ModalStyled = styled.div`
   box-sizing: border-box;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
@@ -24,9 +24,9 @@ export const ModalStyled = styled.div`
   ul {
     position: relative;
     margin: 0 auto;
-    margin-top: 4rem;
+    margin-top: 2rem;
     width: 80vw;
-    height: 450px;
+    height: 400px;
     max-width: 100%;
 
     display: flex;
@@ -70,7 +70,7 @@ export const ModalStyled = styled.div`
     display: block;
   }
 
-  div {
+  .team__text {
     margin-top: 20px;
     font-size: ${p => p.theme.fontSizes.m};
     :not(:last-child) {
