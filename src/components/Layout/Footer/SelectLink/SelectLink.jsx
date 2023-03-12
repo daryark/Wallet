@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import SelectComponent from 'components/FormModalAddTransaction/SelectComponent/SelectComponent';
 import { creators } from '../ModalTeam/teamMembers';
+import { BsGithub } from 'react-icons/bs';
 
 export function SelectLink() {
   const [linkGh, setLinkGh] = useState('');
@@ -10,7 +11,12 @@ export function SelectLink() {
   };
   return (
     <>
-      <div className="category-wrapper">
+      <div
+        className="category-wrapper"
+        style={{
+          marginTop: '10px',
+        }}
+      >
         <label>
           <SelectComponent
             name="developers"
@@ -33,8 +39,10 @@ export function SelectLink() {
           fontSize: '18px',
           textDecorationLine: 'underline',
         }}
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        {linkGh ? linkGh : ''}
+        {linkGh ? linkGh : <BsGithub />}
       </a>
     </>
   );
