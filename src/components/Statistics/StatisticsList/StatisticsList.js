@@ -1,5 +1,6 @@
 import {
-  Cube, SelectWrapper,
+  Cube,
+  SelectWrapper,
   StatisticsItem,
   StatisticsList,
   StatisticsListTitle,
@@ -18,27 +19,15 @@ import { getTransactionSummary } from '../../../redux/transactions/trans-operati
 import { selectSummary } from '../../../redux/transactions/trans-selectors';
 import { categories } from '../categories';
 
-const monthData = [
-  {value: 0, label: 'January'},
-  {value: 1, label: 'February'},
-  {value: 2, label: 'March'},
-  {value: 3, label: 'April'},
-  {value: 4, label: 'May'},
-  {value: 5, label: 'June'},
-  {value: 6, label: 'July'},
-  {value: 7, label: 'August'},
-  {value: 8, label: 'September'},
-  {value: 9, label: 'October'},
-  {value: 10, label: 'November'},
-  {value: 11, label: 'December'},
-];
+import { useTranslation } from 'react-i18next';
+import { categoryCheck } from 'components/TransitionsList/categoryCheck';
+import { selectLanguage } from 'redux/global/global-selectors';
 
 const yearData = [
-  {value: 2021, label: '2021'},
-  {value: 2022, label: '2022'},
-  {value: 2023, label: '2023'},
+  { value: 2021, label: '2021' },
+  { value: 2022, label: '2022' },
+  { value: 2023, label: '2023' },
 ];
-
 
 const customStyles = theme => ({
   control: provided => ({
@@ -52,24 +41,24 @@ const customStyles = theme => ({
       borderColor: '#4A56E2',
     },
     '@media screen and (min-width: 768px)': {
-      width: '160px',},
+      width: '160px',
+    },
     '@media screen and (min-width: 1280px)': {
-      width: '182px',},
+      width: '182px',
+    },
     backgroundColor: theme.color.bg_white,
   }),
 
   option: (provided, state) => ({
     ...provided,
-    paddingLeft:'15px',
+    paddingLeft: '15px',
     backgroundColor: state.isSelected ? '#FFFFFF' : theme.color.bg_white_select,
     color: state.isSelected ? '#FFFFFF' : theme.text_dark,
-    width:'100%',
+    width: '100%',
     '&:hover': {
       backgroundColor: '#FFFFFF',
       color: '#4A56E2',
-
     },
-
   }),
   singleValue: provided => ({
     ...provided,
@@ -81,7 +70,6 @@ const customStyles = theme => ({
     '&:hover': {
       color: '#4A56E2',
     },
-
   }),
   indicatorSeparator: () => ({
     display: 'none',
@@ -93,13 +81,15 @@ const customStyles = theme => ({
     borderRadius: '30px',
     overflow: 'hidden',
     '@media screen and (min-width: 768px)': {
-      width: '160px',},
+      width: '160px',
+    },
     '@media screen and (min-width: 1280px)': {
-      width: '182px',}
+      width: '182px',
+    },
   }),
-placeholder: provided => ({
+  placeholder: provided => ({
     ...provided,
-  color: theme.text_dark,
+    color: theme.text_dark,
   }),
 });
 
@@ -109,7 +99,9 @@ const CategorySum = () => {
   const summary = useSelector(selectSummary);
   const dispatch = useDispatch();
   const theme = useTheme();
- const selectStyles = customStyles(theme)
+  const selectStyles = customStyles(theme);
+  const { t } = useTranslation();
+  const lan = useSelector(selectLanguage);
 
   useEffect(() => {
     dispatch(getTransactionSummary({ month: month + 1, year }));
@@ -122,55 +114,79 @@ const CategorySum = () => {
     setYear(value);
   };
 
+  const monthData = [
+    { value: 0, label: t('statisticsJanuary') },
+    { value: 1, label: t('statisticsFebruary') },
+    { value: 2, label: t('statisticsMarch') },
+    { value: 3, label: t('statisticsApril') },
+    { value: 4, label: t('statisticsMay') },
+    { value: 5, label: t('statisticsJune') },
+    { value: 6, label: t('statisticsJuly') },
+    { value: 7, label: t('statisticsAugust') },
+    { value: 8, label: t('statisticsSeptember') },
+    { value: 9, label: t('statisticsOctober') },
+    { value: 10, label: t('statisticsNovember') },
+    { value: 11, label: t('statisticsDecember') },
+  ];
+
   // const amount = parseFloat(positNum).toFixed(2);  ось так додати 2 цифри після крапки
 
   return (
     <StatisticsListWrapper>
       <SelectWrapper>
-      <Select
-        value={month}
-        onChange={handleMonthChange}
-        options={monthData}
-        placeholder={monthData[month].label}
-        styles={selectStyles}
-      />
-      <Select
-        value={year}
-        onChange={handleYearChange}
-        options={yearData}
-        placeholder={year}
-        styles={selectStyles}
-      />
+        <Select
+          value={month}
+          onChange={handleMonthChange}
+          options={monthData}
+          placeholder={monthData[month].label}
+          styles={selectStyles}
+        />
+        <Select
+          value={year}
+          onChange={handleYearChange}
+          options={yearData}
+          placeholder={year}
+          styles={selectStyles}
+        />
       </SelectWrapper>
       <StatisticsListTitle>
-        <p>Category</p>
-        <p>Sum</p>
+        <p>{t('statisticsCategory')}</p>
+        <p>{t('statisticsAmounts')}</p>
       </StatisticsListTitle>
       {summary && (
-      <StatisticsList>
-        {summary &&
-          summary.categoriesSummary.map(({ name, type, total }) => {
-            if (type === 'INCOME') return null;
-            return (
-              <StatisticsItem key={name}>
-                <Cube color={categories[name]} />
-                <StatisticsWrapper>
-                  <p>{name}</p> <Sum>{parseFloat(Math.abs(total)).toFixed(2)}</Sum>
-                </StatisticsWrapper>
-              </StatisticsItem>
-            );
-          })}
-      </StatisticsList>
-        )}
+        <StatisticsList>
+          {summary &&
+            summary.categoriesSummary.map(({ name, type, total }) => {
+              if (type === 'INCOME') return null;
+
+              let categoryName = '';
+              if (lan === 'en') {
+                categoryName = name;
+              }
+              if (lan === 'uk') {
+                categoryName = categoryCheck(name);
+              }
+              return (
+                <StatisticsItem key={name}>
+                  <Cube color={categories[name]} />
+                  <StatisticsWrapper>
+                    <p>{categoryName}</p>{' '}
+                    <Sum>{parseFloat(Math.abs(total)).toFixed(2)}</Sum>
+                  </StatisticsWrapper>
+                </StatisticsItem>
+              );
+            })}
+        </StatisticsList>
+      )}
       <StatisticsSumList>
         <StatisticsSumItem>
-          <p>Expenses</p>
+          <p>{t('statisticsOutcomes')}</p>
           <p style={{ color: theme.color.text_pink }}>
             {summary && parseFloat(Math.abs(summary.expenseSummary)).toFixed(2)}
           </p>
         </StatisticsSumItem>
         <StatisticsSumItem>
-          <p>Income</p>
+          <p>{t('statisticsIncomes')}</p>
           <p style={{ color: theme.color.accent }}>
             {summary && parseFloat(summary.incomeSummary).toFixed(2)}
           </p>

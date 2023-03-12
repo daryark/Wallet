@@ -18,6 +18,11 @@ import {
   getTransactionCategories,
 } from 'redux/transactions/trans-operations';
 
+import { selectLanguage } from 'redux/global/global-selectors';
+
+import { useTranslation } from 'react-i18next';
+import { categoryCheck, typeCheck } from './categoryCheck';
+
 import {
   StyledList,
   StyledItem,
@@ -38,7 +43,9 @@ export const TransactionsListMobile = () => {
   const categories = useSelector(selectCategories);
   const loading = useSelector(selectIsDeleting);
 
+  const { t } = useTranslation();
   const delId = useRef(null);
+  const lan = useSelector(selectLanguage);
 
   useEffect(() => {
     dispatch(fetchTransactions());
@@ -64,28 +71,44 @@ export const TransactionsListMobile = () => {
             const sum = parseFloat(positNum).toFixed(2);
 
             const getCategory = categories?.find(c => c.id === categoryId);
-            const categoryName = getCategory?.name;
+            const catN = getCategory?.name;
+            let categoryName = '';
+            if (lan === true) {
+              categoryName = catN;
+            }
+            if (lan === false) {
+              categoryName = categoryCheck(catN);
+            }
+            // потрібно замінити умову, щоб lan === 'ru'
+
+            let transType = '';
+            if (lan === true) {
+              transType = type;
+            }
+            if (lan === false) {
+              transType = typeCheck(type);
+            }
 
             return (
               <StyledList key={id}>
                 <StyledItem type={type}>
-                  <StyledSpan>Date</StyledSpan>
+                  <StyledSpan>{t('transactionsTableDate')}</StyledSpan>
                   {date}
                 </StyledItem>
                 <StyledItem type={type}>
-                  <StyledSpan>Type</StyledSpan>
-                  {type}
+                  <StyledSpan>{t('transactionsTableType')}</StyledSpan>
+                  {transType}
                 </StyledItem>
                 <StyledItem type={type}>
-                  <StyledSpan>Category</StyledSpan>
+                  <StyledSpan>{t('transactionsTableCategory')}</StyledSpan>
                   {categoryName}
                 </StyledItem>
                 <StyledItem type={type}>
-                  <StyledSpan>Comment</StyledSpan>
+                  <StyledSpan>{t('transactionsTableComment')}</StyledSpan>
                   {capitalizeFirstLetter(comment)}
                 </StyledItem>
                 <StyledItem type={type}>
-                  <StyledSpan>Sum</StyledSpan>
+                  <StyledSpan>{t('transactionsTableAmount')}</StyledSpan>
                   <StyledSum type={type}>{sum}</StyledSum>
                 </StyledItem>
                 <StyledItem type={type}>
@@ -93,7 +116,11 @@ export const TransactionsListMobile = () => {
                     disabled={loading && id === delId.current}
                     onClick={() => handleDeleteTransition(id, balance, amount)}
                   >
-                    {loading && id === delId.current ? <LoaderDel /> : 'Delete'}
+                    {loading && id === delId.current ? (
+                      <LoaderDel />
+                    ) : (
+                      t('transactionsTableDelete')
+                    )}
                   </StyledDeleteBtn>
                   <StyledEditBtn
                     onClick={() =>
@@ -108,7 +135,7 @@ export const TransactionsListMobile = () => {
                     }
                   >
                     <RiEdit2Line size={14} />
-                    Edit
+                    {t('transactionsTableEdit')}
                   </StyledEditBtn>
                 </StyledItem>
               </StyledList>
@@ -117,8 +144,7 @@ export const TransactionsListMobile = () => {
         )
       ) : (
         <StyledNoTransactionDiv>
-          There aren't any transactions. Press the button and add your first
-          one!
+          <div>{t('transactionsTableNoTransactions')}</div>
         </StyledNoTransactionDiv>
       )}
     </>

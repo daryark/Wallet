@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
+import { useTranslation } from 'react-i18next';
 
 import { Loader } from './Loader';
 import { fetchCurrencyMonoBank } from 'redux/monobank/mono-operations';
@@ -26,6 +27,7 @@ const oneHour = 3600000;
 
 function CurrencyPage() {
   const isMobile = useMediaQuery({ query: '(min-width: 370px)' });
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
   const currency = useSelector(selectCurrency);
@@ -57,9 +59,9 @@ function CurrencyPage() {
         <StyledCurrencyTable>
           <StyledCurrencyThead>
             <StyledCurrencyTr>
-              <th>Currency</th>
-              <th>Purchase</th>
-              <th>Sale</th>
+              <th>{t('currency')}</th>
+              <th>{t('currencyPurchase')}</th>
+              <th>{t('currencySale')}</th>
             </StyledCurrencyTr>
           </StyledCurrencyThead>
           {loading ? (

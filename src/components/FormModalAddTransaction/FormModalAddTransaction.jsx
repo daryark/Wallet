@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field } from 'formik';
 import { date, object, string } from 'yup';
 import { useMediaQuery } from 'react-responsive';
-// import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 import { selectIsModalOpen } from 'redux/global/global-selectors';
 import { selectCategories } from 'redux/transactions/trans-selectors';
@@ -21,7 +21,6 @@ import {
   FormModalAddTransactionStyled,
 } from './FormModalAddTransaction.styled';
 import ButtonSubmit from './ButtonsModalAddTransaction/ButtonSubmit';
-// import { ButtonClose } from 'reusable/ModalCloseBtn/ModalCloseBtn.styled';
 import ButtonCancel from './ButtonsModalAddTransaction/ButtonCancel';
 
 const defaultState = {
@@ -36,7 +35,7 @@ function FormModalAddTransaction({ handleCloseModal }) {
   const [transactionState, setTransactionState] = useState(defaultState);
   const isModalOpen = useSelector(selectIsModalOpen);
   const categories = useSelector(selectCategories);
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
 
@@ -125,7 +124,7 @@ function FormModalAddTransaction({ handleCloseModal }) {
       <FormModalAddTransactionStyled className="modal-form">
         <div className="switcher" style={{ position: 'relative' }}>
           <span className={transactionState.type === 'INCOME' ? 'income' : ''}>
-            Income
+            {t('modalAddTransactionIncomesType')}
           </span>
           <label className="switcher__box">
             <Field
@@ -140,7 +139,7 @@ function FormModalAddTransaction({ handleCloseModal }) {
           <span
             className={transactionState.type === 'EXPENSE' ? 'expense' : ''}
           >
-            Expense
+            {t('modalAddTransactionOutcomesType')}
           </span>
         </div>
         <div
@@ -154,7 +153,7 @@ function FormModalAddTransaction({ handleCloseModal }) {
             <Field
               as="select"
               name="category"
-              placeholder="Select a category"
+              placeholder={t('modalAddTransactionSelect')}
               component={SelectComponent}
               options={(transactionState.type === 'EXPENSE'
                 ? optionsExpense
@@ -201,12 +200,18 @@ function FormModalAddTransaction({ handleCloseModal }) {
           as="textarea"
           rows={isMobile ? '5' : '1'}
           type="text"
-          placeholder="Comment"
+          placeholder={t('modalAddTransactionComment')}
           name="comment"
         />
         <div className="btns-wrapper">
-          <ButtonSubmit className="submit-btn" text="ADD" />
-          <ButtonCancel handleCloseModal={handleCloseModal} text={'CANCEL'} />
+          <ButtonSubmit
+            className="submit-btn"
+            text={t('modalAddTransactionAcceptBtn')}
+          />
+          <ButtonCancel
+            handleCloseModal={handleCloseModal}
+            text={t('modalAddTransactionCancelBtn')}
+          />
         </div>
       </FormModalAddTransactionStyled>
     </Formik>
