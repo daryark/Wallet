@@ -34,7 +34,7 @@ function FormModalEditTransaction({ handleCloseModal }) {
   );
 
   const dispatch = useDispatch();
-  let oldAmount = transactionData?.amount ?? 0;
+  let oldAmount = transactionData.amount;
 
   const handleSubmit = ({ key, amount, comment }) => {
     amount = Number(amount);
