@@ -9,8 +9,8 @@ export const StyledAuthButton = styled.button`
 
   /* border: 1px solid black; */
   border-radius: 20px;
-  background: #ffffff;
-  border: 1px solid #4a56e2;
+  background: ${({ theme }) => theme.color.bg_white};
+  border: 1px solid ${({ theme }) => theme.color.text_blue};
 
   text-align: center;
   text-transform: uppercase;
@@ -24,7 +24,7 @@ export const StyledAuthButton = styled.button`
   letter-spacing: 0.1em;
   text-transform: uppercase;
 
-  color: #4a56e2;
+  color: ${({ theme }) => theme.color.text_blue};
 
   cursor: pointer;
 

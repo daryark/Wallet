@@ -10,7 +10,7 @@ export const StyledAuthButtonActive = styled.button`
   border-radius: 20px;
   border: none;
 
-  background: #24cca7;
+  background: ${({ theme }) => theme.color.accent};
 
   /* font-family: 'Circe'; */
   font-style: normal;
@@ -21,7 +21,7 @@ export const StyledAuthButtonActive = styled.button`
   letter-spacing: 0.1em;
   text-transform: uppercase;
 
-  color: #ffffff;
+  color: ${({ theme }) => theme.color.bg_white};
 
   text-align: center;
   text-transform: uppercase;
