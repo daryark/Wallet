@@ -30,8 +30,6 @@ import {
 import { getDate } from 'helpers/getDate';
 import { capitalizeFirstLetter } from 'helpers/capitalize';
 import { LoaderDel } from './LoaderDelBtn';
-import { ModalEditTransaction } from 'components/ModalEditTransaction/ModalEditTransaction';
-import { selectIsEditModalOpen } from 'redux/global/global-selectors';
 
 export const TransactionsListMobile = () => {
   const dispatch = useDispatch();
@@ -39,7 +37,6 @@ export const TransactionsListMobile = () => {
   const transactions = useSelector(selectTransactions);
   const categories = useSelector(selectCategories);
   const loading = useSelector(selectIsDeleting);
-  const isEditModalOpen = useSelector(selectIsEditModalOpen);
 
   const delId = useRef(null);
 
@@ -124,7 +121,6 @@ export const TransactionsListMobile = () => {
           one!
         </StyledNoTransactionDiv>
       )}
-      {isEditModalOpen && <ModalEditTransaction />}
     </>
   );
 };

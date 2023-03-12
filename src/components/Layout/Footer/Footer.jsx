@@ -6,7 +6,7 @@ import { OpenModalTeamBtn } from './OpenModalTeamBtn/OpenModalTeamBtn';
 export function Footer() {
   return (
     <>
-      <StyledFooter as="footer">
+      <StyledFooter>
         <StyledContainer style={{ justifyContent: 'center' }}>
           <ul className="list">
             <li className="item">© 2023 | All Rights Reserved |&#20;</li>

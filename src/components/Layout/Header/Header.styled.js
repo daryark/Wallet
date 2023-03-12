@@ -12,19 +12,19 @@ export const StyledContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 480px;
+  width: 320px;
   height: 60px;
   padding: 0 20px;
   margin: 0 auto;
 
   @media screen and (min-width: 768px) {
-    max-width: 768px;
+    width: 768px;
     height: 80px;
     padding: 0 32px;
   }
 
   @media screen and (min-width: 1280px) {
-    max-width: 1280px;
+    width: 1280px;
     padding: 0 16px;
   }
 `;
