@@ -83,9 +83,9 @@ const RegistrationForm = () => {
             placeholder={t('registerFormName')}
           />
 
-          <AuthButtonActive text={t('registerFormLoginBtn')} />
+          <AuthButtonActive text={t('registerFormSignupBtn')} />
           <AuthButton
-            text={t('registerFormSignupBtn')}
+            text={t('registerFormLoginBtn')}
             path={'/login'}
             onClick={changeRoute}
           />
