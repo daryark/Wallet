@@ -13,6 +13,7 @@ export default function LangCheckbox() {
 
   const lang = useSelector(selectLanguage);
   const handleCheckbox = e => {
+    console.log(e.target);
     return e.target.checked === true
       ? (dispatch(changeLanguage(true)), i18n.changeLanguage('en'))
       : (dispatch(changeLanguage(false)), i18n.changeLanguage('ua'));

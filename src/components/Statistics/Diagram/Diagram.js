@@ -7,10 +7,9 @@ import {
   selectSummary,
 } from '../../../redux/transactions/trans-selectors';
 import { categories } from '../categories';
-import { useEffect, useState } from 'react';
-import { useTheme } from 'styled-components';
+import { useMemo } from 'react';
 
-const plugins = (theme, balanceText) => {
+const plugins = balanceText => {
   return [
     {
       beforeDraw: function ({ width, height, ctx }) {
@@ -28,57 +27,63 @@ const plugins = (theme, balanceText) => {
   ];
 };
 
+// useEffect(() => {
+// setPlugin(plugins(theme, balanceText));
+const doughnutData = summary => {
+  if (!summary) return [];
+  return [
+    {
+      data: summary.categoriesSummary.map(({ type, total }) => {
+        if (type === 'INCOME') return null;
+        return Math.abs(total);
+      }),
+      backgroundColor: summary.categoriesSummary.map(({ name, type }) => {
+        if (type === 'INCOME') return null;
+        return categories[name];
+      }),
+      borderColor: summary.categoriesSummary.map(({ name, type }) => {
+        if (type === 'INCOME') return null;
+        return categories[name];
+      }),
+      borderWidth: 1,
+    },
+  ];
+};
+// setData(doughnutData());
+ChartJS.register(ArcElement, Tooltip, Legend);
+// const chart = new ChartJS('myChart', {
+//   type: 'doughnut',
+//   data: { datasets: data },
+// });
+// return () => {
+//   chart.destroy();
+// };
+// }, [summary, theme, balanceText, data]);
 export const Diagram = () => {
-  const [data, setData] = useState([]);
-  const [plugin, setPlugin] = useState([]);
+  // const [data, setData] = useState([]);
+  // const [plugin, setPlugin] = useState([]);
   const summary = useSelector(selectSummary);
-
   const balance = useSelector(selectBalance);
   const balanceText = `₴ ${balance.toFixed(2)}`;
+  const plugin = plugins(balanceText);
 
-  const theme = useTheme();
+  const data = useMemo(() => doughnutData(summary), [summary]);
+  // const theme = useTheme();
 
-  useEffect(() => {
-    setPlugin(plugins(theme, balanceText));
-    const doughnutData = () => {
-      if (!summary) return [];
-      return [
-        {
-          data: summary.categoriesSummary.map(({ type, total }) => {
-            if (type === 'INCOME') return null;
-            return Math.abs(total);
-          }),
-          backgroundColor: summary.categoriesSummary.map(({ name, type }) => {
-            if (type === 'INCOME') return null;
-            return categories[name];
-          }),
-          borderColor: summary.categoriesSummary.map(({ name, type }) => {
-            if (type === 'INCOME') return null;
-            return categories[name];
-          }),
-          borderWidth: 1,
-        },
-      ];
-    };
-    setData(doughnutData());
-    ChartJS.register(ArcElement, Tooltip, Legend);
-    const chart = new ChartJS('myChart', {
-      type: 'doughnut',
-      data: { datasets: data },
-    });
-    return () => {
-      chart.destroy();
-    };
-  }, [summary, theme, balanceText, data]);
   return (
     <DiagramWrapper>
-      {data.length && (
-        <Doughnut
-          data={{ datasets: data }}
-          type={'doughnut'}
-          plugins={plugin}
-        />
-      )}
+      {
+        data.length && (
+          <Doughnut
+            data={{ datasets: data }}
+            type={'doughnut'}
+            plugins={plugin}
+          />
+        )
+        // : (
+        //   // <p> You have no transactions in this period</p>
+        // )
+      }
     </DiagramWrapper>
   );
 };
