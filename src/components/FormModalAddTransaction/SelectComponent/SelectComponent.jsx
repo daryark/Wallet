@@ -13,17 +13,17 @@ const DropdownIndicator = props => {
 };
 
 const SelectComponent = ({
-  field,
+  name,
   options,
   placeholder = 'Select',
-  className,
-  onChange,
+  className = '',
+  onChange = () => {},
 }) => {
   const theme = useTheme();
 
   return (
     <Select
-      name={field.name}
+      name={name}
       className={className}
       placeholder={placeholder}
       options={options}
@@ -31,6 +31,7 @@ const SelectComponent = ({
       components={{ DropdownIndicator }}
       styles={selectStyles(theme)}
       openMenuOnFocus={true}
+      closeMenuOnSelect={true}
       isSearchable={true}
     />
   );

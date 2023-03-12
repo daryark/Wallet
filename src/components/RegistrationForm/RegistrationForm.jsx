@@ -16,6 +16,7 @@ import AuthLogo from 'components/AuthLogo/AuthLogo';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { selectError } from 'redux/global/global-selectors';
+import { GoogleRegister } from 'components/GoogleRegister/GoogleRegister';
 
 const initialValues = {
   email: '',
@@ -84,6 +85,7 @@ const RegistrationForm = () => {
           <AuthButton text="Log in" path={'/login'} onClick={changeRoute} />
         </Form>
       </Formik>
+      <GoogleRegister />
     </RegisterBox>
   );
 };
