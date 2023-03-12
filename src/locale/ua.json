@@ -26,7 +26,7 @@
 
   "statisticsTitle": "Статистика",
   "statisticsCategory": "Категорія",
-  "statisticsAmounts": "Cумма",
+  "statisticsAmounts": "Cума",
   "statisticsOutcomes": "Витрати",
   "statisticsIncomes": "Дохід",
 
@@ -63,7 +63,7 @@
   "transactionsTableAmount": "Кількість",
   "transactionsTableBalance": "Баланс",
   "transactionsTableDelete": "Видалити",
-  "transactionsTableEdit": "Коригувати",
+  "transactionsTableEdit": "Редагувати",
   "transactionsTableNoTransactions": "Наразі у вас немає транзакцій. Натисність кнопку та додайте свою першу до застосунку!",
 
   "modalTeamTitle": "Творці цього застосунку",
