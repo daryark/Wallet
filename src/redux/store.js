@@ -21,7 +21,7 @@ const persistedGlobalReducer = persistReducer(
     key: 'theme',
     version: 1,
     storage,
-    whitelist: ['themeTitle'],
+    whitelist: ['themeTitle', 'language'],
   },
   globalReducer
 );

@@ -14,6 +14,7 @@ import { selectUser } from 'redux/auth/auth-selectors';
 import { LogoutModal } from 'components/LogoutModal/LogoutModal';
 import { useState } from 'react';
 import { ThemeSwitcher } from 'components/ThemeButton/ThemeButton';
+import LangCheckbox from 'components/LangChekbox/LangChekbox';
 
 export const Header = ({ normalizedTheme }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -40,7 +41,7 @@ export const Header = ({ normalizedTheme }) => {
           </StyledInfo>
           {!isMobile && (
             <StyledInfo>
-              <button>EN</button>
+              <LangCheckbox />
               <Separator />
               <ThemeSwitcher />
             </StyledInfo>
