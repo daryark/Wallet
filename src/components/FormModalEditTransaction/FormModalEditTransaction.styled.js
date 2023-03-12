@@ -49,7 +49,7 @@ export const FormModalEditTransactionStyled = styled(Form)`
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: #fff;
+      background-color: ${({ theme }) => theme.color.bg_white};
       -webkit-transition: 0.4s;
       border-radius: 30px;
       border: 1px solid #e0e0e0;
@@ -87,6 +87,7 @@ export const FormModalEditTransactionStyled = styled(Form)`
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #e0e0e0;
+    color: ${({ theme }) => theme.color.text_dark};
 
     &:focus {
       outline: none;
@@ -165,13 +166,13 @@ export const FormModalEditTransactionStyled = styled(Form)`
 
   & .submit-btn {
     border: 1px solid transparent;
-    color: #fff;
+    color: ${({ theme }) => theme.color.bg_white};
     background-color: #24cca7;
   }
 
   & .cancel-btn {
     color: #4a56e2;
     border: 1px solid #4a56e2;
-    background-color: #fff;
+    background-color: transparent;
   }
 `;

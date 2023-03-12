@@ -24,8 +24,8 @@ export const ModalWrapper = styled.div`
   width: 100vw;
   min-height: calc(100vh - 60px);
   padding: 20px;
-  background-color: #fff;
-  z-index: 1;
+  background-color: ${({ theme }) => theme.color.bg_white};
+  z-index: 10;
 
   @media screen and (min-width: 768px) {
     top: 50%;
