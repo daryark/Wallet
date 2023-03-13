@@ -5,7 +5,7 @@ export const Loader = () => {
     <RotatingSquare
       height="100"
       width="100"
-      color="#FFFFFF"
+      color="#a590f7"
       ariaLabel="rotating-square-loading"
       strokeWidth="4"
       wrapperStyle={{}}
