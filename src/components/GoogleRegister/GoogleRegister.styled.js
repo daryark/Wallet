@@ -4,10 +4,11 @@ export const StyledGoogleRegister = styled.div`
   display: flex;
   gap: 10px;
   justify-content: center;
-  margin-top: 30px;
+  margin: 10px 0;
   .google__text {
     margin: 0;
     font-size: 14px;
+
     @media screen and (min-width: 768px) {
       font-size: 18px;
     }
@@ -19,7 +20,7 @@ export const StyledGoogleRegister = styled.div`
     font-size: 14px;
     text-align: center;
     gap: 5px;
-    color: black;
+    color: ${({ theme }) => theme.color.text_dark};
     @media screen and (min-width: 768px) {
       font-size: 18px;
     }

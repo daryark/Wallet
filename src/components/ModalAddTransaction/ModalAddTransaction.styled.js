@@ -25,7 +25,7 @@ export const ModalAddTransactionStyled = styled.div`
   }
 
   & .modal__title {
-    font-family: 'Poppins';
+    font-family: 'Poppins', 'Montserrat Alternates';
     text-align: center;
     font-weight: ${p => p.theme.fontWeights.normal};
     font-size: ${p => p.theme.fontSizes.l};

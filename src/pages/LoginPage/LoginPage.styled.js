@@ -62,7 +62,7 @@ export const BgContainer = styled.div`
 `;
 export const LoginText = styled.p`
   @media screen and (min-width: 768px) {
-    font-family: 'Poppins';
+    font-family: 'Poppins', 'Montserrat Alternates';
     font-style: normal;
     font-weight: ${({ theme }) => theme.fontWeights.normal};
     font-size: 30px;

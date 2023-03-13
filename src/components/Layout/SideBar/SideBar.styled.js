@@ -34,7 +34,7 @@ export const StyledSideBar = styled.nav`
 `;
 
 export const StyledBtn = styled(NavLink)`
-  font-family: Poppins;
+  font-family: 'Poppins', 'Montserrat Alternates';
   display: flex;
   gap: 20px;
   border: none;

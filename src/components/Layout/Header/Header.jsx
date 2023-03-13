@@ -40,7 +40,7 @@ export const Header = ({ normalizedTheme }) => {
             <ExitButton onClick={toggleModal} />
           </StyledInfo>
           {!isMobile && (
-            <StyledInfo>
+            <StyledInfo style={{ position: 'relative', gap: '3px' }}>
               <LangCheckbox />
               <Separator />
               <ThemeSwitcher />

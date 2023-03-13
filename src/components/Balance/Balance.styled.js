@@ -36,7 +36,7 @@ export const BalanceBox = styled.div`
 
 export const BalanceSum = styled.div`
   color: ${p => p.theme.color.text_dark};
-  font-family: 'Poppins';
+  font-family: 'Poppins', 'Montserrat Alternates';
   font-weight: ${p => p.theme.fontWeights.bold};
   font-size: ${p => p.theme.fontSizes.xl};
 `;
