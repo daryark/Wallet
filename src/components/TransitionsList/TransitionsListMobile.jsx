@@ -18,7 +18,10 @@ import {
   getTransactionCategories,
 } from 'redux/transactions/trans-operations';
 
-import { selectLanguage } from 'redux/global/global-selectors';
+import {
+  selectIsEditModalOpen,
+  selectLanguage,
+} from 'redux/global/global-selectors';
 
 import { useTranslation } from 'react-i18next';
 import { categoryCheck, typeCheck } from './categoryCheck';
@@ -35,6 +38,7 @@ import {
 import { getDate } from 'helpers/getDate';
 import { capitalizeFirstLetter } from 'helpers/capitalize';
 import { LoaderDel } from './LoaderDelBtn';
+import { ModalEditTransaction } from 'components/ModalEditTransaction/ModalEditTransaction';
 
 export const TransactionsListMobile = () => {
   const dispatch = useDispatch();
@@ -90,55 +94,60 @@ export const TransactionsListMobile = () => {
             }
 
             return (
-              <StyledList key={id}>
-                <StyledItem type={type}>
-                  <StyledSpan>{t('transactionsTableDate')}</StyledSpan>
-                  {date}
-                </StyledItem>
-                <StyledItem type={type}>
-                  <StyledSpan>{t('transactionsTableType')}</StyledSpan>
-                  {transType}
-                </StyledItem>
-                <StyledItem type={type}>
-                  <StyledSpan>{t('transactionsTableCategory')}</StyledSpan>
-                  {categoryName}
-                </StyledItem>
-                <StyledItem type={type}>
-                  <StyledSpan>{t('transactionsTableComment')}</StyledSpan>
-                  {capitalizeFirstLetter(comment)}
-                </StyledItem>
-                <StyledItem type={type}>
-                  <StyledSpan>{t('transactionsTableAmount')}</StyledSpan>
-                  <StyledSum type={type}>{sum}</StyledSum>
-                </StyledItem>
-                <StyledItem type={type}>
-                  <StyledDeleteBtn
-                    disabled={loading && id === delId.current}
-                    onClick={() => handleDeleteTransition(id, balance, amount)}
-                  >
-                    {loading && id === delId.current ? (
-                      <LoaderDel />
-                    ) : (
-                      t('transactionsTableDelete')
-                    )}
-                  </StyledDeleteBtn>
-                  <StyledEditBtn
-                    onClick={() =>
-                      handleEditTransition({
-                        id,
-                        transactionDate,
-                        type,
-                        categoryId,
-                        comment,
-                        amount,
-                      })
-                    }
-                  >
-                    <RiEdit2Line size={14} />
-                    {t('transactionsTableEdit')}
-                  </StyledEditBtn>
-                </StyledItem>
-              </StyledList>
+              <>
+                <StyledList key={id}>
+                  <StyledItem type={type}>
+                    <StyledSpan>{t('transactionsTableDate')}</StyledSpan>
+                    {date}
+                  </StyledItem>
+                  <StyledItem type={type}>
+                    <StyledSpan>{t('transactionsTableType')}</StyledSpan>
+                    {transType}
+                  </StyledItem>
+                  <StyledItem type={type}>
+                    <StyledSpan>{t('transactionsTableCategory')}</StyledSpan>
+                    {categoryName}
+                  </StyledItem>
+                  <StyledItem type={type}>
+                    <StyledSpan>{t('transactionsTableComment')}</StyledSpan>
+                    {capitalizeFirstLetter(comment)}
+                  </StyledItem>
+                  <StyledItem type={type}>
+                    <StyledSpan>{t('transactionsTableAmount')}</StyledSpan>
+                    <StyledSum type={type}>{sum}</StyledSum>
+                  </StyledItem>
+                  <StyledItem type={type}>
+                    <StyledDeleteBtn
+                      disabled={loading && id === delId.current}
+                      onClick={() =>
+                        handleDeleteTransition(id, balance, amount)
+                      }
+                    >
+                      {loading && id === delId.current ? (
+                        <LoaderDel />
+                      ) : (
+                        t('transactionsTableDelete')
+                      )}
+                    </StyledDeleteBtn>
+                    <StyledEditBtn
+                      onClick={() =>
+                        handleEditTransition({
+                          id,
+                          transactionDate,
+                          type,
+                          categoryId,
+                          comment,
+                          amount,
+                        })
+                      }
+                    >
+                      <RiEdit2Line size={14} />
+                      {t('transactionsTableEdit')}
+                    </StyledEditBtn>
+                  </StyledItem>
+                </StyledList>
+                {selectIsEditModalOpen && <ModalEditTransaction />}
+              </>
             );
           }
         )
