@@ -18,7 +18,7 @@ import { transactionsReducer } from './transactions/transSlice';
 
 const persistedGlobalReducer = persistReducer(
   {
-    key: 'theme',
+    key: 'theme/lang',
     version: 1,
     storage,
     whitelist: ['themeTitle', 'language'],
