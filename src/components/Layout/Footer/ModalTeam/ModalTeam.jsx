@@ -77,7 +77,6 @@ export function ModalTeam() {
             <ul>
               {lan === true &&
                 creators.map(({ name, role, src, id }) => {
-                  console.log(creators);
                   const position = sliderMove(id);
                   return (
                     <li key={id} className={position}>

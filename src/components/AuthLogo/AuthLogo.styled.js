@@ -8,7 +8,7 @@ export const AuthLogoContainer = styled.div`
   align-items: baseline;
 
   & span {
-    font-family: 'Poppins';
+    font-family: 'Poppins', 'Montserrat Alternates';
     font-style: normal;
     font-weight: 700;
     font-size: 30px;
