@@ -8,7 +8,6 @@ export const AuthLogoContainer = styled.div`
   align-items: baseline;
 
   & span {
-    //   @include font-poppins-medium;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
@@ -17,7 +16,7 @@ export const AuthLogoContainer = styled.div`
     display: flex;
     align-items: center;
 
-    color: #000000;
+    color: ${({ theme }) => theme.color.text_dark};
     @media (min-width: 768px) {
       // @include font-poppins-medium-big;
     }
