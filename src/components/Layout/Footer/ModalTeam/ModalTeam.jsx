@@ -75,8 +75,9 @@ export function ModalTeam() {
             <SelectLink />
 
             <ul>
-              {lan === 'true' &&
+              {lan === true &&
                 creators.map(({ name, role, src, id }) => {
+                  console.log(creators);
                   const position = sliderMove(id);
                   return (
                     <li key={id} className={position}>
@@ -89,7 +90,7 @@ export function ModalTeam() {
                   );
                 })}
 
-              {lan === 'false' &&
+              {lan === false &&
                 creatorsUkr.map(({ name, role, src, id }) => {
                   const position = sliderMove(id);
                   return (
