@@ -39,7 +39,7 @@ export const StyledContainer = styled.div`
 `;
 
 export const StyledLogo = styled(NavLink)`
-  font-family: 'Poppins', 'Montserrat Alternates';
+  font-family: Poppins;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -102,5 +102,5 @@ export const Separator = styled.div`
 export const HeaderRight = styled.div`
   display: flex;
   gap: 50px;
-  /* padding-right: 10px; */
+  padding-right: 10px;
 `;

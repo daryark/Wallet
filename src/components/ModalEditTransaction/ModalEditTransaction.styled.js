@@ -47,7 +47,7 @@ export const ModalWrapper = styled.div`
     }
 
     &__title {
-      font-family: 'Poppins', 'Montserrat';
+      font-family: 'Poppins';
       font-weight: 400;
       text-align: center;
       font-size: 30px;

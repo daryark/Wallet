@@ -46,8 +46,25 @@ body {
       'header'
       'main'
       'footer ';
+/* @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+      max-width: ${({ theme }) => theme.breakpoints.sm}; */
+      /* grid-template-columns: 100%; */
     }
-    
+      /* @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+      max-width: ${({ theme }) => theme.breakpoints.md}; */
+      /* grid-template-rows: auto auto 1fr auto; */
+      
+     
+    /* } */
+    /* @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+      max-width: ${({ theme }) => theme.breakpoints.lg}; */
+      /* grid-template-columns: 480px 800px; */
+      /* grid-template-areas:
+      'header header'
+      'sidebar main'
+      'footer footer'; */
+    /* } */
+  /* } */
   
 p,
 h1,
@@ -100,15 +117,6 @@ svg {
   ::-webkit-scrollbar {
     width: 10px;
   }
-
-  /* input, 
-  textarea, 
-  select {
-    &:-webkit-autofill { 
-      box-shadow: 0 0 0 30px ${p => p.theme.color.bg_white} inset; 
-    }
-  } */
-
 `;
 
 export default GlobalStyles;
