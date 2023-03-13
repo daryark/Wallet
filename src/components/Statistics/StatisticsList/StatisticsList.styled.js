@@ -19,6 +19,7 @@ export const StatisticsCommonWrapper = styled.div`
     width: 715px;
     margin-top: 32px;
     margin-bottom: 44px;
+    padding-left: 69px;
   }
 `;
 
@@ -28,6 +29,7 @@ export const StatisticsListWrapper = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
+    padding-top: 65px;
     width: 395px;
   }
 `;
@@ -36,12 +38,12 @@ export const SelectWrapper = styled.div`
   flex-direction: column;
   gap: 20px;
   @media screen and (min-width: 768px) {
- flex-direction: row;
-  gap:16px;
+    flex-direction: row;
+    gap: 16px;
   }
 
   @media screen and (min-width: 1280px) {
-    gap:32px;
+    gap: 32px;
   }
 `;
 
