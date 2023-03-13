@@ -160,10 +160,10 @@ const CategorySum = () => {
               if (type === 'INCOME') return null;
 
               let categoryName = '';
-              if (lan === true) {
+              if (lan === 'en') {
                 categoryName = name;
               }
-              if (lan === false) {
+              if (lan === 'uk') {
                 categoryName = categoryCheck(name);
               }
               return (

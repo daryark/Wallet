@@ -37,7 +37,7 @@ const initialGlobalState = {
   isModalTeamOpen: false,
   isEditModalOpen: false,
   isLogoutModalOpen: false,
-  language: false,
+  language: 'en',
 };
 
 const globalSlice = createSlice({
