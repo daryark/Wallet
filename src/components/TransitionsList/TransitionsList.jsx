@@ -96,12 +96,11 @@ export const TransactionsList = () => {
         const catN = getCategory?.name;
         let categoryName = '';
         if (lan === true) {
-          categoryName = catN;
+          categoryName = catN === 'Entertainment' ? 'Amusement' : catN;
         }
         if (lan === false) {
           categoryName = categoryCheck(catN);
         }
-        // потрібно замінити умову, щоб lan === 'ru'
 
         return <div>{categoryName}</div>;
       },

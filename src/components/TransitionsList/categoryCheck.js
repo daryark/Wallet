@@ -23,6 +23,9 @@ export const categoryCheck = function (category) {
       categ = 'Побутові вироби';
       break;
     case 'Leisure':
+      categ = 'Дозвілля';
+      break;
+    case 'Entertainment':
       categ = 'Розваги';
       break;
     default:

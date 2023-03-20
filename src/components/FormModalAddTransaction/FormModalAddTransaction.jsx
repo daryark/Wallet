@@ -5,7 +5,10 @@ import { date, object, string } from 'yup';
 import { useMediaQuery } from 'react-responsive';
 import { useTranslation } from 'react-i18next';
 
-import { selectIsModalOpen } from 'redux/global/global-selectors';
+import {
+  selectIsModalOpen,
+  selectLanguage,
+} from 'redux/global/global-selectors';
 import { selectCategories } from 'redux/transactions/trans-selectors';
 import { isModalAddTransactionOpen } from 'redux/global/globalSlice';
 import {
@@ -22,6 +25,7 @@ import {
 } from './FormModalAddTransaction.styled';
 import ButtonSubmit from './ButtonsModalAddTransaction/ButtonSubmit';
 import ButtonCancel from './ButtonsModalAddTransaction/ButtonCancel';
+import { categoryCheck } from 'components/TransitionsList/categoryCheck';
 
 const defaultState = {
   type: 'EXPENSE',
@@ -36,6 +40,7 @@ function FormModalAddTransaction({ handleCloseModal }) {
   const isModalOpen = useSelector(selectIsModalOpen);
   const categories = useSelector(selectCategories);
   const { t } = useTranslation();
+  const lan = useSelector(selectLanguage);
 
   const dispatch = useDispatch();
 
@@ -158,7 +163,13 @@ function FormModalAddTransaction({ handleCloseModal }) {
               options={(transactionState.type === 'EXPENSE'
                 ? optionsExpense
                 : optionsIncome
-              ).map(option => ({ value: option.id, label: option.name }))}
+              ).map(option => {
+                if (lan === false) {
+                  let newName = categoryCheck(option.name);
+                  return { value: option.id, label: newName };
+                }
+                return { value: option.id, label: option.name };
+              })}
               onChange={option => {
                 handleSelectChange(option.value);
               }}
