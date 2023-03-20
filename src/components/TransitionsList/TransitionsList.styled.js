@@ -111,23 +111,40 @@ export const BtnBox = styled.div`
 
 export const StyledBox = styled.div`
   & .ant-table-wrapper {
+    .ant-table-cell-scrollbar:not([rowspan]) {
+      box-shadow: none;
+    }
     & .ant-table-container table > thead > tr > :first-child {
       border-start-start-radius: ${p => p.theme.radii.large};
       border-end-start-radius: ${p => p.theme.radii.large};
     }
-    & .ant-table-container table > thead > tr > :last-child {
-      display: none; //to fix border white line
-      border-start-end-radius: ${p => p.theme.radii.large};
-      border-end-end-radius: ${p => p.theme.radii.large};
+    & .ant-table-column-sorter {
+      color: ${p => p.theme.color.text_dark};
     }
+    /* & .ant-table-container table > thead > tr > :last-child {
+        display: none; //to fix border white line 
+       border-start-end-radius: ${p => p.theme.radii.large};
+      border-end-end-radius: ${p => p.theme.radii.large};
+    } */
+    & .ant-table {
+      border: none;
+      color: ${p => p.theme.color.text_dark};
+      background-color: transparent;
+
+      & .ant-table-header {
+        border-start-end-radius: ${p => p.theme.radii.large};
+        border-end-end-radius: ${p => p.theme.radii.large};
+      }
+    }
+
     & .ant-table-body {
-      overflow-y: auto !important;
+      /* overflow-y: auto !important; */
       &::-webkit-scrollbar {
-        width: 10px;
+        width: 9px;
       }
 
       &::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 5px #c5baff;
+        box-shadow: inset 0 0 2px #c5baff;
         border-radius: 10px;
       }
 
@@ -142,18 +159,9 @@ export const StyledBox = styled.div`
       }
     }
     & .ant-table-tbody > tr > td {
-      padding: 14px 20px;
+      padding: 14px 13px;
     }
-    & .ant-table {
-      border: none;
-      color: ${p => p.theme.color.text_dark};
-      background-color: transparent;
 
-      & .ant-table-header {
-        border-start-end-radius: ${p => p.theme.radii.large};
-        border-end-end-radius: ${p => p.theme.radii.large};
-      }
-    }
     & .ant-table-thead > tr > th {
       padding: 16px 17px;
       color: ${p => p.theme.color.text_dark};
