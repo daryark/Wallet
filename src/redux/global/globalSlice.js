@@ -55,6 +55,7 @@ const globalSlice = createSlice({
     },
     toggleEditModal(state) {
       state.isEditModalOpen = !state.isEditModalOpen;
+      console.log(state.isEditModalOpen);
     },
     toggleLogoutModalOpen(state) {
       state.isLogoutModalOpen = !state.isLogoutModalOpen;

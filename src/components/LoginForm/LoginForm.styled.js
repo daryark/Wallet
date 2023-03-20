@@ -18,6 +18,9 @@ import styled from 'styled-components';
 
 export const LoginBox = styled.div`
   background-color: ${({ theme }) => theme.color.bg_white};
+  height: 100vh;
+  padding-top: 32px;
+
   @media screen and (min-width: 768px) {
     padding: 40px 58px 62px 65px;
     margin: 0 auto;

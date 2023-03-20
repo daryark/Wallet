@@ -5,6 +5,10 @@ export const StyledGoogleRegister = styled.div`
   gap: 10px;
   justify-content: center;
   margin: 10px 0;
+  /* & #signInDiv.nsm7Bb-HzV7m-LgbsSe {
+    background-color: red;
+  } */
+
   .google__text {
     margin: 0;
     font-size: 14px;

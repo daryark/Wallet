@@ -1,19 +1,62 @@
-import { FcGoogle } from 'react-icons/fc';
+/* eslint-disable no-undef */
+import { useEffect, useState } from 'react';
+import jwt_decode from 'jwt-decode';
+import { useDispatch } from 'react-redux';
+import { loginRequest, registerRequest } from 'redux/auth/auth-operations';
 import { StyledGoogleRegister } from './GoogleRegister.styled';
 
 export function GoogleRegister() {
+  const [userData, setUserData] = useState(null);
+  const dispatch = useDispatch();
+
+  function handleCallbackResponse(response) {
+    const userObject = jwt_decode(response.credential);
+    // console.log(userObject);
+
+    setUserData(userObject);
+  }
+
+  useEffect(() => {
+    /*global google*/
+    google.accounts.id.initialize({
+      client_id:
+        '161461164988-67rsmrpvfbu1oiafg1lro119oa1evv5k.apps.googleusercontent.com',
+      callback: handleCallbackResponse,
+    });
+
+    // '665888736356-aq6fvfmau6mupt4nfbms5tfch0u2698i.apps.googleusercontent.com',
+
+    google.accounts.id.renderButton(document.getElementById('signInDiv'), {
+      theme: 'outline',
+      size: 'large',
+      color: 'red',
+    });
+  }, []);
+
+  useEffect(() => {
+    const password = userData?.email.split('').reverse().join('');
+
+    //change the pathname to : "/register"
+    if (window.location.pathname === '/Wallet/register') {
+      dispatch(
+        registerRequest({
+          email: userData?.email,
+          password,
+          username: userData?.name,
+        })
+      );
+    }
+    dispatch(
+      loginRequest({
+        email: userData?.email,
+        password,
+      })
+    );
+  }, [dispatch, userData]);
+
   return (
     <StyledGoogleRegister>
-      <p className="google__text">Sign in with</p>
-      <a
-        className="google__btn"
-        href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&client_id=665888736356-aq6fvfmau6mupt4nfbms5tfch0u2698i.apps.googleusercontent.com&prompt=consent&redirect_uri=https%3A%2F%2Fkapusta-backend.goit.global%2Fauth%2Fgoogle-redirect&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FcGoogle width="24" height="24" />
-        google
-      </a>
+      <div id="signInDiv"></div>
     </StyledGoogleRegister>
   );
 }

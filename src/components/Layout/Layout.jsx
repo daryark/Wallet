@@ -12,21 +12,23 @@ import {
   selectIsEditModalOpen,
   selectIsLogoutModalOpen,
   selectIsModalTeamOpen,
+  selectModalAddTransactionOpen,
 } from 'redux/global/global-selectors';
 
 export default function Layout() {
+  const addModalOpen = useSelector(selectModalAddTransactionOpen);
   const editModalOpen = useSelector(selectIsEditModalOpen);
   const teamModalOpen = useSelector(selectIsModalTeamOpen);
   const logoutModalOpen = useSelector(selectIsLogoutModalOpen);
 
   useEffect(() => {
-    if (teamModalOpen || editModalOpen || logoutModalOpen) {
+    if (teamModalOpen || editModalOpen || logoutModalOpen || addModalOpen) {
       document.body.style.overflow = 'hidden';
       return;
     }
     document.body.style.overflow = '';
     return;
-  }, [editModalOpen, logoutModalOpen, teamModalOpen]);
+  }, [addModalOpen, editModalOpen, logoutModalOpen, teamModalOpen]);
   return (
     // <ThemeProvider theme={normalizedTheme}>
     //   <GlobalStyles />
