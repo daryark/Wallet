@@ -46,6 +46,7 @@ export const TransactionsListMobile = () => {
   const transactions = useSelector(selectTransactions);
   const categories = useSelector(selectCategories);
   const loading = useSelector(selectIsDeleting);
+  const isEditModalOpen = useSelector(selectIsEditModalOpen);
 
   const { t } = useTranslation();
   const delId = useRef(null);
@@ -145,8 +146,8 @@ export const TransactionsListMobile = () => {
                       {t('transactionsTableEdit')}
                     </StyledEditBtn>
                   </StyledItem>
+                  {isEditModalOpen && <ModalEditTransaction />}
                 </StyledList>
-                {selectIsEditModalOpen && <ModalEditTransaction />}
               </>
             );
           }

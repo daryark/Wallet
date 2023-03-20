@@ -4,9 +4,10 @@ export const ModalAddTransactionStyled = styled.div`
   position: absolute;
   top: 60px;
   left: 0;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 40px; */
+  margin-bottom: 40px;
   width: 100%;
   height: calc(100% - 60px);
   padding: 20px;
