@@ -2,7 +2,7 @@
   "name": "wallet",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://daryark.github.io/",
+  "homepage": "https://daryark.github.io/Wallet",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
     "@testing-library/jest-dom": "^5.16.3",
@@ -17,6 +17,7 @@
     "i18next": "^22.4.11",
     "i18next-browser-languagedetector": "^7.0.1",
     "i18next-http-backend": "^2.1.1",
+    "jwt-decode": "^3.1.2",
     "persistor": "^2.11.1",
     "react": "^18.1.0",
     "react-chartjs-2": "^5.2.0",
