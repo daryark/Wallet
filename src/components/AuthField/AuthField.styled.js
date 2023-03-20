@@ -59,6 +59,7 @@ export const Input = styled.input`
   outline: none;
   border: none;
   border-bottom: 1px solid ${({ theme }) => theme.color.text_grey_secondary};
+  color: ${({ theme }) => theme.color.text_dark};
 
   &::placeholder {
     color: #bdbdbd;

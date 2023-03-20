@@ -31,6 +31,7 @@ import {
   SvgWrapper,
 } from 'pages/LoginPage/LoginPage.styled';
 import React, { useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
@@ -39,6 +40,7 @@ import { ImgRegister } from './RegisterPage.styled';
 export default function RegisterPage() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const navigate = useNavigate();
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   useEffect(() => {
     if (!isLoggedIn) return;
@@ -47,16 +49,22 @@ export default function RegisterPage() {
   }, [isLoggedIn, navigate]);
 
   return (
-    <SectionLogin>
-      <AuthContainer>
-        <SvgWrapper>
-          <BgContainer>
-            <ImgRegister />
-            <LoginText>Finance App</LoginText>
-          </BgContainer>
-          <RegistrationForm />
-        </SvgWrapper>
-      </AuthContainer>
-    </SectionLogin>
+    <>
+      {isMobile ? (
+        <RegistrationForm />
+      ) : (
+        <SectionLogin>
+          <AuthContainer>
+            <SvgWrapper>
+              <BgContainer>
+                <ImgRegister />
+                <LoginText>Finance App</LoginText>
+              </BgContainer>
+              <RegistrationForm />
+            </SvgWrapper>
+          </AuthContainer>
+        </SectionLogin>
+      )}
+    </>
   );
 }
