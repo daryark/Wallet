@@ -4,11 +4,13 @@ import { StyledHeader } from '../Header/Header.styled';
 
 export const StyledFooter = styled(StyledHeader)`
   grid-area: footer;
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  background-color: ${({ theme }) => theme.color.bg_white}; */
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    position: fixed;
+    top: calc(100% - 60px);
+    left: 0;
+    right: 0;
+  }
 
   .list {
     text-align: center;

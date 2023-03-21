@@ -28,10 +28,15 @@ export const StyledAuthButtonActive = styled.button`
 
   cursor: pointer;
 
-  transition-property: transform;
-  transition-duration: 400ms;
+  transition: box-shadow ${({ theme }) => theme.transition};
 
   &:not(:last-child) {
     margin-bottom: 20px;
+  }
+
+  &:hover,
+  &focus {
+    outline: none;
+    box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
   }
 `;

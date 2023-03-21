@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const RegisterBox = styled(LoginBox)`
   @media screen and (min-width: 768px) {
-    height: 616px;
+    height: 630px;
   }
 
   .input {
