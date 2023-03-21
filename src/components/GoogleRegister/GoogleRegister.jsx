@@ -27,9 +27,10 @@ export function GoogleRegister() {
     // '665888736356-aq6fvfmau6mupt4nfbms5tfch0u2698i.apps.googleusercontent.com',
 
     google.accounts.id.renderButton(document.getElementById('signInDiv'), {
-      theme: 'outline',
-      size: 'large',
-      color: 'red',
+      // type: 'icon',
+      theme: 'filled_blue',
+      shape: 'circle',
+      size: 'small',
     });
   }, []);
 
