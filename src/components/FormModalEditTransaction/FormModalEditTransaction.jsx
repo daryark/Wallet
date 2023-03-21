@@ -35,10 +35,17 @@ function FormModalEditTransaction({ handleCloseModal }) {
       : defaultState
   );
 
+  let isCheched = false;
+  if (transactionState.type === '-' || transactionState.type === 'EXPENSE') {
+    isCheched = true;
+  } else {
+    isCheched = false;
+  }
+
   const dispatch = useDispatch();
   let oldAmount = transactionData?.amount ?? 0;
 
-  const handleSubmit = ({ key, amount, comment }) => {
+  const handleSubmit = ({ id, amount, comment }) => {
     amount = Number(amount);
     let oldAmnt = Math.abs(oldAmount);
 
@@ -46,10 +53,14 @@ function FormModalEditTransaction({ handleCloseModal }) {
       amount = -Number(amount);
       oldAmnt = -Number(oldAmnt);
     }
+    if (transactionData.type === 'EXPENSE') {
+      amount = -Number(amount);
+      oldAmnt = -Number(oldAmnt);
+    }
 
     dispatch(
       editTransaction({
-        id: key,
+        id,
         amount,
         comment,
         oldAmnt,
@@ -59,16 +70,10 @@ function FormModalEditTransaction({ handleCloseModal }) {
     handleCloseModal();
   };
 
-  //   const onSubmit = formData => {
-  //     dispatch(addTransaction(formData));
-  //   };
-
   let validationSchema = object({
     amount: string()
       .required('Required')
       .max(20, 'Must be 20 characters maximum'),
-    // date: date().default(() => new Date()),
-    // type: string().required('Required'),
   });
 
   return (
@@ -85,9 +90,8 @@ function FormModalEditTransaction({ handleCloseModal }) {
               disabled
               type="checkbox"
               name="type"
-              //   onChange={handleCheckboxChange}
               className="switcher__checkbox"
-              checked={transactionState.type === '-' ? true : false}
+              checked={isCheched}
             />
             <span className="switcher__toggle"></span>
           </label>
@@ -105,59 +109,7 @@ function FormModalEditTransaction({ handleCloseModal }) {
               ? 'category'
               : 'category isHidden' // from GlobalStyles
           }
-          //   onClick={handleSelectChange}
-        >
-          {/* {categories && transactionState.type === 'EXPENSE' && (
-            <option hidden style={{ color: '#bdbdbd' }}>
-              Select a category
-            </option>
-          )} */}
-
-          {/* {categories &&
-            transactionState.type === 'EXPENSE' &&
-            optionsExpense.map(category => {
-              return (
-                <option key={category.id} value={category.id}>
-                  {category.name}
-                </option>
-              );
-            })}
-
-          {categories &&
-            transactionState.type === 'INCOME' &&
-            optionsIncome.map(category => {
-              return (
-                <option key={category.id} value={category.id}>
-                  {category.name}
-                </option>
-              );
-            })} */}
-
-          {/* {categories &&
-            categories.map(category => {
-              if (
-                transactionState.type === 'INCOME' &&
-                category.name === 'Income'
-              ) {
-                return (
-                  <option key={category.id} value={category.id}>
-                    {category.name}
-                  </option>
-                );
-              }
-
-              if (
-                transactionState.type === 'EXPENSE' &&
-                category.name !== 'Income'
-              ) {
-                return (
-                  <option key={category.id} value={category.id}>
-                    {category.name}
-                  </option>
-                );
-              }
-            })} */}
-        </Field>
+        ></Field>
 
         <div className="amount-date-wrapper">
           <Field
@@ -167,31 +119,7 @@ function FormModalEditTransaction({ handleCloseModal }) {
             className="amount"
           />
 
-          <Field
-            disabled
-            type="date"
-            name="transactionDate"
-            className="date"
-            // value={
-            //   transactionState.transactionDate
-            // ? transactionState.transactionDate
-            // : new Date()
-            // }
-          />
-
-          {/* <Field
-            component={
-              <Datetime
-                type="date"
-                name="date"
-                className="date"
-                // onChange={val => setValue(val)}
-                dateFormat="MM.DD.YYYY"
-                timeFormat={false}
-                // initialValue={transactionState.date}
-              />
-            }
-          /> */}
+          <Field disabled type="date" name="transactionDate" className="date" />
         </div>
 
         <Field

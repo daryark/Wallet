@@ -49,16 +49,14 @@ export const editTransaction = createAsyncThunk(
   'transactions/editTransition',
   async (formData, { rejectWithValue }) => {
     try {
-      console.log(formData);
       const info = {
         id: formData.id,
         amount: formData.amount,
         comment: formData.comment,
       };
       const response = await TransactionsAPI.updateTransaction(info);
-
       const newBalance = formData.balance - formData.oldAmnt + formData.amount;
-      // console.log(newBalance);
+
       const data = {
         response,
         balance: newBalance,
