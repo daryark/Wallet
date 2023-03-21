@@ -133,12 +133,12 @@ export const TransactionsList = () => {
               <RiEdit2Line size={14} />
             </StyledEditBtn>
             <StyledDeleteBtn
-              disabled={loading && record.key === delId.current}
+              disabled={loading && record.id === delId.current}
               onClick={() =>
-                handleDeleteTransition(record.key, balance, record.amount)
+                handleDeleteTransition(record.id, balance, record.amount)
               }
             >
-              {loading && record.key === delId.current ? (
+              {loading && record.id === delId.current ? (
                 <LoaderDel />
               ) : (
                 t('transactionsTableDelete')
@@ -151,7 +151,7 @@ export const TransactionsList = () => {
   ];
   const dataSource = transactions?.map(
     ({ id, transactionDate, type, categoryId, comment, amount }) => ({
-      key: id,
+      id,
       transactionDate,
       type: type === 'INCOME' ? '+' : '-',
       categoryId,

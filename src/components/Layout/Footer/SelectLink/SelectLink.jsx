@@ -1,10 +1,24 @@
 import { useState } from 'react';
+import { selectLanguage } from 'redux/global/global-selectors';
 import SelectComponent from 'components/FormModalAddTransaction/SelectComponent/SelectComponent';
-import { creators } from '../ModalTeam/teamMembers';
+import { creators, creatorsUkr } from '../ModalTeam/teamMembers';
 import { BsGithub } from 'react-icons/bs';
+import { useSelector } from 'react-redux';
 
 export function SelectLink() {
   const [linkGh, setLinkGh] = useState('');
+  const lan = useSelector(selectLanguage);
+
+  let teamList = [];
+  let title = '';
+
+  if (lan === false) {
+    teamList = creatorsUkr;
+    title = 'Обрати розробницю';
+  } else {
+    teamList = creators;
+    title = 'Select a developer';
+  }
 
   const handleSelectChange = link => {
     setLinkGh(link);
@@ -20,8 +34,8 @@ export function SelectLink() {
         <label>
           <SelectComponent
             name="developers"
-            placeholder="Select developer"
-            options={creators.map(creator => ({
+            placeholder={title}
+            options={teamList.map(creator => ({
               value: creator.gh,
               label: creator.name,
             }))}
