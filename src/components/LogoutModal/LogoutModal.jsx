@@ -1,4 +1,9 @@
-import { StyledBackdrop, StyledModal, StyledBtn } from './LogoutModal.styled';
+import {
+  StyledBackdrop,
+  StyledModal,
+  StyledBtn,
+  StyledBtnBack,
+} from './LogoutModal.styled';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/auth-selectors';
 import { useEffect } from 'react';
@@ -40,7 +45,9 @@ export const LogoutModal = ({ toggleModal }) => {
         >
           {t('modalLogOutLogOutBtn')}
         </StyledBtn>
-        <StyledBtn onClick={toggleModal}>{t('modalLogOutGoBackBtn')}</StyledBtn>
+        <StyledBtnBack onClick={toggleModal}>
+          {t('modalLogOutGoBackBtn')}
+        </StyledBtnBack>
       </StyledModal>
     </StyledBackdrop>
   );

@@ -50,17 +50,22 @@ export const StyledBtn = styled.button`
   color: ${({ primary, theme }) => (primary ? 'white' : theme.color.text_blue)};
 
   cursor: pointer;
-
-  transition-property: transform;
-  transition-duration: 400ms;
+  transition: box-shadow ${({ theme }) => theme.transition};
 
   &:not(:last-child) {
     margin-bottom: 20px;
   }
 
-  @media screen and (min-width: 1199px) {
-    &:hover {
-      transform: scale(1.02);
-    }
+  &:hover,
+  &focus {
+    outline: none;
+    box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+  }
+`;
+
+export const StyledBtnBack = styled(StyledBtn)`
+  &:hover,
+  &focus {
+    box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
   }
 `;

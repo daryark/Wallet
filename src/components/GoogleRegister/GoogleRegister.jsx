@@ -9,6 +9,8 @@ export function GoogleRegister() {
   const [userData, setUserData] = useState(null);
   const dispatch = useDispatch();
 
+  const path = window.location.pathname;
+
   function handleCallbackResponse(response) {
     const userObject = jwt_decode(response.credential);
     // console.log(userObject);
@@ -24,21 +26,20 @@ export function GoogleRegister() {
       callback: handleCallbackResponse,
     });
 
-    // '665888736356-aq6fvfmau6mupt4nfbms5tfch0u2698i.apps.googleusercontent.com',
-
     google.accounts.id.renderButton(document.getElementById('signInDiv'), {
       // type: 'icon',
       theme: 'filled_blue',
       shape: 'circle',
       size: 'small',
+      text: path === '/register' ? 'signup_with' : 'signin_with',
     });
-  }, []);
+  }, [path]);
 
   useEffect(() => {
     const password = userData?.email.split('').reverse().join('');
 
     //change the pathname to : "/register"
-    if (window.location.pathname === '/Wallet/register') {
+    if (path === '/Wallet/register') {
       dispatch(
         registerRequest({
           email: userData?.email,
@@ -53,7 +54,7 @@ export function GoogleRegister() {
         password,
       })
     );
-  }, [dispatch, userData]);
+  }, [dispatch, path, userData]);
 
   return (
     <StyledGoogleRegister>

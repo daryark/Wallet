@@ -156,6 +156,7 @@ export const FormModalEditTransactionStyled = styled(Form)`
       width: calc(100% + 20px);
       height: 50px;
       border-radius: 20px;
+      transition: box-shadow ${({ theme }) => theme.transition};
 
       @media screen and (min-width: 768px) {
         width: 300px;
@@ -168,11 +169,22 @@ export const FormModalEditTransactionStyled = styled(Form)`
     border: 1px solid transparent;
     color: ${({ theme }) => theme.color.bg_white};
     background-color: #24cca7;
+
+    &:hover,
+    &focus {
+      outline: none;
+      box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+    }
   }
 
   & .cancel-btn {
     color: #4a56e2;
     border: 1px solid #4a56e2;
     background-color: transparent;
+
+    &:hover,
+    &focus {
+      box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
+    }
   }
 `;

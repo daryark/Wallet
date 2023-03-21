@@ -5,5 +5,5 @@ export const StyledGoogleRegister = styled.div`
   gap: 8px;
   justify-content: center;
   align-items: center;
-  margin: 20px 0;
+  padding: 20px 0;
 `;

@@ -106,58 +106,7 @@ function FormModalEditTransaction({ handleCloseModal }) {
               : 'category isHidden' // from GlobalStyles
           }
           //   onClick={handleSelectChange}
-        >
-          {/* {categories && transactionState.type === 'EXPENSE' && (
-            <option hidden style={{ color: '#bdbdbd' }}>
-              Select a category
-            </option>
-          )} */}
-
-          {/* {categories &&
-            transactionState.type === 'EXPENSE' &&
-            optionsExpense.map(category => {
-              return (
-                <option key={category.id} value={category.id}>
-                  {category.name}
-                </option>
-              );
-            })}
-
-          {categories &&
-            transactionState.type === 'INCOME' &&
-            optionsIncome.map(category => {
-              return (
-                <option key={category.id} value={category.id}>
-                  {category.name}
-                </option>
-              );
-            })} */}
-
-          {/* {categories &&
-            categories.map(category => {
-              if (
-                transactionState.type === 'INCOME' &&
-                category.name === 'Income'
-              ) {
-                return (
-                  <option key={category.id} value={category.id}>
-                    {category.name}
-                  </option>
-                );
-              }
-
-              if (
-                transactionState.type === 'EXPENSE' &&
-                category.name !== 'Income'
-              ) {
-                return (
-                  <option key={category.id} value={category.id}>
-                    {category.name}
-                  </option>
-                );
-              }
-            })} */}
-        </Field>
+        ></Field>
 
         <div className="amount-date-wrapper">
           <Field
@@ -178,20 +127,6 @@ function FormModalEditTransaction({ handleCloseModal }) {
             // : new Date()
             // }
           />
-
-          {/* <Field
-            component={
-              <Datetime
-                type="date"
-                name="date"
-                className="date"
-                // onChange={val => setValue(val)}
-                dateFormat="MM.DD.YYYY"
-                timeFormat={false}
-                // initialValue={transactionState.date}
-              />
-            }
-          /> */}
         </div>
 
         <Field
