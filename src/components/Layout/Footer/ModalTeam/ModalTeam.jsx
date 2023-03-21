@@ -29,7 +29,7 @@ export function ModalTeam() {
 
     let slider = setInterval(
       () => setCurrentIndex(prevState => prevState + 1),
-      2000
+      2500
     );
     return () => {
       clearInterval(slider);
@@ -81,7 +81,7 @@ export function ModalTeam() {
                   return (
                     <li key={id} className={position}>
                       <img src={src} alt={name} width="85" loading="lazy" />
-                      <div>
+                      <div className="team-member__info">
                         <p>{name}</p>
                         <p>{role}</p>
                       </div>
@@ -95,7 +95,7 @@ export function ModalTeam() {
                   return (
                     <li key={id} className={position}>
                       <img src={src} alt={name} width="85" loading="lazy" />
-                      <div>
+                      <div className="team-member__info">
                         <p>{name}</p>
                         <p>{role}</p>
                       </div>

@@ -77,4 +77,8 @@ export const ModalStyled = styled.div`
       margin-top: 8px;
     }
   }
+  .team-member__info {
+    margin-top: 32px;
+    font-size: ${p => p.theme.fontSizes.m};
+  }
 `;
