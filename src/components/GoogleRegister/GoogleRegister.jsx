@@ -31,7 +31,7 @@ export function GoogleRegister() {
       theme: 'filled_blue',
       shape: 'circle',
       size: 'small',
-      text: path === '/register' ? 'signup_with' : 'signin_with',
+      text: path === '/Wallet/register' ? 'signup_with' : 'signin_with',
     });
   }, [path]);
 
