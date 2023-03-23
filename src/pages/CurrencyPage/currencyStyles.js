@@ -62,6 +62,7 @@ export const StyledCurrencyTr = styled.tr`
   grid-template-columns: repeat(3, 1fr);
   height: 50px;
   align-items: center;
+
   @media (min-width: 1280px) {
     height: 60px;
     align-items: initial;
@@ -73,4 +74,6 @@ export const StyledBodyTr = styled.tr`
   grid-template-columns: repeat(3, 1fr);
   text-align: center;
   padding-top: 12px;
+  z-index: 2;
+  position: relative;
 `;

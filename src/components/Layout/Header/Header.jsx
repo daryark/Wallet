@@ -13,6 +13,7 @@ import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/auth-selectors';
 import { LogoutModal } from 'components/LogoutModal/LogoutModal';
 import { useState } from 'react';
+import { FiMoreVertical } from 'react-icons/fi';
 import { ThemeSwitcher } from 'components/ThemeButton/ThemeButton';
 import LangCheckbox from 'components/LangChekbox/LangChekbox';
 
@@ -35,9 +36,13 @@ export const Header = ({ normalizedTheme }) => {
 
         <HeaderRight>
           <StyledInfo>
-            {username}
+            <span>{username}</span>
             {!isMobile && <Separator />}
-            <ExitButton onClick={toggleModal} />
+            {isMobile ? (
+              <FiMoreVertical style={{ width: '32px', height: 'auto' }} />
+            ) : (
+              <ExitButton onClick={toggleModal} />
+            )}
           </StyledInfo>
           {!isMobile && (
             <StyledInfo style={{ position: 'relative', gap: '3px' }}>

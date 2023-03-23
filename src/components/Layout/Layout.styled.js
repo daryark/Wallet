@@ -4,19 +4,9 @@ export const StyledMain = styled.main`
   max-width: ${({ theme }) => theme.breakpoints.sm};
   margin: 0 auto;
   margin-bottom: 32px;
-  padding: 0 20px;
-
-  /* @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-    max-width: ${({ theme }) => theme.breakpoints.sm};
-  } */
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     max-width: ${({ theme }) => theme.breakpoints.md};
-    padding: 0;
-    /* пофиксить паддинг на таблет и десктоп */
   }
-  /* @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-    max-width: ${({ theme }) => theme.breakpoints.lg};
-  } */
 `;
 
 export const Background = styled.div`

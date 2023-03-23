@@ -50,6 +50,7 @@ export const StyledLogo = styled(NavLink)`
   display: flex;
   align-items: center;
   gap: 16px;
+  margin-right: 16px;
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   font-size: ${({ theme }) => theme.fontSizes.l};
   line-height: ${({ theme }) => theme.lineHeights.body};
@@ -109,5 +110,18 @@ export const Separator = styled.div`
 export const HeaderRight = styled.div`
   display: flex;
   gap: 50px;
-  /* padding-right: 10px; */
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    gap: 10px;
+  }
+
+  & span {
+    @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+      display: inline-block;
+      width: min-content;
+
+      font-size: 16px;
+      line-height: 1.3;
+    }
+  }
 `;
