@@ -26,16 +26,6 @@ const persistedGlobalReducer = persistReducer(
   globalReducer
 );
 
-// const persistedUserReducer = persistReducer(
-//   {
-//     key: 'token',
-//     version: 1,
-//     storage,
-//     whitelist: ['token'],
-//   },
-//   userReducer
-// );
-
 const rootReducer = combineReducers({
   userData: userReducer,
   transactionsData: transactionsReducer,

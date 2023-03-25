@@ -6,7 +6,9 @@ export const selectIsModalTeamOpen = state => state.globalData.isModalTeamOpen;
 export const selectIsEditModalOpen = state => state.globalData.isEditModalOpen;
 export const selectIsLogoutModalOpen = state =>
   state.globalData.isLogoutModalOpen;
+export const selectIsMobileMenuModalOpen = state =>
+  state.globalData.isMobileMenuModalOpen;
 export const selectModalAddTransactionOpen = state =>
-  state.globalData.isModalAddTransactionOpen;
+  state.globalData.isMobileMenuModalOpen;
 
 export const selectLanguage = state => state.globalData.language;

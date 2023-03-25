@@ -8,13 +8,6 @@ export const StyledHeader = styled.header`
   z-index: 2;
   width: calc(100vw - (${({ theme }) => theme.space[5]}*2));
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     width: calc(100vw - (${({ theme }) => theme.space[7]}*2));
   }
@@ -50,7 +43,7 @@ export const StyledLogo = styled(NavLink)`
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-right: 16px;
+
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   font-size: ${({ theme }) => theme.fontSizes.l};
   line-height: ${({ theme }) => theme.lineHeights.body};
@@ -73,7 +66,7 @@ export const StyledLogo = styled(NavLink)`
 export const StyledInfo = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+
   font-weight: ${({ theme }) => theme.fontWeights.normal};
   font-size: ${({ theme }) => theme.fontSizes.m};
   line-height: ${({ theme }) => theme.lineHeights.body};
@@ -111,17 +104,19 @@ export const HeaderRight = styled.div`
   display: flex;
   gap: 50px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+  @media (max-width: 767px) {
     gap: 10px;
-  }
 
-  & span {
-    @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    & span {
       display: inline-block;
-      width: min-content;
+      /* width: min-content; */
 
       font-size: 16px;
       line-height: 1.3;
     }
+  }
+
+  span {
+    /* width: fit-content; */
   }
 `;
