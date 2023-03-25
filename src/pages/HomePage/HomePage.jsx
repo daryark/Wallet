@@ -15,7 +15,7 @@ import WithAuthRedirect from 'HOC/WithAuthRedirect';
 import { Container } from 'components/common/common.styled';
 
 function HomePage() {
-  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
     <Container>

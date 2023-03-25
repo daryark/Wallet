@@ -9,4 +9,5 @@ export const BackdropStyled = styled.div`
   background: rgba(0, 0, 0, 0.25);
   z-index: 101;
   /* transition: opacity 0.2s ease, visibility 0.2s ease; */
+  /* overflow-y: scroll; */
 `;

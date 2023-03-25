@@ -56,9 +56,9 @@ export const Container = styled.div`
   max-width: ${({ theme }) => theme.breakpoints.sm};
   padding: 0 20px;
 
-  /* @media (max-width: 767px) {
+  @media (max-width: 767px) {
     padding-top: 60px;
-  } */
+  }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     max-width: ${({ theme }) => theme.breakpoints.md};

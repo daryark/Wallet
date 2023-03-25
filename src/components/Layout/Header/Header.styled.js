@@ -8,6 +8,13 @@ export const StyledHeader = styled.header`
   z-index: 2;
   width: calc(100vw - (${({ theme }) => theme.space[5]}*2));
 
+  @media (max-width: 767px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     width: calc(100vw - (${({ theme }) => theme.space[7]}*2));
   }

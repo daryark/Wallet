@@ -35,11 +35,11 @@ function FormModalEditTransaction({ handleCloseModal }) {
       : defaultState
   );
 
-  let isCheched = false;
+  let isChecked = false;
   if (transactionState.type === '-' || transactionState.type === 'EXPENSE') {
-    isCheched = true;
+    isChecked = true;
   } else {
-    isCheched = false;
+    isChecked = false;
   }
 
   const dispatch = useDispatch();
@@ -91,7 +91,7 @@ function FormModalEditTransaction({ handleCloseModal }) {
               type="checkbox"
               name="type"
               className="switcher__checkbox"
-              checked={isCheched}
+              checked={isChecked}
             />
             <span className="switcher__toggle"></span>
           </label>
