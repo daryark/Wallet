@@ -16,6 +16,7 @@ body {
   margin: 0;
   color: ${({ theme }) => theme.color.text_dark};
   background-color: ${({ theme }) => theme.color.bg_grey_main};
+  
   &::-webkit-scrollbar {
     width: 10px;
   }
@@ -96,18 +97,6 @@ svg {
     clip: rect(0 0 0 0);
     overflow: hidden;
   }
-
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  /* input, 
-  textarea, 
-  select {
-    &:-webkit-autofill { 
-      box-shadow: 0 0 0 30px ${p => p.theme.color.bg_white} inset; 
-    }
-  } */
 
 `;
 

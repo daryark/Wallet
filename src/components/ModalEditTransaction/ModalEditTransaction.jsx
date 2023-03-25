@@ -2,9 +2,13 @@ import { StyledBackdrop, ModalWrapper } from './ModalEditTransaction.styled';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { toggleEditModal } from 'redux/global/globalSlice';
+import MediaQuery from 'react-responsive';
 import FormModalEditTransaction from 'components/FormModalEditTransaction/FormModalEditTransaction';
+import { useWindowSize } from 'hooks/useWindowSize';
+import { ModalCloseBtn } from 'reusable';
 
 export const ModalEditTransaction = () => {
+  const { isMobile } = useWindowSize();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,8 +20,12 @@ export const ModalEditTransaction = () => {
     document.addEventListener('keydown', handleEscape);
     return () => {
       document.removeEventListener('keydown', handleEscape);
+
+      if (isMobile) {
+        document.body.style.overflow = 'auto';
+      }
     };
-  }, [dispatch]);
+  }, [dispatch, isMobile]);
   const closeModal = e => {
     if (e.target !== e.currentTarget) return;
     dispatch(toggleEditModal());
@@ -25,6 +33,9 @@ export const ModalEditTransaction = () => {
   return (
     <StyledBackdrop onClick={closeModal}>
       <ModalWrapper>
+        <MediaQuery minWidth={768}>
+          <ModalCloseBtn isRandomModalOpen={toggleEditModal} />
+        </MediaQuery>
         <FormModalEditTransaction
           handleCloseModal={() => {
             dispatch(toggleEditModal());

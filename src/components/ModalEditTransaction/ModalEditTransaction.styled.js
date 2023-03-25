@@ -13,8 +13,8 @@ export const StyledBackdrop = styled.div`
   background-color: rgba(0, 0, 0, 0.25);
   z-index: 150;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    background-color: rgba(0, 0, 0, 0);
+  @media (max-width: 767px) {
+    background-color: transparent;
   }
 `;
 

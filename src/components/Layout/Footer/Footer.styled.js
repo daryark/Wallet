@@ -5,7 +5,7 @@ import { StyledHeader } from '../Header/Header.styled';
 export const StyledFooter = styled(StyledHeader)`
   grid-area: footer;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+  @media (max-width: 767px) {
     position: fixed;
     top: calc(100% - 60px);
     left: 0;

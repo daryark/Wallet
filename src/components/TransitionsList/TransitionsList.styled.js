@@ -232,6 +232,10 @@ export const StyledNoTransactionDiv = styled.div`
   border-radius: 30px;
   background-color: ${p => p.theme.color.bg_white};
   box-shadow: rgb(0 0 0 / 25%) 0px 4px 4px;
+
+  @media (max-width: 767px) {
+    width: 280px;
+  }
 `;
 
 // =====================LoaderDel=====================================

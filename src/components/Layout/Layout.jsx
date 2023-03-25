@@ -30,11 +30,8 @@ export default function Layout() {
     return;
   }, [addModalOpen, editModalOpen, logoutModalOpen, teamModalOpen]);
   return (
-    // <ThemeProvider theme={normalizedTheme}>
-    //   <GlobalStyles />
     <>
       <Header />
-
       <Container>
         <Sidebar />
         <StyledMain>
@@ -43,10 +40,7 @@ export default function Layout() {
           </Suspense>
         </StyledMain>
       </Container>
-
       <Footer />
-
-      {/* </ThemeProvider> */}
     </>
   );
 }
