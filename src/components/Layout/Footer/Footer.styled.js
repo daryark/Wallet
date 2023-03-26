@@ -31,11 +31,6 @@ export const StyledFooter = styled(StyledHeader)`
       font-size: ${p => p.theme.fontSizes.s};
     }
   }
-
-  &:last-of-type {
-    /* display: flex;
-    justify-content: center; */
-  }
 `;
 
 export const StyledIconHeart = styled(BsBalloonHeartFill)`

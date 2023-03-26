@@ -160,6 +160,7 @@ export const StyledBox = styled.div`
     }
     & .ant-table-tbody > tr > td {
       padding: 14px 13px;
+      border-bottom: none;
     }
 
     & .ant-table-thead > tr > th {
