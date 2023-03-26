@@ -33,7 +33,7 @@ export const StyledCurrencyThumb = styled.div`
 
   @media (min-width: 1280px) {
     width: 393px;
-    height: 331px;
+    height: 300px;
     padding-top: 17px;
     background-image: linear-gradient(
       rgba(255, 255, 255, 0.2) 60px,

@@ -15,10 +15,8 @@ export const Background = styled.div`
     transform: translateX(-50%);
     z-index: -1;
 
-    /* @media (min-width: ${({ theme }) => theme.breakpoints.md}) { */
     left: calc(50% + 395px);
     top: -110px;
-    /* } */
   }
 
   & .ellipse_purple {
@@ -26,10 +24,9 @@ export const Background = styled.div`
     transform: translateX(-50%) rotate(15deg);
     z-index: -1;
 
-    /* @media (min-width: ${({ theme }) => theme.breakpoints.md}) { */
     left: calc(50% - 237px);
     bottom: -166px;
-    /* } */
+
     @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
       left: calc(50% - 509px);
       bottom: -137px;
@@ -58,6 +55,7 @@ export const Container = styled.div`
 
   @media (max-width: 767px) {
     padding-top: 60px;
+    padding-bottom: 30px;
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -66,8 +64,6 @@ export const Container = styled.div`
   }
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     max-width: ${({ theme }) => theme.breakpoints.lg};
-    /* padding: 0; */
     display: flex;
-    /* grid-template-columns: 480px auto; */
   }
 `;
