@@ -29,10 +29,6 @@ export const ButtonUp = () => {
   }, []);
   return (
     <>
-      {/* <BtnUp onClick={scrollToTop} className={isVisible ? '' : 'isHidden'}>
-        <BsArrowUpCircleFill size={28} />
-      </BtnUp> */}
-
       {isVisible && (
         <BtnUp type="button" onClick={scrollToTop}>
           <BsArrowUpCircleFill size={44} />

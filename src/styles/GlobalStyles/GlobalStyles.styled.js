@@ -35,7 +35,6 @@ body {
     background: ${({ theme }) => theme.color.accent};
     border-radius: 10px;
   }
-  /* background: ${({ theme }) => theme.color.bg_coverage}; */
 }
 
 
@@ -84,6 +83,9 @@ img {
 svg {
 	fill: currentColor;
 }
+::-webkit-scrollbar {
+    width: 10px;
+  }
 
   .isHidden {
     position: absolute;

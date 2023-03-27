@@ -9,12 +9,10 @@ export const theme = {
   },
   fontWeights: {
     normal: 400,
-    // medium: 500,  якщо буде потреба - додати
     bold: 700,
   },
   lineHeights: {
     body: 1.5,
-    // heading: 1.125,  якщо буде потреба - додати
   },
   borders: {
     none: 'none',
@@ -32,6 +30,5 @@ export const theme = {
     sm: '480px',
     md: '768px',
     lg: '1280px',
-    // xl: '1920px',
   },
 };

@@ -1,3 +1,10 @@
+import React, { useEffect, useState } from 'react';
+import Select from 'react-select';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { useTranslation } from 'react-i18next';
+import { useTheme } from 'styled-components';
+
 import {
   Cube,
   SelectWrapper,
@@ -10,18 +17,13 @@ import {
   StatisticsWrapper,
   Sum,
 } from './StatisticsList.styled';
-import { useTheme } from 'styled-components';
 
-import React, { useEffect, useState } from 'react';
-import Select from 'react-select';
-import { useDispatch, useSelector } from 'react-redux';
-import { getTransactionSummary } from '../../../redux/transactions/trans-operations';
-import { selectSummary } from '../../../redux/transactions/trans-selectors';
 import { categories } from '../categories';
 
-import { useTranslation } from 'react-i18next';
-import { categoryCheck } from 'components/TransitionsList/categoryCheck';
+import { getTransactionSummary } from '../../../redux/transactions/trans-operations';
+import { selectSummary } from '../../../redux/transactions/trans-selectors';
 import { selectLanguage } from 'redux/global/global-selectors';
+import { categoryCheck } from 'components/TransitionsList/categoryCheck';
 
 const yearData = [
   { value: 2021, label: '2021' },
@@ -128,8 +130,6 @@ const CategorySum = () => {
     { value: 10, label: t('statisticsNovember') },
     { value: 11, label: t('statisticsDecember') },
   ];
-
-  // const amount = parseFloat(positNum).toFixed(2);  ось так додати 2 цифри після крапки
 
   return (
     <StatisticsListWrapper>
