@@ -56,8 +56,8 @@ const customStyles = theme => ({
     color: state.isSelected ? '#FFFFFF' : theme.text_dark,
     width: '100%',
     '&:hover': {
-      backgroundColor: '#FFFFFF',
-      color: '#4A56E2',
+      backgroundColor: theme.color.bg_blur,
+      color: theme.color.text_blue,
     },
   }),
   singleValue: provided => ({
@@ -68,7 +68,7 @@ const customStyles = theme => ({
     ...provided,
     color: '#333333',
     '&:hover': {
-      color: '#4A56E2',
+      color: theme.color.text_blue,
     },
   }),
   indicatorSeparator: () => ({
