@@ -27,8 +27,6 @@ const plugins = balanceText => {
   ];
 };
 
-// useEffect(() => {
-// setPlugin(plugins(theme, balanceText));
 const doughnutData = summary => {
   if (!summary) return [];
   return [
@@ -49,41 +47,26 @@ const doughnutData = summary => {
     },
   ];
 };
-// setData(doughnutData());
+
 ChartJS.register(ArcElement, Tooltip, Legend);
-// const chart = new ChartJS('myChart', {
-//   type: 'doughnut',
-//   data: { datasets: data },
-// });
-// return () => {
-//   chart.destroy();
-// };
-// }, [summary, theme, balanceText, data]);
+
 export const Diagram = () => {
-  // const [data, setData] = useState([]);
-  // const [plugin, setPlugin] = useState([]);
   const summary = useSelector(selectSummary);
   const balance = useSelector(selectBalance);
   const balanceText = `₴ ${balance.toFixed(2)}`;
   const plugin = plugins(balanceText);
 
   const data = useMemo(() => doughnutData(summary), [summary]);
-  // const theme = useTheme();
 
   return (
     <DiagramWrapper>
-      {
-        data.length && (
-          <Doughnut
-            data={{ datasets: data }}
-            type={'doughnut'}
-            plugins={plugin}
-          />
-        )
-        // : (
-        //   // <p> You have no transactions in this period</p>
-        // )
-      }
+      {data.length && (
+        <Doughnut
+          data={{ datasets: data }}
+          type={'doughnut'}
+          plugins={plugin}
+        />
+      )}
     </DiagramWrapper>
   );
 };
