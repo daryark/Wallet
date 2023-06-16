@@ -22,7 +22,7 @@ export function GoogleRegister() {
     /*global google*/
     google.accounts.id.initialize({
       client_id:
-        '161461164988-67rsmrpvfbu1oiafg1lro119oa1evv5k.apps.googleusercontent.com',
+        '50929806285-ip85ltqjcpursagh0h3homfepvn7pdn7.apps.googleusercontent.com',
       callback: handleCallbackResponse,
     });
 
@@ -36,6 +36,8 @@ export function GoogleRegister() {
   }, [path]);
 
   useEffect(() => {
+    //email field used kinda password because of no access to backend or ability to modify it
+    //and need to pass some password (unique identifier of user success login/registration)to pass it to database
     const password = userData?.email.split('').reverse().join('');
 
     //change the pathname to : "/register"
